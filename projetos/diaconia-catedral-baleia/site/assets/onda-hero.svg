@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+  <g fill="none" stroke-linecap="round">
+    <path vector-effect="non-scaling-stroke" d="M0 120C180 60 360 60 540 120S900 180 1080 120 1350 60 1440 90" stroke="#1F6F78" stroke-opacity=".4" stroke-width="2"/>
+    <path vector-effect="non-scaling-stroke" d="M0 160C200 110 400 110 600 155S1000 205 1200 160 1380 120 1440 130" stroke="#D4AF5A" stroke-opacity=".35" stroke-width="1.75"/>
+    <path vector-effect="non-scaling-stroke" d="M0 200C240 165 480 165 720 195S1200 230 1440 190" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="1.5"/>
+  </g>
+</svg>
