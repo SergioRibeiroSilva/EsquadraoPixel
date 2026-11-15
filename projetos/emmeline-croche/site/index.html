@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--
+    ============================================================
+    ATENÇÃO: SITE DE EXEMPLO
+    Todos os dados de contato (WhatsApp, e-mail, Instagram, cidade),
+    preços, prazos, formas de pagamento e horários são FICTÍCIOS.
+    Única informação real: o frete é pago pela compradora.
+    Todas as fotos são de bancos públicos (Unsplash/Pexels) e devem ser
+    trocadas pelas fotos reais da Emmeline antes de publicar.
+    Depoimentos e retratos de clientes são ILUSTRATIVOS.
+    Fonte dos dados: ../dados-negocio.md · Créditos: ../imagens.md
+    ============================================================
+  -->
+  <title>Emmeline Crochê | Bolsas de crochê feitas à mão, sob encomenda</title>
+  <meta name="description" content="Bolsas de crochê artesanais feitas à mão, sob encomenda, nas cores e no tamanho que você preferir. Envio para todo o Brasil. Encomende pelo WhatsApp.">
+  <meta name="theme-color" content="#7A2338">
+
+  <!-- Open Graph / redes sociais. [PLACEHOLDER: trocar por URL absoluta do domínio final] -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Emmeline Crochê">
+  <meta property="og:title" content="Emmeline Crochê | Bolsas de crochê feitas à mão">
+  <meta property="og:description" content="Bolsas tecidas ponto a ponto, sob encomenda, nas cores que você preferir. Envio para todo o Brasil.">
+  <!-- [PLACEHOLDER: domínio final] Ao publicar, descomente e troque <dominio>:
+  <link rel="canonical" href="https://<dominio>/">
+  <meta property="og:url" content="https://<dominio>/">
+  e use URL absoluta em og:image e twitter:image: https://<dominio>/assets/fotos/og-image.jpg -->
+  <meta property="og:image" content="../assets/fotos/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Bolsa de crochê vermelha e o logotipo da Emmeline Crochê">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Emmeline Crochê | Bolsas de crochê feitas à mão">
+  <meta name="twitter:description" content="Bolsas tecidas ponto a ponto, sob encomenda. Envio para todo o Brasil.">
+  <meta name="twitter:image" content="../assets/fotos/og-image.jpg">
+
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
+  <link rel="preload" as="image" href="../assets/fotos/hero-bolsa-croche-800.jpg" imagesrcset="../assets/fotos/hero-bolsa-croche-800.jpg 800w, ../assets/fotos/hero-bolsa-croche.jpg 1200w" imagesizes="(min-width: 900px) 420px, min(420px, 90vw)">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+
+  <!-- FICTÍCIO: dados estruturados com dados de exemplo; revisar antes de publicar (ver dados-negocio.md).
+       [PLACEHOLDER: domínio final] "url", "logo" e "image" estão com caminho relativo; ao publicar,
+       troque por URLs absolutas (https://<dominio>/, https://<dominio>/assets/logo-emmeline.svg,
+       https://<dominio>/assets/fotos/og-image.jpg). -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Emmeline Crochê",
+    "description": "Bolsas de crochê artesanais feitas à mão, sob encomenda.",
+    "url": "./",
+    "logo": "../assets/logo-emmeline.svg",
+    "image": "../assets/fotos/og-image.jpg",
+    "telephone": "+55-11-90000-0000",
+    "email": "contato@emmelinecroche.com.br",
+    "priceRange": "R$ 120 – R$ 380",
+    "paymentAccepted": "Pix, cartão de crédito",
+    "currenciesAccepted": "BRL",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "areaServed": { "@type": "Country", "name": "Brasil" },
+    "sameAs": ["https://www.instagram.com/emmelinecroche/"],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "12:00"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Sprite de ícones (cópia inline dos SVGs de ../assets/icon-*.svg, para herdar currentColor e funcionar ao abrir o arquivo localmente) -->
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3.6 20.4l1.3-4.1a8.6 8.6 0 1 1 3.2 3z"/><path d="M9.2 7.8c-.6.3-1 1-.9 1.8.3 2.6 2.6 5 5.2 5.3.8.1 1.5-.3 1.8-.9l.2-.6-2-1-.9.8a4.4 4.4 0 0 1-2-2l.8-.9-1-2z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".7"/></symbol>
+    <symbol id="i-email" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6.5L20.5 7"/></symbol>
+    <symbol id="i-localizacao" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0c0 5.2-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-envio" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9M8 5.2l8 4.6"/></symbol>
+    <symbol id="i-pagamento" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19M6 15h4"/></symbol>
+    <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-escolha" viewBox="0 0 24 24"><path d="M5 9h14l-1.2 11.5H6.2z"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/><path d="M12 17.6s-2.7-1.6-2.7-3.4a1.35 1.35 0 0 1 2.7-.5 1.35 1.35 0 0 1 2.7.5c0 1.8-2.7 3.4-2.7 3.4z"/></symbol>
+    <symbol id="i-paleta" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.8-.8 1.8-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.2 0-1 .8-1.7 1.7-1.7h2A4.5 4.5 0 0 0 21 10.7C21 6.4 17 3 12 3z"/><circle cx="7.5" cy="11.5" r="1.2"/><circle cx="10" cy="7.2" r="1.2"/><circle cx="15" cy="7.2" r="1.2"/></symbol>
+    <symbol id="i-agulha" viewBox="0 0 24 24"><path d="M4.5 19.5L17 7"/><path d="M17 7c.7-.8 2-1 2.6-.3.6.6.4 1.7-.4 2"/><path d="M11.8 12.2c-2.4-2.6-6.6-1.3-6.4 1.4.2 2.4 4 2.8 6.1.6M10.2 13.8c1.5 2.4 5 3 7.8 1.6"/></symbol>
+    <symbol id="i-novelo" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M4.4 7.6c4.2.2 9 2.6 11.5 7.6M3.2 12.4c3.6-.3 7.9 1.3 10.4 5.9M9.1 3.2c2.4 2.2 4.4 6.6 3.8 15.6"/><path d="M11 19c2.6.9 5.4 1.6 7.6.6 1.2-.5 2.1-.2 2.9.9"/></symbol>
+    <symbol id="i-regua" viewBox="0 0 24 24"><circle cx="9" cy="11" r="6"/><circle cx="9" cy="11" r="1.6"/><path d="M9 17h12v-4h-6.6M13.5 17v-1.8M16.5 17v-1.8M19.5 17v-1.8"/></symbol>
+    <symbol id="i-presente" viewBox="0 0 24 24"><rect x="3.5" y="9" width="17" height="4" rx="1"/><path d="M5 13v8h14v-8M12 9v12"/><path d="M12 9C10.6 6 7.2 5.4 7.2 7.6 7.2 9 9.5 9 12 9zM12 9c1.4-3 4.8-3.6 4.8-1.4C16.8 9 14.5 9 12 9z"/></symbol>
+    <symbol id="i-aspas" viewBox="0 0 24 24"><path d="M4.5 18v-4.5c0-3.4 1.6-5.8 4.6-7M4.5 13.5H9V18H4.5zM13.5 18v-4.5c0-3.4 1.6-5.8 4.6-7M13.5 13.5H18V18h-4.5z"/></symbol>
+    <symbol id="i-caret" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-fechar" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ==================== CABEÇALHO ==================== -->
+  <header class="site-header" id="topo">
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="#inicio">
+        <img src="../assets/logo-emmeline.svg" alt="Emmeline Crochê, início" width="228" height="48">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <svg class="icon icon--24 menu-toggle__open" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg>
+        <svg class="icon icon--24 menu-toggle__close" aria-hidden="true" focusable="false"><use href="#i-fechar"/></svg>
+      </button>
+      <!-- Sem JavaScript: link que abre o menu pelo :target (substituído pelo botão acima quando o script roda) -->
+      <a class="menu-link" href="#menu">
+        <svg class="icon icon--24" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg><span class="sr-only">Abrir menu</span>
+      </a>
+
+      <nav class="site-nav" id="menu" aria-label="Principal">
+        <ul class="site-nav__list">
+          <li><a class="site-nav__link" href="#colecao">Coleção</a></li>
+          <li><a class="site-nav__link" href="#sobre">Feito à mão</a></li>
+          <li><a class="site-nav__link" href="#como-encomendar">Como encomendar</a></li>
+          <li><a class="site-nav__link" href="#duvidas">Dúvidas</a></li>
+        </ul>
+        <!-- FICTÍCIO: número de WhatsApp de exemplo (ver dados-negocio.md) -->
+        <a class="btn btn--primary btn--sm site-nav__cta" href="https://wa.me/5511900000000?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Emmeline%20Croch%C3%AA%20e%20quero%20encomendar%20uma%20bolsa." target="_blank" rel="noopener">
+          <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+          <span class="site-nav__cta-long">Encomendar pelo WhatsApp</span><span class="site-nav__cta-short">Encomendar<span class="sr-only"> pelo WhatsApp</span></span><span class="sr-only"> (abre em nova aba)</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <p class="eyebrow">Bolsas de crochê feitas à mão</p>
+          <h1 class="hero__title" id="hero-titulo">Bolsas tecidas <em>ponto a ponto</em>, do jeito que você sonhou</h1>
+          <p class="lead">Cada peça nasce nas minhas mãos, sob encomenda, com fios escolhidos a dedo e as cores que você preferir.</p>
+          <div class="hero__actions" id="hero-cta">
+            <a class="btn btn--primary" href="https://wa.me/5511900000000?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Emmeline%20Croch%C3%AA%20e%20quero%20encomendar%20uma%20bolsa." target="_blank" rel="noopener">
+              <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+              Encomendar pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+            </a>
+            <a class="btn btn--outline" href="#colecao">Ver a coleção</a>
+          </div>
+          <!-- FICTÍCIO: formas de pagamento de exemplo -->
+          <ul class="trust">
+            <li><svg class="icon icon--18" aria-hidden="true" focusable="false"><use href="#i-agulha"/></svg>Feita sob encomenda</li>
+            <li><svg class="icon icon--18" aria-hidden="true" focusable="false"><use href="#i-envio"/></svg>Envio para todo o Brasil</li>
+            <li><svg class="icon icon--18" aria-hidden="true" focusable="false"><use href="#i-pagamento"/></svg>Pix ou até 3x</li>
+          </ul>
+        </div>
+
+        <div class="hero__media">
+          <div class="hero__frame">
+            <!-- FOTO DE BANCO (Unsplash): substituir antes de publicar -->
+            <img class="hero__img"
+                 src="../assets/fotos/hero-bolsa-croche-800.jpg"
+                 srcset="../assets/fotos/hero-bolsa-croche-800.jpg 800w, ../assets/fotos/hero-bolsa-croche.jpg 1200w"
+                 sizes="(min-width: 900px) 420px, min(420px, 90vw)"
+                 width="800" height="1000"
+                 alt="Mão segurando uma bolsa de crochê vermelha com alça de contas"
+                 fetchpriority="high" decoding="async">
+          </div>
+          <img class="hero__seal" src="../assets/selo-feito-a-mao.svg" alt="" width="96" height="96" aria-hidden="true">
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><img src="../assets/divisor-ponto.svg" alt="" width="160" height="20" loading="lazy"></div>
+
+    <!-- ==================== COLEÇÃO ==================== -->
+    <!-- FICTÍCIO: modelos, preços e fotos de banco; substituir antes de publicar -->
+    <section class="section section--collection" id="colecao" aria-labelledby="colecao-titulo">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Coleção</p>
+          <h2 id="colecao-titulo">Escolha a sua <em>companheira</em></h2>
+          <p class="lead">Seis modelos para começar. Todos podem ser feitos na cor e no tamanho que você preferir.</p>
+        </header>
+
+        <ul class="products" role="list">
+          <li class="reveal">
+            <article class="product">
+              <div class="product__media">
+                <span class="badge">Mais pedida</span>
+                <img src="../assets/fotos/bolsa-lua.jpg" srcset="../assets/fotos/bolsa-lua-400.jpg 400w, ../assets/fotos/bolsa-lua.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa de crochê creme de tiracolo com aba em vinho e flores bordadas">
+              </div>
+              <div class="product__body">
+                <h3 class="product__name">Bolsa Lua</h3>
+                <p class="product__desc">Retangular de tiracolo, com aba e flores bordadas à mão.</p>
+                <p class="product__meta">24 × 16 cm · algodão · forrada</p>
+                <div class="product__foot">
+                  <p class="price"><span class="price__from">a partir de</span> <span class="price__value">R$ 160</span></p>
+                  <a class="btn btn--primary btn--card" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Emmeline%21%20Tenho%20interesse%20na%20Bolsa%20Lua.%20Quais%20cores%20est%C3%A3o%20dispon%C3%ADveis%3F" target="_blank" rel="noopener">
+                    <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>Quero esta<span class="sr-only">: Bolsa Lua, pelo WhatsApp (abre em nova aba)</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="reveal">
+            <article class="product">
+              <div class="product__media product__media--feira">
+                <img src="../assets/fotos/bolsa-feira.jpg" srcset="../assets/fotos/bolsa-feira-400.jpg 400w, ../assets/fotos/bolsa-feira.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa grande de crochê em terracota com listras creme">
+              </div>
+              <div class="product__body">
+                <h3 class="product__name">Bolsa Feira</h3>
+                <p class="product__desc">A grandona de ombro que leva o domingo inteiro.</p>
+                <p class="product__meta">40 × 35 cm · fio de malha</p>
+                <div class="product__foot">
+                  <p class="price"><span class="price__from">a partir de</span> <span class="price__value">R$ 220</span></p>
+                  <a class="btn btn--primary btn--card" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Emmeline%21%20Tenho%20interesse%20na%20Bolsa%20Feira.%20Quais%20cores%20est%C3%A3o%20dispon%C3%ADveis%3F" target="_blank" rel="noopener">
+                    <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>Quero esta<span class="sr-only">: Bolsa Feira, pelo WhatsApp (abre em nova aba)</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="reveal">
+            <article class="product">
+              <div class="product__media">
+                <img src="../assets/fotos/bolsa-bombom.jpg" srcset="../assets/fotos/bolsa-bombom-400.jpg 400w, ../assets/fotos/bolsa-bombom.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa de mão de crochê rosa com laços de cetim">
+              </div>
+              <div class="product__body">
+                <h3 class="product__name">Bolsa Bombom</h3>
+                <p class="product__desc">Pequena de mão, para o essencial e um batom.</p>
+                <p class="product__meta">18 × 14 cm · algodão · forrada</p>
+                <div class="product__foot">
+                  <p class="price"><span class="price__from">a partir de</span> <span class="price__value">R$ 120</span></p>
+                  <a class="btn btn--primary btn--card" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Emmeline%21%20Tenho%20interesse%20na%20Bolsa%20Bombom.%20Quais%20cores%20est%C3%A3o%20dispon%C3%ADveis%3F" target="_blank" rel="noopener">
+                    <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>Quero esta<span class="sr-only">: Bolsa Bombom, pelo WhatsApp (abre em nova aba)</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="reveal">
+            <article class="product">
+              <div class="product__media">
+                <img src="../assets/fotos/bolsa-marsala.jpg" srcset="../assets/fotos/bolsa-marsala-400.jpg 400w, ../assets/fotos/bolsa-marsala.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa de crochê em vinho e creme com ponto texturizado">
+              </div>
+              <div class="product__body">
+                <h3 class="product__name">Bolsa Marsala</h3>
+                <p class="product__desc">Baguete de ombro em tons de vinho, para o dia a dia.</p>
+                <p class="product__meta">30 × 14 cm · algodão mercerizado</p>
+                <div class="product__foot">
+                  <p class="price"><span class="price__from">a partir de</span> <span class="price__value">R$ 180</span></p>
+                  <a class="btn btn--primary btn--card" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Emmeline%21%20Tenho%20interesse%20na%20Bolsa%20Marsala.%20Quais%20cores%20est%C3%A3o%20dispon%C3%ADveis%3F" target="_blank" rel="noopener">
+                    <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>Quero esta<span class="sr-only">: Bolsa Marsala, pelo WhatsApp (abre em nova aba)</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="reveal">
+            <article class="product">
+              <div class="product__media">
+                <img src="../assets/fotos/bolsa-jardim.jpg" srcset="../assets/fotos/bolsa-jardim-400.jpg 400w, ../assets/fotos/bolsa-jardim.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsinha de crochê creme com botões de rosa em relevo e botão de madeira">
+              </div>
+              <div class="product__body">
+                <h3 class="product__name">Bolsa Jardim</h3>
+                <p class="product__desc">Rosas em relevo tecidas à mão, uma a uma.</p>
+                <p class="product__meta">28 × 26 cm · algodão · forrada</p>
+                <div class="product__foot">
+                  <p class="price"><span class="price__from">a partir de</span> <span class="price__value">R$ 260</span></p>
+                  <a class="btn btn--primary btn--card" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Emmeline%21%20Tenho%20interesse%20na%20Bolsa%20Jardim.%20Quais%20cores%20est%C3%A3o%20dispon%C3%ADveis%3F" target="_blank" rel="noopener">
+                    <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>Quero esta<span class="sr-only">: Bolsa Jardim, pelo WhatsApp (abre em nova aba)</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li class="reveal">
+            <article class="product">
+              <div class="product__media">
+                <img src="../assets/fotos/bolsa-noite.jpg" srcset="../assets/fotos/bolsa-noite-400.jpg 400w, ../assets/fotos/bolsa-noite.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Clutch de crochê em ponto pipoca com fecho dourado">
+              </div>
+              <div class="product__body">
+                <h3 class="product__name">Bolsa Noite</h3>
+                <p class="product__desc">Clutch delicada para jantares e festas.</p>
+                <p class="product__meta">26 × 14 cm · fio fosco em ponto pipoca · forrada</p>
+                <div class="product__foot">
+                  <p class="price"><span class="price__from">a partir de</span> <span class="price__value">R$ 340</span></p>
+                  <a class="btn btn--primary btn--card" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Emmeline%21%20Tenho%20interesse%20na%20Bolsa%20Noite.%20Quais%20cores%20est%C3%A3o%20dispon%C3%ADveis%3F" target="_blank" rel="noopener">
+                    <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>Quero esta<span class="sr-only">: Bolsa Noite, pelo WhatsApp (abre em nova aba)</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+
+        <div class="collection-note">
+          <p>Cada peça é feita à mão, por isso pequenas variações fazem parte do seu charme. Fotos ilustrativas.</p>
+          <a class="text-link" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Emmeline%21%20Quero%20uma%20bolsa%20personalizada%2C%20com%20cores%20e%20tamanho%20do%20meu%20jeito." target="_blank" rel="noopener">
+            Não achou o que queria? Peça uma bolsa sob medida pelo WhatsApp
+            <svg class="icon icon--18" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg><span class="sr-only"> (abre em nova aba)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SOBRE / O FEITO À MÃO ==================== -->
+    <!-- EXEMPLO: texto e fotos ilustrativos; substituir pela história e pelas fotos reais da Emmeline -->
+    <section class="section section--alt section--textured" id="sobre" aria-labelledby="sobre-titulo">
+      <div class="container">
+        <div class="about">
+          <div class="mosaic reveal">
+            <figure class="mosaic__item mosaic__item--big">
+              <img src="../assets/fotos/processo-maos-tecendo.jpg" width="900" height="1125" loading="lazy" decoding="async" alt="Mãos tecendo crochê com agulha dourada e fio claro">
+            </figure>
+            <figure class="mosaic__item">
+              <img src="../assets/fotos/fios-novelos.jpg" width="700" height="700" loading="lazy" decoding="async" alt="Novelos de fio vinho em uma cesta de palha">
+            </figure>
+            <figure class="mosaic__item">
+              <img src="../assets/fotos/detalhe-ponto-croche.jpg" width="700" height="700" loading="lazy" decoding="async" alt="Close da trama de crochê em fio rosé-vinho">
+            </figure>
+          </div>
+
+          <div class="about__text reveal">
+            <p class="eyebrow eyebrow--on-alt">O feito à mão</p>
+            <h2 id="sobre-titulo">Cada bolsa leva <em>tempo, cuidado e afeto</em></h2>
+            <p>Aprendi o crochê olhando as mãos da minha avó. Hoje, cada bolsa que sai do meu ateliê é tecida sem pressa, ponto a ponto, para durar.</p>
+            <p>Escolho cada fio pela textura e pela cor, testo o ponto até a trama ficar firme e caprichada, e só entrego quando a peça está do jeito que eu mesma gostaria de receber.</p>
+            <blockquote class="quote">
+              <p>“Não existem duas bolsas iguais, e é isso que eu mais amo.”</p>
+            </blockquote>
+            <figure class="about__portrait">
+              <img src="../assets/fotos/artesa-trabalhando.jpg" width="900" height="1125" loading="lazy" decoding="async" alt="Artesã segurando uma peça de crochê recém-tecida (foto ilustrativa)">
+              <figcaption>No ateliê: a peça recém-saída da agulha. Foto ilustrativa.</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <ol class="process reveal" aria-label="Etapas de produção">
+          <li class="process__step">
+            <span class="process__num" aria-hidden="true">01</span>
+            <div>
+              <h3>Fio</h3>
+              <p>A escolha do fio e da cor que combinam com você.</p>
+            </div>
+          </li>
+          <li class="process__step">
+            <span class="process__num" aria-hidden="true">02</span>
+            <div>
+              <h3>Ponto</h3>
+              <p>A trama tecida à mão, carreira por carreira.</p>
+            </div>
+          </li>
+          <li class="process__step">
+            <span class="process__num" aria-hidden="true">03</span>
+            <div>
+              <h3>Acabamento</h3>
+              <p>Forro, alça e fecho, costurados com capricho.</p>
+            </div>
+          </li>
+          <li class="process__step">
+            <span class="process__num" aria-hidden="true">04</span>
+            <div>
+              <h3>Embalagem</h3>
+              <p>Pronta para presentear, ou para se presentear.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ==================== COMO ENCOMENDAR ==================== -->
+    <section class="section" id="como-encomendar" aria-labelledby="encomendar-titulo">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Como encomendar</p>
+          <h2 id="encomendar-titulo">Do primeiro <em>olá</em> à sua porta</h2>
+          <p class="lead">Simples, sem pressa e com acompanhamento em cada etapa.</p>
+        </header>
+
+        <!-- FICTÍCIO: sinal, prazo de produção e transportadora de exemplo. REAL: frete pago pela compradora -->
+        <ol class="steps" role="list">
+          <li class="step reveal">
+            <span class="step__icon"><svg class="icon icon--40" aria-hidden="true" focusable="false"><use href="#i-escolha"/></svg></span>
+            <p class="eyebrow step__label">Passo 1</p>
+            <h3>Escolha o modelo</h3>
+            <p>Na coleção ou com uma ideia sua.</p>
+            <svg class="icon step__arrow" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg>
+          </li>
+          <li class="step reveal">
+            <span class="step__icon"><svg class="icon icon--40" aria-hidden="true" focusable="false"><use href="#i-paleta"/></svg></span>
+            <p class="eyebrow step__label">Passo 2</p>
+            <h3>Personalize</h3>
+            <p>Defina cor, tamanho e detalhes comigo pelo WhatsApp.</p>
+            <svg class="icon step__arrow" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg>
+          </li>
+          <li class="step reveal">
+            <span class="step__icon"><svg class="icon icon--40" aria-hidden="true" focusable="false"><use href="#i-relogio"/></svg></span>
+            <p class="eyebrow step__label">Passo 3</p>
+            <h3>Produção</h3>
+            <p>Com o sinal de 50%, começo a tecer. São de 7 a 15 dias úteis.</p>
+            <svg class="icon step__arrow" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg>
+          </li>
+          <li class="step reveal">
+            <span class="step__icon"><svg class="icon icon--40" aria-hidden="true" focusable="false"><use href="#i-envio"/></svg></span>
+            <p class="eyebrow step__label">Passo 4</p>
+            <h3>Entrega</h3>
+            <p>Envio para todo o Brasil pelos Correios, com código de rastreio. O frete é por conta da compradora, calculado pelo CEP.</p>
+          </li>
+        </ol>
+
+        <div class="section-cta">
+          <a class="btn btn--primary" href="https://wa.me/5511900000000?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Emmeline%20Croch%C3%AA%20e%20quero%20encomendar%20uma%20bolsa." target="_blank" rel="noopener">
+            <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+            Começar minha encomenda<span class="sr-only"> pelo WhatsApp (abre em nova aba)</span>
+          </a>
+          <p class="small muted">Pagamento: Pix ou cartão em até 3x · 50% de sinal · frete por conta da compradora</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><img src="../assets/divisor-ponto.svg" alt="" width="160" height="20" loading="lazy"></div>
+
+    <!-- ==================== DIFERENCIAIS ==================== -->
+    <section class="section section--features" id="diferenciais" aria-labelledby="diferenciais-titulo">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow">Por que Emmeline</p>
+          <h2 id="diferenciais-titulo">Feita para ser <em>só sua</em></h2>
+        </header>
+        <ul class="features" role="list">
+          <li class="feature reveal">
+            <svg class="icon icon--48 feature__icon" aria-hidden="true" focusable="false"><use href="#i-agulha"/></svg>
+            <div>
+              <h3>Peça exclusiva</h3>
+              <p>Tecida à mão, uma a uma. Nenhuma sai igual à outra.</p>
+            </div>
+          </li>
+          <li class="feature reveal">
+            <svg class="icon icon--48 feature__icon" aria-hidden="true" focusable="false"><use href="#i-novelo"/></svg>
+            <div>
+              <h3>Fios de qualidade</h3>
+              <p>Algodão macio e resistente, escolhido a dedo.</p>
+            </div>
+          </li>
+          <li class="feature reveal">
+            <svg class="icon icon--48 feature__icon" aria-hidden="true" focusable="false"><use href="#i-regua"/></svg>
+            <div>
+              <h3>Sob medida</h3>
+              <p>Cor, tamanho e alça do seu jeito.</p>
+            </div>
+          </li>
+          <li class="feature reveal">
+            <svg class="icon icon--48 feature__icon" aria-hidden="true" focusable="false"><use href="#i-presente"/></svg>
+            <div>
+              <h3>Pronta para presentear</h3>
+              <p>Chega embalada com carinho, com bilhete se você quiser.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==================== DEPOIMENTOS ==================== -->
+    <!-- EXEMPLO: substituir por depoimentos reais com autorização. Retratos de banco (Pexels), ilustrativos -->
+    <section class="section section--alt" id="depoimentos" aria-labelledby="depoimentos-titulo">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow eyebrow--on-alt">Quem já tem</p>
+          <h2 id="depoimentos-titulo">Histórias que <em>carregam</em> afeto</h2>
+        </header>
+
+        <ul class="testimonials" role="list">
+          <li class="reveal">
+            <figure class="testimonial">
+              <span class="tag-example">Exemplo</span>
+              <svg class="icon testimonial__quote-icon" aria-hidden="true" focusable="false"><use href="#i-aspas"/></svg>
+              <blockquote class="testimonial__text">
+                <p>Recebi a Bolsa Lua embrulhada como presente e com um bilhete escrito à mão. A cor ficou exatamente como combinamos, e todo mundo pergunta onde comprei.</p>
+              </blockquote>
+              <figcaption class="testimonial__author">
+                <span class="avatar" data-initials="MS">
+                  <span class="avatar__initials" aria-hidden="true">MS</span>
+                  <img class="avatar__img" src="../assets/depoimentos/depoimento-1.jpg" width="320" height="320" loading="lazy" decoding="async" alt="Foto ilustrativa de cliente">
+                </span>
+                <span class="testimonial__who">
+                  <span class="testimonial__name">Mariana S.</span>
+                  <span class="testimonial__meta">Campinas/SP · Bolsa Lua</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="reveal">
+            <figure class="testimonial">
+              <span class="tag-example">Exemplo</span>
+              <svg class="icon testimonial__quote-icon" aria-hidden="true" focusable="false"><use href="#i-aspas"/></svg>
+              <blockquote class="testimonial__text">
+                <p>Pedi a Bolsa Feira num tom de vinho mais escuro e a Emmeline me mandou fotos de cada etapa. Uso toda semana e ela continua firme e linda.</p>
+              </blockquote>
+              <figcaption class="testimonial__author">
+                <span class="avatar" data-initials="PL">
+                  <span class="avatar__initials" aria-hidden="true">PL</span>
+                  <img class="avatar__img" src="../assets/depoimentos/depoimento-2.jpg" width="320" height="320" loading="lazy" decoding="async" alt="Foto ilustrativa de cliente">
+                </span>
+                <span class="testimonial__who">
+                  <span class="testimonial__name">Patrícia L.</span>
+                  <span class="testimonial__meta">Belo Horizonte/MG · Bolsa Feira</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="reveal">
+            <figure class="testimonial">
+              <span class="tag-example">Exemplo</span>
+              <svg class="icon testimonial__quote-icon" aria-hidden="true" focusable="false"><use href="#i-aspas"/></svg>
+              <blockquote class="testimonial__text">
+                <p>Usei a Bolsa Noite no casamento da minha irmã. Delicada, bem acabada e com uma textura discreta que combinou com o vestido.</p>
+              </blockquote>
+              <figcaption class="testimonial__author">
+                <span class="avatar" data-initials="JR">
+                  <span class="avatar__initials" aria-hidden="true">JR</span>
+                  <img class="avatar__img" src="../assets/depoimentos/depoimento-3.jpg" width="320" height="320" loading="lazy" decoding="async" alt="Foto ilustrativa de cliente">
+                </span>
+                <span class="testimonial__who">
+                  <span class="testimonial__name">Júlia R.</span>
+                  <span class="testimonial__meta">Curitiba/PR · Bolsa Noite</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
+        <p class="testimonials-note">Depoimentos e fotos ilustrativos.</p>
+      </div>
+    </section>
+
+    <!-- ==================== PERGUNTAS FREQUENTES ==================== -->
+    <!-- FICTÍCIO: prazos, pagamento e transportadora de exemplo. REAL: frete pago pela compradora -->
+    <section class="section" id="duvidas" aria-labelledby="duvidas-titulo">
+      <div class="container container--narrow">
+        <header class="section-head reveal">
+          <p class="eyebrow">Dúvidas</p>
+          <h2 id="duvidas-titulo">Perguntas <em>frequentes</em></h2>
+        </header>
+
+        <div class="faq">
+          <details class="faq__item">
+            <summary>Qual é o prazo de produção?<svg class="icon icon--20 faq__caret" aria-hidden="true" focusable="false"><use href="#i-caret"/></svg></summary>
+            <div class="faq__answer"><p>De 7 a 15 dias úteis depois da confirmação do sinal, mais o prazo dos Correios.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Como cuidar da minha bolsa?<svg class="icon icon--20 faq__caret" aria-hidden="true" focusable="false"><use href="#i-caret"/></svg></summary>
+            <div class="faq__answer"><p>Lave à mão em água fria com sabão neutro, seque na sombra e na horizontal, sem torcer. Guarde com papel dentro para manter a forma.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Vocês enviam para todo o Brasil? Quem paga o frete?<svg class="icon icon--20 faq__caret" aria-hidden="true" focusable="false"><use href="#i-caret"/></svg></summary>
+            <div class="faq__answer"><p>Sim, enviamos pelos Correios, com código de rastreio. O frete é por conta da compradora e é calculado conforme o seu CEP, durante o atendimento pelo WhatsApp.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Quais as formas de pagamento?<svg class="icon icon--20 faq__caret" aria-hidden="true" focusable="false"><use href="#i-caret"/></svg></summary>
+            <div class="faq__answer"><p>Pix ou cartão de crédito em até 3x, com 50% de sinal na encomenda.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Posso escolher cor e tamanho?<svg class="icon icon--20 faq__caret" aria-hidden="true" focusable="false"><use href="#i-caret"/></svg></summary>
+            <div class="faq__answer"><p>Sim. Todas as bolsas são feitas sob encomenda e podem ser personalizadas.</p></div>
+          </details>
+          <details class="faq__item">
+            <summary>Posso retirar pessoalmente?<svg class="icon icon--20 faq__caret" aria-hidden="true" focusable="false"><use href="#i-caret"/></svg></summary>
+            <div class="faq__answer"><p>O ateliê fica em São Paulo/SP e não tem atendimento presencial; todas as entregas são feitas por envio.</p></div>
+          </details>
+        </div>
+
+        <div class="faq-cta">
+          <p>Ficou com alguma dúvida?</p>
+          <a class="btn btn--outline" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Emmeline%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20as%20encomendas." target="_blank" rel="noopener">
+            <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+            Perguntar no WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CTA FINAL ==================== -->
+    <!-- FICTÍCIO: WhatsApp, Instagram e horário de exemplo (ver dados-negocio.md) -->
+    <section class="cta-final" id="encomendar" aria-labelledby="cta-titulo">
+      <div class="container cta-final__inner reveal">
+        <span class="cta-final__rule" aria-hidden="true"></span>
+        <p class="eyebrow eyebrow--on-dark">Sua bolsa, do seu jeito</p>
+        <h2 id="cta-titulo">Vamos criar a <em>sua</em> bolsa?</h2>
+        <p class="cta-final__text">Me conte a cor, o tamanho e a ocasião. Eu respondo rapidinho.</p>
+        <a class="btn btn--light" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Emmeline%21%20Quero%20uma%20bolsa%20personalizada%2C%20com%20cores%20e%20tamanho%20do%20meu%20jeito." target="_blank" rel="noopener">
+          <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+          Encomendar pelo WhatsApp<span class="sr-only"> (abre em nova aba)</span>
+        </a>
+        <a class="cta-final__insta" href="https://www.instagram.com/emmelinecroche/" target="_blank" rel="noopener">ou siga no Instagram @emmelinecroche<span class="sr-only"> (abre em nova aba)</span></a>
+        <p class="cta-final__hours">Atendimento: seg a sex, 09:00–18:00 · sáb, 09:00–12:00</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== RODAPÉ ==================== -->
+  <!-- FICTÍCIO: substituir antes de publicar (ver dados-negocio.md). Sem endereço e sem mapa (ateliê sem ponto físico). -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <img src="../assets/logo-emmeline-claro.svg" alt="Emmeline Crochê" width="152" height="32" loading="lazy">
+          <p>Bolsas de crochê feitas à mão, sob encomenda.</p>
+        </div>
+
+        <div>
+          <h2 class="site-footer__title">Contato</h2>
+          <ul class="contact-list" role="list">
+            <li>
+              <a href="https://wa.me/5511900000000?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Emmeline%20Croch%C3%AA%20e%20quero%20encomendar%20uma%20bolsa." target="_blank" rel="noopener">
+                <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+                <span><span class="sr-only">WhatsApp: </span>(11) 90000-0000<span class="sr-only"> (abre em nova aba)</span></span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:contato@emmelinecroche.com.br">
+                <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-email"/></svg>
+                <span><span class="sr-only">E-mail: </span>contato@emmelinecroche.com.br</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/emmelinecroche/" target="_blank" rel="noopener">
+                <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg>
+                <span><span class="sr-only">Instagram: </span>@emmelinecroche<span class="sr-only"> (abre em nova aba)</span></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="site-footer__title">Atendimento</h2>
+          <ul class="info-list" role="list">
+            <li><svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-localizacao"/></svg><span>São Paulo/SP · ateliê sem atendimento presencial</span></li>
+            <li><svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-envio"/></svg><span>Envio para todo o Brasil pelos Correios · frete por conta da compradora</span></li>
+            <li><svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-relogio"/></svg><span>Seg a sex, 09:00–18:00 · sáb, 09:00–12:00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Emmeline Crochê. Fotos ilustrativas de bancos de imagem livres.</p>
+        <!-- Créditos das fotos (Pexels License e Unsplash License: crédito opcional). Detalhes em ../imagens.md -->
+        <details class="credits">
+          <summary>Créditos das fotos</summary>
+          <ul role="list">
+            <li>Hero: Jahanzeb Ahsan (Unsplash)</li>
+            <li>Bolsa Lua: Nur Tok (Pexels)</li>
+            <li>Bolsa Feira: mohadese marvi (Unsplash)</li>
+            <li>Bolsa Bombom: Göksu Özkaya (Pexels)</li>
+            <li>Bolsa Marsala: Book Hut (Pexels)</li>
+            <li>Bolsa Jardim: Joy Ru (Unsplash)</li>
+            <li>Bolsa Noite: Ahmed Elwakel_ph (Pexels)</li>
+            <li>Mãos tecendo e artesã: Miriam Alonso (Pexels)</li>
+            <li>Novelos: Dilara Hazıroğlu (Pexels)</li>
+            <li>Detalhe da trama: CC PD (Unsplash)</li>
+            <li>Retratos ilustrativos dos depoimentos: Kampus Production, PNW Production e Gabriela Brasiliano (Pexels)</li>
+          </ul>
+          <p class="credits__label">Licenças:</p>
+          <ul class="credits__licenses" role="list">
+            <li><a href="https://www.pexels.com/license/" target="_blank" rel="noopener">Pexels License<span class="sr-only"> (abre em nova aba)</span></a></li>
+            <li><a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash License<span class="sr-only"> (abre em nova aba)</span></a></li>
+          </ul>
+          <p>As pessoas retratadas não endossam a marca.</p>
+        </details>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante (somente < 900px). FICTÍCIO: número de exemplo -->
+  <a class="fab" href="https://wa.me/5511900000000?text=Ol%C3%A1%21%20Vi%20o%20site%20da%20Emmeline%20Croch%C3%AA%20e%20quero%20encomendar%20uma%20bolsa." target="_blank" rel="noopener">
+    <svg class="icon icon--20" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+    Encomendar<span class="sr-only"> pelo WhatsApp (abre em nova aba)</span>
+  </a>
+</body>
+</html>
