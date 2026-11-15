@@ -299,6 +299,20 @@ main:focus {
   padding: 18px 32px;
 }
 
+/* Abaixo de 400px: botões numa linha só (T10), mantendo alvo >= 44px */
+@media (max-width: 399px) {
+  .btn {
+    gap: 8px;
+    padding-inline: 16px;
+    font-size: 0.9375rem;
+    letter-spacing: 0.01em;
+  }
+
+  .btn--large {
+    padding-inline: 16px;
+  }
+}
+
 .btn[disabled],
 .btn[aria-disabled="true"] {
   background: var(--color-disabled-bg);
@@ -391,6 +405,8 @@ main:focus {
 @media (max-width: 359px) {
   .logo {
     flex: none;
+    justify-content: center;
+    min-width: 44px;
   }
 
   .logo img {
@@ -1157,6 +1173,12 @@ html:not(.js) .menu-toggle {
 
 .cta-final .btn {
   margin-top: var(--space-3);
+}
+
+@media (max-width: 399px) {
+  .cta-final {
+    padding-inline: var(--space-3);
+  }
 }
 
 @media (min-width: 600px) {

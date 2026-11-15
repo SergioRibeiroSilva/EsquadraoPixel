@@ -1,5 +1,20 @@
 # CHANGELOG: Barbearia Navalha (site)
 
+## Iteração 7: correções rápidas da reavaliação do ciclo 3 (2026-11-15)
+
+Fonte: seção "Reavaliação — ciclo 3" de `../avaliacao.md` e `../avaliacao-tecnica.md` (T9, T10, T12, T13).
+
+### Feito
+- **T10 (botões em 1 linha):** novo `@media (max-width: 399px)` com `.btn` usando gap de 8px, `padding-inline: 16px`, `font-size: 0.9375rem` (15px) e `letter-spacing: 0.01em`, e `.btn--large` com `padding-inline: 16px`. Abaixo de 400px, o `.cta-final` passa a ter `padding-inline: var(--space-3)`. A altura mínima (48/56px) e as cores não mudaram, então o contraste é o mesmo.
+- **T13 (horários):** no hero e no rodapé, cada faixa ("Seg a Sex 08:00–18:00" e "Sáb 08:00–12:00") agora fica em `span.nowrap`. No hero, as duas ficam dentro de um `<span>` extra, porque `.hero-hours` é flex e, sem ele, cada span virava um item flex e causava rolagem horizontal em 320px.
+- **T12:** o comentário da seção de contato (desatualizado, dizia "número de teste") agora diz: "Dados reais (dados-negocio.md): endereço, telefone/WhatsApp e horários".
+- **T9 (logo):** abaixo de 360px, `.logo` tem `min-width: 44px` e `justify-content: center`, e o link fica com 44x44.
+
+### Verificações (Edge headless, iframes sem barra de rolagem)
+- **320px:** `scrollWidth` 320. Os botões medem 44, 50, 48, 50, 50 e 58px (large) de altura, todos em uma linha. Logo com 44x44. Cada horário fica numa linha só (o hero quebra entre as duas faixas, nunca no meio delas).
+- **360px:** `scrollWidth` 360. Botões em uma linha (o large com 58px). Horários inteiros.
+- **1280px:** `scrollWidth` 1280. Sem mudanças visuais (as regras novas só valem abaixo de 400px).
+
 ## Iteração 6: fotos reais no hero, na equipe e no ambiente (2026-11-15)
 
 Fonte: `../imagens.md` (F1, F1b, F2, E1 a E3) e a regra "Fotos reais".
