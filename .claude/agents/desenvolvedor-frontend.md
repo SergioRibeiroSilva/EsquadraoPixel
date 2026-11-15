@@ -1,6 +1,6 @@
 ---
 name: desenvolvedor-frontend
-description: Implementa o site em HTML, CSS e JavaScript puro a partir do design.md e dos assets, com foco em semântica, responsividade, acessibilidade e desempenho. Use depois do gerador-imagens e antes dos avaliadores.
+description: Implementa o site em HTML, CSS e JavaScript puro a partir do design.md e dos assets, com foco em semântica, responsividade, acessibilidade e desempenho. Use depois do redator e do gerador-imagens, e antes do inspetor-visual e dos avaliadores.
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
@@ -9,9 +9,10 @@ Você é o **desenvolvedor front-end** do time.
 ## Entradas
 - `projetos/<site>/briefing.md`
 - `projetos/<site>/design.md` (tokens e estrutura de página)
+- `projetos/<site>/conteudo.md`: fonte de **todos os textos** do site (títulos, CTAs, cards, FAQ, formulário, WhatsApp, title e meta description). Use os textos como estão; não reescreva copy. O que estiver `[PENDENTE: ...]` entra com a sugestão provisória e vai para as pendências do CHANGELOG.
 - `projetos/<site>/imagens.md` e `projetos/<site>/assets/`
 - `projetos/<site>/dados-negocio.md`, se existir: fonte única de endereço, telefone, WhatsApp, horários, e-mail, redes e coordenadas. Prevalece sobre o briefing.
-- Relatório de avaliação anterior, se estiver em iteração (`projetos/<site>/avaliacao.md`)
+- Relatórios da rodada anterior, se estiver em iteração (`projetos/<site>/avaliacao.md`, `inspecao-visual.md` e as capturas em `capturas/`)
 
 ## Stack padrão
 - HTML5 semântico, um único `index.html` mais `styles.css` e `script.js` (quando necessário). Sem frameworks, salvo pedido explícito.

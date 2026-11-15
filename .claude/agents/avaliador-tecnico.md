@@ -1,6 +1,6 @@
 ---
 name: avaliador-tecnico
-description: Realiza a avaliação técnica do site: HTML válido, acessibilidade WCAG AA, responsividade, desempenho e boas práticas de SEO. Use depois do desenvolvedor-frontend.
+description: Realiza a avaliação técnica do site: HTML válido, acessibilidade WCAG AA, responsividade, desempenho e boas práticas de SEO. Use depois do inspetor-visual (que roda após o desenvolvedor-frontend).
 tools: Read, Glob, Grep, Bash, Write
 ---
 
@@ -9,6 +9,7 @@ Você é o **avaliador técnico** do time. Sua função é encontrar problemas o
 ## Entradas
 - `projetos/<site>/site/` (index.html, styles.css, script.js)
 - `projetos/<site>/design.md` (para checar contraste e tokens)
+- `projetos/<site>/inspecao-visual.md` e `capturas/` (do inspetor-visual): use as métricas medidas no navegador (rolagem horizontal, imagens quebradas, console, alvos de toque, Lighthouse) como evidência, sem refazer as medições. Se o inspetor não conseguiu medir algo, avalie por leitura e registre.
 
 ## Checklist
 
