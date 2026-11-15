@@ -202,3 +202,29 @@ Todos os textos passam AA (4,5:1) mesmo no pior pixel, e a borda do botão passa
 2. T3/T6: `og:image` 1200x630, `og:url`, `canonical` e `url` no JSON-LD quando houver domínio.
 3. Conteúdo de exemplo (`briefing.md:3`): fotos e nomes da equipe, depoimentos e preços. O `priceRange` "R$ 20 - R$ 85" do JSON-LD vem dos preços de exemplo e precisa ser revisto junto com eles. O aviso do rodapé (`index.html:511`) deve sair quando o conteúdo real entrar.
 4. Conferir o mapa (render e foco) num navegador comum.
+
+---
+
+## Verificação — Iteração 7
+
+Data: 2026-11-15 · Escopo: só T9, T10, T12 e T13 (`site/CHANGELOG.md`, Iteração 7) e checagem de regressão.
+Método: Edge headless (`--headless=new`, `--dump-dom`), com a página em iframes de 320, 360, 768 e 1280 px e medição de DOM (`getBoundingClientRect`, `getClientRects`, `getComputedStyle`). O contraste foi calculado pela fórmula WCAG sobre as cores computadas. Também rodei parser HTML em Python. Os testes de teclado e de rede do ciclo 3 não foram repetidos, porque `script.js` não mudou.
+
+### Veredito: APROVADO COM RESSALVAS
+
+Os 4 itens estão resolvidos e não encontrei regressão. Não há bloqueante. Seguem abertos T4 (importante, adiado até a publicação), T3/T6 (dependem de domínio) e T7, T8 e T11 (menores).
+
+| ID | Status | Evidência |
+|---|---|---|
+| T9 | **Resolvido** | `styles.css:405-416` (`min-width: 44px`, `justify-content: center`). O logo mede **44x44** em 320 px (antes 32x44). Em 360, 768 e 1280 px mede 160x44, 160x44 e 180x44. |
+| T10 | **Resolvido** | `styles.css:303-314` e `1178-1182`. Em 320 e em 360 px, os botões "Agendar pelo WhatsApp" medem **50 px** de altura (antes 62 px em 320) e o `.btn--large` do CTA final mede **58 px** (antes 70 px). São as mesmas alturas de 1 linha vistas em 768 e 1280 px, ou seja, todos ficam em uma linha. A borda direita máxima é 300 px em 320 e 340 px em 360, sem transbordar. |
+| T12 | **Resolvido** | `index.html:406`: o comentário agora diz "Dados reais (dados-negocio.md): endereço, telefone/WhatsApp e horários". Grep por "teste" em `index.html`: nenhum resultado. |
+| T13 | **Resolvido** | `index.html:125` e `491`: cada faixa está em `span.nowrap`, e cada span tem **1 caixa de linha** (`getClientRects().length = 1`) nas 4 larguras. Em 320 px, `.hero-hours` tem 46 px (2 linhas) e quebra entre as faixas, não no meio delas. Em 360 px ou mais fica em 1 linha (23 px). |
+
+### Regressão (nenhuma encontrada)
+- **Rolagem horizontal**: `scrollWidth` é igual à largura (320/360/768/1280) e nenhum elemento passa da borda direita.
+- **Alvos de toque**: nenhum `a`/`button` visível tem menos de 44x44 px nas 4 larguras. O menor é o "Agendar" compacto do header, com 97x44.
+- **Contraste dos botões**: o texto do primário sobre latão dá **8,41:1** e o ghost dá **15,80:1** (cores computadas), nas 4 larguras. O `font-size` de 15px abaixo de 400px não muda a cor, e o contraste continua acima de 4,5:1.
+- **HTML**: o parser não acusa tag sem fechar nem fechada fora de ordem. Há um único `<h1>` e nenhum `!important` no CSS.
+
+Limitação: medições feitas em Chromium com viewport emulado por iframe. Não testei em Safari/iOS e não repeti as capturas de tela.
