@@ -1,6 +1,6 @@
-# Pelotão Pixel: time de agentes para sites básicos e modernos
+# Esquadrão Pixel: time de agentes para sites básicos e modernos
 
-Este projeto contém o **Pelotão Pixel**, um time de subagentes (em `.claude/agents/`) que criam sites estáticos (HTML/CSS/JS) a partir de um briefing.
+Este projeto contém o **Esquadrão Pixel**, um time de subagentes (em `.claude/agents/`) que criam sites estáticos (HTML/CSS/JS) a partir de um briefing.
 
 ## Papel do orquestrador (sessão principal)
 Quando o usuário pedir um site, você coordena o time na ordem abaixo. Cada etapa grava arquivos em `projetos/<nome-do-site>/`, e a etapa seguinte lê esses arquivos (não depende só da resposta do agente).
