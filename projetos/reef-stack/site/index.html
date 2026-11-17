@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reef Stack | Loja e Clube de Aquarismo em São Paulo</title>
+  <meta name="description" content="Peixes de cativeiro, corais, plantas e equipamentos para água doce e marinho, mais um clube para aprender junto. Peça pelo WhatsApp.">
+  <meta name="theme-color" content="#0B2A3F">
+  <!-- SEU-DOMINIO: trocar pelo domínio real antes de publicar (canonical, og:url e og:image) -->
+  <link rel="canonical" href="https://SEU-DOMINIO/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Reef Stack">
+  <meta property="og:title" content="Reef Stack: loja e clube de aquarismo, do rio ao recife">
+  <meta property="og:description" content="Tudo para o seu aquário de água doce ou marinho, com animais de cativeiro, orientação honesta e um clube de aquaristas.">
+  <meta property="og:url" content="https://SEU-DOMINIO/">
+  <meta property="og:image" content="https://SEU-DOMINIO/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Aquário plantado e aquário recifal lado a lado, com o logo da Reef Stack">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <!-- Fontes hospedadas no site (SIL OFL 1.1): Sora e Inter variáveis, subconjunto latin -->
+  <link rel="preload" href="assets/fonts/sora-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+  <!--
+    JSON-LD (PetStore) omitido enquanto os dados forem FICTÍCIOS.
+    Modelo pronto em ../dados-negocio.md §3: publicar só com dados reais.
+  -->
+</head>
+<body>
+  <!-- Ícones inline (currentColor) -->
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.1A8.5 8.5 0 1 1 8 19.5z"/><path d="M9 8.6c.2 3.4 3 6.2 6.4 6.4l1.1-1.6-2-1.1-1 .9a5 5 0 0 1-2.7-2.7l.9-1-1.1-2z"/></symbol>
+    <symbol id="i-seta" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-pausa" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></symbol>
+    <symbol id="i-peixe" viewBox="0 0 24 24"><path d="M6 12c2.5-3.6 5.6-5.5 9-5.5 3 0 5.5 2 7 5.5-1.5 3.5-4 5.5-7 5.5-3.4 0-6.5-1.9-9-5.5z"/><path d="M6 12 2 8.5v7z"/><circle cx="17.5" cy="11" r="1"/></symbol>
+    <symbol id="i-coral" viewBox="0 0 24 24"><path d="M12 21v-7M12 14l-4-4V6M12 14l4-3V5M8 10 5 8V5.5M16 11l3-2V6.5M8 21h8"/></symbol>
+    <symbol id="i-planta" viewBox="0 0 24 24"><path d="M12 21V9M12 13c-4 0-6-2.5-6-6 4 0 6 2.5 6 6zM12 10c0-3.5 2-6 6-6 0 3.5-2 6-6 6zM8 21h8"/></symbol>
+    <symbol id="i-camarao" viewBox="0 0 24 24"><path d="M17 7c-4-1-9 1-10 6-.6 3 1 5.5 3.5 6M17 7c1.5 3 .5 7-3 9M10 10l2.2 2.6M13.4 8.4l1 3.2M10.5 19 8 21M10.5 19l1 2.5M17 7c2-2 3.5-3 5-3M17 7c1.5-.5 3 0 4 1"/><circle cx="15.6" cy="9.2" r=".6"/></symbol>
+    <symbol id="i-equipamento" viewBox="0 0 24 24"><path d="M9 3h6v4H9zM10 7h4v12a2 2 0 0 1-4 0zM12 11v6M3.5 10c1 1 2 1 3 0M3.5 14c1 1 2 1 3 0M17.5 10c1 1 2 1 3 0M17.5 14c1 1 2 1 3 0"/></symbol>
+    <symbol id="i-racao-teste" viewBox="0 0 24 24"><path d="M3 9h9v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM2.5 6h10v3h-10zM16 3h5M17 3v14a2 2 0 0 0 4 0V3M17 12h4"/><circle cx="6" cy="14" r=".6"/><circle cx="9" cy="16.5" r=".6"/><circle cx="6.5" cy="18" r=".6"/></symbol>
+    <symbol id="i-montagem" viewBox="0 0 24 24"><path d="M2 10h12v10H2zM2 13.5c2 1 4 1 6 0s4-1 6 0M20.5 3.6a3 3 0 0 0-4 3.4L13 10.5l1.5 1.5L18 8.5a3 3 0 0 0 3.4-4l-2 2-1.5-.4-.4-1.5z"/></symbol>
+    <symbol id="i-folha" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 14-14 0 9-6 14-14 14zM5 19l8-8"/></symbol>
+    <symbol id="i-coral-mini" viewBox="0 0 24 24"><path d="M12 20v-6M12 14l-3.5-3.5V7M12 14l3.5-3V6M8.5 10.5 6 9V6.5M15.5 11 18 9.5V7M8 20h8"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.5v.01"/></symbol>
+    <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M10.3 4.2 2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4.2a2 2 0 0 0-3.4 0zM12 10v4M12 17h.01"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+    <symbol id="i-encontro" viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="13" rx="2"/><path d="M3 9h14M7 3v4M13 3v4M15 15h6v4h-2l-2 2v-2h-2z"/></symbol>
+    <symbol id="i-oficina" viewBox="0 0 24 24"><path d="M12 3l2 7M16 3l-2 7M3 15h3l4 3h5a2 2 0 0 0 0-4h-4M15 14l4-2a1.6 1.6 0 0 1 2 2.5L15 19H9M6 15v5H3"/></symbol>
+    <symbol id="i-troca" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4.5M4 13a8 8 0 0 0 14.5 4.5M5 3v3.8h3.8M19 21v-3.8h-3.8M9.5 14.5c0-3 2-5 5-5 0 3-2 5-5 5zM9.5 14.5 12 12"/></symbol>
+    <symbol id="i-grupo" viewBox="0 0 24 24"><path d="M3 5h11v7H8l-3 3v-3H3zM10 15v2h6l3 3v-3h2v-7h-4"/></symbol>
+    <symbol id="i-cativeiro" viewBox="0 0 24 24"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9.2 12c1.1-1.5 2.4-2.3 3.7-2.3 1.3 0 2.4.8 3.3 2.3-.9 1.5-2 2.3-3.3 2.3-1.3 0-2.6-.8-3.7-2.3zM9.2 12 7.6 10.7v2.6z"/></symbol>
+    <symbol id="i-procedencia" viewBox="0 0 24 24"><circle cx="12" cy="10" r="7"/><path d="M8.5 16 7 21l5-2 5 2-1.5-5M9 10l2 2 4-4"/></symbol>
+    <symbol id="i-orientacao" viewBox="0 0 24 24"><path d="M4 4h16v12h-8l-4 4v-4H4z"/><path d="M12 7.5v.01M12 10v3.5"/></symbol>
+    <symbol id="i-nao-soltar" viewBox="0 0 24 24"><path d="M5 7.5c1.3-1.8 2.8-2.7 4.4-2.7s2.9.9 3.9 2.7c-1 1.8-2.3 2.7-3.9 2.7S6.3 9.3 5 7.5zM5 7.5 3 6v3zM15.5 7.5H20M18.5 6l1.5 1.5L18.5 9M3 15c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0M3 19c1.5 1 3 1 4.5 0s3-1 4.5 0 3 1 4.5 0 3-1 4.5 0M3 3l18 18"/></symbol>
+    <symbol id="i-pino" viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-telefone" viewBox="0 0 24 24"><path d="M5 3h3l2 5-2.5 1.5a11 11 0 0 0 7 7L16 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-email" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M2.5 8.5c0-2 1-3 3-3.2C8 5 10 5 12 5s4 0 6.5.3c2 .2 3 1.2 3 3.2v7c0 2-1 3-3 3.2-2.5.3-4.5.3-6.5.3s-4 0-6.5-.3c-2-.2-3-1.2-3-3.2z"/><path d="M10 9v6l5-3z"/></symbol>
+    <symbol id="i-aspas" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 0 0-2 2v5h4v1a3 3 0 0 1-3 3v2a5 5 0 0 0 5-5zM20 6h-4a2 2 0 0 0-2 2v5h4v1a3 3 0 0 1-3 3v2a5 5 0 0 0 5-5z"/></symbol>
+  </svg>
+
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="cabecalho tema-escuro" id="topo">
+    <div class="cabecalho-inner container">
+      <a class="logo" href="#inicio" aria-label="Reef Stack, início">
+        <img src="assets/logo.svg" alt="" width="186" height="40">
+      </a>
+
+      <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menu" data-rotulo-abrir="Abrir menu" data-rotulo-fechar="Fechar menu">
+        <svg class="icone-menu" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path class="faixa faixa-1" d="M3 7c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0"/><path class="faixa faixa-2" d="M3 12c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0"/><path class="faixa faixa-3" d="M3 17c1.5-1.2 3-1.2 4.5 0s3 1.2 4.5 0 3-1.2 4.5 0 3 1.2 4.5 0"/></svg>
+      </button>
+
+      <nav class="menu" id="menu-principal" aria-label="Navegação principal">
+        <ul class="menu-lista">
+          <li><a href="#loja">Loja</a></li>
+          <li><a href="#doce-marinho">Doce × Marinho</a></li>
+          <li><a href="#primeiros-passos">Primeiros passos</a></li>
+          <li><a href="#parametros">Parâmetros</a></li>
+          <li><a href="#clube">Clube</a></li>
+          <li><a href="#visite">Visite</a></li>
+        </ul>
+        <!-- FICTÍCIO: número de WhatsApp de exemplo; href real é montado em script.js (WHATSAPP_NUMERO) -->
+        <a class="botao botao-principal menu-cta" data-wa="pedido" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Reef%20Stack!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido%20ou%20or%C3%A7amento." target="_blank" rel="noopener">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+          Pedir no WhatsApp<span class="visually-hidden"> (abre o WhatsApp)</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+  <div class="sentinela-topo" aria-hidden="true"></div>
+
+  <main id="conteudo" tabindex="-1">
+
+    <!-- 2. HERO -->
+    <section class="hero tema-escuro animado" id="inicio" aria-labelledby="hero-titulo">
+      <div class="bolhas" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="hero-inner container">
+        <div class="hero-texto">
+          <p class="eyebrow">Loja e clube de aquarismo</p>
+          <h1 id="hero-titulo">Do rio ao recife, <span class="destaque-onda">camada por camada</span></h1>
+          <p class="lead">Peixes de cativeiro, corais, plantas e tudo para montar seu aquário de água doce ou marinho. E um clube para você aprender com quem já mergulhou no hobby.</p>
+          <div class="grupo-botoes">
+            <!-- FICTÍCIO: WhatsApp de exemplo -->
+            <a class="botao botao-principal" data-wa="pedido" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Reef%20Stack!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido%20ou%20or%C3%A7amento." target="_blank" rel="noopener">
+              <svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+              Pedir no WhatsApp<span class="visually-hidden"> (abre o WhatsApp)</span>
+            </a>
+            <a class="botao botao-secundario" href="#clube">Conhecer o clube</a>
+          </div>
+        </div>
+
+        <div class="caminhos">
+          <article class="caminho caminho-doce">
+            <picture>
+              <source type="image/webp" srcset="assets/foto-caminho-doce-480.webp 480w, assets/foto-caminho-doce-800.webp 800w" sizes="(min-width: 900px) 360px, 45vw">
+              <img src="assets/foto-caminho-doce-800.jpg" srcset="assets/foto-caminho-doce-480.jpg 480w, assets/foto-caminho-doce-800.jpg 800w" sizes="(min-width: 900px) 360px, 45vw" width="800" height="1000" alt="Aquário plantado com troncos, plantas verdes e avermelhadas e pequenos peixes" fetchpriority="high" decoding="async">
+            </picture>
+            <span class="etiqueta etiqueta-doce caminho-etiqueta">Água doce</span>
+            <div class="caminho-conteudo">
+              <a class="caminho-link" href="#especies-doce" data-aba-alvo="doce">Começar na água doce<svg class="i caminho-seta" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></a>
+              <p class="caminho-apoio">Plantados, peixes de cativeiro e camarões</p>
+            </div>
+          </article>
+          <article class="caminho caminho-marinho">
+            <picture>
+              <source type="image/webp" srcset="assets/foto-caminho-marinho-480.webp 480w, assets/foto-caminho-marinho-800.webp 800w" sizes="(min-width: 900px) 360px, 45vw">
+              <img src="assets/foto-caminho-marinho-800.jpg" srcset="assets/foto-caminho-marinho-480.jpg 480w, assets/foto-caminho-marinho-800.jpg 800w" sizes="(min-width: 900px) 360px, 45vw" width="800" height="1000" alt="Aquário marinho com corais coloridos sob luz azul e frags num suporte" decoding="async">
+            </picture>
+            <span class="etiqueta etiqueta-marinho-escura caminho-etiqueta">Marinho</span>
+            <div class="caminho-conteudo">
+              <a class="caminho-link" href="#especies-marinho" data-aba-alvo="marinho">Mergulhar no marinho<svg class="i caminho-seta" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></a>
+              <p class="caminho-apoio">Corais, frags e palhaços de cativeiro</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <button class="botao-pausa" type="button" aria-pressed="false" aria-label="Pausar animação de fundo" data-aria-pausar="Pausar animação de fundo" data-aria-retomar="Retomar animação de fundo" data-rotulo-pausar="Pausar animação" data-rotulo-retomar="Retomar animação" hidden>
+        <svg class="i icone-pausa" aria-hidden="true" focusable="false"><use href="#i-pausa"/></svg>
+        <svg class="i icone-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>
+        <span class="botao-pausa-rotulo" aria-hidden="true">Pausar animação</span>
+      </button>
+    </section>
+
+    <div class="divisor fundo-abismo cor-espuma" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" focusable="false"><path opacity=".25" d="M0 30C240 0 480 60 720 30S1200 0 1440 30V80H0z"/><path opacity=".55" d="M0 46C200 20 520 70 760 44S1180 22 1440 48V80H0z"/><path d="M0 62C260 44 560 80 840 60S1260 46 1440 64V80H0z"/></svg>
+    </div>
+
+    <!-- 3. NA LOJA -->
+    <section class="secao fundo-espuma" id="loja" aria-labelledby="loja-titulo">
+      <div class="container">
+        <header class="secao-cabecalho centralizado">
+          <p class="eyebrow">Na loja</p>
+          <h2 id="loja-titulo">Tudo para o seu aquário, do primeiro peixe ao primeiro coral</h2>
+          <p class="lead">Escolha com calma e tire dúvidas antes de levar. A gente ajuda a combinar espécies, tamanho de aquário e equipamento.</p>
+        </header>
+
+        <ul class="grade-loja" role="list">
+          <li class="cartao cartao-categoria">
+            <span class="icone-circulo tom-marinho"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-peixe"/></svg></span>
+            <div>
+              <h3>Peixes de cativeiro</h3>
+              <p>Espécies criadas em cativeiro, mais resistentes e já acostumadas a ração. Ideais para quem está começando.</p>
+              <!-- FICTÍCIO: preço de exemplo -->
+              <p class="chip chip-preco">a partir de R$ 9,90</p>
+            </div>
+          </li>
+          <li class="cartao cartao-categoria">
+            <span class="icone-circulo tom-marinho"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-coral"/></svg></span>
+            <div>
+              <h3>Corais e frags</h3>
+              <p>Mudas de coral (frags) de reprodução em aquário, dos corais moles mais tolerantes aos mais exigentes.</p>
+              <!-- FICTÍCIO: preço de exemplo -->
+              <p class="chip chip-preco">a partir de R$ 49,90</p>
+            </div>
+          </li>
+          <li class="cartao cartao-categoria">
+            <span class="icone-circulo tom-doce"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-planta"/></svg></span>
+            <div>
+              <h3>Plantas aquáticas</h3>
+              <p>Plantas fáceis para o primeiro plantado e opções para quem quer montar um aquapaisagismo caprichado.</p>
+              <!-- FICTÍCIO: preço de exemplo -->
+              <p class="chip chip-preco">a partir de R$ 12,90</p>
+            </div>
+          </li>
+          <li class="cartao cartao-categoria">
+            <span class="icone-circulo tom-doce"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-camarao"/></svg></span>
+            <div>
+              <h3>Camarões</h3>
+              <p>Camarões ornamentais que limpam, colorem e dão vida ao aquário plantado. Pergunte quais combinam com seus peixes.</p>
+              <!-- FICTÍCIO: preço de exemplo -->
+              <p class="chip chip-preco">a partir de R$ 14,90</p>
+            </div>
+          </li>
+          <li class="cartao cartao-categoria">
+            <span class="icone-circulo tom-marinho"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-equipamento"/></svg></span>
+            <div>
+              <h3>Equipamentos</h3>
+              <p>Filtros, aquecedores, iluminação, skimmers e bombas. Indicamos o tamanho certo para o seu aquário.</p>
+              <!-- FICTÍCIO: preço de exemplo -->
+              <p class="chip chip-preco">a partir de R$ 39,90</p>
+            </div>
+          </li>
+          <li class="cartao cartao-categoria">
+            <span class="icone-circulo tom-marinho"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-racao-teste"/></svg></span>
+            <div>
+              <h3>Rações e testes</h3>
+              <p>Alimentos para cada espécie, condicionadores de água e kits de teste para acompanhar seu aquário de perto.</p>
+              <!-- FICTÍCIO: preço de exemplo -->
+              <p class="chip chip-preco">a partir de R$ 19,90</p>
+            </div>
+          </li>
+          <li class="cartao cartao-categoria cartao-montagem">
+            <span class="icone-circulo tom-coral"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-montagem"/></svg></span>
+            <div>
+              <h3>Montagem e manutenção</h3>
+              <p>Montamos seu aquário do zero e cuidamos da rotina de manutenção, para você só curtir. Combine pelo WhatsApp.</p>
+              <p class="chip chip-orcamento">Sob orçamento</p>
+              <!-- FICTÍCIO: WhatsApp de exemplo -->
+              <a class="link-seta" data-wa="montagem" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Reef%20Stack!%20Vim%20pelo%20site%20e%20quero%20agendar%20uma%20montagem%20ou%20manuten%C3%A7%C3%A3o%20de%20aqu%C3%A1rio." target="_blank" rel="noopener">Agendar montagem ou manutenção<span class="visually-hidden"> (abre o WhatsApp)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-seta"/></svg></a>
+            </div>
+          </li>
+        </ul>
+        <p class="nota">Preços de exemplo. Consulte os valores atualizados pelo WhatsApp.</p>
+
+        <div class="faixa-cta">
+          <picture class="faixa-foto">
+            <source type="image/webp" srcset="assets/foto-loja-ambiente-640.webp 640w, assets/foto-loja-ambiente-1200.webp 1200w" sizes="(min-width: 900px) 560px, calc(100vw - 74px)">
+            <img src="assets/foto-loja-ambiente-1200.jpg" srcset="assets/foto-loja-ambiente-640.jpg 640w, assets/foto-loja-ambiente-1200.jpg 1200w" sizes="(min-width: 900px) 560px, calc(100vw - 74px)" width="1200" height="750" alt="Cliente observa peixes nos aquários iluminados de uma loja de aquarismo (foto ilustrativa)" loading="lazy" decoding="async">
+          </picture>
+          <div class="faixa-texto">
+            <h3>Não sabe por onde começar?</h3>
+            <p>Conte o tamanho do espaço e o que você imagina. Montamos uma lista com o que faz sentido para você, sem empurrar o que não precisa.</p>
+            <!-- FICTÍCIO: WhatsApp de exemplo -->
+            <a class="botao botao-principal" data-wa="pedido" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Reef%20Stack!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido%20ou%20or%C3%A7amento." target="_blank" rel="noopener">
+              <svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+              Pedir orçamento no WhatsApp<span class="visually-hidden"> (abre o WhatsApp)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ÁGUA DOCE × MARINHO -->
+    <section class="secao fundo-branco" id="doce-marinho" aria-labelledby="dm-titulo">
+      <div class="container">
+        <header class="secao-cabecalho">
+          <p class="eyebrow">Escolha seu caminho</p>
+          <h2 id="dm-titulo">Água doce ou marinho?</h2>
+          <p class="lead">Os dois são apaixonantes. A diferença está no custo, no tempo e na margem para erros. Compare e escolha com segurança.</p>
+        </header>
+
+        <table class="tabela tabela-comparativo tabela-empilhada" role="table">
+          <caption>Comparativo entre aquário de água doce e marinho</caption>
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Critério</th>
+              <th scope="col" role="columnheader" class="th-doce"><span class="th-conteudo"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-folha"/></svg>Água doce</span></th>
+              <th scope="col" role="columnheader" class="th-marinho"><span class="th-conteudo"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-coral-mini"/></svg>Marinho</span></th>
+            </tr>
+          </thead>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <th scope="row" role="rowheader">Custo inicial</th>
+              <td role="cell" class="td-doce" data-label="Água doce">Menor</td>
+              <td role="cell" class="td-marinho" data-label="Marinho">Maior: costuma ficar em torno do dobro ou mais, para o mesmo tamanho</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Preço dos animais</th>
+              <td role="cell" class="td-doce" data-label="Água doce">Muitas espécies populares são baratas</td>
+              <td role="cell" class="td-marinho" data-label="Marinho">Os peixes costumam custar bem mais</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Dificuldade</th>
+              <td role="cell" class="td-doce" data-label="Água doce">Mais tolerante a erros e oscilações</td>
+              <td role="cell" class="td-marinho" data-label="Marinho">Exige parâmetros mais estáveis e mais estudo</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Manutenção semanal</th>
+              <td role="cell" class="td-doce" data-label="Água doce">Cerca de 1 a 2 horas, com trocas parciais de água</td>
+              <td role="cell" class="td-marinho" data-label="Marinho">Cerca de 3 a 5 horas, com mais testes e cuidado com equipamentos</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Equipamentos extras</th>
+              <td role="cell" class="td-doce" data-label="Água doce">Básico: filtro, aquecedor, luz e testes</td>
+              <td role="cell" class="td-marinho" data-label="Marinho">O básico mais sal marinho, refratômetro, skimmer, bombas e rocha</td>
+            </tr>
+            <tr role="row">
+              <th scope="row" role="rowheader">Para quem é</th>
+              <td role="cell" class="td-doce" data-label="Água doce">Quem está começando ou quer um plantado</td>
+              <td role="cell" class="td-marinho" data-label="Marinho">Quem já tem experiência ou topa estudar antes</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="nota">Comparação em proporções; valores variam conforme tamanho e equipamento.</p>
+        <p class="dica">Dica de quem vive o hobby: muita gente começa na água doce e migra para o marinho depois de um ou dois anos de experiência.</p>
+
+        <div class="especies">
+          <div class="abas" role="tablist" aria-label="Escolha o tipo de aquário" data-grupo="especies" hidden>
+            <span class="abas-indicador" aria-hidden="true"></span>
+            <button class="aba aba-doce" type="button" role="tab" id="aba-especies-doce" aria-controls="especies-doce" aria-selected="true" tabindex="0" data-tipo="doce">
+              <svg class="i aba-icone" aria-hidden="true" focusable="false"><use href="#i-folha"/></svg>
+              <svg class="i aba-check" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>
+              Água doce
+            </button>
+            <button class="aba aba-marinho" type="button" role="tab" id="aba-especies-marinho" aria-controls="especies-marinho" aria-selected="false" tabindex="-1" data-tipo="marinho">
+              <svg class="i aba-icone" aria-hidden="true" focusable="false"><use href="#i-coral-mini"/></svg>
+              <svg class="i aba-check" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>
+              Marinho
+            </button>
+          </div>
+          <p class="nota nota-procedencia">Todas as espécies abaixo são de cativeiro ou de fornecedores regularizados. Antes de comprar, confirme a compatibilidade com os animais que você já tem.</p>
+
+          <div class="painel painel-doce" id="especies-doce" data-tipo="doce">
+            <h3 class="painel-titulo">Água doce para começar</h3>
+            <ul class="grade-especies" role="list">
+              <li class="cartao-especie">
+                <picture>
+                  <source type="image/webp" srcset="assets/especie-neon-480.webp 480w, assets/especie-neon-720.webp 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw">
+                  <img src="assets/especie-neon-720.jpg" srcset="assets/especie-neon-480.jpg 480w, assets/especie-neon-720.jpg 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw" width="720" height="540" alt="Tetra-neon, peixe pequeno com faixa azul brilhante e faixa vermelha" loading="lazy" decoding="async">
+                </picture>
+                <div class="cartao-especie-corpo">
+                  <h4>Tetra-neon</h4>
+                  <p class="cientifico"><i>Paracheirodon innesi</i></p>
+                  <ul class="chips" role="list"><li class="chip chip-doce">Nível: fácil</li><li class="chip chip-doce">Cardume</li><li class="chip chip-doce">Aquário comunitário</li></ul>
+                  <p>Vive em grupo: mantenha em cardume e só coloque em aquário já ciclado.</p>
+                </div>
+              </li>
+              <li class="cartao-especie">
+                <picture>
+                  <source type="image/webp" srcset="assets/especie-guppy-480.webp 480w, assets/especie-guppy-720.webp 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw">
+                  <img src="assets/especie-guppy-720.jpg" srcset="assets/especie-guppy-480.jpg 480w, assets/especie-guppy-720.jpg 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw" width="720" height="540" alt="Guppies machos de cauda colorida nadando num aquário" loading="lazy" decoding="async">
+                </picture>
+                <div class="cartao-especie-corpo">
+                  <h4>Guppy (lebiste)</h4>
+                  <p class="cientifico"><i>Poecilia reticulata</i></p>
+                  <ul class="chips" role="list"><li class="chip chip-doce">Nível: fácil</li><li class="chip chip-doce">Colorido</li><li class="chip chip-doce">Aquário comunitário</li></ul>
+                  <p>Reproduz com facilidade. Planeje o espaço para os filhotes ou mantenha só machos.</p>
+                </div>
+              </li>
+              <li class="cartao-especie">
+                <picture>
+                  <source type="image/webp" srcset="assets/especie-betta-480.webp 480w, assets/especie-betta-720.webp 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw">
+                  <img src="assets/especie-betta-720.jpg" srcset="assets/especie-betta-480.jpg 480w, assets/especie-betta-720.jpg 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw" width="720" height="540" alt="Betta macho vermelho de nadadeiras longas num aquário plantado" loading="lazy" decoding="async">
+                </picture>
+                <div class="cartao-especie-corpo">
+                  <h4>Betta</h4>
+                  <p class="cientifico"><i>Betta splendens</i></p>
+                  <ul class="chips" role="list"><li class="chip chip-doce">Nível: fácil</li><li class="chip chip-alerta"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg>Um macho por aquário</li></ul>
+                  <p>Os machos brigam entre si. Dê a ele um aquário de verdade, com filtro suave e aquecedor, nunca um copo.</p>
+                </div>
+              </li>
+              <li class="cartao-especie">
+                <picture>
+                  <source type="image/webp" srcset="assets/especie-neocaridina-480.webp 480w, assets/especie-neocaridina-720.webp 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw">
+                  <img src="assets/especie-neocaridina-720.jpg" srcset="assets/especie-neocaridina-480.jpg 480w, assets/especie-neocaridina-720.jpg 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw" width="720" height="540" alt="Dois camarões Neocaridina amarelos sobre o substrato escuro do aquário" loading="lazy" decoding="async">
+                </picture>
+                <div class="cartao-especie-corpo">
+                  <h4>Camarão Neocaridina</h4>
+                  <p class="cientifico"><i>Neocaridina davidi</i></p>
+                  <ul class="chips" role="list"><li class="chip chip-doce">Nível: fácil</li><li class="chip chip-doce">Plantado</li><li class="chip chip-doce">Limpador</li></ul>
+                  <p>Tolera bem a água da maioria das casas. Evite peixes grandes, que veem camarão como petisco.</p>
+                </div>
+              </li>
+            </ul>
+            <div class="plantas-linha">
+              <svg class="i" aria-hidden="true" focusable="false"><use href="#i-planta"/></svg>
+              <p>Para o primeiro plantado, comece com plantas que pedem pouca luz e dispensam CO2, como anúbias, samambaia-de-java e musgos.</p>
+              <span class="chip chip-doce-forte">Plantas na loja</span>
+            </div>
+          </div>
+
+          <div class="painel painel-marinho" id="especies-marinho" data-tipo="marinho">
+            <h3 class="painel-titulo">Marinho para começar</h3>
+            <ul class="grade-especies" role="list">
+              <li class="cartao-especie">
+                <picture>
+                  <source type="image/webp" srcset="assets/especie-palhaco-480.webp 480w, assets/especie-palhaco-720.webp 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw">
+                  <img src="assets/especie-palhaco-720.jpg" srcset="assets/especie-palhaco-480.jpg 480w, assets/especie-palhaco-720.jpg 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw" width="720" height="540" alt="Peixe-palhaço sobre um coral mole num aquário" loading="lazy" decoding="async">
+                </picture>
+                <span class="selo-cativeiro">Criado em cativeiro</span>
+                <div class="cartao-especie-corpo">
+                  <h4>Peixe-palhaço</h4>
+                  <p class="cientifico"><i>Amphiprion ocellaris</i></p>
+                  <ul class="chips" role="list"><li class="chip chip-marinho">Nível: fácil</li><li class="chip chip-marinho">Criado em cativeiro</li></ul>
+                  <p>O primeiro peixe marinho clássico: resistente e já come ração. Anêmona não é obrigatória.</p>
+                </div>
+              </li>
+              <li class="cartao-especie">
+                <picture>
+                  <source type="image/webp" srcset="assets/especie-grama-480.webp 480w, assets/especie-grama-720.webp 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw">
+                  <img src="assets/especie-grama-720.jpg" srcset="assets/especie-grama-480.jpg 480w, assets/especie-grama-720.jpg 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw" width="720" height="540" alt="Grama-real, peixe roxo na frente e amarelo atrás, entre rochas de aquário" loading="lazy" decoding="async">
+                </picture>
+                <div class="cartao-especie-corpo">
+                  <h4>Grama-real</h4>
+                  <p class="cientifico"><i>Gramma loreto</i></p>
+                  <ul class="chips" role="list"><li class="chip chip-marinho">Nível: fácil</li><li class="chip chip-marinho">Tímido</li></ul>
+                  <p>Gosta de tocas na rocha para se esconder. Pergunte a origem e prefira exemplares de cativeiro.</p>
+                </div>
+              </li>
+              <li class="cartao-especie">
+                <picture>
+                  <source type="image/webp" srcset="assets/especie-gobi-480.webp 480w, assets/especie-gobi-720.webp 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw">
+                  <img src="assets/especie-gobi-720.jpg" srcset="assets/especie-gobi-480.jpg 480w, assets/especie-gobi-720.jpg 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw" width="720" height="540" alt="Firefish (peixe-fogo), branco com a cauda vermelha, num aquário" loading="lazy" decoding="async">
+                </picture>
+                <div class="cartao-especie-corpo">
+                  <h4>Gobi ou firefish</h4>
+                  <p class="cientifico"><i>Nemateleotris magnifica</i> (firefish)</p>
+                  <ul class="chips" role="list"><li class="chip chip-marinho">Nível: fácil</li><li class="chip chip-marinho">Pacífico</li></ul>
+                  <p>Calmo e pequeno, fica perto da rocha. Use tampa no aquário: o firefish pode saltar quando se assusta.</p>
+                </div>
+              </li>
+              <li class="cartao-especie">
+                <picture>
+                  <source type="image/webp" srcset="assets/especie-coral-mole-480.webp 480w, assets/especie-coral-mole-720.webp 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw">
+                  <img src="assets/especie-coral-mole-720.jpg" srcset="assets/especie-coral-mole-480.jpg 480w, assets/especie-coral-mole-720.jpg 720w" sizes="(min-width: 1200px) 270px, (min-width: 600px) 45vw, 90vw" width="720" height="540" alt="Corais coloridos crescendo sobre rocha escura num aquário marinho" loading="lazy" decoding="async">
+                </picture>
+                <div class="cartao-especie-corpo">
+                  <h4>Frags de corais moles</h4>
+                  <p class="cientifico">Zoantídeos, cogumelos e <i>Sarcophyton</i></p>
+                  <ul class="chips" role="list"><li class="chip chip-marinho">Nível: fácil</li><li class="chip chip-marinho">Reproduzido em aquário</li></ul>
+                  <p>Os corais mais tolerantes: luz moderada e fluxo suave. Comece por eles depois que o aquário estabilizar.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. PRIMEIROS PASSOS -->
+    <section class="secao fundo-espuma" id="primeiros-passos" aria-labelledby="pp-titulo">
+      <div class="container">
+        <header class="secao-cabecalho">
+          <p class="eyebrow">Primeiros passos</p>
+          <h2 id="pp-titulo">Seu primeiro aquário, sem pressa e sem perda</h2>
+          <p class="lead">Aquário bom é aquário estável. Siga as etapas na ordem, principalmente a ciclagem, e seus peixes chegam a uma casa pronta para eles.</p>
+        </header>
+
+        <div class="passos-layout">
+          <ol class="passos" role="list">
+            <li class="passo">
+              <span class="passo-num" aria-hidden="true">1</span>
+              <div class="passo-corpo">
+                <h3>Escolha o tipo e o tamanho</h3>
+                <p>Doce ou marinho? Quanto maior o volume de água, mais estável o aquário. Escolha um móvel firme, longe do sol direto.</p>
+              </div>
+            </li>
+            <li class="passo">
+              <span class="passo-num" aria-hidden="true">2</span>
+              <div class="passo-corpo">
+                <h3>Monte a base e os equipamentos</h3>
+                <p>Substrato, rochas ou troncos, filtro, aquecedor e luz. No marinho, prepare a água salgada e meça a densidade.</p>
+              </div>
+            </li>
+            <li class="passo">
+              <span class="passo-num" aria-hidden="true">3</span>
+              <div class="passo-corpo">
+                <h3>Trate a água</h3>
+                <p>Use condicionador na água da torneira para neutralizar o cloro e a cloramina, que fazem mal aos peixes e às bactérias.</p>
+              </div>
+            </li>
+            <li class="passo passo-essencial">
+              <span class="passo-num" aria-hidden="true">4</span>
+              <div class="passo-corpo">
+                <p class="etiqueta etiqueta-essencial">Essencial</p>
+                <h3>Faça a ciclagem, sem peixes</h3>
+                <p>Ciclar é deixar o filtro ser colonizado por bactérias que transformam a amônia, tóxica, em nitrito, também tóxico, e depois em nitrato, bem menos tóxico. Acompanhe com testes. O aquário está pronto quando amônia e nitrito ficam em zero de forma constante e o nitrato começa a aparecer. Isso costuma levar de 3 a 8 semanas.</p>
+                <figure class="ciclo">
+                  <picture>
+                    <source media="(min-width: 600px) and (max-width: 899px), (min-width: 1200px)" srcset="assets/ciclo-nitrogenio.svg" width="640" height="260">
+                    <img src="assets/ciclo-nitrogenio-vertical.svg" width="320" height="520" alt="Ciclo do nitrogênio: restos de comida e excrementos viram amônia, bactérias a transformam em nitrito e depois em nitrato, que é reduzido pelas trocas parciais de água e pelas plantas." loading="lazy" decoding="async">
+                  </picture>
+                </figure>
+                <p class="passo-nota"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-info"/></svg>O nitrato não zera: ele é controlado com trocas parciais de água e pelas plantas.</p>
+              </div>
+            </li>
+            <li class="passo">
+              <span class="passo-num" aria-hidden="true">5</span>
+              <div class="passo-corpo">
+                <h3>Coloque poucos peixes de cada vez</h3>
+                <p>Aclimate devagar e, se puder, faça quarentena em um aquário separado. Assim as bactérias acompanham o aumento de população.</p>
+              </div>
+            </li>
+            <li class="passo">
+              <span class="passo-num" aria-hidden="true">6</span>
+              <div class="passo-corpo">
+                <h3>Mantenha a rotina</h3>
+                <p>Alimente pouco, teste a água com frequência e faça trocas parciais regulares. Estabilidade vale mais que qualquer número.</p>
+              </div>
+            </li>
+          </ol>
+
+          <aside class="kit cartao cartao-pilha" aria-labelledby="kit-titulo">
+            <h3 id="kit-titulo">Kit iniciante</h3>
+            <p>O essencial para montar com segurança, separado pela nossa equipe.</p>
+            <ul class="lista-check" role="list">
+              <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Filtro com mídia biológica</li>
+              <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Aquecedor com termostato</li>
+              <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Termômetro</li>
+              <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Iluminação com timer</li>
+              <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Testes de amônia, nitrito, nitrato e pH</li>
+              <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Condicionador de água</li>
+              <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Sifão e balde exclusivo do aquário</li>
+            </ul>
+            <div class="kit-marinho">
+              <h4>No marinho, some:</h4>
+              <ul class="lista-coral" role="list">
+                <li>Sal marinho sintético</li>
+                <li>Refratômetro ou densímetro</li>
+                <li>Skimmer (escumador de proteínas)</li>
+                <li>Bombas de circulação</li>
+                <li>Rocha viva ou seca</li>
+              </ul>
+            </div>
+            <!-- FICTÍCIO: WhatsApp de exemplo -->
+            <a class="botao botao-principal botao-largo" data-wa="kit" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Reef%20Stack!%20Vim%20pelo%20site%20e%20quero%20montar%20meu%20kit%20iniciante." target="_blank" rel="noopener">
+              <svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+              Montar meu kit no WhatsApp<span class="visually-hidden"> (abre o WhatsApp)</span>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. PARÂMETROS -->
+    <section class="secao fundo-branco" id="parametros" aria-labelledby="par-titulo">
+      <div class="container">
+        <header class="secao-cabecalho">
+          <p class="eyebrow">Parâmetros da água</p>
+          <h2 id="par-titulo">Os números que contam a saúde do aquário</h2>
+          <p class="lead">Testar a água é como medir a febre: mostra o problema antes de ele aparecer nos peixes. Use a tabela como ponto de partida.</p>
+        </header>
+
+        <div class="aviso">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-info"/></svg>
+          <p><strong>Faixas de referência, não regras.</strong> Cada espécie tem suas preferências, e manter a água estável vale mais que perseguir um número exato. No marinho, consulte um especialista antes de corrigir qualquer parâmetro.</p>
+        </div>
+
+        <div class="abas" role="tablist" aria-label="Escolha o tipo de aquário" data-grupo="parametros" hidden>
+          <span class="abas-indicador" aria-hidden="true"></span>
+          <button class="aba aba-doce" type="button" role="tab" id="aba-parametros-doce" aria-controls="parametros-doce" aria-selected="true" tabindex="0" data-tipo="doce">
+            <svg class="i aba-icone" aria-hidden="true" focusable="false"><use href="#i-folha"/></svg>
+            <svg class="i aba-check" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>
+            Água doce
+          </button>
+          <button class="aba aba-marinho" type="button" role="tab" id="aba-parametros-marinho" aria-controls="parametros-marinho" aria-selected="false" tabindex="-1" data-tipo="marinho">
+            <svg class="i aba-icone" aria-hidden="true" focusable="false"><use href="#i-coral-mini"/></svg>
+            <svg class="i aba-check" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>
+            Marinho
+          </button>
+        </div>
+
+        <div class="painel-parametros" id="parametros-doce" data-tipo="doce">
+          <div class="tabela-rolavel" role="region" aria-label="Parâmetros de água doce">
+            <table class="tabela tabela-parametros tabela-empilhada tema-doce" role="table">
+              <caption>Faixas de referência para aquário de água doce tropical</caption>
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th scope="col" role="columnheader">Parâmetro</th>
+                  <th scope="col" role="columnheader">Faixa de referência</th>
+                  <th scope="col" role="columnheader">Observação</th>
+                </tr>
+              </thead>
+              <tbody role="rowgroup">
+                <tr role="row"><th scope="row" role="rowheader">Temperatura</th><td role="cell" class="faixa" data-label="Faixa de referência">22–27 °C</td><td role="cell" data-label="Observação">Muitos aquaristas mantêm entre 24 e 26 °C. Evite variações bruscas.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">pH</th><td role="cell" class="faixa" data-label="Faixa de referência">6,5–7,5</td><td role="cell" data-label="Observação">Atende a maioria das espécies comunitárias. Ciclídeos africanos preferem 7,5–8,5. Só ajuste se a espécie exigir.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">Amônia</th><td role="cell" class="faixa" data-label="Faixa de referência">0 ppm</td><td role="cell" data-label="Observação">Qualquer leitura acima de zero pede atenção: troque parte da água e revise a alimentação.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">Nitrito</th><td role="cell" class="faixa" data-label="Faixa de referência">0 ppm</td><td role="cell" data-label="Observação">Tóxico. Se aparecer, o filtro biológico ainda não dá conta.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">Nitrato</th><td role="cell" class="faixa" data-label="Faixa de referência">O mais baixo possível</td><td role="cell" data-label="Observação">As referências variam de menos de 20 a menos de 50 ppm. Controle com trocas parciais e plantas.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">GH (dureza geral)</th><td role="cell" class="faixa" data-label="Faixa de referência">4–10 dGH</td><td role="cell" data-label="Observação">Plantados ficam bem perto de 4–8; comunitários, de 6–10. Depende da espécie.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">KH (dureza de carbonatos)</th><td role="cell" class="faixa" data-label="Faixa de referência">2–7 dKH</td><td role="cell" data-label="Observação">É o "amortecedor" do pH. Abaixo de 1 dKH, o pH pode cair de repente.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="painel-parametros" id="parametros-marinho" data-tipo="marinho">
+          <div class="tabela-rolavel" role="region" aria-label="Parâmetros de marinho">
+            <table class="tabela tabela-parametros tabela-empilhada tema-marinho" role="table">
+              <caption>Faixas de referência para aquário marinho</caption>
+              <thead role="rowgroup">
+                <tr role="row">
+                  <th scope="col" role="columnheader">Parâmetro</th>
+                  <th scope="col" role="columnheader">Faixa de referência</th>
+                  <th scope="col" role="columnheader">Observação</th>
+                </tr>
+              </thead>
+              <tbody role="rowgroup">
+                <tr role="row"><th scope="row" role="rowheader">Temperatura</th><td role="cell" class="faixa" data-label="Faixa de referência">24–27 °C</td><td role="cell" data-label="Observação">Estabilidade é decisiva, principalmente com corais.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">Densidade (salinidade)</th><td role="cell" class="faixa" data-label="Faixa de referência">Recifal: 1,023–1,025 · FOWLR: 1,020–1,025</td><td role="cell" data-label="Observação">Meça com refratômetro ou densímetro. Corrija a evaporação com água doce tratada, não com água salgada.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">pH</th><td role="cell" class="faixa" data-label="Faixa de referência">Alcalino e estável</td><td role="cell" data-label="Observação">A água do mar é naturalmente alcalina. Mais importante que um número exato é evitar variações bruscas. Traga uma amostra ou fale com a gente no WhatsApp, e ajudamos você a ler o seu teste.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">Amônia e nitrito</th><td role="cell" class="faixa" data-label="Faixa de referência">0 ppm</td><td role="cell" data-label="Observação">Os dois são tóxicos. Leitura acima de zero indica ciclagem incompleta ou excesso de comida.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">Nitrato</th><td role="cell" class="faixa" data-label="Faixa de referência">Baixo e controlado</td><td role="cell" data-label="Observação">O nível ideal muda bastante entre o aquário só de peixes (FOWLR) e o recifal, com corais. Fale com a gente para definir o alvo do seu sistema.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">Cálcio</th><td role="cell" class="faixa" data-label="Faixa de referência">380–450 ppm</td><td role="cell" data-label="Observação">Importante no recifal: os corais duros usam cálcio para crescer.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">Alcalinidade</th><td role="cell" class="faixa" data-label="Faixa de referência">7–11 dKH</td><td role="cell" data-label="Observação">Muitos aquaristas trabalham entre 7 e 9 dKH. Mudanças devem ser lentas.</td></tr>
+                <tr role="row"><th scope="row" role="rowheader">Magnésio</th><td role="cell" class="faixa" data-label="Faixa de referência">1.200–1.400 ppm</td><td role="cell" data-label="Observação">Ajuda a manter cálcio e alcalinidade em equilíbrio.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="nota">FOWLR (do inglês <i lang="en">Fish Only With Live Rock</i>) é o aquário só de peixes com rocha viva. Recifal é o aquário com corais.</p>
+        </div>
+
+        <!-- FICTÍCIO: confirmar se a loja oferece o serviço de teste de amostra -->
+        <p class="link-amostra"><a class="link" href="#visite">Precisa testar sua água? Traga uma amostra à loja.</a></p>
+      </div>
+    </section>
+
+    <div class="divisor fundo-branco cor-abismo" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" focusable="false"><path opacity=".25" d="M0 30C240 0 480 60 720 30S1200 0 1440 30V80H0z"/><path opacity=".55" d="M0 46C200 20 520 70 760 44S1180 22 1440 48V80H0z"/><path d="M0 62C260 44 560 80 840 60S1260 46 1440 64V80H0z"/></svg>
+    </div>
+
+    <!-- 7. CLUBE -->
+    <section class="secao clube tema-escuro animado" id="clube" aria-labelledby="clube-titulo">
+      <div class="container clube-grid">
+        <header class="secao-cabecalho clube-cabecalho">
+          <p class="eyebrow">Clube</p>
+          <h2 id="clube-titulo">Aquarismo fica melhor em boa companhia</h2>
+          <p class="lead">No Clube Reef Stack você troca experiências, aprende na prática e conhece gente que fala a sua língua, do primeiro neon ao recife cheio de corais.</p>
+        </header>
+
+        <figure class="clube-foto">
+          <picture>
+            <source type="image/webp" srcset="assets/foto-clube-encontro-640.webp 640w, assets/foto-clube-encontro-1100.webp 1100w" sizes="(min-width: 900px) 560px, (min-width: 600px) calc(100vw - 64px), calc(100vw - 40px)">
+            <img src="assets/foto-clube-encontro-1100.jpg" srcset="assets/foto-clube-encontro-640.jpg 640w, assets/foto-clube-encontro-1100.jpg 1100w" sizes="(min-width: 900px) 560px, (min-width: 600px) calc(100vw - 64px), calc(100vw - 40px)" width="1100" height="825" alt="Grupo de aquaristas monta um aquário com troncos e plantas numa oficina (foto ilustrativa)" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+
+        <ul class="beneficios" role="list">
+          <li class="beneficio">
+            <svg class="i" aria-hidden="true" focusable="false"><use href="#i-encontro"/></svg>
+            <div>
+              <h3>Encontros mensais</h3>
+              <!-- FICTÍCIO: dia dos encontros -->
+              <p>Bate-papo, dúvidas resolvidas na hora e aquaristas de todos os níveis, todo 2º sábado na loja.</p>
+            </div>
+          </li>
+          <li class="beneficio">
+            <svg class="i" aria-hidden="true" focusable="false"><use href="#i-oficina"/></svg>
+            <div>
+              <h3>Oficinas práticas</h3>
+              <p>Ciclagem, aquapaisagismo, preparo de água salgada: aprenda com a mão na massa. Vagas limitadas.</p>
+            </div>
+          </li>
+          <li class="beneficio beneficio-doce">
+            <svg class="i" aria-hidden="true" focusable="false"><use href="#i-troca"/></svg>
+            <div>
+              <h3>Troca de mudas e frags</h3>
+              <p>Leve o excedente do seu aquário e volte com novidades. Só mudas e frags saudáveis, de origem conhecida.</p>
+            </div>
+          </li>
+          <li class="beneficio">
+            <svg class="i" aria-hidden="true" focusable="false"><use href="#i-grupo"/></svg>
+            <div>
+              <h3>Grupo dos membros</h3>
+              <p>Um grupo no WhatsApp para tirar dúvidas, mostrar seu aquário e saber dos próximos encontros.</p>
+            </div>
+          </li>
+        </ul>
+
+        <!-- FICTÍCIO: data, horário e tema do próximo encontro -->
+        <div class="encontro cartao-pilha">
+          <p class="etiqueta etiqueta-exemplo">Próximo encontro (exemplo)</p>
+          <p class="encontro-data">Sáb., 12/12</p>
+          <p class="encontro-horario">14h às 17h, na loja</p>
+          <p>Tema: troca de mudas e frags de fim de ano</p>
+          <p class="encontro-nota">Primeiro encontro gratuito para iniciantes.</p>
+          <!-- FICTÍCIO: dia e horário das oficinas -->
+          <p class="encontro-oficina">Oficina prática: todo 4º sábado, das 10h às 12h. Inscrição pelo WhatsApp.</p>
+        </div>
+
+        <div class="clube-form">
+          <h3 id="form-titulo">Quero entrar no clube</h3>
+          <p>Responda três perguntas rápidas e fale com a gente pelo WhatsApp.</p>
+          <form class="form" id="form-clube" novalidate aria-labelledby="form-titulo">
+            <div class="campo">
+              <label for="form-nome">Seu nome (obrigatório)</label>
+              <input id="form-nome" name="nome" type="text" autocomplete="given-name" required aria-describedby="form-nome-ajuda">
+              <p class="campo-ajuda" id="form-nome-ajuda">Só o primeiro nome já basta.</p>
+              <p class="campo-erro" id="form-nome-erro" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg>Digite seu nome para a gente saber com quem está falando.</p>
+            </div>
+            <fieldset class="campo campo-radios">
+              <legend>O que mais te interessa?</legend>
+              <div class="radios">
+                <input class="visually-hidden" type="radio" id="int-doce" name="interesse" value="Água doce">
+                <label class="radio-chip" for="int-doce"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Água doce</label>
+                <input class="visually-hidden" type="radio" id="int-marinho" name="interesse" value="Marinho">
+                <label class="radio-chip" for="int-marinho"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Marinho</label>
+                <input class="visually-hidden" type="radio" id="int-dois" name="interesse" value="Os dois" checked>
+                <label class="radio-chip" for="int-dois"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Os dois</label>
+              </div>
+            </fieldset>
+            <div class="campo">
+              <label for="form-experiencia">Sua experiência</label>
+              <select id="form-experiencia" name="experiencia">
+                <option>Estou começando</option>
+                <option>Até 2 anos</option>
+                <option>Mais de 2 anos</option>
+              </select>
+            </div>
+            <button class="botao botao-principal botao-largo" type="submit">
+              <svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+              Quero participar<span class="visually-hidden"> (abre o WhatsApp)</span>
+            </button>
+            <p class="form-nota">Ao enviar, abrimos o WhatsApp com sua mensagem pronta. Nada é salvo neste site.</p>
+            <div class="form-status" role="status" aria-live="polite">
+              <div class="form-sucesso" hidden>
+                <p>Pronto! Abrimos o WhatsApp com sua mensagem. É só tocar em enviar.</p>
+                <p><a class="link form-fallback" href="#" target="_blank" rel="noopener">O WhatsApp não abriu? Toque aqui para tentar de novo.<span class="visually-hidden"> (abre o WhatsApp)</span></a></p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="divisor fundo-abismo cor-musgo" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" focusable="false"><path opacity=".25" d="M0 30C240 0 480 60 720 30S1200 0 1440 30V80H0z"/><path opacity=".55" d="M0 46C200 20 520 70 760 44S1180 22 1440 48V80H0z"/><path d="M0 62C260 44 560 80 840 60S1260 46 1440 64V80H0z"/></svg>
+    </div>
+
+    <!-- 8. COMPROMISSO -->
+    <section class="secao fundo-musgo" id="compromisso" aria-labelledby="comp-titulo">
+      <div class="container">
+        <header class="secao-cabecalho">
+          <p class="eyebrow eyebrow-doce">Nosso compromisso</p>
+          <h2 id="comp-titulo">Aquário bonito começa com escolhas responsáveis</h2>
+          <p class="lead">Cada animal que sai da loja é uma vida que depende de você e da gente. Por isso, estes são os nossos combinados.</p>
+        </header>
+        <ul class="grade-compromissos" role="list">
+          <li class="compromisso">
+            <span class="icone-compromisso"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cativeiro"/></svg></span>
+            <h3>Cativeiro em primeiro lugar</h3>
+            <p>Priorizamos peixes, camarões e corais de cativeiro ou aquicultura. São mais resistentes e reduzem a pressão sobre rios e recifes.</p>
+          </li>
+          <li class="compromisso">
+            <span class="icone-compromisso"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-procedencia"/></svg></span>
+            <h3>Procedência legal</h3>
+            <p>Trabalhamos com fornecedores regularizados. Onde quer que você compre, prefira lojas regularizadas e desconfie de espécies nativas raras.</p>
+          </li>
+          <li class="compromisso">
+            <span class="icone-compromisso"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-orientacao"/></svg></span>
+            <h3>Orientação honesta</h3>
+            <p>Se uma espécie não combina com o seu aquário, a gente avisa. Tamanho adulto e compatibilidade vêm antes da venda.</p>
+          </li>
+          <li class="compromisso compromisso-alerta">
+            <span class="icone-compromisso"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-nao-soltar"/></svg></span>
+            <h3>Nunca solte na natureza</h3>
+            <p>Nunca solte peixes, plantas ou água de aquário na natureza. Além de causar danos ambientais, pode configurar crime ambiental.</p>
+            <p class="compromisso-apoio">Não pode mais cuidar? Fale com a gente: o clube ajuda a encontrar um novo lar.</p>
+          </li>
+        </ul>
+        <h3 class="visually-hidden">Diferenciais da loja</h3>
+        <ul class="diferenciais" role="list">
+          <!-- FICTÍCIO: confirmar os três serviços abaixo -->
+          <li>Quarentena na loja</li>
+          <li>Teste de água</li>
+          <li>Entrega com embalagem adequada</li>
+          <li>Montagem e manutenção</li>
+          <li>Clube de aquaristas</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9. DEPOIMENTOS (exemplos: substituir antes de publicar) -->
+    <section class="secao fundo-espuma" id="depoimentos" aria-labelledby="dep-titulo">
+      <div class="container">
+        <header class="secao-cabecalho centralizado">
+          <p class="eyebrow">Quem já mergulhou</p>
+          <h2 id="dep-titulo">Aquaristas que começaram com a gente</h2>
+          <p class="nota nota-exemplo"><span class="etiqueta etiqueta-exemplo-claro">Exemplo</span> Depoimentos ilustrativos.</p>
+        </header>
+        <ul class="grade-depoimentos" role="list">
+          <!-- EXEMPLO: substituir antes de publicar (depoimento real, com autorização) -->
+          <li>
+            <figure class="depoimento">
+              <svg class="i aspas" aria-hidden="true" focusable="false"><use href="#i-aspas"/></svg>
+              <blockquote><p>"Eu queria colocar os peixes no mesmo dia. Me explicaram a ciclagem com paciência e, um mês depois, meu plantado estava pronto. Ninguém morreu no caminho."</p></blockquote>
+              <figcaption>
+                <picture>
+                  <source type="image/webp" srcset="assets/depoimento-1.webp">
+                  <img src="assets/depoimento-1.jpg" width="56" height="56" alt="Foto ilustrativa de cliente" loading="lazy" decoding="async">
+                </picture>
+                <span class="depoimento-autor"><strong>Mariana Lopes (exemplo)</strong><span>Aquarista de plantados, 2 anos</span></span>
+                <span class="chip chip-doce">Doce</span>
+              </figcaption>
+            </figure>
+          </li>
+          <!-- EXEMPLO: substituir antes de publicar -->
+          <li>
+            <figure class="depoimento">
+              <svg class="i aspas" aria-hidden="true" focusable="false"><use href="#i-aspas"/></svg>
+              <blockquote><p>"Passei anos na água doce com medo do marinho. No clube, vi o aquário dos outros membros, tirei dúvidas e comecei com um casal de palhaços de cativeiro."</p></blockquote>
+              <figcaption>
+                <picture>
+                  <source type="image/webp" srcset="assets/depoimento-2.webp">
+                  <img src="assets/depoimento-2.jpg" width="56" height="56" alt="Foto ilustrativa de cliente" loading="lazy" decoding="async">
+                </picture>
+                <span class="depoimento-autor"><strong>Rafael Teixeira (exemplo)</strong><span>Do doce para o marinho</span></span>
+                <span class="chip chip-marinho">Marinho</span>
+              </figcaption>
+            </figure>
+          </li>
+          <!-- EXEMPLO: substituir antes de publicar -->
+          <li>
+            <figure class="depoimento">
+              <svg class="i aspas" aria-hidden="true" focusable="false"><use href="#i-aspas"/></svg>
+              <blockquote><p>"Levo mudas de anúbia para a troca e sempre volto com uma planta nova. Virou meu programa favorito do mês."</p></blockquote>
+              <figcaption>
+                <picture>
+                  <source type="image/webp" srcset="assets/depoimento-3.webp">
+                  <img src="assets/depoimento-3.jpg" width="56" height="56" alt="Foto ilustrativa de cliente" loading="lazy" decoding="async">
+                </picture>
+                <span class="depoimento-autor"><strong>Helena Duarte (exemplo)</strong><span>Membra do clube</span></span>
+                <span class="chip chip-doce">Doce</span>
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 10. FAQ -->
+    <section class="secao fundo-branco" id="faq" aria-labelledby="faq-titulo">
+      <div class="container">
+        <header class="secao-cabecalho">
+          <p class="eyebrow">Dúvidas</p>
+          <h2 id="faq-titulo">Perguntas frequentes</h2>
+          <p class="lead">O que mais perguntam na loja e nos encontros do clube.</p>
+        </header>
+        <div class="faq-grid">
+          <div class="faq-grupo">
+            <h3>Dúvidas sobre a loja e o clube</h3>
+            <details>
+              <summary><span>Como faço um pedido?</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>Pelo WhatsApp ou na loja. Conte o que procura e o tamanho do seu aquário; a gente confirma disponibilidade, valores e a melhor forma de levar.</p>
+            </details>
+            <details>
+              <summary><span>Vocês entregam?</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <!-- FICTÍCIO: confirmar área e regras de entrega -->
+              <p>Sim, em regiões combinadas pelo WhatsApp. Peixes e corais viajam embalados para a viagem, então a entrega é agendada.</p>
+            </details>
+            <details>
+              <summary><span>Vocês montam e fazem manutenção de aquários?</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>Sim. Montamos do zero e cuidamos da rotina de manutenção. Peça um orçamento pelo WhatsApp com o tamanho e o tipo do aquário.</p>
+            </details>
+            <details>
+              <summary><span>Posso montar o aquário e colocar os peixes no mesmo dia?</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>Não. O aquário precisa passar pela ciclagem, que costuma levar de 3 a 8 semanas. Sem ela, a amônia se acumula e os peixes adoecem.</p>
+            </details>
+            <details>
+              <summary><span>Qual aquário é melhor para começar?</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>Para a maioria das pessoas, água doce: custa menos e tolera mais erros. Prefira um volume médio, que é mais estável que um aquário muito pequeno.</p>
+            </details>
+            <details>
+              <summary><span>Como funciona o clube? Quanto custa?</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>Há um encontro mensal na loja, oficinas práticas e um grupo no WhatsApp. O primeiro encontro é gratuito para iniciantes. As condições para continuar você confere pelo WhatsApp.</p>
+            </details>
+            <details>
+              <summary><span>O que posso levar para a troca de mudas e frags?</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>Mudas de plantas e frags de corais saudáveis, de origem conhecida e sem pragas visíveis. Animais e espécies de procedência duvidosa ficam de fora.</p>
+            </details>
+            <details>
+              <summary><span>E se eu não puder mais cuidar do meu aquário?</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>Nunca solte os animais nem despeje a água na natureza. Fale com a gente: o clube ajuda a encontrar um novo lar com outro aquarista.</p>
+            </details>
+          </div>
+          <div class="faq-grupo faq-erros">
+            <h3>Erros comuns de iniciante</h3>
+            <details>
+              <summary><svg class="i alerta" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg><span>Colocar peixes antes de ciclar</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>É o erro número um e tem até nome: síndrome do aquário novo. Espere amônia e nitrito ficarem em zero de forma constante.</p>
+            </details>
+            <details>
+              <summary><svg class="i alerta" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg><span>Colocar muitos peixes de uma vez</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>O filtro biológico não acompanha o salto de população. Adicione poucos peixes por vez e respeite o tamanho adulto de cada espécie.</p>
+            </details>
+            <details>
+              <summary><svg class="i alerta" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg><span>Alimentar demais</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>A sobra apodrece, sobe a amônia e o nitrato e deixa a água turva e cheia de algas. Ofereça só o que os peixes comem em poucos minutos.</p>
+            </details>
+            <details>
+              <summary><svg class="i alerta" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg><span>Pular a quarentena</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>O hobby recomenda de 21 a 28 dias em um aquário separado para recém-chegados. A quarentena da loja ajuda, mas não substitui a de casa.</p>
+            </details>
+            <details>
+              <summary><svg class="i alerta" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg><span>Esquecer a aclimatação e as trocas parciais</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>Mudança brusca de água estressa o peixe. Aclimate devagar na chegada e mantenha trocas parciais regulares, mesmo com a água parecendo limpa.</p>
+            </details>
+            <details>
+              <summary><svg class="i alerta" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg><span>Comprar por impulso</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>Aquele peixe lindo pode crescer demais ou brigar com os outros. Pesquise o tamanho adulto e a compatibilidade antes, ou pergunte na loja.</p>
+            </details>
+            <details>
+              <summary><svg class="i alerta" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg><span>Mexer no pH sem necessidade</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>Corrigir o pH a toda hora causa oscilação, que faz mais mal que um valor fora do "ideal". Só ajuste se a espécie realmente exigir.</p>
+            </details>
+            <details>
+              <summary><svg class="i alerta" aria-hidden="true" focusable="false"><use href="#i-alerta"/></svg><span>Ter pressa no marinho</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+              <p>No marinho, pular etapas sai caro. Cicle com calma, comece pelos peixes e corais mais tolerantes e aumente aos poucos.</p>
+            </details>
+          </div>
+        </div>
+        <div class="faq-fim">
+          <p class="faq-fim-titulo">Não achou sua dúvida?</p>
+          <!-- FICTÍCIO: WhatsApp de exemplo -->
+          <a class="botao botao-secundario" data-wa="generico" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Reef%20Stack!%20Vim%20pelo%20site." target="_blank" rel="noopener">
+            <svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+            Perguntar no WhatsApp<span class="visually-hidden"> (abre o WhatsApp)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. VISITE -->
+    <section class="secao fundo-mare" id="visite" aria-labelledby="visite-titulo">
+      <div class="container">
+        <header class="secao-cabecalho">
+          <p class="eyebrow">Visite a loja</p>
+          <h2 id="visite-titulo">Venha ver os aquários de perto</h2>
+          <p class="lead">Nada substitui ver os peixes nadando. Passe na loja, tire dúvidas com calma e conheça o espaço do clube.</p>
+        </header>
+        <div class="visite-grid">
+          <div class="endereco cartao cartao-pilha">
+            <p class="etiqueta etiqueta-exemplo-claro">Dados de exemplo</p>
+            <div class="info-bloco">
+              <h3><svg class="i" aria-hidden="true" focusable="false"><use href="#i-pino"/></svg>Endereço</h3>
+              <!-- FICTÍCIO: substituir antes de publicar -->
+              <p>Rua Exemplo, s/n, Bairro Exemplo, São Paulo – SP, CEP 00000-000</p>
+            </div>
+            <div class="info-bloco">
+              <h3><svg class="i" aria-hidden="true" focusable="false"><use href="#i-relogio"/></svg>Horários</h3>
+              <!-- FICTÍCIO: horários de exemplo -->
+              <dl class="horarios">
+                <div data-dias="1"><dt>Segunda-feira</dt><dd>Fechado</dd></div>
+                <div data-dias="2 3 4 5"><dt>Terça a sexta</dt><dd>10h às 19h</dd></div>
+                <div data-dias="6"><dt>Sábado</dt><dd>9h às 18h</dd></div>
+                <div data-dias="0"><dt>Domingo</dt><dd>10h às 14h</dd></div>
+                <div><dt>Feriados</dt><dd>Fechado (confirme pelo WhatsApp)</dd></div>
+              </dl>
+              <p class="nota">Não fechamos para almoço. O WhatsApp atende no horário da loja.</p>
+            </div>
+            <div class="info-bloco">
+              <h3 class="visually-hidden">Contato</h3>
+              <ul class="contatos" role="list">
+                <!-- FICTÍCIO: substituir antes de publicar -->
+                <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg><span><span class="contato-rotulo">WhatsApp</span> (11) 90000-0000</span></li>
+                <!-- FICTÍCIO: substituir antes de publicar -->
+                <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-telefone"/></svg><span><span class="contato-rotulo">Telefone</span> (11) 0000-0000</span></li>
+                <!-- FICTÍCIO: substituir antes de publicar -->
+                <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-email"/></svg><span><span class="contato-rotulo">E-mail</span> <a class="link link-alvo" href="mailto:contato@reefstack.example">contato@<wbr>reefstack.example</a></span></li>
+                <!-- FICTÍCIO: substituir antes de publicar (perfil de exemplo, sem link) -->
+                <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg><span><span class="contato-rotulo">Instagram</span> @reefstack_exemplo</span></li>
+              </ul>
+            </div>
+            <div class="grupo-botoes">
+              <!-- FICTÍCIO: WhatsApp de exemplo -->
+              <a class="botao botao-principal" data-wa="pedido" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Reef%20Stack!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido%20ou%20or%C3%A7amento." target="_blank" rel="noopener">
+                <svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+                Pedir no WhatsApp<span class="visually-hidden"> (abre o WhatsApp)</span>
+              </a>
+              <!-- FICTÍCIO: telefone de exemplo -->
+              <a class="botao botao-secundario" href="tel:+551100000000">
+                <svg class="i" aria-hidden="true" focusable="false"><use href="#i-telefone"/></svg>
+                Ligar para a loja
+              </a>
+            </div>
+          </div>
+          <div class="visite-imagens">
+            <figure class="mapa">
+              <img src="assets/mapa-ilustrativo.svg" width="700" height="440" alt="Mapa ilustrativo, sem localização real" loading="lazy" decoding="async">
+              <figcaption>Mapa ilustrativo</figcaption>
+            </figure>
+            <figure class="vitrine">
+              <picture>
+                <source type="image/webp" srcset="assets/foto-vitrine-640.webp 640w, assets/foto-vitrine-1000.webp 1000w" sizes="(min-width: 900px) 680px, (min-width: 600px) calc(100vw - 64px), calc(100vw - 40px)">
+                <img src="assets/foto-vitrine-1000.jpg" srcset="assets/foto-vitrine-640.jpg 640w, assets/foto-vitrine-1000.jpg 1000w" sizes="(min-width: 900px) 680px, (min-width: 600px) calc(100vw - 64px), calc(100vw - 40px)" width="1000" height="625" alt="Aquário plantado comprido, com pedras, plantas e peixes pequenos" loading="lazy" decoding="async">
+              </picture>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divisor fundo-mare cor-abismo-950" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none" focusable="false"><path opacity=".25" d="M0 30C240 0 480 60 720 30S1200 0 1440 30V80H0z"/><path opacity=".55" d="M0 46C200 20 520 70 760 44S1180 22 1440 48V80H0z"/><path d="M0 62C260 44 560 80 840 60S1260 46 1440 64V80H0z"/></svg>
+    </div>
+  </main>
+
+  <!-- 12. RODAPÉ -->
+  <footer class="rodape tema-escuro">
+    <div class="container">
+      <div class="rodape-grid">
+        <div class="rodape-marca">
+          <img src="assets/logo.svg" alt="Reef Stack" width="186" height="40" loading="lazy">
+          <p class="rodape-slogan">Do rio ao recife, camada por camada.</p>
+          <p>Loja de aquarismo de água doce e marinho e Clube Reef Stack.</p>
+        </div>
+        <nav class="rodape-nav" aria-labelledby="rodape-nav-titulo">
+          <h2 id="rodape-nav-titulo">Navegue</h2>
+          <ul role="list">
+            <li><a href="#loja">Loja</a></li>
+            <li><a href="#doce-marinho">Doce × Marinho</a></li>
+            <li><a href="#primeiros-passos">Primeiros passos</a></li>
+            <li><a href="#parametros">Parâmetros</a></li>
+            <li><a href="#clube">Clube</a></li>
+            <li><a href="#visite">Visite</a></li>
+          </ul>
+        </nav>
+        <div class="rodape-contato">
+          <h2>Contato</h2>
+          <ul role="list">
+            <!-- FICTÍCIO: WhatsApp de exemplo -->
+            <li><a data-wa="generico" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Reef%20Stack!%20Vim%20pelo%20site." target="_blank" rel="noopener">WhatsApp: (11) 90000-0000<span class="visually-hidden"> (abre o WhatsApp)</span></a></li>
+            <!-- FICTÍCIO: e-mail de exemplo -->
+            <li><a href="mailto:contato@reefstack.example">E-mail: contato@<wbr>reefstack.example</a></li>
+            <!-- FICTÍCIO: endereço de exemplo -->
+            <li><span class="rodape-texto">Rua Exemplo, s/n, São Paulo – SP</span></li>
+          </ul>
+        </div>
+        <div class="rodape-redes">
+          <h2>Siga a Reef Stack</h2>
+          <ul class="redes" role="list">
+            <!-- FICTÍCIO: perfil de exemplo, sem link até existir o perfil real; link real em dados-negocio.md §2 (https://www.instagram.com/reefstack_exemplo/) -->
+            <li><span class="rede-em-breve" title="Instagram: em breve"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg><span class="visually-hidden">Instagram da Reef Stack: em breve</span></span></li>
+            <!-- FICTÍCIO: canal de exemplo, sem link até existir o canal real; link real em dados-negocio.md §2 (https://www.youtube.com/@reefstack_exemplo) -->
+            <li><span class="rede-em-breve" title="YouTube: em breve"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-youtube"/></svg><span class="visually-hidden">YouTube da Reef Stack: em breve</span></span></li>
+            <!-- Facebook omitido: não há perfil em dados-negocio.md -->
+          </ul>
+          <p class="redes-nota" aria-hidden="true">Perfis em breve</p>
+        </div>
+      </div>
+
+      <details class="creditos">
+        <summary><span>Créditos das fotos</span><svg class="i chevron" aria-hidden="true" focusable="false"><use href="#i-chevron"/></svg></summary>
+        <p>Fotos de bancos públicos de licença livre. Autor, banco e licença de cada imagem:</p>
+        <ul class="creditos-lista" role="list">
+          <li>Tetra-neon: <a href="https://commons.wikimedia.org/wiki/File:Neonsalmler_Paracheirodon_innesi.jpg" target="_blank" rel="noopener">“Neonsalmler Paracheirodon innesi”<span class="visually-hidden"> (abre em nova aba)</span></a>, de Holger Krisp, <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener license">CC BY 3.0<span class="visually-hidden"> (abre em nova aba)</span></a>, via Wikimedia Commons. Recortada e redimensionada.</li>
+          <li>Grama-real: <a href="https://commons.wikimedia.org/wiki/File:Monaco.Mus%C3%A9e_oc%C3%A9anographique031.jpg" target="_blank" rel="noopener">“Monaco.Musée océanographique031”<span class="visually-hidden"> (abre em nova aba)</span></a>, de Georges Jansoone (JoJan), <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener license">CC BY 3.0<span class="visually-hidden"> (abre em nova aba)</span></a>, via Wikimedia Commons. Recortada e redimensionada.</li>
+          <li>Encontro do clube: <a href="https://commons.wikimedia.org/wiki/File:Aquascaping_Team_Planting_Aquarium_Hardscape.jpg" target="_blank" rel="noopener">“Aquascaping Team Planting Aquarium Hardscape”<span class="visually-hidden"> (abre em nova aba)</span></a>, de Abhik.Mazumdar.73, <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener license">CC BY 4.0<span class="visually-hidden"> (abre em nova aba)</span></a>, via Wikimedia Commons. Recortada e redimensionada.</li>
+          <li>Peixe-palhaço: <a href="https://commons.wikimedia.org/wiki/File:Amphiprion_ocellaris_2.jpg" target="_blank" rel="noopener">Karelj<span class="visually-hidden"> (abre em nova aba)</span></a>, domínio público, Wikimedia Commons. Firefish: <a href="https://commons.wikimedia.org/wiki/File:Nemateleotris_magnifica_Prague_2011_1.jpg" target="_blank" rel="noopener">Karelj<span class="visually-hidden"> (abre em nova aba)</span></a>, CC0, Wikimedia Commons.</li>
+          <li>Unsplash (Unsplash License): <a href="https://unsplash.com/photos/a-fish-tank-filled-with-plants-and-water-xtbZ1jnpuEY" target="_blank" rel="noopener">Christian Ang (aquário plantado)<span class="visually-hidden"> (abre em nova aba)</span></a>, <a href="https://unsplash.com/photos/a-fish-tank-filled-with-plants-and-rocks--gxn0RkXsG0" target="_blank" rel="noopener">Christian Ang (vitrine)<span class="visually-hidden"> (abre em nova aba)</span></a>, <a href="https://unsplash.com/photos/colorful-corals-in-saltwater-aquarium-xCz7oblY3Qk" target="_blank" rel="noopener">Friska Venunza Bayu (aquário marinho)<span class="visually-hidden"> (abre em nova aba)</span></a>, <a href="https://unsplash.com/photos/a-group-of-fish-swimming-in-an-aquarium-LEw6N9wLQQE" target="_blank" rel="noopener">Diogo Cardoso (guppies)<span class="visually-hidden"> (abre em nova aba)</span></a>, <a href="https://unsplash.com/photos/a-bright-red-betta-fish-swims-in-a-blue-aquarium-GQG-cBPcmGs" target="_blank" rel="noopener">Likhith Raj (betta)<span class="visually-hidden"> (abre em nova aba)</span></a>, <a href="https://unsplash.com/photos/a-couple-of-yellow-shrimp-are-in-the-water-vfbrDfUwEDk" target="_blank" rel="noopener">Yash Gupta (camarões)<span class="visually-hidden"> (abre em nova aba)</span></a>, <a href="https://unsplash.com/photos/colorful-corals-in-saltwater-aquarium-qAAiGzAwSKc" target="_blank" rel="noopener">CHAD WINDHEIM (corais)<span class="visually-hidden"> (abre em nova aba)</span></a>, <a href="https://unsplash.com/photos/smiling-woman-at-wooden-table-Ll9YOG20UFI" target="_blank" rel="noopener">Nolan Manning<span class="visually-hidden"> (abre em nova aba)</span></a>, <a href="https://unsplash.com/photos/man-taking-selfie-7azlwCjw7Zg" target="_blank" rel="noopener">Gift Habeshaw<span class="visually-hidden"> (abre em nova aba)</span></a> e <a href="https://unsplash.com/photos/elderly-man-with-glasses-smiling-at-the-camera-oZ3zejPLEg8" target="_blank" rel="noopener">Vitaly Gariev<span class="visually-hidden"> (abre em nova aba)</span></a> (retratos ilustrativos).</li>
+          <li>Pexels (Pexels License): <a href="https://www.pexels.com/photo/a-woman-by-an-aquarium-15731660/" target="_blank" rel="noopener">Yi Ren (loja)<span class="visually-hidden"> (abre em nova aba)</span></a>.</li>
+        </ul>
+      </details>
+
+      <div class="rodape-legal">
+        <p>© 2026 Reef Stack. Todos os direitos reservados.</p>
+        <p class="aviso-ficticio">Dados de contato, endereço e horários fictícios, apenas para demonstração.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FICTÍCIO: WhatsApp de exemplo -->
+  <a class="wa-flutuante" data-wa="pedido" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Reef%20Stack!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido%20ou%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Pedir no WhatsApp (abre o WhatsApp)">
+    <svg class="i" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+    <span class="wa-flutuante-rotulo" aria-hidden="true">Pedir no WhatsApp</span>
+  </a>
+</body>
+</html>
