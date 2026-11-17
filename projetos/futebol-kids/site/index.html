@@ -24,8 +24,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&amp;family=Nunito:wght@400;600;700;800&amp;display=swap">
 
-  <link rel="preload" as="image" type="image/webp" href="assets/fotos/hero-mobile.webp" media="(max-width: 899px)">
-  <link rel="preload" as="image" type="image/webp" imagesrcset="assets/fotos/hero-1280.webp 1280w, assets/fotos/hero.webp 2400w" imagesizes="100vw" media="(min-width: 900px)">
+  <link rel="preload" as="image" href="assets/videos/hero-poster.jpg" media="(min-width: 900px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/fotos/hero-mobile.webp" type="image/webp" media="(max-width: 899px)" fetchpriority="high">
 
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js');</script>
@@ -140,12 +140,14 @@
 
   <!-- 1. Hero -->
   <section class="hero tema-escuro" id="inicio" aria-labelledby="hero-titulo">
-    <picture class="hero-foto">
-      <source media="(min-width: 900px)" type="image/webp" srcset="assets/fotos/hero-1280.webp 1280w, assets/fotos/hero.webp 2400w" sizes="100vw">
-      <source media="(min-width: 900px)" type="image/jpeg" srcset="assets/fotos/hero-1280.jpg 1280w, assets/fotos/hero.jpg 2400w" sizes="100vw">
-      <source type="image/webp" srcset="assets/fotos/hero-mobile.webp">
-      <img src="assets/fotos/hero-mobile.jpg" alt="" width="1080" height="1350" fetchpriority="high" decoding="async">
-    </picture>
+    <div class="hero-midia">
+      <!-- Imagem base: LCP e fallback. O vídeo (só >= 900px) é inserido pelo script.js depois do load. -->
+      <picture class="hero-foto">
+        <source media="(max-width: 899px)" type="image/webp" srcset="assets/fotos/hero-mobile.webp" width="1080" height="1350">
+        <source media="(max-width: 899px)" type="image/jpeg" srcset="assets/fotos/hero-mobile.jpg" width="1080" height="1350">
+        <img src="assets/videos/hero-poster.jpg" alt="" width="1600" height="900" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
     <img class="hero-confete" src="assets/svg/confete.svg" alt="" aria-hidden="true" width="320" height="200">
 
     <div class="container hero-conteudo">
@@ -920,8 +922,8 @@
     <p>© 2026 Futebol Kids</p>
     <p class="aviso-demo">Site de demonstração — dados fictícios</p>
     <details class="creditos">
-      <summary>Fotos: Unsplash. Ver créditos</summary>
-      <p>Simone Franchina (início) · Opus Form, Kyle Hinkson, Nik, Ian Taylor (turmas) · Max Zindel (campo) · KaroGraphix Photography (metodologia) · Ryan Jacobson, Babak Eshaghian, Khaled Ali (equipe, ilustrativas) · Vitaly Gariev, Warren (depoimentos, ilustrativas). Todas via Unsplash, sob a Unsplash License.</p>
+      <summary>Fotos: Unsplash · Vídeo: Pexels. Ver créditos</summary>
+      <p>Vídeo do início: Kampus Production, via Pexels, sob a Pexels License (ilustrativo). Fotos: Simone Franchina (início, celular) · Opus Form, Kyle Hinkson, Nik, Ian Taylor (turmas) · Max Zindel (campo) · KaroGraphix Photography (metodologia) · Ryan Jacobson, Babak Eshaghian, Khaled Ali (equipe, ilustrativas) · Vitaly Gariev, Warren (depoimentos, ilustrativas). Todas via Unsplash, sob a Unsplash License.</p>
     </details>
     <p><a href="#topo">Voltar ao topo</a></p>
   </div>

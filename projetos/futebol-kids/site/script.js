@@ -127,6 +127,175 @@
     reveals.forEach(function (el) { el.classList.add('is-visivel'); });
   }
 
+  /* ---------- Hero: vídeo de fundo (só >= 900px e quando permitido) ---------- */
+  (function () {
+    var hero = document.getElementById('inicio');
+    var midia = hero ? hero.querySelector('.hero-midia') : null;
+    var acoes = hero ? hero.querySelector('.hero-acoes') : null;
+    if (!midia || !acoes || !window.matchMedia) return;
+
+    var CHAVE = 'fk-hero-video';
+    var ROTULO_PAUSAR = 'Pausar vídeo de fundo';
+    var ROTULO_TOCAR = 'Reproduzir vídeo de fundo';
+    var mqLargura = window.matchMedia('(min-width: 900px)');
+    var mqDados = window.matchMedia('(prefers-reduced-data: reduce)');
+    var video = null, botao = null, obsHero = null;
+    var emTela = true, pausadoPeloUsuario = false, agendado = false;
+
+    function lePreferencia() {
+      try { return window.localStorage.getItem(CHAVE); } catch (e) { return null; }
+    }
+    function gravaPreferencia(valor) {
+      try { window.localStorage.setItem(CHAVE, valor); } catch (e) { /* sem storage: ignora */ }
+    }
+    function conexaoPermite() {
+      var c = navigator.connection;
+      if (!c) return true;
+      if (c.saveData) return false;
+      return !/2g$/.test(c.effectiveType || ''); // slow-2g e 2g
+    }
+    function podeCriar() {
+      return mqLargura.matches && !reduzMovimento.matches && !mqDados.matches && conexaoPermite();
+    }
+    function podeTocar() {
+      return video && !pausadoPeloUsuario && emTela && !document.hidden && mqLargura.matches;
+    }
+
+    function atualizaBotao() {
+      if (!botao) return;
+      var rotulo = pausadoPeloUsuario ? ROTULO_TOCAR : ROTULO_PAUSAR;
+      botao.setAttribute('aria-label', rotulo);
+      botao.title = rotulo;
+      botao.classList.toggle('is-pausado', pausadoPeloUsuario);
+    }
+
+    function remove() {
+      if (obsHero) { obsHero.disconnect(); obsHero = null; }
+      if (video) {
+        video.pause();
+        video.removeAttribute('src');
+        try { video.load(); } catch (e) { /* ignora */ }
+        video.remove();
+        video = null;
+      }
+      if (botao) {
+        if (document.activeElement === botao) { // devolve o foco a um ponto estável do hero
+          var cta = acoes.querySelector('a');
+          if (cta) cta.focus();
+        }
+        botao.remove();
+        botao = null;
+      }
+    }
+
+    function sincroniza() {
+      if (!video) return;
+      if (podeTocar()) {
+        var p = video.play();
+        if (p && p.catch) {
+          p.catch(function (err) {
+            if (err && err.name === 'AbortError') return; // pausa durante o play: normal
+            remove(); // autoplay bloqueado ou formato sem suporte: fica o poster
+          });
+        }
+      } else if (!video.paused) {
+        video.pause();
+      }
+    }
+
+    function cria() {
+      if (video || !podeCriar()) return;
+      pausadoPeloUsuario = lePreferencia() === 'pausado';
+
+      video = document.createElement('video');
+      video.className = 'hero-video';
+      video.id = 'hero-video';
+      video.muted = true;
+      video.defaultMuted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('loop', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('disablepictureinpicture', '');
+      video.setAttribute('aria-hidden', 'true');
+      video.setAttribute('tabindex', '-1');
+      video.setAttribute('poster', 'assets/videos/hero-poster.jpg');
+      if (pausadoPeloUsuario) {
+        video.preload = 'metadata'; // fica parado no 1º quadro
+      } else {
+        video.preload = 'auto';
+        video.autoplay = true;
+        video.setAttribute('autoplay', '');
+      }
+      video.addEventListener('playing', function () { if (video) video.classList.add('is-tocando'); });
+      video.addEventListener('error', remove);
+      video.src = 'assets/videos/hero.mp4';
+      midia.querySelector('.hero-foto').insertAdjacentElement('afterend', video);
+
+      botao = document.createElement('button');
+      botao.type = 'button';
+      botao.className = 'hero-midia-botao';
+      botao.setAttribute('aria-controls', 'hero-video');
+      botao.innerHTML =
+        '<svg class="ico-pausa" viewBox="0 0 20 20" aria-hidden="true" focusable="false">' +
+        '<rect x="4" y="2" width="4" height="16" rx="2"/><rect x="12" y="2" width="4" height="16" rx="2"/></svg>' +
+        '<svg class="ico-play" viewBox="0 0 20 20" aria-hidden="true" focusable="false">' +
+        '<path d="M6.5 3.6v12.8a1.2 1.2 0 0 0 1.8 1l10.2-6.4a1.2 1.2 0 0 0 0-2L8.3 2.6a1.2 1.2 0 0 0-1.8 1z"/></svg>';
+      botao.addEventListener('click', function () {
+        if (!video) return;
+        pausadoPeloUsuario = !pausadoPeloUsuario;
+        gravaPreferencia(pausadoPeloUsuario ? 'pausado' : 'tocando');
+        if (!pausadoPeloUsuario) video.preload = 'auto';
+        atualizaBotao();
+        sincroniza();
+      });
+      atualizaBotao();
+      // Logo depois dos CTAs (ordem de foco); a posição visual é absoluta em relação ao hero
+      acoes.insertAdjacentElement('afterend', botao);
+
+      if ('IntersectionObserver' in window) {
+        obsHero = new IntersectionObserver(function (entradas) {
+          emTela = entradas[0].isIntersecting;
+          sincroniza();
+        }, { threshold: 0 });
+        obsHero.observe(hero);
+      }
+      sincroniza();
+    }
+
+    function agenda() {
+      if (agendado) return;
+      agendado = true;
+      var executa = function () {
+        if ('requestIdleCallback' in window) window.requestIdleCallback(cria, { timeout: 2000 });
+        else window.setTimeout(cria, 200);
+      };
+      if (document.readyState === 'complete') executa();
+      else window.addEventListener('load', executa, { once: true });
+    }
+
+    function ouve(mq, fn) {
+      if (mq.addEventListener) mq.addEventListener('change', fn);
+      else if (mq.addListener) mq.addListener(fn);
+    }
+
+    // Movimento reduzido em tempo real: remove o vídeo e o botão (volta se a preferência sair)
+    ouve(reduzMovimento, function () {
+      if (reduzMovimento.matches) remove();
+      else if (podeCriar()) cria();
+    });
+    ouve(mqDados, function () { if (mqDados.matches) remove(); });
+    // Largura: abaixo de 900px o CSS esconde vídeo e botão; aqui só pausa/retoma (ou cria)
+    ouve(mqLargura, function () {
+      if (video) sincroniza();
+      else if (podeCriar()) { if (document.readyState === 'complete') cria(); else agenda(); }
+    });
+    document.addEventListener('visibilitychange', sincroniza);
+
+    if (podeCriar()) agenda();
+  })();
+
   /* ---------- Carrossel de depoimentos (scroll-snap) ---------- */
   var trilho = document.querySelector('.carrossel-trilho');
   var controles = document.querySelector('.carrossel-controles');

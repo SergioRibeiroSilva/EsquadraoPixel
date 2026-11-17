@@ -34,10 +34,11 @@
   --turma-mirim: var(--verde-300);
   --turma-infantil: var(--coral-300);
 
-  /* Overlay do hero (ajustado: ver CHANGELOG) */
-  --overlay-hero:
-    linear-gradient(0deg, rgba(11,46,26,.90) 0%, rgba(11,46,26,.80) 40%, rgba(11,46,26,.45) 72%, rgba(11,46,26,.15) 100%),
-    linear-gradient(90deg, rgba(11,46,26,.55) 0%, rgba(11,46,26,.25) 45%, rgba(11,46,26,0) 70%);
+  /* Overlay do hero (vertical um pouco mais forte que o design: ver CHANGELOG, iteração 1) */
+  --overlay-hero: linear-gradient(0deg, rgba(11,46,26,.90) 0%, rgba(11,46,26,.80) 40%, rgba(11,46,26,.45) 72%, rgba(11,46,26,.15) 100%);
+  --overlay-hero-lateral: linear-gradient(90deg, rgba(11,46,26,.55) 0%, rgba(11,46,26,.25) 45%, rgba(11,46,26,0) 70%); /* só desktop, sobre o vídeo/poster */
+  --hero-midia-pos: 60% 45%;        /* object-position do vídeo e do poster (desktop) */
+  --hero-midia-pos-mobile: 50% 35%; /* object-position da foto 4:5 */
   --overlay-hero-mobile:
     linear-gradient(0deg, rgba(11,46,26,.93) 0%, rgba(11,46,26,.85) 50%, rgba(11,46,26,.72) 70%, rgba(11,46,26,.32) 90%, rgba(11,46,26,.18) 100%);
 
@@ -284,19 +285,29 @@ html.js .site-header.is-rolado { border-bottom-color: var(--borda); box-shadow: 
   border-radius: 0 0 50% 50% / 0 0 var(--arco) var(--arco);
   overflow: hidden;
 }
-.hero-foto, .hero-foto img {
+/* Camadas: mídia (0) > overlay (1, dentro da mídia) > confete (2) > conteúdo (3) */
+.hero-midia {
+  position: absolute; inset: 0; z-index: 0; overflow: hidden;
+}
+.hero-foto, .hero-foto img, .hero-video {
   position: absolute; inset: 0; width: 100%; height: 100%;
 }
-.hero-foto { z-index: -2; }
-.hero-foto img { object-fit: cover; object-position: 50% 35%; }
-.hero::before {
-  content: ""; position: absolute; inset: 0; z-index: -1;
+.hero-foto img { object-fit: cover; object-position: var(--hero-midia-pos-mobile); }
+.hero-video {
+  display: none; /* o vídeo só existe a partir de 900px */
+  object-fit: cover; object-position: var(--hero-midia-pos);
+  opacity: 0;
+}
+.hero-video.is-tocando { opacity: 1; }
+.hero-midia::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: var(--overlay-hero-mobile);
 }
 .hero-confete {
-  position: absolute; top: 12px; right: -40px; width: 220px; opacity: .3; z-index: -1; pointer-events: none;
+  position: absolute; top: 12px; right: -40px; width: 220px; opacity: .3; z-index: 2; pointer-events: none;
 }
 .hero-conteudo {
+  position: relative; z-index: 3;
   display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px;
   padding-top: 120px; padding-bottom: 96px;
 }
@@ -312,8 +323,11 @@ html.js .site-header.is-rolado { border-bottom-color: var(--borda); box-shadow: 
 }
 .hero-lead {
   font-size: var(--fs-lead); font-weight: 600; line-height: 1.55;
-  color: rgba(255, 255, 255, .94); max-width: 56ch;
+  color: var(--branco); max-width: 56ch;
 }
+
+/* Botão pausar/reproduzir do vídeo (criado pelo JS junto com o vídeo; WCAG 2.2.2) */
+.hero-midia-botao { display: none; }
 .hero-acoes {
   display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 400px; margin-top: 8px;
 }
@@ -325,14 +339,36 @@ html.js .site-header.is-rolado { border-bottom-color: var(--borda); box-shadow: 
 }
 @media (min-width: 900px) {
   .hero { min-height: max(600px, min(calc(100svh - var(--header-h)), 820px)); }
-  .hero::before { background: var(--overlay-hero); }
-  .hero-foto img { object-position: 50% 30%; }
+  .hero-midia::after { background: var(--overlay-hero-lateral), var(--overlay-hero); }
+  .hero-foto img { object-position: var(--hero-midia-pos); }
+  .hero-video { display: block; }
+  .hero-titulo, .hero-lead { text-shadow: 0 2px 12px rgba(11, 46, 26, .45); }
   .hero-confete { width: 320px; right: 24px; top: 24px; }
   .hero-conteudo { align-items: flex-start; text-align: left; padding-bottom: 140px; gap: 20px; }
   .hero-titulo { max-width: 12ch; }
   .hero-lead { max-width: 52ch; }
   .hero-acoes { justify-content: flex-start; gap: 16px; }
+
+  /* Posicionado em relação a .hero-conteudo (container de largura total, base = base do hero):
+     right: var(--gutter) alinha à borda do conteúdo do container em qualquer largura. */
+  .hero-midia-botao {
+    position: absolute; z-index: 3;
+    right: var(--gutter); bottom: calc(var(--arco) + 96px);
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 48px; height: 48px; padding: 0;
+    border: 2px solid var(--branco); border-radius: 50%;
+    background: rgba(11, 46, 26, .6); color: var(--branco);
+    -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+    cursor: pointer;
+    transition: background-color var(--dur-rapida), color var(--dur-rapida), transform var(--dur-rapida);
+  }
+  .hero-midia-botao:hover { background: var(--branco); color: var(--verde-900); }
+  .hero-midia-botao svg { width: 20px; height: 20px; fill: currentColor; }
+  .hero-midia-botao .ico-play { display: none; }
+  .hero-midia-botao.is-pausado .ico-play { display: block; }
+  .hero-midia-botao.is-pausado .ico-pausa { display: none; }
 }
+
 
 /* ---------- Placar ---------- */
 .placar-wrap {
@@ -979,6 +1015,8 @@ details[open] .faq-mais { transform: rotate(45deg); }
   .btn-primario:active, .btn-amarelo:active { transform: translateY(4px); }
   .btn-secundario:active, .btn-contorno-claro:active { transform: translateY(1px); }
   .chip:hover { transform: translateY(-3px); }
+  .hero-midia-botao:active { transform: scale(.94); }
+  .hero-video { transition: opacity 400ms var(--ease-out); }
   .chip:active { transform: translateY(0); }
 
   @media (hover: hover) {

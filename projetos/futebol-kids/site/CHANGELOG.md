@@ -1,5 +1,55 @@
 # CHANGELOG: Futebol Kids (site)
 
+## Iteração 2 · 2026-11-17 (vídeo de fundo no hero, pedido do usuário)
+
+### Feito
+- **Assets:** `assets/videos/hero.mp4` (3,26 MB) e `hero-poster.jpg` (158 KB) copiados para `site/assets/videos/`.
+- **Imagem base (LCP e fallback), `design.md` §3.3.1 e §3.3.4:**
+  - Novo contêiner `.hero-midia` com um `<picture>`. Abaixo de 900px, `hero-mobile.webp`/`.jpg` (4:5). A partir de 900px, a `<img>` usa `hero-poster.jpg` (1600x900).
+  - A `<img>` tem `fetchpriority="high"`, não usa lazy e tem `alt=""`.
+  - Os 2 preloads do `<head>` foram trocados pelos da spec: poster com `media="(min-width: 900px)"` e foto mobile WebP com `media="(max-width: 899px)"`, os dois com `fetchpriority="high"`. Não há preload do MP4.
+  - `hero.jpg`/`hero-1280.jpg` saíram do HTML. Os arquivos continuam em `site/assets/fotos/`, mas não são usados.
+- **Vídeo (`script.js`):**
+  - Criado pelo JS depois do `load` (com `requestIdleCallback`, limite de 2 s), e só quando todas estas condições valem:
+    - largura ≥ 900px;
+    - sem `prefers-reduced-motion: reduce`;
+    - sem `prefers-reduced-data: reduce`;
+    - sem `saveData`;
+    - conexão diferente de `2g` e `slow-2g`.
+  - Atributos: `muted autoplay loop playsinline disablepictureinpicture`, `preload="auto"`, `poster`, `aria-hidden="true"` e `tabindex="-1"`, sem `controls`.
+  - Entra com fade de 400 ms no evento `playing`.
+  - Se houver `error` ou se `play()` for rejeitado (exceto `AbortError`), o vídeo e o botão são removidos e o poster fica. Testado bloqueando o MP4: sem botão órfão.
+  - Tempo real:
+    - Se o movimento reduzido passar para `reduce`, o vídeo e o botão são removidos. Se a preferência sair, eles são recriados.
+    - Abaixo de 900px, o CSS esconde o vídeo e o botão, e o vídeo pausa. Ao voltar a 900px ou mais, retoma.
+    - O vídeo pausa quando o hero sai da tela (IntersectionObserver, `threshold: 0`) e quando a aba fica oculta. Só retoma se o usuário não tiver pausado.
+- **Botão pausar/reproduzir (§3.3.3):**
+  - É um `<button>` de 48x48 criado junto com o vídeo, logo depois dos CTAs no DOM. A ordem de foco é CTA, CTA, botão, placar (conferido).
+  - Usa `aria-label` e `title` que alternam entre "Pausar vídeo de fundo" e "Reproduzir vídeo de fundo", e `aria-controls="hero-video"`, sem `aria-pressed`.
+  - Ícones SVG inline em `currentColor`, com `aria-hidden`.
+  - Estilo: hover branco com ícone `--verde-900`, foco com anel amarelo e `scale(.94)` no ativo (só sem movimento reduzido).
+  - A preferência fica em `localStorage['fk-hero-video']` (`pausado`/`tocando`), com `try/catch`. Com `pausado`, o vídeo é criado parado no 1º quadro (`preload="metadata"`, sem autoplay) e o botão mostra "Reproduzir".
+- **Overlay:** agora é o `::after` de `.hero-midia`. No desktop, `background: var(--overlay-hero-lateral), var(--overlay-hero)`, com o novo token `--overlay-hero-lateral`. No mobile, `--overlay-hero-mobile`. Os valores reforçados da iteração 1 foram mantidos; são iguais ou mais fortes que os do design.
+- **Texto:** lead em branco 100% (antes 94%). `text-shadow` no H1 e no lead a partir de 900px.
+- **`object-position`:** tokens `--hero-midia-pos` (60% 45%), usado no poster e no vídeo, e `--hero-midia-pos-mobile` (50% 35%).
+- **Camadas:** mídia (0), overlay (1), confete (2) e conteúdo (3). O arco, o placar, a bola e os confetes não mudaram.
+- **Créditos no rodapé:** incluem o vídeo (Kampus Production, Pexels), como pede o checklist do `design.md` §8.
+- **Verificação no Edge sem janela (playwright-core):**
+  - 1366, 1920 e 900px: o vídeo toca e o botão funciona, inclusive a pausa fora da tela.
+  - Movimento reduzido: o vídeo não é criado. Ao mudar para `reduce` em tempo real, ele é removido.
+  - `saveData`: o vídeo não é criado.
+  - 360px: só a foto, sem vídeo e sem rolagem horizontal.
+  - Sem erros no console. HTML balanceado e sem `!important`.
+
+### Divergências do design (com motivo)
+1. **Posição do botão em ≥ 1200px:** o design pede a fórmula `max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)))`. Aqui o botão está posicionado em relação a `.hero-conteudo`, um container de largura total cuja base coincide com a do hero. Por isso, `right: var(--gutter)` já alinha o botão à borda do conteúdo em qualquer largura; a fórmula somaria o recuo duas vezes. O `bottom: calc(var(--arco) + 96px)` vale como na spec. Conferido: o botão não encosta no placar em 900, 1366 e 1920px.
+2. **Texto dos créditos:** mudou de "Fotos: Unsplash. Ver créditos" para "Fotos: Unsplash · Vídeo: Pexels. Ver créditos", com o vídeo também no texto expandido. Como agora o site usa material do Pexels, o redator deve confirmar o texto final.
+
+### Pendências
+- Inspetor: conferir o contraste do texto sobre o poster e sobre os quadros de 0, 8 e 15 s do vídeo, com o texto oculto. Conferir também se o MP4 fragmentado, sem `faststart`, toca no Firefox e no Safari; se não tocar, o fallback é o poster.
+- Substituir o vídeo por material próprio com autorização antes de publicar. Se houver ffmpeg, refazer o MP4 com `+faststart` (`imagens.md` §2.3).
+- Redator: confirmar o texto dos créditos (divergência 2).
+
 ## Iteração 1 · 2026-11-17 (implementação inicial)
 
 ### Feito
