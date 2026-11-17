@@ -1,112 +1,110 @@
-# Avaliação técnica: Futebol Kids (ciclo 1)
+# Avaliação técnica: Futebol Kids (ciclo 2)
 
 - **Data:** 2026-11-17
-- **Arquivos avaliados:** `site/index.html` (934 linhas, 65,2 KB), `site/styles.css` (1025 linhas, 46,9 KB), `site/script.js` (226 linhas, 9,2 KB)
-- **Evidências usadas:** `inspecao-visual.md` e `capturas/` (Edge 157 headless + Playwright + Lighthouse), `design.md`, além de leitura do código e scripts locais (balanceamento de tags, IDs, caminhos e cálculo de contraste)
+- **Escopo do ciclo:** vídeo de fundo no hero desktop (pedido do usuário), contra `design.md` §3.3, `site/CHANGELOG.md` ("Iteração 2") e `inspecao-visual.md` (ciclo 2).
+- **Arquivos avaliados:** `site/index.html` (936 linhas, 65,3 KB), `site/styles.css` (1063 linhas, 49,0 KB), `site/script.js` (395 linhas, 15,7 KB), `site/assets/videos/hero.mp4` (3,26 MB) e `hero-poster.jpg` (1600x900, 158 KB).
+- **Evidências usadas:** `inspecao-visual.md` e `capturas/` do ciclo 2 (Edge 157 e Firefox 159 headless, Playwright e Lighthouse). Também os JSON brutos do Lighthouse que o inspetor gravou na pasta temporária (`lh-mobile.json`, `lh-mobile2.json`, `lh-mobile3.json`), o `git diff` contra o ciclo 1 e a leitura do código, com scripts locais para checar balanceamento de tags, IDs e caminhos.
 
 ## Veredito
 
 **APROVADO COM RESSALVAS**
 
-Não há nenhum bloqueante. A página não quebra, não tem erros de console nem recursos com falha, e as combinações de cor de texto passam no WCAG AA. Ficam 3 achados importantes (sobreposição do mapa, `og:image` com caminho relativo e LCP de 3,3 s) e 7 menores.
+Nenhum bloqueante. O vídeo atende a §3.3 e às regras de acessibilidade:
+- **WCAG 2.2.2:** há botão de pausar que funciona com teclado, guarda a preferência e mantém a pausa feita pelo usuário.
+- **Movimento reduzido:** o vídeo não é criado e, se a preferência mudar durante a visita, ele é removido.
+- **Celular:** o MP4 não é baixado (0 requisições em 360, 768 e 899 px).
+- **Vídeo fora da árvore de acessibilidade:** tem `aria-hidden` e `tabindex="-1"`, sem `controls`.
+- **Contraste:** passa no AA em todos os quadros medidos.
+
+Não houve regressão funcional. O achado T8 do ciclo 1 (contraste do H1) foi resolvido. Os achados importantes T1, T2 e T3 continuam do ciclo 1, porque estas seções não mudaram. O T3 foi atualizado com a investigação do LCP no celular.
+
+Contagem: **0 bloqueantes, 3 importantes, 9 menores.**
+
+## Investigação: queda do Lighthouse no celular (91 → 82/87/89, LCP 3,3 → 3,5 s)
+
+Conclusão: **não é preload duplo nem download de vídeo.** A queda da nota vem principalmente da variação do TBT. O LCP é limitado pela banda simulada, e a parte que cabe ao ciclo 2 é pequena (cerca de 50 ms de bytes a mais).
+
+1. **Não há download duplicado.** No `network-requests` das 3 rodadas, `hero-mobile.webp` aparece **uma única vez** (123 KB, prioridade High). `hero-poster.jpg` e `hero.mp4` **não aparecem**. O preload com `media="(min-width: 900px)"` é ignorado no celular, como deve ser. O Firefox registra esse descarte como aviso ("Preload … ignored due to non-matching media").
+2. **A descoberta do LCP melhorou.** `lcp-discovery-insight` agora **passa** (fetchpriority aplicado, recurso no HTML inicial e sem lazy). No ciclo 1, essa auditoria falhava.
+3. **A nota caiu sobretudo por causa do TBT.** O TBT variou entre 330, 170 e 0 ms nas 3 rodadas, com `benchmarkIndex` entre 1058 e 1302, o que indica máquina sob carga. O LCP ficou estável (3,55 / 3,55 / 3,53 s). A rodada com TBT 0 deu 89. A diferença para o 91 do ciclo 1 é só o LCP de +0,2 s.
+4. **De onde vem o LCP de 3,5 s.** O Lighthouse simula a rede (`throttlingMethod: simulate`, 1,47 Mbps ≈ 184 KB/s, latência de 562 ms por requisição) e mostra `render-blocking` com economia **0 ms no LCP**. Ou seja, o LCP depende de bytes e de idas e voltas, não da CPU. Antes do LCP passam cerca de 330 KB sem compressão: HTML 64 KB, `styles.css` 48 KB, `script.js` 16 KB, `hero-mobile.webp` 123 KB, 2 woff2 com 70 KB e logo e confete com 10 KB. Somam-se 3 idas e voltas em sequência (HTML → CSS das Google Fonts → woff2).
+5. **O que o ciclo 2 acrescentou ao caminho crítico:** `script.js` passou de 9,2 para 15,7 KB (+6,5 KB) e `styles.css` cresceu 2 KB. São cerca de 8,5 KB, o que dá ~50 ms na banda simulada. O restante da diferença (~150 ms) se explica pela troca de servidor de teste (`http-server` na porta 8083 no ciclo 1, servidor Node na 8090 agora) e pela rodada única do ciclo 1. A comparação direta não é conclusiva.
+6. **Como baixar de 2,5 s:** veja T3 (compressão no servidor, foto do hero no tamanho certo e Google Fonts sem bloquear a renderização).
 
 ## Tabela de achados
 
 | ID | Área | Arquivo:linha | Problema | Severidade | Correção sugerida |
 |---|---|---|---|---|---|
-| T1 | Acessibilidade / layout | `styles.css:829`, `styles.css:856-857` | O cartão de contato fica por cima do mapa. No celular, a margem é `margin: -32px 16px 0`. No desktop, o mapa ocupa as colunas 1-8 e o cartão começa na coluna 8 (`grid-column: 8 / span 5`), ou seja, as duas áreas se cruzam. O cartão cobre a atribuição do Google ("Termos", "Informar erro") e, no celular, também o seletor de camada. Isso deixa controles do mapa inacessíveis, e a atribuição do Google Maps incorporado não deve ficar oculta. Evidência: V1, `capturas/celular-mapa.png`, `capturas/desktop-mapa.png` (iframe de x=120 a 920 e cartão a partir de x≈820). | importante | Tirar a sobreposição. No desktop, use mapa em `1 / span 7` e cartão em `8 / span 5` (ou `9 / span 4`). No celular, troque a margem negativa por `margin-top: 16px`. Se a sobreposição for mantida por estética, ela deve ficar fora dos 40 px de baixo e da faixa direita do iframe. |
-| T2 | SEO | `index.html:15`, `index.html:43` | `og:image` e o `image` do JSON-LD usam o caminho relativo `assets/fotos/og-image.jpg`. O Open Graph exige URL absoluta, e Facebook, WhatsApp e LinkedIn não mostram a prévia com caminho relativo. | importante | Trocar pela URL absoluta (`https://<dominio>/assets/fotos/og-image.jpg`) quando o domínio existir. Até lá, deixar um comentário `<!-- TROCAR: URL absoluta -->` e registrar como pendência de publicação. |
-| T3 | Desempenho | `index.html:25`, `index.html:30`, `styles.css:961-965` | Lighthouse no celular: LCP de **3,3 s**, acima da meta "bom" de 2,5 s. Há `render-blocking` estimado em 720 ms (CSS do Google Fonts e `styles.css`), e a auditoria `lcp-discovery-insight` falhou. Além disso, o título e o texto do hero começam com `opacity: 0` (`@keyframes entrada`), com atraso de 80 a 240 ms mais 600 ms de duração, o que adia a pintura do conteúdo principal. | importante | (a) Auto-hospedar Nunito e Baloo 2 em woff2 com `<link rel="preload" as="font" crossorigin>` e `font-display: swap`, ou carregar o CSS do Google Fonts sem bloquear (`media="print" onload="this.media='all'"` mais `<noscript>`). (b) No hero, animar só o `transform`, sem `opacity: 0`, ou tirar a animação do `h1`. (c) Rodar o Lighthouse de novo e conferir qual é o elemento LCP. |
-| T4 | Desempenho | `index.html:25` | A URL das fontes pede Baloo 2 no peso 600, mas a página não usa esse peso (o inspetor conferiu com `document.fonts`). É um arquivo de fonte baixado à toa. | menor | Trocar por `family=Baloo+2:wght@700;800`. |
-| T5 | Responsividade | `styles.css:841` | Com `overflow-wrap: anywhere` nos links de contato, o e-mail quebra no meio da palavra ("contato@futebolkids.exem / plo") e os telefones quebram no hífen ("(00) 90000- / 0000") a 360 px. Evidência: V8, `capturas/celular-mapa.png`. | menor | Usar `overflow-wrap: break-word`. Nos números, envolver o texto em `<span style="white-space:nowrap">`. No e-mail, inserir `<wbr>` antes do `@`. |
-| T6 | SEO | `index.html:3-32` | Faltam `<link rel="canonical">` e `og:url`. | menor | Incluir os dois com a URL absoluta final quando o domínio for definido. |
-| T7 | Desempenho | `index.html:416-417` | Lighthouse aponta `image-delivery` (39 KiB), CSS não usado (14 KiB) e CSS/JS sem minificação (8 + 2 KiB). A foto do bento a partir de 900 px é `campo-sintetico.webp` em 1200x1200 (125 KB), mas ela aparece numa área de mais ou menos 600 px de largura. | menor | Gerar uma versão de cerca de 900 px (ou um `srcset` com `sizes="(min-width:900px) 50vw"`). Minificar CSS e JS na publicação (opcional, sem build obrigatório). |
-| T8 | Acessibilidade (meta do design) | `styles.css:38-40` | No desktop, o título branco do hero tem contraste mínimo medido de **4,47:1** sobre a camisa branca da foto (V5). Passa no AA para texto grande (3:1, título com pelo menos 36 px e peso 800), mas fica abaixo da meta de 6,0:1 que o `design.md` §2.2 declara. | menor | Reforçar a parada de 40 a 72% do `linear-gradient(0deg, ...)` de `--overlay-hero`, por exemplo de .45 para .60, ou mudar o `object-position` no desktop. |
-| T9 | Legibilidade | `styles.css:296-297`, `styles.css:874-876`, `styles.css:868-873` | Elementos decorativos ficam sob as letras do texto. Os confetes passam sob o botão "Agendar aula grátis" do hero (V4) e sob o título do CTA final (V3). A linha e o círculo do meio-campo atravessam o texto de apoio do CTA. Em pontos isolados, isso reduz o contraste local. Evidência: `capturas/desktop-dobra.png`, `capturas/celular-cta-final.png`. | menor | Mover os confetes para fora da caixa do texto (por exemplo, `top` maior ou `opacity: .3` no CTA) ou reduzir a opacidade do `::before` do CTA de .1 para .06. |
-| T10 | Publicação | `index.html:34-58`, `index.html:808-839`, `index.html:548`, `567`, `586`, `897-899` | Endereço, telefone, WhatsApp, e-mail, Instagram, CREF e coordenadas são fictícios. O usuário autorizou isso para a demonstração (`dados-negocio.md`), e o aviso aparece no rodapé e no cartão. Não bloqueia este ciclo, mas impede a publicação real. | menor (pendência de publicação) | Trocar pelos dados reais antes de publicar e tirar as etiquetas "demonstração" e "Exemplo". |
+| T1 | Acessibilidade / layout | `styles.css:865`, `styles.css:893` | **Persiste (ciclo 1).** O cartão de contato fica sobre o mapa: margem `-32px` no celular e `grid-column: 8 / span 5` no desktop, que cruza com o mapa. O cartão cobre a atribuição e controles do Google Maps. Evidência: V1, `capturas/celular-mapa.png`, `capturas/desktop-mapa.png`. | importante | No desktop, mapa em `1 / span 7` e cartão em `8 / span 5`. No celular, trocar a margem negativa por `margin-top: 16px`. |
+| T2 | SEO | `index.html:15`, `index.html:43` | **Persiste.** `og:image` e o `image` do JSON-LD usam caminho relativo (`assets/fotos/og-image.jpg`). Sem URL absoluta, as redes sociais não mostram a prévia. | importante | Usar a URL absoluta quando houver domínio, e registrar isso como pendência de publicação. |
+| T3 | Desempenho | `index.html:25`, `styles.css:997-1001`, servidor | **Persiste, com dados atualizados.** No celular, o LCP é de **3,5 s** nas 3 rodadas, acima da meta de 2,5 s. O elemento LCP é a `<img>` do hero (`hero-mobile.webp`). Causas medidas: (a) CSS das Google Fonts bloqueando a renderização, com 1,03 s estimados de desperdício no FCP; (b) cerca de 330 KB sem compressão no caminho crítico (ver investigação); (c) `hero-mobile.webp` em 1080x1350 (123 KB) para uma tela de 412 px (`image-delivery` 39 KiB); (d) título e lead do hero começam com `opacity: 0` (`@keyframes entrada`). O ciclo 2 **não** causou a queda, porque o celular não baixa o vídeo nem o poster. | importante | (1) Na publicação, servir HTML/CSS/JS com gzip ou brotli. Isso tira cerca de 100 KB do caminho crítico, o maior ganho. (2) Criar `hero-mobile-720.webp` (~50–60 KB) e usar `srcset` com `sizes="100vw"` no `<source>` e no preload (`imagesrcset`). (3) Auto-hospedar as fontes com `preload` ou carregar o CSS do Google Fonts sem bloquear. (4) Animar só o `transform` no H1. |
+| T4 | Desempenho | `index.html:25` | **Persiste.** A URL das fontes pede Baloo 2 600, peso que a página não usa. | menor | `family=Baloo+2:wght@700;800`. |
+| T5 | Responsividade | `styles.css:877` | **Persiste.** Com `overflow-wrap: anywhere`, o e-mail e os telefones quebram no meio a 360 px (V8). | menor | `overflow-wrap: break-word`, mais `white-space: nowrap` nos números e `<wbr>` antes do `@`. |
+| T6 | SEO | `index.html:3-32` | **Persiste.** Faltam `<link rel="canonical">` e `og:url`. | menor | Incluir os dois com a URL final. |
+| T7 | Desempenho | `index.html:418-419` | **Persiste.** A partir de 900 px, a foto do bento é `campo-sintetico.webp` em 1200x1200, para uma área de ~600 px. No desktop, `image-delivery` soma 274 KiB. | menor | Versão de ~900 px ou `srcset` com `sizes`. |
+| T9 | Legibilidade | `styles.css:385`, `styles.css:416` | **Persiste.** O confete do placar (`.placar-confete`) passa sobre o botão "Agendar aula grátis" no desktop (V4: `capturas/desktop-dobra.png`, `capturas/desktop900-dobra.png`). Os confetes do CTA final também continuam (V3, não medido de novo). | menor | Afastar `.placar-confete` do bloco de CTAs (`top` e `left`) ou reduzir a área dele. |
+| T10 | Publicação | `index.html:34-58` e cartão e rodapé | **Persiste.** Os dados de contato são fictícios (autorizados para a demonstração). | menor (pendência de publicação) | Trocar pelos dados reais antes de publicar. |
+| T11 | Acessibilidade (foco) | `styles.css:330`, `script.js:290-293` | **Novo.** Se o botão de pausar estiver focado e a janela ficar abaixo de 900 px (redimensionando ou com zoom acima de ~160% numa tela de 1440), o CSS aplica `display: none` ao botão e o foco cai num elemento oculto. Isso não acontece quando o botão é removido, porque `remove()` devolve o foco ao CTA (`script.js:182-185`). O vídeo pausa nesse caso, então a WCAG 2.2.2 não é afetada. | menor | No ouvinte de `mqLargura`, quando `!mqLargura.matches && document.activeElement === botao`, mover o foco para o 1º CTA, como já faz `remove()`. |
+| T12 | Desempenho | `index.html:27`, `index.html:148` | **Novo.** O poster do desktop (o LCP) é JPG de 158 KB, sem WebP ou AVIF. O LCP no desktop está bom (1,1 s, nota 98), por isso a severidade é menor. | menor | Gerar `hero-poster.webp` (~90 KB) e usar `<source type="image/webp">` para ≥ 900 px, com preload `type="image/webp"`. O atributo `poster` do vídeo pode continuar em JPG. |
+| T13 | Publicação / mídia | `site/assets/videos/hero.mp4` | **Novo.** O MP4 é fragmentado e sem `faststart` (`CHANGELOG.md`, Pendências). Ele toca no Edge e no Firefox, mas o Safari não foi testado (indisponível no Windows). O vídeo é ilustrativo (Pexels) e está marcado "substituir antes de publicar". | menor (pendência de publicação) | Recodificar com `-movflags +faststart` (e de preferência ≤ 2 MB) e testar no Safari/iOS antes de publicar. Se não tocar, o poster já é o fallback. |
 
-Contagem: **0 bloqueantes, 3 importantes, 7 menores.**
+O T8 do ciclo 1 (contraste do H1 de 4,47:1) foi **resolvido**: o pior caso agora fica entre 6,07 e 7,07:1 (poster e quadros de 0, 8 e 15 s).
 
-Os achados V2 (buracos na grade bento), V6 (passo 3 desalinhado) e V7 (lista esticada no plano 1x), da inspeção visual, são de composição visual. Eles não afetam funcionamento, acessibilidade nem SEO, então ficam para o avaliador de resultado.
+Os achados V2 (buracos na grade bento), V6 e V7 da inspeção visual são de composição e ficam para o avaliador de resultado.
+
+## Verificações do ciclo 2 (vídeo de fundo)
+
+| Requisito (`design.md` §3.3 / WCAG) | Evidência | Resultado |
+|---|---|---|
+| Imagem base no HTML como LCP e fallback: `<picture>` com fonte mobile < 900 px, poster ≥ 900 px, `fetchpriority="high"`, sem lazy, `alt=""`, `width`/`height` | `index.html:143-149`. LCP no desktop = poster (584 ms no navegador, 1,1 s no Lighthouse). LCP no celular = `hero-mobile.webp` | passa |
+| Um preload por faixa, sem preload do MP4 | `index.html:27-28`. O celular não baixa o poster (rede do Lighthouse) | passa |
+| Vídeo criado pelo JS depois do `load`/`requestIdleCallback` | `script.js:267-276`. 1ª requisição a 1.063 ms, depois do `load` (983 ms) | passa |
+| Condições de criação: ≥ 900 px, sem movimento reduzido, sem `prefers-reduced-data`, sem `saveData`, sem 2g | `script.js:151-159`. Inspetor: 0 requisições ao MP4 em 360, 768 e 899 px e com movimento reduzido | passa |
+| Atributos: `muted autoplay loop playsinline disablepictureinpicture`, `poster`, `aria-hidden="true"`, `tabindex="-1"`, sem `controls` | `script.js:210-233`. Atributos confirmados pelo inspetor no DOM | passa |
+| Falha de reprodução: remove o vídeo e o botão e mantém o poster | `script.js:196-199`, `232`. Com o MP4 bloqueado, não sobra botão | passa |
+| **WCAG 2.2.2 (pausar):** botão nativo, 48x48, clique, Enter e Espaço, `aria-label` que alterna, `aria-controls`, sem `aria-pressed`, preferência guardada, pausa do usuário com prioridade | `script.js:236-255`, `styles.css:353-371`. Tabela 3 do inspetor (todas as ações conferidas). Recarregar com "pausado" cria o vídeo parado | passa |
+| Ordem de foco: CTA → CTA → botão → placar. Foco visível | `script.js:255`. Inspetor: anel amarelo de 3px (`desktop-foco-botao-video.png`) | passa |
+| Contraste do botão: borda e ícone ≥ 3:1 (meta de 4,5:1). Hover branco/`--verde-900` | Medido: 10,26–13,61:1. Hover: 9,1:1 (calculado no design) | passa |
+| Botão fora do placar em 900 e 1440 px | Folga de 78 px e 110 px (inspetor) | passa |
+| **Movimento reduzido:** o vídeo não é criado e é removido se a preferência mudar durante a visita. Fade e `scale` só sem redução | `script.js:284-287`, `styles.css:1018-1019` (dentro de `no-preference`) e `desktop-movimento-reduzido.png` | passa |
+| Economia: pausa fora da tela e com a aba oculta, e retoma só se o usuário não pausou | `script.js:160-162`, `257-263`, `294`. Inspetor: pausa em y=2500 e retoma ao voltar | passa |
+| Redimensionamento ao vivo: abaixo de 900 px esconde e pausa, e ao voltar retoma | `styles.css:296-301`, `344`, `script.js:290-293`. Sem rolagem horizontal em 800 px | passa (ver T11 sobre o foco) |
+| **Contraste do texto sobre o vídeo** (texto oculto, poster e quadros de 0, 8 e 15 s) | H1 ≥ 6,07:1 (exigido 3:1). Lead ≥ 10,07:1 (exigido 4,5:1). "Ver turmas" ≥ 12,57:1. Selo 9,6:1 sobre fundo próprio | passa |
+| Overlay desktop com 2 camadas e lead branco 100% | `styles.css:37-39`, `342`, `325-327` | passa |
+| Compatibilidade: MP4 fragmentado | Edge e Firefox 159 tocam e repetem. Safari não testado (T13) | passa (com ressalva) |
+| Crédito do vídeo no rodapé | `index.html:925-926` | passa |
 
 ## Métricas
 
-### Medidas pelo inspetor visual (Edge 157 headless)
+### Medidas pelo inspetor visual (ciclo 2)
 | Métrica | Celular 360 | Tablet 768 | Desktop 1440 |
 |---|---|---|---|
-| Rolagem horizontal | não | não | não |
-| Imagens quebradas | 0 | 0 | 0 |
-| Erros/avisos de console | 0 | 0 | 0 |
-| Requisições com falha (≥ 400) | 0 | 0 | 0 |
-| Alvos de toque interativos < 44 px | 0 | — | — |
-| Placeholders visíveis | 0 | 0 | 0 |
+| Rolagem horizontal | não | não | não (899 e 900 também não) |
+| Imagens e mídia quebradas | 0 | 0 | 0 (vídeo com `readyState` 4) |
+| Erros de console | 0 | 0 | 0 |
+| Requisições com status ≥ 400 | 0 | 0 | 0 (os `ERR_ABORTED` do MP4 são cancelamentos de `Range` do player) |
+| Requisições ao `hero.mp4` | 0 | 0 | 7 no Edge, 1 no Firefox |
+| Alvos de toque < 44 px | 0 | 0 | 0 |
 
-**Lighthouse (celular, servidor local sem compressão):** Desempenho 91 · Acessibilidade 100 · Boas práticas 100 · SEO 100. FCP 1,9 s · **LCP 3,3 s** · CLS 0 · TBT 0 ms.
+**Lighthouse** (Edge headless, servidor local sem compressão):
+
+| Perfil | Desempenho | Acessibilidade | Boas práticas | SEO | FCP | LCP | TBT | CLS | Peso |
+|---|---|---|---|---|---|---|---|---|---|
+| Celular (3 rodadas) | 82 / 87 / 89 | 100 | 100 | 100 | 1,9 s | 3,55 / 3,55 / 3,53 s | 326 / 174 / 0 ms | 0 | 439 KiB |
+| Desktop | 98 | 100 | 100 | 100 | 0,7 s | 1,1 s | 0 ms | 0 | 3.853 KiB (com o MP4, carregado depois do `load`) |
+| Celular, ciclo 1 (referência) | 91 | 100 | 100 | 100 | 1,9 s | 3,3 s | 0 ms | 0 | — |
+
+**Detalhamento do LCP no celular** (fases observadas, rodada 2): TTFB 12 ms, atraso de carga 42 ms, duração da carga 33 ms e atraso de renderização 868 ms. A thread principal levou 2,3–3,2 s, a maior parte em `styleLayout` (1,2–1,6 s, atribuído ao `index.html`). O `script.js` levou ~54 ms.
 
 ### Medidas nesta avaliação
-- **Peso dos arquivos-fonte:** 121,3 KB (HTML 65,2, que inclui um sprite SVG inline de cerca de 30 KB; CSS 46,9; JS 9,2).
-- **Peso estimado do primeiro carregamento no celular:** cerca de 250 KB mais as fontes (HTML, CSS, JS, `hero-mobile.webp` de 123 KB, `logo.svg` e `confete.svg`). As demais imagens têm `loading="lazy"`.
-- **Requisições externas:** Google Fonts (1 CSS + 6 woff2: Baloo 2 700/800/600 e Nunito 400/600/700/800 em arquivo variável/subset) e o iframe do Google Maps (lazy). Não há scripts de terceiros.
-- **Balanceamento de tags:** nenhuma tag sem fechamento nem fechada fora de ordem (parser `html.parser`). Nenhum ID duplicado. 501 `{` e 501 `}` no CSS.
-- **Caminhos:** todos os `src`, `srcset`, `href` locais e os `url()` do CSS existem em `site/assets/`. As âncoras internas (`#beneficios`, `#turmas`, `#turma-*`, `#metodologia`, `#horarios`, `#planos`, `#faq`, `#contato`, `#inicio`, `#topo`, `#conteudo`) apontam para IDs existentes.
-- **Dimensões das imagens:** o `width`/`height` do HTML bate com a dimensão real de todos os JPGs (verificado no cabeçalho SOF). A única diferença é `campo-sintetico.jpg` (1200x1200), usado por direção de arte a partir de 900 px em contêiner com posição absoluta. CLS medido = 0.
-
-### Contraste calculado (luminância relativa WCAG)
-| Combinação | Razão | Exigido | Resultado |
-|---|---|---|---|
-| Branco / `--verde-700` (botão primário) | 5,02 | 4,5 | passa |
-| `--verde-800` / `--creme` (botão secundário, títulos) | 6,90 | 4,5 | passa |
-| `--verde-800` / `--azul-100` (títulos e botão nas seções azuis) | 6,21 | 4,5 | passa |
-| `--verde-700` / `--creme` (eyebrow) | 4,85 | 4,5 | passa |
-| `--tinta` / `--creme` (corpo) | 14,20 | 4,5 | passa |
-| `--tinta-suave` / `--creme` · `/--azul-100` · `/branco` | 7,31 · 6,59 · 7,56 | 4,5 | passa |
-| `--azul-700` / branco · `/--creme` (links) | 6,70 · 6,48 | 4,5 | passa |
-| `--tinta` / cores das turmas (amarelo-400, azul-300, verde-300, coral-300) | 9,59 · 8,80 · 10,45 · 8,70 | 4,5 | passa |
-| Branco / `--coral-700` (pílula Sub-x) | 5,18 | 4,5 | passa |
-| `--amarelo-400` / `--verde-900` (eyebrow metodologia, foco escuro) | 5,95 | 4,5 / 3 | passa |
-| `--amarelo-400` / `--verde-950` (títulos do rodapé) | 9,66 | 4,5 | passa |
-| Branco 88% / `--verde-900` (microtexto do CTA) | 7,45 | 4,5 | passa |
-| Branco 85% / `--verde-950` (créditos) | 11,05 | 4,5 | passa |
-| Branco / `--verde-800` (botão flutuante, link de pular) | 7,13 | 4,5 | passa |
-| Foco `--azul-700` / `--azul-100` (contorno, não texto) | 5,84 | 3 | passa |
-| `--verde-400` / `--verde-900` (ícones e bordas dos selos) | 5,23 | 3 | passa |
-| `--borda-campo` / `--creme` (borda dos pontos do carrossel) | 3,57 | 3 | passa |
-| Hero: título / foto (desktop, pior pixel) | 4,47 (medido) | 3 (grande) | passa (abaixo da meta do design, T8) |
-
-Os tokens de cor do `styles.css` batem com os do `design.md`. A única cor fora dos tokens é `#EAD98A`, usada só na borda decorativa do bloco de segurança.
+- **Peso dos arquivos-fonte:** 130,1 KB (HTML 65,3, CSS 49,0, JS 15,7), contra 121,3 KB no ciclo 1 (+8,8 KB, quase tudo do código do vídeo).
+- **Balanceamento de tags:** nenhuma tag aberta nem fechada fora de ordem (`html.parser`), nenhum ID duplicado, um único `<h1>`. Nenhum `!important` no CSS.
+- **Caminhos:** todos os `src`, `srcset` e `href` locais existem, incluindo `assets/videos/hero-poster.jpg` e `hero.mp4`. O `hero-poster.jpg` tem 1600x900 reais (lido no SOF), igual ao `width`/`height` do HTML.
 
 ## Itens verificados sem problema
-
-**Estrutura e HTML**
-- `<!doctype html>`, `lang="pt-BR"`, `charset`, `viewport`, `<title>` com 62 caracteres e `<meta description>` com 137 caracteres, os dois únicos.
-- Um único `<h1>` (`index.html:153`). A hierarquia h1 → h2 → h3 não tem saltos, e o rodapé usa h2.
-- Landmarks: `header`, `nav aria-label="Principal"`, `main#conteudo`, `footer`. Cada seção tem `aria-labelledby`.
-- O JSON-LD `SportsActivityLocation` está bem formado.
-
-**Acessibilidade**
-- Link "Pular para o conteúdo" funciona, com `main tabindex="-1"`.
-- Imagens de conteúdo têm `alt` descritivo. As decorativas têm `alt=""` e `aria-hidden`. Os SVGs de ícone têm `aria-hidden` e `focusable="false"`. O logo do cabeçalho usa `aria-label` no link.
-- Os links que abrem em nova aba avisam com texto `sr-only` ou `aria-label` e usam `rel="noopener"`.
-- Foco visível global (`styles.css:132-133`) com variante para o tema escuro e para o botão amarelo. O inspetor confirmou que nenhum elemento focado fica sob o cabeçalho fixo nem sob o botão flutuante (53 elementos percorridos).
-- Menu mobile: `aria-expanded`, `aria-controls` e rótulo dinâmico; o foco fica preso no painel, Esc fecha e o foco volta ao botão (confirmado pelo inspetor).
-- O carrossel funciona com scroll-snap, setas do teclado, `aria-roledescription` e botões de 44 a 48 px. Os controles ficam ocultos sem JS.
-- O FAQ usa `<details>`/`<summary>` nativos. A tabela de horários tem `caption`, `scope` e `role`s explícitos para manter a semântica quando vira cartões no celular.
-- Os preços têm leitura alternativa (`sr-only` "149 reais por mês"), e as estrelas têm `role="img"` com `aria-label`.
-- O iframe do mapa tem `title`.
-- `prefers-reduced-motion` é respeitado. Todas as animações, a rolagem suave e o *reveal* ficam dentro de `no-preference` (`styles.css:958-1012`), há bloco `reduce` (`styles.css:1014-1016`) e o JS usa `behavior: 'auto'` quando há redução (`script.js:103`, `154`). Sem JS, o conteúdo com `.reveal` não fica oculto, porque depende de `html.js`.
-- Alvos de toque de pelo menos 44 px: botões com 48/44/60 px, links do menu com 56 px, `.link-seta`, links do rodapé e do contato com 44 px, e chips com 64 px.
-
-**Responsividade**
-- Mobile first, com breakpoints em 600, 900, 1100 e 1200 px, mais ajustes finos em 339, 359 e 419 px.
-- Tipografia e espaçamentos com `clamp()`. `img, svg, iframe { max-width: 100% }`. Não há larguras fixas grandes. O inspetor não mediu rolagem horizontal em nenhuma largura.
-- O menu hambúrguer troca exatamente entre 1099 e 1100 px. Sem JS, o menu aparece em linha, com quebra.
-
-**Desempenho**
-- Script com `defer`. O único script inline (classe `js`) tem uma linha.
-- `preconnect` para fonts.googleapis/gstatic e `display=swap` nas fontes.
-- Imagem do hero com `fetchpriority="high"` e `preload` por mídia. Fotos em WebP com JPG de reserva, `loading="lazy"` abaixo da dobra, iframe lazy.
-- Todas as imagens têm `width`/`height`. CLS = 0.
-
-**SEO**
-- Título e descrição únicos. `og:title`, `og:description`, `og:type`, `og:locale`, `og:site_name`, `og:image:width/height/alt` e `twitter:card` presentes.
-- Estrutura semântica correta, e o Lighthouse dá 100 em SEO.
+- Estrutura: `lang="pt-BR"`, `viewport`, `<title>` e `<meta description>` únicos, `og:title`/`og:description`/`og:image:*` e `twitter:card`, JSON-LD bem formado. A hierarquia de títulos não mudou.
+- O `<source>` mobile tem `width`/`height` próprios (1080x1350), e por isso o CLS fica em 0 nas duas faixas.
+- Camadas do hero: mídia (0), overlay `::after` (1, `pointer-events: none`), confete (2) e conteúdo (3). O placar e o menu não mudaram (menu mobile conferido pelo inspetor).
+- Sem JS, a página fica completa, só com a imagem e sem botão órfão.
+- O script principal tem `defer`. O código do vídeo não roda no celular além das checagens de `matchMedia`.
+- As fontes usam `display=swap` e `preconnect`. Acessibilidade 100 e SEO 100 no Lighthouse nos dois perfis.
