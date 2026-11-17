@@ -2,6 +2,7 @@
 
 > Entradas: `briefing.md`, `dados-negocio.md`, `pesquisa.md`. Os dados de contato vêm **só** de `dados-negocio.md` (todos FICTÍCIOS).
 > Este documento é a especificação para o `redator`, o `gerador-imagens` e o `desenvolvedor-frontend`. Não contém HTML de produção.
+> **Revisão 2026-11-17 (pedido do usuário):** o hero passou de "foto em tela cheia" para **vídeo de fundo** no desktop (≥ 900px), com a foto vertical mantida no celular. Mudaram §1 (gesto visual), §2.2 (contrastes do hero), §2.8 (token `--overlay-hero-lateral`), §3.0, §3.1, §3.3, §5, §6, §7.2 e §8. O restante do design não mudou.
 
 ---
 
@@ -10,13 +11,13 @@
 **"Dia de jogo no gramado": verde-gramado vivo, sol amarelo e céu azul, linhas de campo desenhadas e tipografia redonda e encorpada. Infantil sem ser bobo, confiável para os pais.**
 
 Ligação com a pesquisa:
-- **Diversão primeiro, segurança logo depois** (Project Play: diversão 48%, amigos 47%; AAP e SBP: sem pressão). A foto do hero mostra crianças brincando com bola no campo, e o título fala de diversão. Segurança e qualificação aparecem já no bloco de turmas e nos diferenciais.
+- **Diversão primeiro, segurança logo depois** (Project Play: diversão 48%, amigos 47%; AAP e SBP: sem pressão). O hero mostra criança e bola em movimento no campo, e o título fala de diversão. Segurança e qualificação aparecem já no bloco de turmas e nos diferenciais.
 - **Turmas com nome + idade + "Sub-X"** (os nomes variam entre federações, RBFF). As turmas são o centro da página: o hero já pergunta a idade da criança e leva direto ao card certo.
 - **Metodologia jogo, habilidade, jogo** (FIFA Play-Practice-Play) vira uma linha do tempo em 3 passos sobre o campo verde-escuro.
-- **Imagem de crianças:** fotos de banco com crianças **de costas, de longe, desfocadas ou só pés e bola**. Nunca dizer que são alunas e nunca usar legenda com nome de criança.
+- **Imagem de crianças:** fotos e vídeo de banco com crianças **de costas, de longe, desfocadas ou só pés e bola**. Nunca dizer que são alunas e nunca usar legenda com nome de criança.
 - **LGPD/ECA:** **nenhum formulário** coleta dados da criança. Toda conversão vai para o WhatsApp do responsável.
 
-**Gesto visual forte (um só):** a foto do hero em tela cheia, com a borda de baixo em **arco** (lembra o círculo central) e um **"placar" branco** com o seletor de idade sobreposto a essa borda. O resto tem contenção: linhas de campo finas como textura, confete só em 2 lugares (hero e CTA final) e cores fortes usadas em superfícies, nunca em texto pequeno.
+**Gesto visual forte (um só):** o hero em tela cheia, com **vídeo de fundo** no desktop (foto no celular), a borda de baixo em **arco** (lembra o círculo central) e um **"placar" branco** com o seletor de idade sobreposto a essa borda. O resto tem contenção: linhas de campo finas como textura, confete só em 2 lugares (hero e CTA final) e cores fortes usadas em superfícies, nunca em texto pequeno.
 
 ---
 
@@ -77,8 +78,13 @@ Ligação com a pesquisa:
 | `--azul-700` sobre `--creme` | ~6,3:1 | AA |
 | `--azul-700` sobre `--azul-100` | ~5,8:1 | AA |
 | `--borda-campo` #8A8574 sobre `--branco` (borda de controles) | ~3,6:1 | ≥ 3:1 |
-| Branco sobre o overlay do hero (pior caso: pixel branco da foto sob 70% de `--verde-950`) | ≥ 6,0:1 | AA |
-| Branco sobre o overlay do hero com 80% (faixa do título no mobile) | ≥ 8,4:1 | AAA |
+| **Hero (vídeo, desktop):** branco sobre pixel branco do vídeo sob só o degradê vertical a 70% de `--verde-950` (pior caso, borda direita da coluna de texto) | ~5,6:1 | AA |
+| **Hero (vídeo, desktop):** branco sobre pixel branco sob vertical 70% + lateral 55% (borda esquerda; opacidade combinada ~86%) | ~9,7:1 | AAA |
+| **Hero (vídeo, desktop):** branco sob vertical 70% + lateral 25% (a 45% da largura; combinada ~77%) | ~7,0:1 | AAA |
+| **Hero (foto, mobile):** branco sobre pixel branco sob 80% de `--verde-950` (faixa do título) | ≥ 8,4:1 | AAA |
+| Botão pausar/reproduzir: borda e ícone brancos sobre `rgba(11,46,26,.6)` em cima do vídeo (pior caso, pixel branco por baixo + overlay do hero) | ≥ 4,5:1 | ≥ 3:1 |
+
+Cálculo do hero: mistura em sRGB de `#0B2E1A` com `#FFFFFF` na opacidade indicada, luminância relativa do resultado e contraste com branco. Opacidades combinadas = 1 − (1 − a_vertical) × (1 − a_lateral).
 
 **Proibido:** amarelo, verde-400, azul-300, coral-300 ou coral-500 como cor de texto sobre branco ou creme (todos abaixo de 3:1). Branco sobre amarelo (~1,5:1) também é proibido.
 
@@ -160,7 +166,10 @@ Padding vertical de seção: `--sp-secao: clamp(64px, 8vw, 112px)`.
 
   /* Overlay do hero */
   --overlay-hero: linear-gradient(0deg, rgba(11,46,26,.90) 0%, rgba(11,46,26,.78) 40%, rgba(11,46,26,.35) 75%, rgba(11,46,26,.15) 100%);
+  --overlay-hero-lateral: linear-gradient(90deg, rgba(11,46,26,.55) 0%, rgba(11,46,26,.25) 45%, rgba(11,46,26,0) 70%); /* só desktop, sobre o vídeo/poster */
   --overlay-hero-mobile: linear-gradient(0deg, rgba(11,46,26,.92) 0%, rgba(11,46,26,.82) 55%, rgba(11,46,26,.40) 85%, rgba(11,46,26,.20) 100%);
+  --hero-midia-pos: 60% 45%;        /* object-position do vídeo e do poster (desktop) */
+  --hero-midia-pos-mobile: 50% 35%; /* object-position da foto 4:5 */
 
   /* Tipografia */
   --ff-titulo: "Baloo 2", "Trebuchet MS", system-ui, sans-serif;
@@ -183,6 +192,7 @@ Padding vertical de seção: `--sp-secao: clamp(64px, 8vw, 112px)`.
 
   /* Raios */
   --r-sm: 8px; --r-md: 16px; --r-lg: 24px; --r-xl: 32px; --r-pill: 999px;
+  --arco-hero: clamp(32px, 6vw, 88px);
 
   /* Sombras */
   --sh-1: 0 2px 6px rgba(20, 83, 45, 0.08);
@@ -213,11 +223,12 @@ Padding vertical de seção: `--sp-secao: clamp(64px, 8vw, 112px)`.
 
 ### 3.0 Escolha do hero
 
-**Hero escolhido: foto em tela cheia com texto sobreposto alinhado embaixo, combinada com um seletor de idade em destaque (variação do "hero com busca") num placar branco sobre a borda em arco.**
+**Hero escolhido: vídeo de fundo em tela cheia (desktop, ≥ 900px), com texto sobreposto alinhado embaixo à esquerda, e a foto vertical em tela cheia no celular. Mantém o seletor de idade em destaque (variação do "hero com busca") num placar branco sobre a borda em arco, e o confete.**
 
-- **Por que serve:** o pai ou a mãe precisa sentir a alegria do campo (a foto vende sozinha) e logo depois responder "tem turma para o meu filho?". Os chips de idade (4–5, 6–7, 8–9, 10–12) levam direto ao card da turma e tiram uma barreira antes do WhatsApp, **sem coletar nenhum dado** (são só âncoras).
-- **Projetos anteriores:** `sergio-ribeiro` (mais recente) usou **split assimétrico** com foto em arco e título tipográfico grande. `reef-stack` usou **hero escuro com texto e cartões-caminho sobre fundo animado** (cáusticas). Antes deles: `arena-fight-sobradinho` (foto com overlay diagonal), `diaconia-catedral-baleia` (split com foto em arco), `barbearia-navalha` (brasão + tipografia). Nenhum dos 2 mais recentes usou foto em tela cheia com texto embaixo.
-- **Descartados:** *vídeo de fundo* (vídeos de banco com crianças reconhecíveis em movimento ampliam o risco de imagem, e o peso prejudica o celular), *carrossel* (há uma oferta só, a aula grátis), *split* (usado nos 2 últimos), *tipográfico* (a marca não é pessoal), *mapa* (encontrar o lugar não é o objetivo principal).
+- **Decisão do usuário (2026-11-17):** a primeira versão deste design descartou o vídeo (risco de imagem de crianças e peso no celular). **O usuário pediu explicitamente o vídeo de fundo** ("esporte de ação, vai ficar interessante"), e esse descarte está **revogado**. Os dois riscos foram tratados: o clipe escolhido pelo `gerador-imagens` (Pexels 8938341, `imagens.md` §2.3) mostra a criança do primeiro plano **sempre de costas** e as outras de longe, sob overlay de 70–90%; e o vídeo **não é baixado** no celular, com movimento reduzido ou com economia de dados (só o poster ou a foto).
+- **Por que serve:** futebol é ação; o movimento do chute num campo ao entardecer passa a emoção do "dia de jogo" melhor que uma foto parada. Logo abaixo, o placar responde "tem turma para o meu filho?": os chips de idade (4–5, 6–7, 8–9, 10–12) levam direto ao card da turma, **sem coletar nenhum dado** (são só âncoras).
+- **Projetos anteriores:** `sergio-ribeiro` (mais recente) usou **split assimétrico** com foto em arco e título tipográfico grande. `reef-stack` usou **hero escuro com texto e cartões-caminho sobre fundo animado** (cáusticas). Antes deles: `arena-fight-sobradinho` (foto com overlay diagonal), `diaconia-catedral-baleia` (split com foto em arco), `barbearia-navalha` (brasão + tipografia). Nenhum dos 2 mais recentes usou vídeo de fundo.
+- **Descartados:** *carrossel* (há uma oferta só, a aula grátis), *split* (usado nos 2 últimos), *tipográfico* (a marca não é pessoal), *mapa* (encontrar o lugar não é o objetivo principal), *só foto em tela cheia* (substituída pelo vídeo a pedido do usuário; continua no celular).
 
 ### 3.1 Ritmo da página
 
@@ -226,7 +237,7 @@ Cada seção tem um ritmo diferente para evitar "título + 3 cards" repetido:
 | # | Seção | `id` | Fundo | Ritmo |
 |---|---|---|---|---|
 | 1 | Cabeçalho fixo | - | branco | barra |
-| 2 | Hero | `inicio` | foto em tela cheia + overlay verde | tela cheia com placar sobreposto |
+| 2 | Hero | `inicio` | vídeo de fundo (foto no celular) + overlay verde | tela cheia com placar sobreposto |
 | 3 | Por que futebol faz bem | `beneficios` | `--azul-100` | faixa de ícones grandes (5) |
 | 4 | Turmas por idade | `turmas` | `--creme` | 4 cards coloridos tipo "figurinha" |
 | 5 | Metodologia | `metodologia` | `--verde-900` + linhas de campo | linha do tempo em 3 passos |
@@ -257,29 +268,78 @@ Cada seção tem um ritmo diferente para evitar "título + 3 cards" repetido:
   - Botão "Aula grátis" (primário verde, tamanho compacto, altura 44px) com o link de WhatsApp com mensagem de `dados-negocio.md`. `target="_blank" rel="noopener"`, e o texto acessível avisa da nova aba (ex.: `<span class="sr-only">(abre o WhatsApp em nova aba)</span>`).
 - **Mobile (< 900px):** logo à esquerda, botão "Aula grátis" compacto (em < 360px vira só "Aula grátis" com padding 12px) e botão de menu (hambúrguer, 44x44, `aria-expanded`, `aria-controls="menu"`, rótulo "Abrir menu"/"Fechar menu"). O menu abre como painel em tela cheia abaixo do cabeçalho, fundo `--branco`, links em Baloo 2 700 24px, um por linha, altura 56px cada, separados por borda `--borda`. Esc fecha e devolve o foco ao botão. Clicar num link fecha o menu. Corpo com `overflow: hidden` enquanto aberto.
 
-### 3.3 Hero (`#inicio`)
+### 3.3 Hero (`#inicio`): vídeo de fundo
 
 - **Objetivo:** em 5 segundos, dizer o que é (escolinha de futebol infantil), para quem (4 a 12 anos), a promessa (diversão com cuidado) e a ação (aula experimental grátis no WhatsApp).
-- **Conteúdo** (copy do `redator`):
+- **Conteúdo** (copy do `redator`, sem mudança):
   - Selo pequeno acima do título: "4 a 12 anos · meninos e meninas" (chip `--amarelo-400`, texto `--tinta`, Nunito 800 14px, raio pill, padding 6x14).
   - H1 (único da página), 2 a 3 linhas.
   - Lead de 1 a 2 frases.
   - CTA primário "Agendar aula grátis" (botão amarelo, variante para fundo escuro) → WhatsApp com mensagem.
   - CTA secundário "Ver turmas" (botão contorno branco) → `#turmas`.
+  - Botão pausar/reproduzir o vídeo (só quando o vídeo existe; ver abaixo).
   - Placar com o seletor de idade (ver abaixo).
-- **Fundo:** `<picture>` com `hero-mobile.jpg` (4:5) abaixo de 900px e `hero.jpg` (16:9) a partir de 900px, ambos com WebP. `object-fit: cover`, `object-position` informado pelo gerador (assunto no terço superior, para o texto ficar embaixo). Imagem com `fetchpriority="high"`, sem lazy, com `width`/`height`. `alt=""` se a foto for só ambiente; senão, alt curto definido pelo redator (sem dizer que são alunos).
-- **Overlay:** pseudo-elemento sobre a foto com `--overlay-hero` (desktop) e `--overlay-hero-mobile` (< 900px), na cor `--verde-950` #0B2E1A. A opacidade é de 90% na base, 78% a 40% da altura, 35% a 75% e 15% no topo. **O texto ocupa só os 55% inferiores** do hero, onde a opacidade é ≥ 70% (desktop) ou ≥ 80% (mobile). Contraste do branco no pior caso (pixel branco da foto): ≥ 6,0:1 no desktop e ≥ 8,4:1 no mobile. O desenvolvedor deve conferir na captura real, com o texto oculto.
-- **Textura:** `assets/svg/confete.svg` em 2 cantos (superior direito, 30% de opacidade; sobre a borda do placar, 100%), `aria-hidden`, nunca atrás do texto.
-- **Forma:** a borda inferior do hero faz um arco: `border-radius: 0 0 50% 50% / 0 0 clamp(32px, 6vw, 88px) clamp(32px, 6vw, 88px)` com `overflow: hidden`.
-- **Layout desktop (≥ 900px):** altura `min(calc(100svh - var(--header-h)), 820px)`, mínimo 600px. Texto alinhado à esquerda, nas colunas 1 a 8, com `padding-bottom` que deixa espaço para o placar (cerca de 140px). Título branco `--fs-display`, lead branco com 92% de opacidade (contraste ≥ 5,5:1 no pior caso). Botões lado a lado, gap 16.
-- **Placar do seletor de idade:**
-  - Card `--branco`, raio `--r-xl`, `--sh-3`, padding `--sp-5`/`--sp-6`. Fica centralizado, com largura até 960px, e é posicionado para cruzar a borda em arco: metade sobre a foto, metade sobre o creme (`margin-top: -72px`, `position: relative; z-index: 2`). Ele fica **fora** do `<section>` da foto no DOM para não depender de posicionamento absoluto: é o primeiro filho do `<main>` depois do hero, ou o último filho do hero com `translateY(50%)`. Escolha a opção que não corte o card no zoom de 200%.
-  - Título do placar: "Quantos anos tem a criança?" (Baloo 2 700, 22px, `--verde-800`).
-  - 4 chips-link em linha (desktop) ou grade 2x2 (mobile): cada chip mostra **idade em destaque + nome da turma + Sub-X**, ex.: "4 e 5 anos" (Baloo 2 700 20px) / "Fraldinha · Sub-6" (Nunito 700 14px). Fundo na cor da turma (`--turma-*`), texto `--tinta` (contrastes de 8,7:1 a 10,5:1), raio `--r-lg`, altura mínima 64px, borda de 2px `transparent`.
-  - Hover: `translateY(-3px)` e borda de 2px `--tinta`. Foco: anel `--foco-claro`. `:active`: volta a 0.
-  - Cada chip é `<a href="#turma-fraldinha">` (e `#turma-pre-mirim`, `#turma-mirim`, `#turma-infantil`). Com JS: ao clicar, rolar até o card e aplicar a classe `.is-destacado` por 1,6s (anel de 4px na cor `--verde-700` e um pulso de escala 1 → 1.03 → 1, só sem movimento reduzido). Mover o foco para o H3 do card (`tabindex="-1"`).
-  - Uma bola SVG pequena (`assets/svg/bola.svg`, 40px) "pousa" no canto superior direito do placar (ver Animações).
-- **Mobile (< 900px):** altura mínima `88svh` (mínimo 560px), texto centralizado na base da foto, CTAs empilhados com largura total (máx. 400px), gap 12. O placar vem logo abaixo, com margem lateral `--gutter` e `margin-top: -48px`, chips em 2x2 com gap 12.
+
+#### 3.3.1 Camadas do fundo (de baixo para cima)
+
+Contêiner de mídia `.hero__midia`: `position: absolute; inset: 0; z-index: 0; overflow: hidden`, dentro do hero (que tem `position: relative; isolation: isolate`).
+
+1. **Imagem base (sempre presente no HTML; é o LCP e o fallback):** `<picture>` com
+   - `<source media="(max-width: 899px)">` → `assets/fotos/hero-mobile.webp` / `.jpg` (1080x1350, 4:5);
+   - `<img>` padrão (≥ 900px) → `assets/videos/hero-poster.jpg` (1600x900, 158 KB; é o 1º quadro do vídeo, por isso a troca para o vídeo é invisível).
+   - `width="1600" height="900"`, `fetchpriority="high"`, `decoding="async"`, **sem** `loading="lazy"`, `alt=""` (decorativa). `object-fit: cover`; `object-position: var(--hero-midia-pos)` (60% 45%) no desktop e `var(--hero-midia-pos-mobile)` (50% 35%) no mobile.
+   - `hero.jpg`/`hero-1280.jpg` (foto do parque) saem do hero desktop. Ficam em `assets/` como reserva (e na origem do `og-image.jpg`); o desenvolvedor não precisa copiá-las para `site/` se não usar.
+2. **Vídeo (só desktop e só quando permitido; inserido pelo JS):** `<video>` com `src="assets/videos/hero.mp4"` (type `video/mp4`), atributos `muted autoplay loop playsinline disablepictureinpicture`, `preload="auto"` (só é criado quando vai tocar), `poster="assets/videos/hero-poster.jpg"`, `aria-hidden="true"`, `tabindex="-1"`, **sem** `controls`. Mesmo `object-fit: cover` e `object-position: var(--hero-midia-pos)` da imagem, `position: absolute; inset: 0; width: 100%; height: 100%`.
+   - Começa com `opacity: 0` e passa a `opacity: 1` (transição de 400ms) no evento `playing`. Se `play()` rejeitar ou der `error`, o vídeo é removido e a imagem continua (nenhum botão aparece).
+   - **Por que via JS e não no HTML:** um `<video>` no HTML é baixado mesmo escondido no celular; criar o elemento só quando as condições abaixo são verdadeiras garante que o celular, o movimento reduzido e a economia de dados **não baixem os 3,26 MB**. Sem JS: só a imagem, e a página fica completa.
+   - **Condições para criar o vídeo** (todas): `matchMedia('(min-width: 900px)').matches`; `!matchMedia('(prefers-reduced-motion: reduce)').matches`; `!navigator.connection?.saveData`; `navigator.connection?.effectiveType` não é `slow-2g` nem `2g`; `!matchMedia('(prefers-reduced-data: reduce)').matches` (onde houver suporte); e o usuário não deixou o vídeo pausado antes (`localStorage['fk-hero-video'] !== 'pausado'`; se estiver, cria o vídeo pausado no 1º quadro, com o botão em "Reproduzir"). Criar depois do evento `load` (ou em `requestIdleCallback`, com limite de 2 s), para não competir com o LCP.
+   - **Mudanças em tempo real:** se `prefers-reduced-motion` mudar para `reduce`, pausar, remover o vídeo e o botão. Se a janela encolher para < 900px, pausar e esconder o vídeo (a imagem mobile assume pelo `<picture>`); ao voltar a ≥ 900px, retomar só se o usuário não pausou.
+   - **Economia de CPU:** pausar quando o hero sai da tela (IntersectionObserver, `threshold: 0`) e quando `document.hidden`; retomar ao voltar, **só se** o usuário não pausou pelo botão.
+3. **Overlay (pseudo-elemento `::after` de `.hero__midia`, `z-index: 1`, `pointer-events: none`):**
+   - **Desktop (≥ 900px):** duas camadas na cor `--verde-950` #0B2E1A: `background: var(--overlay-hero-lateral), var(--overlay-hero);`
+     - Vertical (`--overlay-hero`): 90% na base, 78% a 40% da altura, 35% a 75% e 15% no topo.
+     - Lateral (`--overlay-hero-lateral`): 55% na borda esquerda, 25% a 45% da largura, 0% a partir de 70%. Ela existe porque a criança em primeiro plano (camiseta clara) e o céu claro do entardecer ficam **na esquerda**, sob a coluna de texto.
+     - **O texto ocupa só os 55% inferiores e as colunas 1 a 8**, onde a opacidade combinada vai de ~86% (borda esquerda) a ≥ 70% (borda direita da coluna). Contraste do branco no pior caso (pixel branco do vídeo): **~9,7:1** na esquerda, **~7,0:1** a 45% da largura e **~5,6:1** no extremo direito da coluna (AA em todo o bloco). O desenvolvedor confere na captura real do poster e de 3 quadros do vídeo (0 s, 8 s e 15 s), com o texto oculto.
+   - **Mobile (< 900px):** só `--overlay-hero-mobile` (92% na base, 82% a 55%, 40% a 85%, 20% no topo), sobre a foto 4:5. Branco na faixa do título: ≥ 8,4:1.
+4. **Confete:** `assets/svg/confete.svg` no canto superior direito (30% de opacidade, `z-index: 2`, largura `clamp(160px, 22vw, 320px)`), e outro sobre a borda do placar (100%), `aria-hidden`, nunca atrás do texto. O confete do topo fica sobre o céu do vídeo, onde não há texto.
+5. **Conteúdo** (`z-index: 3`).
+
+#### 3.3.2 Forma e layout
+
+- **Forma:** a borda inferior do hero faz um arco: `border-radius: 0 0 50% 50% / 0 0 var(--arco-hero) var(--arco-hero)` com `overflow: hidden` (corta também o vídeo e o overlay).
+- **Layout desktop (≥ 900px):** altura `min(calc(100svh - var(--header-h)), 820px)`, mínimo 600px. Texto alinhado à esquerda, nas colunas 1 a 8 (máx. 720px), encostado na base com `padding-bottom` que deixa espaço para o placar (cerca de 140px). Título branco `--fs-display`; lead **branco 100%** (sobre o vídeo, não usar 92% de opacidade, para manter o pior caso em ≥ 5,6:1); `text-shadow: 0 2px 12px rgba(11,46,26,.45)` no H1 e no lead como reforço (não entra no cálculo). Botões lado a lado, gap 16.
+- **`object-position` (desktop): `60% 45%`.** Entre 900 e 1199px o hero fica mais "alto" que 16:9 e o vídeo corta as laterais: 60% preserva a bola e o goleiro (centro-direita) e corta mais a esquerda, que já fica sob o texto e o overlay. Acima de 1440px o hero fica mais "largo" e o corte é em cima e embaixo: 45% vertical mantém a criança do quadril para cima e o gol. Use o mesmo valor na imagem e no vídeo, para a troca não "pular".
+- **Mobile (< 900px):** **mantém a foto vertical atual** (`hero-mobile.jpg` 4:5), sem vídeo. Justificativa: o vídeo é 16:9 e num hero de 88svh em retrato o `cover` mostraria só ~35% da largura do quadro (perde a bola ou o goleiro); além disso, 3,26 MB em dados móveis e o autoplay em economia de bateria do iOS pesam contra. Uso 900px (e não 768px) porque é o mesmo ponto em que o hero já troca de layout (texto centralizado, CTAs empilhados) e o cabeçalho troca de menu; entre 768 e 899px o recorte do vídeo ainda cortaria demais a cena. Altura mínima `88svh` (mínimo 560px), texto centralizado na base da foto, CTAs empilhados com largura total (máx. 400px), gap 12. O placar vem logo abaixo, com margem lateral `--gutter` e `margin-top: -48px`, chips em 2x2 com gap 12.
+
+#### 3.3.3 Botão pausar/reproduzir (WCAG 2.2.2)
+
+- **Quando aparece:** é criado pelo JS **junto com o vídeo** e removido com ele. Sem vídeo (celular, movimento reduzido, economia de dados, sem JS), o botão não existe.
+- **Ordem no DOM:** logo depois dos 2 CTAs do hero, dentro do bloco de conteúdo (assim o foco chega a ele depois das ações principais e antes do placar). Posição visual com `position: absolute` em relação ao hero.
+- **Posição:** canto inferior direito, `right: var(--gutter)`, `bottom: calc(var(--arco-hero) + 96px)` (fica acima da curva do arco e da metade do placar, que cruza a base). Em ≥ 1200px, alinhar a direita ao container: `right: max(var(--gutter), calc((100vw - var(--container)) / 2 + var(--gutter)))`.
+- **Estilo:** círculo de **48x48px** (alvo ≥ 44px), fundo `rgba(11,46,26,.6)` com `backdrop-filter: blur(4px)` (opcional), borda 2px `--branco`, ícone SVG branco de 20px (pausa: duas barras de 4x16 com raio 2; play: triângulo arredondado deslocado 2px à direita). Contraste da borda e do ícone ≥ 4,5:1 no pior caso (≥ 3:1 exigido para componentes).
+  - Hover: fundo `--branco`, ícone `--verde-900` (9,1:1). Foco (`:focus-visible`): `--foco-escuro` (anel amarelo 3px, offset 3px; 5,9:1 sobre verde-900). Ativo: `scale(.94)` (só sem movimento reduzido). Não há estado desabilitado.
+- **Acessibilidade:** `<button type="button">` com `aria-label="Pausar vídeo de fundo"` enquanto toca e `aria-label="Reproduzir vídeo de fundo"` quando pausado (troca o rótulo e o ícone; **não** usar `aria-pressed` junto). `aria-controls` apontando para o `id` do vídeo. Tooltip nativo opcional com `title` igual ao rótulo. Ícones com `aria-hidden="true"`.
+- **Comportamento:** clique ou Enter/Espaço alterna `video.pause()` / `video.play()` e grava `localStorage['fk-hero-video'] = 'pausado' | 'tocando'`. A pausa manual tem prioridade sobre a retomada automática (IntersectionObserver, `visibilitychange`).
+
+#### 3.3.4 LCP e desempenho
+
+- O elemento LCP esperado é o **poster** (`hero-poster.jpg`, desktop) ou a **foto mobile** (`hero-mobile.jpg`), ou o H1, dependendo da tela. Os dois são a `<img>` do `<picture>`, com `fetchpriority="high"`.
+- Preload no `<head>`, um por faixa:
+  - `<link rel="preload" as="image" href="assets/videos/hero-poster.jpg" media="(min-width: 900px)" fetchpriority="high">`
+  - `<link rel="preload" as="image" href="assets/fotos/hero-mobile.webp" type="image/webp" media="(max-width: 899px)" fetchpriority="high">`
+- **Não** fazer preload do `hero.mp4`. O vídeo entra depois do `load`, nunca bloqueia o LCP e não conta no peso inicial.
+- O H1 não pode começar com `opacity: 0` sem animação CSS garantida (§5.1).
+- O MP4 atual é fragmentado e sem `faststart` (`imagens.md` §2.3): toca no Edge/Chrome, mas o avaliador deve conferir o início da reprodução no Firefox e no Safari. Se não tocar, o fallback já é o poster (sem quebra visual).
+
+#### 3.3.5 Placar do seletor de idade (sem mudança)
+
+- Card `--branco`, raio `--r-xl`, `--sh-3`, padding `--sp-5`/`--sp-6`. Fica centralizado, com largura até 960px, e é posicionado para cruzar a borda em arco: metade sobre o vídeo/foto, metade sobre o creme (`margin-top: -72px`, `position: relative; z-index: 4`). Ele fica **fora** do `<section>` da mídia no DOM para não depender de posicionamento absoluto: é o primeiro filho do `<main>` depois do hero, ou o último filho do hero com `translateY(50%)`. Escolha a opção que não corte o card no zoom de 200%.
+- Título do placar: "Quantos anos tem a criança?" (Baloo 2 700, 22px, `--verde-800`).
+- 4 chips-link em linha (desktop) ou grade 2x2 (mobile): cada chip mostra **idade em destaque + nome da turma + Sub-X**, ex.: "4 e 5 anos" (Baloo 2 700 20px) / "Fraldinha · Sub-6" (Nunito 700 14px). Fundo na cor da turma (`--turma-*`), texto `--tinta` (contrastes de 8,7:1 a 10,5:1), raio `--r-lg`, altura mínima 64px, borda de 2px `transparent`.
+- Hover: `translateY(-3px)` e borda de 2px `--tinta`. Foco: anel `--foco-claro`. `:active`: volta a 0.
+- Cada chip é `<a href="#turma-fraldinha">` (e `#turma-pre-mirim`, `#turma-mirim`, `#turma-infantil`). Com JS: ao clicar, rolar até o card e aplicar a classe `.is-destacado` por 1,6s (anel de 4px na cor `--verde-700` e um pulso de escala 1 → 1.03 → 1, só sem movimento reduzido). Mover o foco para o H3 do card (`tabindex="-1"`).
+- Uma bola SVG pequena (`assets/svg/bola.svg`, 40px) "pousa" no canto superior direito do placar (ver Animações).
+- O botão pausar/reproduzir nunca fica por cima do placar (a posição da §3.3.3 garante isso; conferir em 900px e em 1440px).
 
 ### 3.4 Por que futebol faz bem (`#beneficios`)
 
@@ -398,7 +458,7 @@ Cada seção tem um ritmo diferente para evitar "título + 3 cards" repetido:
 ### 3.14 CTA final (`#aula-gratis`)
 
 - **Objetivo:** fechar com a ação principal.
-- **Fundo:** `--verde-900` com `assets/svg/circulo-central.svg` (círculo central + linha do meio de campo, branco a 10%, centralizado e maior que a seção) e confete (`confete.svg`) nos 2 cantos superiores. A seção tem o topo em arco invertido (mesma curva do hero, `border-radius: 50% 50% 0 0 / clamp(32px,6vw,88px) clamp(32px,6vw,88px) 0 0`) e fica colada ao rodapé.
+- **Fundo:** `--verde-900` com `assets/svg/circulo-central.svg` (círculo central + linha do meio de campo, branco a 10%, centralizado e maior que a seção) e confete (`confete.svg`) nos 2 cantos superiores. A seção tem o topo em arco invertido (mesma curva do hero, `border-radius: 50% 50% 0 0 / var(--arco-hero) var(--arco-hero) 0 0`) e fica colada ao rodapé.
 - **Conteúdo centralizado (máx. 720px):** H2 branco (9,1:1), lead branco a 90%, botão primário amarelo grande (altura 60px, Baloo 2 700 22px, `--sh-pop` na cor `rgba(0,0,0,.35)`) "Agendar aula experimental grátis" → WhatsApp com mensagem. Abaixo, linha de microcopy `--fs-small` branca a 85% (contraste ≥ 7:1): "Resposta no horário de atendimento. Sem compromisso."
 - Bola `bola.svg` de 56px quicando ao lado do botão (ver Animações).
 
@@ -409,7 +469,7 @@ Cada seção tem um ritmo diferente para evitar "título + 3 cards" repetido:
   1. `logo-branco.svg` (altura 48px) + 1 frase.
   2. Contato: endereço, WhatsApp, e-mail, horário curto (`Seg a Sex: 08:00–20:00 · Sáb: 08:00–12:00 · Dom: fechado`).
   3. Redes: Instagram (ícone em círculo de 44px com borda 2px branca; hover: fundo `--amarelo-400` e ícone `--tinta`) + links rápidos.
-- **Linha inferior** (borda superior de 1px branca a 15%): "© 2026 Futebol Kids" · **"Site de demonstração — dados fictícios"** (obrigatório) · créditos das fotos (link para a lista de créditos ou texto curto "Fotos: Unsplash/Pexels/Pixabay, ver créditos") · link "Voltar ao topo".
+- **Linha inferior** (borda superior de 1px branca a 15%): "© 2026 Futebol Kids" · **"Site de demonstração — dados fictícios"** (obrigatório) · créditos das fotos e do vídeo (link para a lista de créditos ou texto curto "Fotos: Unsplash · Vídeo: Pexels, ver créditos") · link "Voltar ao topo".
 - Links do rodapé: branco, sublinhados; hover: `--amarelo-400`.
 - No mobile, `padding-bottom: calc(var(--sp-7) + var(--fab-area))` para o botão flutuante não cobrir o aviso.
 
@@ -433,6 +493,7 @@ Base: Nunito 800 17px, `min-height: 48px` (compacto: 44px; grande: 60px), paddin
 | **Primário (escuro)** | fundo `--amarelo-400`, texto `--tinta` (9,6:1), sombra dura `0 6px 0 rgba(0,0,0,.35)` | fundo `#FDE047` (texto ~11:1), `translateY(-2px)` | anel `--foco-escuro`... **sobre amarelo o anel amarelo some**: usar anel branco de 3px + offset 3px (branco sobre verde-900: 9,1:1) | `translateY(4px)` | igual ao do claro |
 | **Secundário (claro)** | fundo transparente, borda 2px `--verde-700`, texto `--verde-800` (6,7:1 no creme) | fundo `--verde-100`, texto `--verde-900` | anel `--foco-claro` | fundo `--verde-100`, `translateY(1px)` | borda `#D1D5DB`, texto `--tinta-suave` |
 | **Contorno (escuro/hero)** | transparente, borda 2px branca, texto branco | fundo branco, texto `--verde-900` (9,1:1) | anel `--foco-escuro` (amarelo, 5,9:1 sobre verde-900) | `translateY(1px)` | - |
+| **Ícone de mídia (hero)** | círculo 48x48, fundo `rgba(11,46,26,.6)`, borda 2px branca, ícone branco 20px | fundo branco, ícone `--verde-900` (9,1:1) | anel `--foco-escuro`, offset 3px | `scale(.94)` | - (não existe; o botão some sem vídeo) |
 | **Link de texto** | `--azul-700`, 700, sublinhado de 2px com offset 4px | `--verde-800`, sublinhado de 3px | anel `--foco-claro`, raio 4px | - | - |
 
 Todos os links de WhatsApp: `target="_blank" rel="noopener"` e aviso de nova aba no texto acessível.
@@ -469,15 +530,16 @@ Normal: fundo da turma, texto `--tinta`, borda 2px transparente. Hover: `transla
 
 ## 5. Animações (todas opcionais e leves)
 
-Regra: **todas** as animações e transições de movimento ficam dentro de `@media (prefers-reduced-motion: no-preference)`. Com `reduce`: sem animação, sem `transform` de hover (só mudança de cor), `scroll-behavior: auto`, elementos `.reveal` com opacidade 1, e nada fica escondido à espera do JS. Nada pisca mais de 3 vezes por segundo. Nenhuma animação passa de 5 s, por isso não é preciso botão de pausa.
+Regra: **todas** as animações e transições de movimento ficam dentro de `@media (prefers-reduced-motion: no-preference)`. Com `reduce`: sem animação, sem `transform` de hover (só mudança de cor), `scroll-behavior: auto`, elementos `.reveal` com opacidade 1, nada fica escondido à espera do JS, e **o vídeo do hero não é criado** (só o poster/foto). Nada pisca mais de 3 vezes por segundo. As animações de interface não passam de 5 s; a única mídia em movimento contínuo é o vídeo do hero, que por isso tem botão de pausar (§3.3.3, WCAG 2.2.2).
 
-1. **Entrada do hero (no carregamento):** selo, H1, lead e botões em fade + `translateY(16px → 0)`, 80ms entre eles, `--dur-lenta`. O H1 é o LCP e **não** pode começar com `opacity: 0` sem animação CSS garantida: use `@keyframes` em CSS puro (não dependa do JS).
-2. **Bola do placar:** `bola.svg` cai de -60px e quica 2 vezes até parar (`--ease-mola`, 1,2s, uma vez), com uma sombra elíptica que cresce embaixo. Depois, fica parada.
-3. **Revelar ao rolar:** seções com `.reveal` sobem 24px e aparecem (fade) em `--dur-lenta` quando 15% entram na tela (IntersectionObserver, uma vez). Sem JS ou com `reduce`: visíveis desde o início (a classe que esconde só é aplicada pelo JS, ex.: `html.js .reveal`).
-4. **Trajetória da metodologia:** o arco tracejado se desenha (`stroke-dashoffset`) em 1,2s quando a seção entra na tela; os números aparecem em sequência.
-5. **Hover:** cards (§4.2), chips (§4.4) e botões (§4.1).
-6. **Bola do CTA final:** quica 3 vezes quando a seção entra na tela e para.
-7. **Destaque da turma** ao vir do seletor de idade (§3.3): pulso único.
+1. **Entrada do hero (no carregamento):** selo, H1, lead e botões em fade + `translateY(16px → 0)`, 80ms entre eles, `--dur-lenta`. O H1 pode ser o LCP e **não** pode começar com `opacity: 0` sem animação CSS garantida: use `@keyframes` em CSS puro (não dependa do JS).
+2. **Vídeo do hero:** entra com fade de `opacity` 0 → 1 em 400ms no evento `playing`, sobre o poster idêntico (§3.3.1). Loop nativo (`loop`); o corte do fim para o início é o mesmo plano e não precisa de transição.
+3. **Bola do placar:** `bola.svg` cai de -60px e quica 2 vezes até parar (`--ease-mola`, 1,2s, uma vez), com uma sombra elíptica que cresce embaixo. Depois, fica parada.
+4. **Revelar ao rolar:** seções com `.reveal` sobem 24px e aparecem (fade) em `--dur-lenta` quando 15% entram na tela (IntersectionObserver, uma vez). Sem JS ou com `reduce`: visíveis desde o início (a classe que esconde só é aplicada pelo JS, ex.: `html.js .reveal`).
+5. **Trajetória da metodologia:** o arco tracejado se desenha (`stroke-dashoffset`) em 1,2s quando a seção entra na tela; os números aparecem em sequência.
+6. **Hover:** cards (§4.2), chips (§4.4) e botões (§4.1).
+7. **Bola do CTA final:** quica 3 vezes quando a seção entra na tela e para.
+8. **Destaque da turma** ao vir do seletor de idade (§3.3.5): pulso único.
 
 ---
 
@@ -487,23 +549,24 @@ Mobile first. Media queries com `min-width`.
 
 | Nome | Faixa | Mudanças principais |
 |---|---|---|
-| base | 0–599px | 1 coluna; menu hambúrguer; botão flutuante do WhatsApp; hero com `hero-mobile.jpg` 4:5, texto centralizado, CTAs empilhados; placar com chips 2x2; benefícios em lista; turmas em 1 coluna; linha do tempo vertical; diferenciais em 1 coluna; horários em cards; professores em cards horizontais; planos empilhados; depoimentos com 86% de largura; mapa 4:3 |
-| `sm` | 600–899px | Benefícios e turmas em 2 colunas; diferenciais em 2 colunas; depoimentos com 60%; botões do hero lado a lado |
-| `md` | 900–1199px | Navegação completa (sem hambúrguer); `--header-h` 76px; sem botão flutuante; hero `hero.jpg` 16:9 com texto à esquerda; chips em linha; linha do tempo horizontal; bento de diferenciais; tabela de horários real; professores e planos em 3 colunas; FAQ em 2 colunas; mapa com card sobreposto |
-| `lg` | ≥ 1200px | Grade de 12 colunas; benefícios em 5 colunas; turmas em 4 colunas; depoimentos 3 lado a lado sem setas; foto circular na metodologia |
+| base | 0–599px | 1 coluna; menu hambúrguer; botão flutuante do WhatsApp; hero com `hero-mobile.jpg` 4:5 **sem vídeo**, texto centralizado, CTAs empilhados; placar com chips 2x2; benefícios em lista; turmas em 1 coluna; linha do tempo vertical; diferenciais em 1 coluna; horários em cards; professores em cards horizontais; planos empilhados; depoimentos com 86% de largura; mapa 4:3 |
+| `sm` | 600–899px | Hero ainda com a foto 4:5 e sem vídeo; benefícios e turmas em 2 colunas; diferenciais em 2 colunas; depoimentos com 60%; botões do hero lado a lado |
+| `md` | 900–1199px | Navegação completa (sem hambúrguer); `--header-h` 76px; sem botão flutuante; hero com **vídeo de fundo** (poster `hero-poster.jpg` como LCP/fallback), overlay vertical + lateral, texto à esquerda, botão pausar/reproduzir; chips em linha; linha do tempo horizontal; bento de diferenciais; tabela de horários real; professores e planos em 3 colunas; FAQ em 2 colunas; mapa com card sobreposto |
+| `lg` | ≥ 1200px | Grade de 12 colunas; botão de pausa alinhado ao container; benefícios em 5 colunas; turmas em 4 colunas; depoimentos 3 lado a lado sem setas; foto circular na metodologia |
 
 Outros cuidados:
 - Testar em 320px: nada de rolagem horizontal (exceto o trilho de depoimentos, que é intencional). O H1 não pode quebrar palavras; se preciso, `--fs-display` mínimo de 2.25rem abaixo de 360px.
-- Zoom de 200% e texto ampliado: o placar e os cards crescem em altura, sem alturas fixas.
-- Imagens com `srcset` e `sizes`: hero `100vw`; turmas `(min-width:1200px) 280px, (min-width:600px) 45vw, 92vw`; campo `(min-width:900px) 50vw, 100vw`; equipe 160px (2x = 320px); depoimentos 56px (2x = 112px).
-- Todas as imagens com `width`/`height` e `loading="lazy"`, exceto o hero (`fetchpriority="high"`, e um `<link rel="preload" as="image">` com `imagesrcset` para a versão mobile/desktop).
+- Zoom de 200% e texto ampliado: o placar e os cards crescem em altura, sem alturas fixas. Com zoom de 200% num desktop de 1280px, a largura útil cai para 640px e o hero passa ao modo mobile (foto, sem vídeo): comportamento esperado.
+- Imagens com `srcset` e `sizes`: hero mobile `100vw`; poster desktop é um arquivo só (1600w); turmas `(min-width:1200px) 280px, (min-width:600px) 45vw, 92vw`; campo `(min-width:900px) 50vw, 100vw`; equipe 160px (2x = 320px); depoimentos 56px (2x = 112px).
+- Todas as imagens com `width`/`height` e `loading="lazy"`, exceto a imagem do hero (`fetchpriority="high"`, com os 2 `<link rel="preload" as="image">` com `media` da §3.3.4).
+- O vídeo do hero nunca é baixado abaixo de 900px, com `prefers-reduced-motion: reduce`, com `saveData` ou em conexão 2g (§3.3.1).
 - Iframe do mapa com `loading="lazy"`.
 
 ---
 
 ## 7. Pedidos de imagem (para o `gerador-imagens`; resultado em `imagens.md` e `assets/`)
 
-Pastas: `assets/svg/`, `assets/svg/icones/`, `assets/fotos/`. Nomes em kebab-case, sem acentos.
+Pastas: `assets/svg/`, `assets/svg/icones/`, `assets/fotos/`, `assets/videos/`. Nomes em kebab-case, sem acentos.
 
 ### 7.1 SVG (criados pelo time)
 
@@ -523,6 +586,8 @@ Regras gerais dos SVG: `viewBox` definido, sem dimensões fixas internas, cores 
 | `svg/traco-chute.svg` | Abaixo dos H2 | `0 0 64 12` | Traço curto curvo `--coral-500` de 4px com 2 riscos de movimento |
 | `svg/bola-apito.svg` | FAQ | `0 0 240 240` | Ilustração simples: bola + apito + 2 cones, cores da paleta, traço `--verde-900` de 3px |
 
+Os ícones de pausa e play do botão de mídia do hero são SVG inline simples (duas barras / triângulo, `currentColor`), desenhados pelo desenvolvedor; não precisam de arquivo novo.
+
 **Ícones** (`svg/icones/`, `viewBox 0 0 48 48`, traço de 3px `currentColor`, estilo arredondado e consistente, com detalhes de preenchimento leve opcionais):
 
 | Grupo | Arquivos |
@@ -533,16 +598,18 @@ Regras gerais dos SVG: `viewBox` definido, sem dimensões fixas internas, cores 
 | Planos / turmas | `check.svg` (círculo com check), `irmaos.svg` (duas camisas, uma maior) |
 | Contato / interface | `whatsapp.svg` (logotipo simplificado, preenchido), `telefone.svg`, `email.svg`, `instagram.svg`, `pin.svg`, `relogio.svg`, `rota.svg`, `seta-direita.svg`, `seta-esquerda.svg`, `menu.svg`, `fechar.svg`, `mais.svg`, `estrela.svg` |
 
-### 7.2 Fotos reais (bancos públicos: Unsplash, Pexels, Pixabay, Wikimedia Commons CC0/CC BY)
+### 7.2 Fotos e vídeo reais (bancos públicos: Unsplash, Pexels, Pixabay, Wikimedia Commons CC0/CC BY)
 
-**Regras para fotos com crianças (pesquisa, riscos):** preferir crianças **de costas, de longe, em movimento desfocado ou só pés e bola**. Evitar rostos nítidos de frente, crianças em situação constrangedora ou logotipos de clubes/marcas em destaque. Registrar autor, URL e licença em `imagens.md`. Todas as fotos com crianças e as de equipe/depoimentos marcadas **"substituir por fotos próprias com autorização dos responsáveis antes de publicar"**. Não usar legenda com nome de criança nem dizer que são alunos.
+**Regras para fotos e vídeos com crianças (pesquisa, riscos):** preferir crianças **de costas, de longe, em movimento desfocado ou só pés e bola**. Evitar rostos nítidos de frente, crianças em situação constrangedora ou logotipos de clubes/marcas em destaque. Registrar autor, URL e licença em `imagens.md`. Todas as fotos e vídeos com crianças e as fotos de equipe/depoimentos marcados **"substituir por material próprio com autorização dos responsáveis antes de publicar"**. Não usar legenda com nome de criança nem dizer que são alunos.
 
 Formato: JPG de qualidade 78–82 + WebP. Tons ensolarados, grama verde, céu azul quando houver. Sem texto na imagem.
 
 | Arquivo | Uso | Tamanho / proporção | Termos de busca | Prompt / critério de escolha | Peso alvo |
 |---|---|---|---|---|---|
-| `fotos/hero.jpg` (+ `hero-1280.jpg`) | Hero desktop | 2400x1350 (16:9) e 1280x720 | `kids playing soccer`, `children football field`, `youth soccer game`, `kids soccer sunset` | Crianças pequenas jogando futebol num campo verde ensolarado, vistas **de costas ou de longe**, ação alegre (correndo atrás da bola). **Assunto no terço superior ou no centro-alto**; a metade inferior pode ser grama, porque o texto fica ali sob o overlay. Luz quente de fim de tarde é bem-vinda | ≤ 300 KB (2400) / ≤ 160 KB (1280) |
-| `fotos/hero-mobile.jpg` | Hero mobile | 1080x1350 (4:5) | recorte da mesma foto ou outra com composição vertical | Mesmo critério; assunto nos 45% superiores | ≤ 180 KB |
+| `videos/hero.mp4` | **Hero desktop (≥ 900px), vídeo de fundo** | 1280x720 (16:9), H.264, 8–20 s em loop, sem áudio | (já entregue: Pexels 8938341, `imagens.md` §2.3) | Criança em primeiro plano **de costas** na esquerda, bola e goleiro no centro-direita, estádio ao entardecer, câmera fixa. Área do texto (inferior esquerda) sob overlay. Se refeito com ffmpeg: `-an -movflags +faststart`, 1600px, CRF 26 | ≤ 4 MB (atual: 3,26 MB) |
+| `videos/hero-poster.jpg` | Poster do vídeo, LCP no desktop e imagem para movimento reduzido/economia de dados | 1600x900 (16:9) | 1º quadro do vídeo | Idêntico ao 1º quadro (troca invisível). Opcional: gerar também `hero-poster.webp` | ≤ 180 KB (atual: 158 KB) |
+| `fotos/hero.jpg` (+ `hero-1280.jpg`) | **Reserva** (saiu do hero desktop com a troca para vídeo); origem do `og-image.jpg` | 2400x1350 (16:9) e 1280x720 | (já entregue) | Mantida em `assets/` | ≤ 300 KB (2400) / ≤ 160 KB (1280) |
+| `fotos/hero-mobile.jpg` | Hero mobile (< 900px), sem vídeo | 1080x1350 (4:5) | recorte da mesma foto ou outra com composição vertical | Mesmo critério; assunto nos 45% superiores | ≤ 180 KB |
 | `fotos/turma-fraldinha.jpg` | Card Fraldinha | 800x600 (4:3) | `toddler soccer`, `preschool soccer`, `little kid soccer ball` | Criança bem pequena (4–5 anos) com a bola, de costas ou só pés e bola, clima de brincadeira | ≤ 90 KB |
 | `fotos/turma-pre-mirim.jpg` | Card Pré-mirim | 800x600 | `kids soccer practice`, `children soccer drills` | Crianças de 6–7 anos num exercício com cones, de longe | ≤ 90 KB |
 | `fotos/turma-mirim.jpg` | Card Mirim | 800x600 | `girls soccer`, `kids soccer game` | Crianças de 8–9 anos em jogo; **de preferência com meninas** (pesquisa: FAQ "meninas podem?") | ≤ 90 KB |
@@ -551,7 +618,7 @@ Formato: JPG de qualidade 78–82 + WebP. Tons ensolarados, grama verde, céu az
 | `fotos/treino-cones.jpg` | Metodologia (círculo, ≥ 1200px) | 600x600 (1:1) | `soccer training cones`, `soccer ball grass` | Bola e cones coloridos na grama, close; sem pessoas ou só pés | ≤ 70 KB |
 | `fotos/equipe-1.jpg`, `equipe-2.jpg`, `equipe-3.jpg` | Professores | 640x640 (1:1), recorte em círculo | `soccer coach portrait`, `sports coach whistle`, `physical education teacher` | Adultos (2 homens e 1 mulher, ou o inverso), sorrindo, roupa esportiva, ao ar livre, rosto centralizado. **"Substituir antes de publicar"** | ≤ 60 KB cada |
 | `fotos/depoimento-1.jpg`, `-2.jpg`, `-3.jpg` | Depoimentos | 240x240 (1:1), recorte em círculo | `parent portrait outdoor`, `mother smiling park`, `father smiling` | Retrato de adulto (mãe/pai), fundo neutro de parque; sem crianças. **"Substituir antes de publicar"** | ≤ 25 KB cada |
-| `fotos/og-image.jpg` | `og:image` | 1200x630 | recorte do hero | Recorte do hero com faixa `--verde-900` à esquerda e o logo branco; sem texto pequeno | ≤ 200 KB |
+| `fotos/og-image.jpg` | `og:image` | 1200x630 | recorte do hero | Recorte do hero com faixa `--verde-900` à esquerda e o logo branco; sem texto pequeno (continua com a foto, não muda com o vídeo) | ≤ 200 KB |
 
 Se faltar foto adequada (principalmente sem rosto nítido), o `gerador-imagens` deve avisar para o orquestrador pedir uma busca extra ao `pesquisador-fontes`.
 
@@ -563,19 +630,22 @@ Se faltar foto adequada (principalmente sem rosto nítido), o `gerador-imagens` 
 - [ ] Link "Pular para o conteúdo" como primeiro item focável, levando ao `<main id="conteudo">`.
 - [ ] Marcos: `<header>`, `<nav aria-label="Principal">`, `<main>`, `<footer>`; cada seção com `aria-labelledby` no seu H2.
 - [ ] Um único `<h1>` (hero); `<h2>` por seção; `<h3>` em cards, turmas, passos e planos. Sem pular níveis.
-- [ ] Todos os pares de cor da §2.2 (AA). Nenhum texto amarelo, verde-400, azul-300 ou coral-300/500 sobre claro. Contraste do hero conferido na captura real.
+- [ ] Todos os pares de cor da §2.2 (AA). Nenhum texto amarelo, verde-400, azul-300 ou coral-300/500 sobre claro. Contraste do hero conferido na captura real (poster + quadros de 0, 8 e 15 s do vídeo, e foto mobile).
+- [ ] **Vídeo do hero:** `muted`, sem áudio, `aria-hidden="true"`, `tabindex="-1"`, sem `controls`; botão pausar/reproduzir visível, 48x48, com `aria-label` que alterna "Pausar vídeo de fundo"/"Reproduzir vídeo de fundo", alcançável por teclado e com foco amarelo (WCAG 2.2.2).
+- [ ] Vídeo **não** criado com `prefers-reduced-motion: reduce`, `saveData`, conexão 2g ou largura < 900px; mudança para `reduce` em tempo real remove o vídeo.
+- [ ] Sem JS ou se o vídeo falhar: poster/foto visíveis, sem botão órfão e sem área vazia.
 - [ ] Turmas sempre com **nome + idade + Sub-X em texto** (a cor não é a única forma de identificar a turma).
 - [ ] Foco visível em tudo (`--foco-claro` / `--foco-escuro`; anel branco no botão amarelo), nunca encoberto pelo cabeçalho fixo nem pelo botão flutuante (`scroll-padding-top`/`-bottom` e `scroll-margin-top`).
-- [ ] Alvos de toque ≥ 44x44 (botões principais 48–60px; chips de idade 64px; pontos do carrossel com área de 44px).
+- [ ] Alvos de toque ≥ 44x44 (botões principais 48–60px; botão de mídia 48px; chips de idade 64px; pontos do carrossel com área de 44px).
 - [ ] Menu mobile com `aria-expanded`, `aria-controls`, Esc para fechar, foco devolvido ao botão.
 - [ ] Carrossel de depoimentos: `aria-roledescription`, rótulos "n de 3", setas no teclado, sem avanço automático, funciona sem JS.
 - [ ] FAQ com `<details>/<summary>` nativo.
 - [ ] Tabela de horários com `<caption>` e `<th scope>`; no mobile, sem duplicar conteúdo para leitor de tela.
-- [ ] Imagens com `alt` útil (definido pelo redator); decorativas com `alt=""` ou `aria-hidden`. Sem legendas com nome de criança.
+- [ ] Imagens com `alt` útil (definido pelo redator); decorativas (incluindo poster e vídeo) com `alt=""` ou `aria-hidden`. Sem legendas com nome de criança.
 - [ ] Links que abrem nova aba (WhatsApp, Maps, Instagram) avisam no texto acessível.
 - [ ] Iframe do mapa com `title` (de `dados-negocio.md`) e endereço também em texto.
-- [ ] `prefers-reduced-motion: reduce` desliga todas as animações e transforms; nenhuma animação passa de 5 s; nada pisca.
+- [ ] `prefers-reduced-motion: reduce` desliga todas as animações, transforms e o vídeo; animações de interface ≤ 5 s; nada pisca.
 - [ ] Conteúdo visível sem JS (reveal, hero, carrossel, FAQ).
 - [ ] Zoom de 200% e largura de 320px sem perda de conteúdo nem rolagem horizontal da página.
 - [ ] Nenhum formulário coletando dados de criança; conversão só por WhatsApp.
-- [ ] Rodapé com "Site de demonstração — dados fictícios" visível e não coberto pelo botão flutuante.
+- [ ] Rodapé com "Site de demonstração — dados fictícios" visível e não coberto pelo botão flutuante; créditos incluem o vídeo (Kampus Production, Pexels).

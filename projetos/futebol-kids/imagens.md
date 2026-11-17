@@ -46,6 +46,29 @@
 Texto curto: "Fotos: Unsplash (ver créditos)". Lista completa, se houver um `<details>`:
 Simone Franchina (início) · Opus Form, Kyle Hinkson, Nik, Ian Taylor (turmas) · Max Zindel (campo) · KaroGraphix Photography (metodologia) · Ryan Jacobson, Babak Eshaghian, Khaled Ali (equipe, ilustrativas) · Vitaly Gariev, Warren (depoimentos, ilustrativas). Todas via Unsplash.
 
+## 2.3 Vídeo de fundo do hero (pedido do usuário, 2026-11-17)
+
+> O `design.md` §3.0 tinha descartado o vídeo por risco de imagem e peso. O usuário pediu o vídeo mesmo assim. Por isso escolhi um clipe que segue a regra de crianças (§1): a criança em primeiro plano aparece **sempre de costas**, e as outras ficam **de longe** (rosto com ~25–35px em 1280px, sem nitidez e sob o overlay).
+
+| Arquivo (`assets/videos/`) | Uso | Saída | Página do vídeo | Autor | Banco · licença | Original | Descrição / `alt` | Status |
+|---|---|---|---|---|---|---|---|---|
+| `hero.mp4` | Fundo do hero (`<video autoplay muted loop playsinline>`) | 1280x720 · H.264 (avc1, High) · MP4 fragmentado · ~17,3 s · ~25 fps · **3,26 MB** (3.262.485 bytes) · **sem áudio** (só a faixa de vídeo) | https://www.pexels.com/video/boys-playing-football-8938341/ | Kampus Production (https://www.pexels.com/@kampus/) | Pexels · Pexels License (uso comercial livre, sem atribuição obrigatória) | 3840x2160, 25 fps, 17,1 s. A rendição baixada tem 1280x720 e 6,06 MB, também sem áudio | Decorativo: `aria-hidden="true"`, sem `alt`. A descrição, se precisar, é "Criança de costas cobrando pênalti num estádio vazio ao entardecer, com o goleiro ao fundo" | Pronto · **substituir antes de publicar** (por vídeo próprio com autorização) |
+| `hero-poster.jpg` | `poster` do vídeo, e imagem para quem usa `prefers-reduced-motion` ou economia de dados | 1600x900 · 158 KB | mesma (é o 1º quadro, que o próprio Pexels publica como imagem de prévia) | mesma | mesma | — | `""` (decorativa) | Pronto · **substituir antes de publicar** |
+
+**Como foi feito (sem ffmpeg):** a rendição de 1280x720 do Pexels pesava 6,06 MB, acima do limite de 4 MB. Re-codifiquei aqui com o `MediaRecorder` do Edge, em H.264 a 1,7 Mbps, só com a faixa de vídeo. A data do download foi 2026-11-17. O resultado é um MP4 **fragmentado** (`ftyp isom`, a duração fica nos fragmentos e o `mvhd` marca 0). O Edge abre o arquivo e informa 17,35 s em 1280x720, e conferi 12 quadros ao longo do clipe. A nitidez caiu um pouco, mas não aparece sob o overlay de 70–90%. **Se houver ffmpeg depois**, o ideal é refazer a partir do original: `ffmpeg -i original.mp4 -an -c:v libx264 -crf 26 -preset slow -movflags +faststart -vf scale=1600:-2 hero.mp4`, que gera um MP4 normal com `faststart`.
+
+**Notas para o desenvolvedor**
+1. O clipe é uma cena só com câmera fixa. A criança em primeiro plano fica **na esquerda** (de costas, do quadril para cima), e a bola e o goleiro ficam no centro e na direita. O texto do hero (canto inferior esquerdo) fica sobre o corpo dela, que está sob o overlay de 78–90%. Por isso o contraste continua o mesmo da foto, mas confira na captura. Se quiser mais área livre, `object-position: 60% 50%` desloca o quadro.
+2. **Loop:** o clipe começa com a criança parada e termina com ela de costas à direita. A volta ao início tem um corte perceptível, que não é brusco (é o mesmo plano). Um `transition` de opacidade não é necessário.
+3. Use `poster="assets/videos/hero-poster.jpg"` e `preload="metadata"`. Com `prefers-reduced-motion: reduce` (ou `navigator.connection.saveData`), não carregue o vídeo e mostre o poster ou o `hero.jpg`. No mobile (< 900px), é recomendável manter a foto `hero-mobile.jpg` 4:5, porque o vídeo é 16:9 e o recorte vertical cortaria a cena.
+4. O `og-image.jpg` continua com a foto atual. O vídeo não muda o compartilhamento.
+
+**Outros candidatos avaliados (não baixados para o projeto)**
+- Pexels 33071976, "Kids Playing Soccer on Outdoor Field", Nishant Das: https://www.pexels.com/video/kids-playing-soccer-on-outdoor-field-33071976/. Mostra só pernas, bola e cones em grama sintética, e seria ótimo para a regra de crianças. **Descartado** porque a marca "FORZA" (de material esportivo) aparece legível nos coletes, no topo do quadro, onde o overlay é mais fraco. Também pesa demais: 6,99 MB em 720p e 4,47 MB em 540p.
+- Pexels 8938126, "A Boy Kicking a Football at a Soccer Field", Kampus Production: https://www.pexels.com/video/a-boy-kicking-a-football-at-a-soccer-field-8938126/. Tem 12 s, 720p e 3,04 MB, e caberia sem re-codificar. **Descartado** porque o rosto do menino aparece **de perfil, de perto e nítido** (5–7 s), e há uma placa com marca no início.
+- Pexels 11722038, "Kids Playing Football", Julio Benito Cabrera: https://www.pexels.com/video/kids-playing-football-11722038/. **Descartado** porque, depois dos 3 s, aparecem rostos de frente, com máscaras e uniforme escolar, e o clipe termina com fade para preto.
+- Pixabay 202749, Matthias_Groeneveld: https://pixabay.com/videos/soccer-field-soccer-kids-playing-202749/. É uma vista aérea de campo ao pôr do sol, com as pessoas minúsculas. Fica como reserva neutra se o usuário preferir um vídeo sem crianças visíveis. Tem 30 s, então precisaria de corte.
+
 ## 3. SVGs (gerados pelo time)
 
 Todos os arquivos (40) têm `viewBox`, não fixam `width`/`height` internos e não usam `<text>`. No logo, as letras viraram paths, convertidas da fonte **Baloo 2 ExtraBold (800)**, licença OFL. Não há scripts nem imagens embutidas, e as cores são só da paleta (§2.1). O XML foi validado em todos, e o maior arquivo tem 7,7 KB (logo).
@@ -72,3 +95,4 @@ Todos os arquivos (40) têm `viewBox`, não fixam `width`/`height` internos e n�
 ## 4. Pendências
 - Nenhuma lacuna de foto. Todos os pedidos do §7.2 foram atendidos e não houve prompt pendente (`assets/prompts-imagens.md` não foi necessário).
 - Antes de publicar: trocar as fotos de crianças, equipe e depoimentos por fotos próprias com autorização, e refazer o `og-image.jpg` com o novo hero.
+- Vídeo do hero (`assets/videos/hero.mp4`): substituir por vídeo próprio com autorização antes de publicar. Se houver ffmpeg, refazer o arquivo com `faststart` (ver §2.3).

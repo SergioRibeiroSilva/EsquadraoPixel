@@ -391,7 +391,7 @@ Formato do preço para o desenvolvedor: "R$" e "/mês" pequenos; número grande 
 - [link-1] Turmas · [link-2] Horários · [link-3] Planos · [link-4] Dúvidas · [link-5] Contato
 - [copyright] © 2026 Futebol Kids
 - [aviso-demo] Site de demonstração — dados fictícios
-- [creditos] Fotos: Unsplash, Pexels e Pixabay. Ver créditos
+- [creditos] Fotos: Unsplash · Vídeo: Pexels. Ver créditos
 - [voltar-topo] Voltar ao topo
 
 ### 2.15 Botão flutuante de WhatsApp (mobile)
