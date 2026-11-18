@@ -8,6 +8,11 @@ on:
       - "vitrine/**"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
+    inputs:
+      refazer_capas:
+        description: "Refazer todas as capas (só na publicação, não altera o repositório)"
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -31,8 +36,25 @@ jobs:
       - name: Configurar o Pages
         uses: actions/configure-pages@v5
 
+      - name: Preparar o Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gerar as capas que faltam
+        # O runner já tem o Google Chrome. Se algo falhar, a vitrine
+        # é publicada mesmo assim, com o card sem imagem.
+        continue-on-error: true
+        run: |
+          pip install --quiet pillow
+          if [ "${{ inputs.refazer_capas }}" = "true" ]; then
+            python vitrine/gerar_capas.py --todas
+          else
+            python vitrine/gerar_capas.py
+          fi
+
       - name: Montar a vitrine e copiar os sites
-        run: python3 vitrine/montar.py
+        run: python vitrine/montar.py
 
       - name: Empacotar a pasta de publicação
         uses: actions/upload-pages-artifact@v3

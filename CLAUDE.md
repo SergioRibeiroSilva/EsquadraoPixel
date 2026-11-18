@@ -18,7 +18,7 @@ Quando o usuário pedir um site, você coordena o time na ordem abaixo. Cada eta
 | 7 | `avaliador-tecnico` | site + design + inspeção visual | `avaliacao-tecnica.md` |
 | 8 | `avaliador-resultado` | briefing + conteúdo + site + capturas + avaliação técnica | `avaliacao.md` |
 | 9 | `desenvolvedor-frontend` | avaliacao.md (correções) | `site/` atualizado |
-| 10 | `versionador-git` | projeto com avaliacao.md APROVADO | commits locais + pergunta de push |
+| 10 | `versionador-git` | projeto com avaliacao.md APROVADO | capa da vitrine, commits locais + pergunta de push |
 
 Regras do fluxo:
 - **Etapa 0**: antes de delegar, grave `briefing.md` com: nome do site, objetivo, público, tom de voz, idioma, seções desejadas, referências que o usuário gosta, conteúdo disponível (textos, fotos, logo) e restrições. Se faltar algo essencial, pergunte ao usuário uma única vez, com perguntas objetivas; o restante, assuma padrões sensatos e registre-os no briefing.
@@ -28,6 +28,7 @@ Regras do fluxo:
 - **Coordenadas → mapa interativo**: sempre que o `entrevistador` receber coordenadas, ele termina com "ENCAMINHAR AO DESENVOLVEDOR". Chame o `desenvolvedor-frontend` em seguida para inserir o mapa interativo do Google. O usuário autorizou de forma permanente esse iframe; não pergunte de novo.
 - **Fotos reais**: o `gerador-imagens` busca fotos reais, públicas, de boa definição e ligadas ao ramo do site, para hero, ambiente, equipe e depoimentos de exemplo. Os bancos aceitos são Unsplash, Pexels, Pixabay e Wikimedia Commons (CC0/CC BY). Ele registra autor e licença, e marca equipe e depoimentos como "substituir antes de publicar". Se ele avisar que faltou foto adequada, delegue uma busca extra ao `pesquisador-fontes` e depois volte ao `gerador-imagens` para baixar.
 - **Versionamento (etapa 10)**: sempre que um projeto for validado (APROVADO), chame o `versionador-git` em modo COMMIT. Ele cria as mensagens e faz os commits locais. Depois **pergunte ao usuário** se pode fazer o push e, só com o "sim" explícito dele para aquele push, chame o `versionador-git` em modo PUSH. Sem remoto configurado, peça a URL ao usuário na mesma pergunta.
+- **Vitrine no GitHub Pages**: todo `projetos/<site>/site/` é publicado em `https://sergioribeirosilva.github.io/EsquadraoPixel/<site>/`, pelo workflow `.github/workflows/pages.yml` (que roda `vitrine/montar.py`). Um projeto novo entra na vitrine sozinho. A capa do card (`vitrine/capas/<site>.webp|jpg`) é gerada pelo `versionador-git` na etapa 10, com `vitrine/gerar_capas.py`; se faltar, o workflow gera na publicação. Como o push publica o site na internet, avise isso ao perguntar sobre o push.
 - **Iteração**: se `avaliacao.md` disser ITERAR, volte à etapa 5 (antes, à etapa 3 se houver correções de texto) e depois às etapas 6, 7 e 8. No máximo 3 ciclos de correção.
 - **Paralelismo**: as etapas 1 e 2 são sequenciais por dependência. Depois do design, o `redator` (3) e o `gerador-imagens` (4) podem rodar **em paralelo**, pois os dois dependem só do `design.md`. As etapas 5 a 8 são sequenciais.
 - **Resumo final ao usuário**: caminho do `index.html`, decisão do avaliador, notas, pendências (fotos, textos reais) e como abrir o site (dê duplo clique em `index.html` ou sirva a pasta com um servidor local).

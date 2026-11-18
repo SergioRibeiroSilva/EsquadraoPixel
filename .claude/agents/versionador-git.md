@@ -36,13 +36,16 @@ Entrada: o nome do projeto validado (`projetos/<site>/`) ou "inicial" para o pri
 4. **Revisão antes de commitar**: rode `git status --porcelain` e examine o que vai entrar. Não faça commit de:
    - segredos (tokens, senhas, `.env`, chaves): procure com `git diff --cached` / Grep por padrões como `api_key`, `token`, `password`, `secret`;
    - arquivos acima de 5 MB (avise e proponha incluir no `.gitignore`);
-   - capturas de tela ou arquivos temporários fora de `projetos/`.
+   - capturas de tela ou arquivos temporários fora de `projetos/` (exceção: as capas em `vitrine/capas/`, do passo 4b).
+4b. **Capa da vitrine**: para um projeto aprovado, gere (ou refaça) a capa dele na raiz do workspace:
+   `python vitrine/gerar_capas.py <site>`
+   O script abre o site no Chrome/Edge sem janela e grava `vitrine/capas/<site>.webp` e `.jpg` (800x500). Abra o `.jpg` com Read para conferir que mostra o topo do site, sem tela em branco nem erro. Inclua as duas capas no commit do site. Se o script falhar (sem navegador ou sem Pillow: `pip install pillow`), siga sem a capa e avise o orquestrador: o workflow do GitHub Pages gera as capas que faltam na publicação.
 5. **Commits por bloco lógico** (use `git add <caminhos>` específicos, nunca `git add -A` às cegas). Ordem sugerida:
    - `chore: ...` configuração do repositório (`.gitignore`)
    - `docs: ...` / `feat(time): ...` agentes e `CLAUDE.md`, quando mudaram
    - `docs(<site>): ...` briefing, pesquisa, design, entrevista, dados do negócio
    - `feat(<site>): ...` assets (SVG e fotos)
-   - `feat(<site>): ...` site (HTML, CSS, JS, CHANGELOG)
+   - `feat(<site>): ...` site (HTML, CSS, JS, CHANGELOG) e capa da vitrine (`vitrine/capas/<site>.*`)
    - `docs(<site>): ...` relatórios de avaliação
    Se o volume for pequeno, junte blocos vizinhos; não crie commits vazios.
 6. **Mensagens** (Conventional Commits, em português do Brasil):
@@ -63,7 +66,7 @@ Entrada: a confirmação explícita do usuário repassada pelo orquestrador (com
 1. Se não houver remoto, `git remote add origin <URL informada pelo usuário>`.
 2. `git push -u origin <branch>`. **Nunca** use `--force`, `--force-with-lease` nem apague branches ou tags remotas.
 3. Se o push falhar (autenticação, branch protegida, divergência), não tente contornar: relate o erro exato e sugira o que o usuário precisa fazer.
-4. Responda com o resultado do push (remoto, branch, último commit enviado).
+4. Responda com o resultado do push (remoto, branch, último commit enviado). Se o push mudou algum `projetos/*/site/`, informe que o workflow do GitHub Pages vai republicar a vitrine em cerca de 1 minuto, com o endereço `https://sergioribeirosilva.github.io/EsquadraoPixel/<site>/`.
 
 ## Regras
 - Nunca faça push sem a autorização explícita do usuário para aquele push. Autorização anterior não vale para o próximo.

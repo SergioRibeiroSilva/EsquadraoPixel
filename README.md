@@ -57,10 +57,23 @@ Cada site fica numa subpasta com o nome do projeto, por exemplo [`/rosa-bordo/`]
 **Como a publicação funciona**
 
 1. Um push no `main` que mude algum `projetos/*/site/`, a pasta `vitrine/` ou o workflow dispara o [`pages.yml`](.github/workflows/pages.yml).
-2. O workflow roda o [`vitrine/montar.py`](vitrine/montar.py), que copia cada `projetos/<nome>/site/` para `_publicar/<nome>/` (sem os `.md`) e gera a página da vitrine a partir do [`vitrine/modelo.html`](vitrine/modelo.html), lendo o `<title>` e a `<meta name="description">` de cada site.
+2. O workflow gera as capas que faltam com o [`vitrine/gerar_capas.py`](vitrine/gerar_capas.py) e roda o [`vitrine/montar.py`](vitrine/montar.py), que copia cada `projetos/<nome>/site/` para `_publicar/<nome>/` (sem os `.md`) e gera a página da vitrine a partir do [`vitrine/modelo.html`](vitrine/modelo.html), lendo o `<title>` e a `<meta name="description">` de cada site.
 3. A pasta `_publicar/` é enviada ao GitHub Pages. Em cerca de 1 minuto o site novo está no ar.
 
-**Projeto novo** entra na vitrine sozinho, sem editar nenhum arquivo. Só a **capa** do card (`vitrine/capas/<nome>.webp` e `.jpg`, 800×500) precisa ser gerada: sem ela, o card aparece sem imagem.
+**Projeto novo** entra na vitrine sozinho, sem editar nenhum arquivo, e a **capa** do card também é automática. Ela é gerada em dois momentos:
+
+| Quando | Quem | O que acontece |
+|---|---|---|
+| O projeto é aprovado (etapa 10) | `versionador-git` | Roda `python vitrine/gerar_capas.py <nome>`, confere a imagem e inclui `vitrine/capas/<nome>.webp` e `.jpg` no commit. A capa fica no repositório e pode ser usada neste README. |
+| A vitrine é publicada | workflow `pages.yml` | Antes de montar a vitrine, roda `vitrine/gerar_capas.py` e cria **só as capas que faltam** (por exemplo, de um site que não passou pelo Esquadrão). Essas capas existem só na publicação. |
+
+O [`gerar_capas.py`](vitrine/gerar_capas.py) abre o `site/index.html` no Chrome ou no Edge sem janela, captura a primeira dobra em 1280×800 e reduz para 800×500. Para usar no seu computador (precisa do Pillow: `pip install pillow`):
+
+```bash
+python vitrine/gerar_capas.py               # gera só as capas que faltam
+python vitrine/gerar_capas.py rosa-bordo    # refaz a capa de um projeto
+python vitrine/gerar_capas.py --todas       # refaz todas
+```
 
 > Os sites são demonstrações: vários usam contatos, depoimentos e fotos de exemplo. Isso está avisado no rodapé da vitrine e em cada projeto.
 
@@ -244,6 +257,7 @@ flowchart TD
 ├── vitrine/
 │   ├── modelo.html             # página-índice da vitrine
 │   ├── montar.py               # copia os sites e gera os cards
+│   ├── gerar_capas.py          # tira as capas dos sites (Chrome/Edge sem janela)
 │   └── capas/                  # capa 800×500 de cada site (WebP + JPEG)
 └── projetos/
     └── <nome-do-site>/
