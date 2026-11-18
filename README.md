@@ -9,12 +9,14 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white)
 
-![Projetos](https://img.shields.io/badge/projetos-6-0A6E78?style=flat-square)
+![Projetos](https://img.shields.io/badge/projetos-9-0A6E78?style=flat-square)
 ![Agentes](https://img.shields.io/badge/agentes-10-7A2338?style=flat-square)
 ![Sem build](https://img.shields.io/badge/build-nenhum-2EA44F?style=flat-square)
 ![WCAG](https://img.shields.io/badge/acessibilidade-WCAG_2.2_AA-1F6F78?style=flat-square)
 ![Idioma](https://img.shields.io/badge/idioma-pt--BR-009C3B?style=flat-square)
+[![Vitrine](https://img.shields.io/badge/vitrine-online-4F46E5?style=flat-square)](https://sergioribeirosilva.github.io/EsquadraoPixel/)
 
+[Vitrine online](#-vitrine-online) •
 [Projetos](#-projetos) •
 [Como funciona](#%EF%B8%8F-como-funciona) •
 [O time](#-o-time) •
@@ -44,47 +46,96 @@ Todo o processo fica documentado em Markdown dentro de cada projeto, do briefing
 
 ---
 
+## 🌐 Vitrine online
+
+Todos os sites estão publicados no **GitHub Pages**, numa vitrine com um card para cada projeto:
+
+### 👉 [sergioribeirosilva.github.io/EsquadraoPixel/](https://sergioribeirosilva.github.io/EsquadraoPixel/)
+
+Cada site fica numa subpasta com o nome do projeto, por exemplo [`/rosa-bordo/`](https://sergioribeirosilva.github.io/EsquadraoPixel/rosa-bordo/).
+
+**Como a publicação funciona**
+
+1. Um push no `main` que mude algum `projetos/*/site/`, a pasta `vitrine/` ou o workflow dispara o [`pages.yml`](.github/workflows/pages.yml).
+2. O workflow roda o [`vitrine/montar.py`](vitrine/montar.py), que copia cada `projetos/<nome>/site/` para `_publicar/<nome>/` (sem os `.md`) e gera a página da vitrine a partir do [`vitrine/modelo.html`](vitrine/modelo.html), lendo o `<title>` e a `<meta name="description">` de cada site.
+3. A pasta `_publicar/` é enviada ao GitHub Pages. Em cerca de 1 minuto o site novo está no ar.
+
+**Projeto novo** entra na vitrine sozinho, sem editar nenhum arquivo. Só a **capa** do card (`vitrine/capas/<nome>.webp` e `.jpg`, 800×500) precisa ser gerada: sem ela, o card aparece sem imagem.
+
+> Os sites são demonstrações: vários usam contatos, depoimentos e fotos de exemplo. Isso está avisado no rodapé da vitrine e em cada projeto.
+
+---
+
 ## 🖼 Projetos
 
 <table>
   <tr>
     <td width="33%" valign="top">
-      <a href="projetos/reef-stack/"><img src="projetos/reef-stack/docs/preview-desktop.png" alt="Captura do site Reef Stack"></a>
+      <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/reef-stack/"><img src="vitrine/capas/reef-stack.jpg" alt="Captura do site Reef Stack"></a>
       <h3>🐠 Reef Stack</h3>
       Loja e clube de aquarismo, de água doce e marinho.<br>
-      <sub><b>Aprovado</b> · média 4,71 · Lighthouse A11y 100</sub>
+      <sub><b>Aprovado</b> · média 4,71 · Lighthouse A11y 100</sub><br>
+      <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/reef-stack/">Ver online</a> · <a href="projetos/reef-stack/">Projeto</a></sub>
     </td>
     <td width="33%" valign="top">
-      <a href="projetos/diaconia-catedral-baleia/"><img src="projetos/diaconia-catedral-baleia/docs/preview-desktop.png" alt="Captura do site do Corpo Diaconal"></a>
+      <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/diaconia-catedral-baleia/"><img src="vitrine/capas/diaconia-catedral-baleia.jpg" alt="Captura do site Corpo Diaconal"></a>
       <h3>⛪ Corpo Diaconal</h3>
       Corpo Diaconal da AD Catedral Baleia, em Brasília/DF.<br>
-      <sub><b>Aprovado</b> · média 4,71 · Lighthouse A11y 100</sub>
+      <sub><b>Aprovado</b> · média 4,71 · Lighthouse A11y 100</sub><br>
+      <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/diaconia-catedral-baleia/">Ver online</a> · <a href="projetos/diaconia-catedral-baleia/">Projeto</a></sub>
     </td>
     <td width="33%" valign="top">
-      <a href="projetos/emmeline-croche/"><img src="projetos/emmeline-croche/docs/preview-desktop.png" alt="Captura do site Emmeline Crochê"></a>
-      <h3>🧶 Emmeline Crochê</h3>
-      Bolsas de crochê artesanais, sob encomenda.<br>
-      <sub><b>Aprovado</b> · média 4,71</sub>
+      <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/sergio-ribeiro/"><img src="vitrine/capas/sergio-ribeiro.jpg" alt="Captura do site Pr. Sergio Ribeiro"></a>
+      <h3>🌼 Pr. Sergio Ribeiro</h3>
+      Site pessoal: fé, família e esperança.<br>
+      <sub><b>Aprovado</b> · média 4,71 · Lighthouse A11y 100</sub><br>
+      <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/sergio-ribeiro/">Ver online</a> · <a href="projetos/sergio-ribeiro/">Projeto</a></sub>
     </td>
   </tr>
   <tr>
     <td width="33%" valign="top">
-      <a href="projetos/barbearia-navalha/"><img src="projetos/barbearia-navalha/docs/preview-desktop.png" alt="Captura do site Barbearia Navalha"></a>
+      <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/emmeline-croche/"><img src="vitrine/capas/emmeline-croche.jpg" alt="Captura do site Emmeline Crochê"></a>
+      <h3>🧶 Emmeline Crochê</h3>
+      Bolsas de crochê artesanais, sob encomenda.<br>
+      <sub><b>Aprovado</b> · média 4,71</sub><br>
+      <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/emmeline-croche/">Ver online</a> · <a href="projetos/emmeline-croche/">Projeto</a></sub>
+    </td>
+    <td width="33%" valign="top">
+      <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/barbearia-navalha/"><img src="vitrine/capas/barbearia-navalha.jpg" alt="Captura do site Barbearia Navalha"></a>
       <h3>💈 Barbearia Navalha</h3>
       Barbearia clássica em Sobradinho/DF, com mapa interativo.<br>
-      <sub><b>Aprovado com ressalvas</b> · média 4,71</sub>
+      <sub><b>Aprovado com ressalvas</b> · média 4,71</sub><br>
+      <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/barbearia-navalha/">Ver online</a> · <a href="projetos/barbearia-navalha/">Projeto</a></sub>
     </td>
     <td width="33%" valign="top">
-      <a href="projetos/arena-fight-sobradinho/"><img src="projetos/arena-fight-sobradinho/docs/preview-desktop.png" alt="Captura do site Arena Fight Sobradinho"></a>
+      <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/rosa-bordo/"><img src="vitrine/capas/rosa-bordo.jpg" alt="Captura do site Rosa Bordô"></a>
+      <h3>🪡 Rosa Bordô</h3>
+      Bonecas de pano feitas à mão, com carrossel no topo.<br>
+      <sub><b>Aprovado</b> · média 4,43</sub><br>
+      <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/rosa-bordo/">Ver online</a> · <a href="projetos/rosa-bordo/">Projeto</a></sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" valign="top">
+      <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/futebol-kids/"><img src="vitrine/capas/futebol-kids.jpg" alt="Captura do site Futebol Kids"></a>
+      <h3>⚽ Futebol Kids</h3>
+      Escolinha de futebol para crianças de 4 a 12 anos.<br>
+      <sub><b>Aprovado</b> · média 4,43 · Lighthouse A11y 100</sub><br>
+      <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/futebol-kids/">Ver online</a> · <a href="projetos/futebol-kids/">Projeto</a></sub>
+    </td>
+    <td width="33%" valign="top">
+      <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/arena-fight-sobradinho/"><img src="vitrine/capas/arena-fight-sobradinho.jpg" alt="Captura do site Arena Fight Sobradinho"></a>
       <h3>🥊 Arena Fight Sobradinho</h3>
       Escola de MMA: Karatê, Muay Thai, Wrestling e Jiu-Jitsu.<br>
-      <sub><b>Aprovado</b> · média 4,43</sub>
+      <sub><b>Aprovado</b> · média 4,43</sub><br>
+      <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/arena-fight-sobradinho/">Ver online</a> · <a href="projetos/arena-fight-sobradinho/">Projeto</a></sub>
     </td>
     <td width="33%" valign="top">
-      <a href="projetos/padaria-trigo-doce/"><img src="projetos/padaria-trigo-doce/docs/preview-desktop.png" alt="Captura do site Padaria Trigo Doce"></a>
+      <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/padaria-trigo-doce/"><img src="vitrine/capas/padaria-trigo-doce.jpg" alt="Captura do site Padaria Trigo Doce"></a>
       <h3>🥖 Padaria Trigo Doce</h3>
       Padaria e confeitaria artesanal, com encomendas pelo WhatsApp.<br>
-      <sub><b>Protótipo de teste</b> · sem ciclo formal de avaliação</sub>
+      <sub><b>Protótipo de teste</b> · sem ciclo formal de avaliação</sub><br>
+      <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/padaria-trigo-doce/">Ver online</a> · <a href="projetos/padaria-trigo-doce/">Projeto</a></sub>
     </td>
   </tr>
 </table>
@@ -93,8 +144,11 @@ Todo o processo fica documentado em Markdown dentro de cada projeto, do briefing
 |---|---|---|---|---|:---:|
 | [Reef Stack](projetos/reef-stack/) | Loja e clube de aquarismo | Abismo, lagoa, musgo, coral | Sora + Inter | ✅ Aprovado (ciclo 2) | **4,71** |
 | [Corpo Diaconal](projetos/diaconia-catedral-baleia/) | Ministério de igreja | Marinho, dourado, creme | Lora + Source Sans 3 | ✅ Aprovado (ciclo 2) | **4,71** |
+| [Pr. Sergio Ribeiro](projetos/sergio-ribeiro/) | Site pessoal / ministério | Creme, azul-profundo, amarelo-sol | Fraunces | ✅ Aprovado (ciclo 2) | **4,71** |
 | [Emmeline Crochê](projetos/emmeline-croche/) | Artesanato | Vinho, marsala, creme | Cormorant Garamond + Lato | ✅ Aprovado (ciclo 2) | **4,71** |
 | [Barbearia Navalha](projetos/barbearia-navalha/) | Barbearia | Grafite e latão | Playfair Display + Inter | ✅ Aprovado com ressalvas (ciclo 3) | **4,71** |
+| [Rosa Bordô](projetos/rosa-bordo/) | Artesanato (bonecas de pano) | Bordô, creme, rosa | Fraunces + Nunito | ✅ Aprovado (ciclo 2) | **4,43** |
+| [Futebol Kids](projetos/futebol-kids/) | Escolinha de futebol infantil | Verde-gramado, amarelo-sol, azul-céu | Baloo 2 + Nunito | ✅ Aprovado (ciclo 2) | **4,43** |
 | [Arena Fight Sobradinho](projetos/arena-fight-sobradinho/) | Academia de MMA | Preto e vermelho | Barlow Condensed + Inter | ✅ Aprovado | **4,43** |
 | [Padaria Trigo Doce](projetos/padaria-trigo-doce/) | Padaria | Creme, café, terracota, mel | Fraunces + Nunito Sans | 🧪 Protótipo | — |
 
@@ -183,8 +237,14 @@ flowchart TD
 .
 ├── .claude/
 │   └── agents/                 # definições dos 10 agentes do Esquadrão
+├── .github/
+│   └── workflows/pages.yml     # publica a vitrine no GitHub Pages
 ├── CLAUDE.md                   # regras do orquestrador e convenções do time
 ├── README.md                   # este arquivo
+├── vitrine/
+│   ├── modelo.html             # página-índice da vitrine
+│   ├── montar.py               # copia os sites e gera os cards
+│   └── capas/                  # capa 800×500 de cada site (WebP + JPEG)
 └── projetos/
     └── <nome-do-site>/
         ├── README.md           # visão geral do projeto
@@ -216,6 +276,8 @@ flowchart TD
 
 ### Ver um site pronto
 
+O jeito mais rápido é abrir a [vitrine online](https://sergioribeirosilva.github.io/EsquadraoPixel/). Para ver no seu computador:
+
 ```bash
 git clone https://github.com/SergioRibeiroSilva/EsquadraoPixel.git
 cd EsquadraoPixel/projetos/reef-stack/site
@@ -231,7 +293,7 @@ python -m http.server 8080      # e abra http://localhost:8080
    > *"Peça ao Esquadrão Pixel para criar uma landing page para a minha clínica de fisioterapia em Goiânia."*
 3. Responda de uma vez só às perguntas do `entrevistador`. Em qualquer item, pode responder *"use padrões"* ou *"fictícios por enquanto"*.
 4. Acompanhe as etapas. No fim você recebe o caminho do `index.html`, as notas da avaliação e a lista de pendências.
-5. Autorize, ou não, o push para o GitHub.
+5. Autorize, ou não, o push para o GitHub. Com o push, o site novo aparece na vitrine online.
 
 ### Pré-requisitos
 
