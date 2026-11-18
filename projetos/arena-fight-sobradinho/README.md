@@ -112,7 +112,7 @@ python -m http.server 8080   # http://localhost:8080
 | [`pesquisa.md`](pesquisa.md) | 1 | Referências |
 | [`design.md`](design.md) | 2 | Design system |
 | [`imagens.md`](imagens.md) | 4 | Créditos e licenças |
-| [`assets/`](assets/) | 4 | SVGs e fotos |
+| [`site/assets/`](site/assets/) | 4 | SVGs e fotos |
 | [`site/`](site/) | 5 | `index.html`, `styles.css`, `script.js`, [`CHANGELOG.md`](site/CHANGELOG.md) |
 
 ---

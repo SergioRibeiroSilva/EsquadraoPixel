@@ -94,7 +94,7 @@ cd projetos/barbearia-navalha/site
 cd .. && python -m http.server 8080   # http://localhost:8080/site/
 ```
 
-> ⚠️ Este projeto é anterior à regra do site autocontido: o `site/index.html` busca as imagens em `../assets/`. Para publicar, copie `assets/` para dentro de `site/` e ajuste os caminhos (HTML e `url()` do CSS).
+> A pasta [`site/`](site/) tem todos os assets dentro dela e pode ser publicada sozinha.
 
 ---
 
@@ -108,7 +108,7 @@ cd .. && python -m http.server 8080   # http://localhost:8080/site/
 | [`pesquisa.md`](pesquisa.md) | 1 | Referências |
 | [`design.md`](design.md) | 2 | Design system |
 | [`imagens.md`](imagens.md) | 4 | Créditos, licenças e prompts de fotos |
-| [`assets/`](assets/) | 4 | SVGs e fotos |
+| [`site/assets/`](site/assets/) | 4 | SVGs e fotos |
 | [`site/`](site/) | 5 | `index.html`, `styles.css`, `script.js`, [`CHANGELOG.md`](site/CHANGELOG.md) |
 
 ---
@@ -119,7 +119,6 @@ cd .. && python -m http.server 8080   # http://localhost:8080/site/
 - [ ] **Conteúdo real**: nomes e especialidades da equipe, preços e durações (revisar também o `priceRange` do JSON-LD) e depoimentos
 - [ ] Tirar o aviso "Site de demonstração" e os selos "Exemplo" quando tudo for real
 - [ ] **Logotipo definitivo**, se houver
-- [ ] **Site autocontido**: copiar `assets/` para `site/assets/`
 - [ ] **Domínio**: `og:image` (1200x630), `og:url`, `canonical` e `url` no JSON-LD
 - [ ] Conferir o menu mobile num iPhone real (Safari)
 

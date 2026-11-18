@@ -93,7 +93,7 @@ cd projetos/emmeline-croche/site
 cd .. && python -m http.server 8080   # http://localhost:8080/site/
 ```
 
-> ⚠️ Este projeto é anterior à regra do site autocontido: o `site/index.html` busca as imagens em `../assets/`. Para publicar, copie `assets/` para dentro de `site/` e ajuste os caminhos, ou publique a pasta do projeto inteira.
+> A pasta [`site/`](site/) tem todos os assets dentro dela e pode ser publicada sozinha.
 
 ---
 
@@ -107,7 +107,7 @@ cd .. && python -m http.server 8080   # http://localhost:8080/site/
 | [`pesquisa.md`](pesquisa.md) | 1 | Referências |
 | [`design.md`](design.md) | 2 | Design system |
 | [`imagens.md`](imagens.md) | 4 | Créditos e licenças |
-| [`assets/`](assets/) | 4 | SVGs e fotos |
+| [`site/assets/`](site/assets/) | 4 | SVGs e fotos |
 | [`site/`](site/) | 5 | `index.html`, `styles.css`, `script.js`, [`CHANGELOG.md`](site/CHANGELOG.md) |
 
 ---

@@ -500,7 +500,7 @@ main:focus { outline: none; }
 }
 .hero__media::before { background: var(--c-rose-200); }
 .hero__media::after {
-  background-image: url("../assets/textura-ponto-croche.svg");
+  background-image: url("assets/textura-ponto-croche.svg");
   background-size: 48px 48px;
   opacity: .35;
 }
@@ -693,7 +693,7 @@ main:focus { outline: none; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: url("../assets/textura-ponto-croche.svg");
+  background-image: url("assets/textura-ponto-croche.svg");
   background-size: 48px 48px;
   opacity: .08;
   pointer-events: none;
@@ -1082,7 +1082,7 @@ main:focus { outline: none; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: url("../assets/textura-ponto-croche-claro.svg");
+  background-image: url("assets/textura-ponto-croche-claro.svg");
   background-size: 48px 48px;
   opacity: .10;
   pointer-events: none;

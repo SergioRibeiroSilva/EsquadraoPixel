@@ -661,7 +661,7 @@ body.menu-aberto { overflow: hidden; }
 }
 .personalize::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: url("../assets/textura-linho.svg") repeat;
+  background: url("assets/textura-linho.svg") repeat;
   background-size: 64px 64px;
   opacity: .10;
 }
@@ -751,7 +751,7 @@ body.menu-aberto { overflow: hidden; }
   .passos__lista::before {
     left: 12.5%; right: 12.5%; top: 0; bottom: auto; height: 56px;
     border: 0;
-    background: url("../assets/caminho-pesponto-h.svg") center / 100% 100% no-repeat;
+    background: url("assets/caminho-pesponto-h.svg") center / 100% 100% no-repeat;
     opacity: .5;
   }
   .passo { padding-left: 0; text-align: center; }
@@ -760,7 +760,7 @@ body.menu-aberto { overflow: hidden; }
   .passos__lista::after {
     content: ""; position: absolute; top: 8px; right: calc(12.5% - 52px);
     width: 40px; height: 40px;
-    background: url("../assets/ornamento-agulha.svg") center / contain no-repeat;
+    background: url("assets/ornamento-agulha.svg") center / contain no-repeat;
     opacity: .85;
   }
   .passos__cta { margin-top: var(--sp-5); }

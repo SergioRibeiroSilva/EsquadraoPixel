@@ -1,4 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" aria-hidden="true">
-<defs><path id="m" d="M24 19C21.2 15.5 21 8.5 24 4.2 27 8.5 26.8 15.5 24 19Z"/></defs>
-<g fill="#F5C518"><use href="#m" transform="rotate(0 24 24)"/><use href="#m" transform="rotate(45 24 24)"/><use href="#m" transform="rotate(90 24 24)"/><use href="#m" transform="rotate(135 24 24)"/><use href="#m" transform="rotate(180 24 24)"/><use href="#m" transform="rotate(225 24 24)"/><use href="#m" transform="rotate(270 24 24)"/><use href="#m" transform="rotate(315 24 24)"/></g><circle cx="24" cy="24" r="6" fill="#8A6100"/>
-</svg>

@@ -113,7 +113,7 @@ flowchart TD
     E --> P[1 · pesquisador-fontes<br/>pesquisa.md]
     P --> D[2 · designer-ui<br/>design.md]
     D --> R[3 · redator<br/>conteudo.md]
-    D --> G[4 · gerador-imagens<br/>imagens.md · assets/]
+    D --> G[4 · gerador-imagens<br/>imagens.md · site/assets/]
     R --> F[5 · desenvolvedor-frontend<br/>site/]
     G --> F
     F --> V[6 · inspetor-visual<br/>capturas/ · inspecao-visual.md]
@@ -148,7 +148,7 @@ flowchart TD
 | 1 | [`pesquisador-fontes`](.claude/agents/pesquisador-fontes.md) | Pesquisa referências, conteúdo, acessibilidade e boas práticas, sempre com fonte | `pesquisa.md` |
 | 2 | [`designer-ui`](.claude/agents/designer-ui.md) | Define conceito, paleta com contraste calculado, tipografia, tokens, grid e layout | `design.md` |
 | 3 | [`redator`](.claude/agents/redator.md) | Escreve toda a copy: títulos, CTAs, FAQ, microtextos, SEO e textos alternativos | `conteudo.md` |
-| 4 | [`gerador-imagens`](.claude/agents/gerador-imagens.md) | Cria SVGs originais e busca fotos reais de licença livre, com crédito | `imagens.md`, `assets/` |
+| 4 | [`gerador-imagens`](.claude/agents/gerador-imagens.md) | Cria SVGs originais e busca fotos reais de licença livre, com crédito | `imagens.md`, `site/assets/` |
 | 5 | [`desenvolvedor-frontend`](.claude/agents/desenvolvedor-frontend.md) | Programa o site em HTML, CSS e JS puro, semântico e responsivo | `site/` |
 | 6 | [`inspetor-visual`](.claude/agents/inspetor-visual.md) | Abre o site no Edge ou Chrome sem janela, faz capturas e roda o Lighthouse | `capturas/`, `inspecao-visual.md` |
 | 7 | [`avaliador-tecnico`](.claude/agents/avaliador-tecnico.md) | Audita HTML, WCAG AA, responsividade, desempenho e SEO | `avaliacao-tecnica.md` |
@@ -195,7 +195,6 @@ flowchart TD
         ├── design.md           # etapa 2  — design system e layout
         ├── conteudo.md         # etapa 3  — toda a copy do site
         ├── imagens.md          # etapa 4  — créditos e licenças
-        ├── assets/             # etapa 4  — SVGs e fotos originais
         ├── site/               # etapa 5  — o site pronto
         │   ├── index.html
         │   ├── styles.css

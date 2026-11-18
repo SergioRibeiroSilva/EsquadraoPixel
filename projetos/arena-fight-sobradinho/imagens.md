@@ -3,7 +3,7 @@
 > Etapa 3 (gerador-imagens), 2026-11-15. Entrada: `design.md`, seção 7 (F1 a F14 e S1 a S11).
 > Todas as fotos são reais, de bancos públicos com licença livre para uso comercial (Unsplash License e Pexels License: uso gratuito, inclusive comercial, **sem atribuição obrigatória**). Nenhuma é CC BY, então o rodapé não precisa de crédito. Os créditos ficam registrados aqui.
 > Download em 2026-11-15. Recorte e compressão feitos com Pillow. Cada foto existe em **JPG (progressivo) + WebP** com o mesmo nome.
-> Caminhos relativos a `assets/`. A partir de `site/index.html`, use `../assets/...`.
+> Caminhos relativos a `site/assets/`. A partir de `site/index.html`, use `assets/...`.
 
 ## 1. Fotos
 
@@ -40,10 +40,10 @@
 6. Exemplo de `<picture>` para o hero:
    ```html
    <picture>
-     <source media="(max-width: 767px)" type="image/webp" srcset="../assets/fotos/hero-treino-mobile.webp">
-     <source media="(max-width: 767px)" srcset="../assets/fotos/hero-treino-mobile.jpg">
-     <source type="image/webp" srcset="../assets/fotos/hero-treino-960.webp 960w, ../assets/fotos/hero-treino-1440.webp 1440w, ../assets/fotos/hero-treino-1920.webp 1920w" sizes="100vw">
-     <img src="../assets/fotos/hero-treino-1440.jpg" srcset="../assets/fotos/hero-treino-960.jpg 960w, ../assets/fotos/hero-treino-1440.jpg 1440w, ../assets/fotos/hero-treino-1920.jpg 1920w" sizes="100vw" width="1920" height="1080" alt="" fetchpriority="high" decoding="async">
+     <source media="(max-width: 767px)" type="image/webp" srcset="assets/fotos/hero-treino-mobile.webp">
+     <source media="(max-width: 767px)" srcset="assets/fotos/hero-treino-mobile.jpg">
+     <source type="image/webp" srcset="assets/fotos/hero-treino-960.webp 960w, assets/fotos/hero-treino-1440.webp 1440w, assets/fotos/hero-treino-1920.webp 1920w" sizes="100vw">
+     <img src="assets/fotos/hero-treino-1440.jpg" srcset="assets/fotos/hero-treino-960.jpg 960w, assets/fotos/hero-treino-1440.jpg 1440w, assets/fotos/hero-treino-1920.jpg 1920w" sizes="100vw" width="1920" height="1080" alt="" fetchpriority="high" decoding="async">
    </picture>
    ```
 
@@ -55,7 +55,7 @@ Todos validados como XML, sem fontes externas, scripts ou imagens embutidas, e t
 |---|---|---|---|---|---|
 | S1 | `logo-arena-fight.svg` | Header | viewBox ≈ 198×48 (altura 32px mobile / 40px desktop) | `role="img"` + `<title>`. No link, use `aria-label="Arena Fight Sobradinho, início"` e `alt=""` no `<img>` | pronto |
 | S2 | `logo-arena-fight-mono.svg` | Rodapé | ≈ 198×48 | Usa `currentColor`: precisa ser **inline no HTML** para herdar a cor (em `<img>` fica preto). Alternativa: usar o S1 | pronto |
-| S3 | `favicon.svg` | Favicon | 64×64 | `<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">` | pronto |
+| S3 | `favicon.svg` | Favicon | 64×64 | `<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">` | pronto |
 | S4 | `og-image.svg` + `og-image.png` | Open Graph | 1200×630 (PNG de 20 KB, exportado via Chrome headless) | Use o PNG em `og:image`. O SVG usa texto com fallback Arial Narrow | pronto |
 | S5 | `padrao-barras.svg` | CTA final (fundo) | tile 48×48, barras "/" pretas a 12% | decorativo (`background-image`, `background-size: 48px`) | pronto |
 | S6 | `forma-corte-diagonal.svg` | Fallback do `clip-path` | 1440×72, `preserveAspectRatio="none"` | decorativo | pronto |

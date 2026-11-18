@@ -29,23 +29,23 @@
   <link rel="canonical" href="https://<dominio>/">
   <meta property="og:url" content="https://<dominio>/">
   e use URL absoluta em og:image e twitter:image: https://<dominio>/assets/fotos/og-image.jpg -->
-  <meta property="og:image" content="../assets/fotos/og-image.jpg">
+  <meta property="og:image" content="assets/fotos/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Bolsa de crochê vermelha e o logotipo da Emmeline Crochê">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Emmeline Crochê | Bolsas de crochê feitas à mão">
   <meta name="twitter:description" content="Bolsas tecidas ponto a ponto, sob encomenda. Envio para todo o Brasil.">
-  <meta name="twitter:image" content="../assets/fotos/og-image.jpg">
+  <meta name="twitter:image" content="assets/fotos/og-image.jpg">
 
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
-  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Lato:ital,wght@0,400;0,700;1,400&amp;display=swap">
-  <link rel="preload" as="image" href="../assets/fotos/hero-bolsa-croche-800.jpg" imagesrcset="../assets/fotos/hero-bolsa-croche-800.jpg 800w, ../assets/fotos/hero-bolsa-croche.jpg 1200w" imagesizes="(min-width: 900px) 420px, min(420px, 90vw)">
+  <link rel="preload" as="image" href="assets/fotos/hero-bolsa-croche-800.jpg" imagesrcset="assets/fotos/hero-bolsa-croche-800.jpg 800w, assets/fotos/hero-bolsa-croche.jpg 1200w" imagesizes="(min-width: 900px) 420px, min(420px, 90vw)">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 
@@ -60,8 +60,8 @@
     "name": "Emmeline Crochê",
     "description": "Bolsas de crochê artesanais feitas à mão, sob encomenda.",
     "url": "./",
-    "logo": "../assets/logo-emmeline.svg",
-    "image": "../assets/fotos/og-image.jpg",
+    "logo": "assets/logo-emmeline.svg",
+    "image": "assets/fotos/og-image.jpg",
     "telephone": "+55-11-90000-0000",
     "email": "contato@emmelinecroche.com.br",
     "priceRange": "R$ 120 – R$ 380",
@@ -93,7 +93,7 @@
   </script>
 </head>
 <body>
-  <!-- Sprite de ícones (cópia inline dos SVGs de ../assets/icon-*.svg, para herdar currentColor e funcionar ao abrir o arquivo localmente) -->
+  <!-- Sprite de ícones (cópia inline dos SVGs de assets/icon-*.svg, para herdar currentColor e funcionar ao abrir o arquivo localmente) -->
   <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
     <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M3.6 20.4l1.3-4.1a8.6 8.6 0 1 1 3.2 3z"/><path d="M9.2 7.8c-.6.3-1 1-.9 1.8.3 2.6 2.6 5 5.2 5.3.8.1 1.5-.3 1.8-.9l.2-.6-2-1-.9.8a4.4 4.4 0 0 1-2-2l.8-.9-1-2z"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".7"/></symbol>
@@ -121,7 +121,7 @@
   <header class="site-header" id="topo">
     <div class="container site-header__inner">
       <a class="site-header__logo" href="#inicio">
-        <img src="../assets/logo-emmeline.svg" alt="Emmeline Crochê, início" width="228" height="48">
+        <img src="assets/logo-emmeline.svg" alt="Emmeline Crochê, início" width="228" height="48">
       </a>
 
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
@@ -177,19 +177,19 @@
           <div class="hero__frame">
             <!-- FOTO DE BANCO (Unsplash): substituir antes de publicar -->
             <img class="hero__img"
-                 src="../assets/fotos/hero-bolsa-croche-800.jpg"
-                 srcset="../assets/fotos/hero-bolsa-croche-800.jpg 800w, ../assets/fotos/hero-bolsa-croche.jpg 1200w"
+                 src="assets/fotos/hero-bolsa-croche-800.jpg"
+                 srcset="assets/fotos/hero-bolsa-croche-800.jpg 800w, assets/fotos/hero-bolsa-croche.jpg 1200w"
                  sizes="(min-width: 900px) 420px, min(420px, 90vw)"
                  width="800" height="1000"
                  alt="Mão segurando uma bolsa de crochê vermelha com alça de contas"
                  fetchpriority="high" decoding="async">
           </div>
-          <img class="hero__seal" src="../assets/selo-feito-a-mao.svg" alt="" width="96" height="96" aria-hidden="true">
+          <img class="hero__seal" src="assets/selo-feito-a-mao.svg" alt="" width="96" height="96" aria-hidden="true">
         </div>
       </div>
     </section>
 
-    <div class="divider" aria-hidden="true"><img src="../assets/divisor-ponto.svg" alt="" width="160" height="20" loading="lazy"></div>
+    <div class="divider" aria-hidden="true"><img src="assets/divisor-ponto.svg" alt="" width="160" height="20" loading="lazy"></div>
 
     <!-- ==================== COLEÇÃO ==================== -->
     <!-- FICTÍCIO: modelos, preços e fotos de banco; substituir antes de publicar -->
@@ -206,7 +206,7 @@
             <article class="product">
               <div class="product__media">
                 <span class="badge">Mais pedida</span>
-                <img src="../assets/fotos/bolsa-lua.jpg" srcset="../assets/fotos/bolsa-lua-400.jpg 400w, ../assets/fotos/bolsa-lua.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa de crochê creme de tiracolo com aba em vinho e flores bordadas">
+                <img src="assets/fotos/bolsa-lua.jpg" srcset="assets/fotos/bolsa-lua-400.jpg 400w, assets/fotos/bolsa-lua.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa de crochê creme de tiracolo com aba em vinho e flores bordadas">
               </div>
               <div class="product__body">
                 <h3 class="product__name">Bolsa Lua</h3>
@@ -224,7 +224,7 @@
           <li class="reveal">
             <article class="product">
               <div class="product__media product__media--feira">
-                <img src="../assets/fotos/bolsa-feira.jpg" srcset="../assets/fotos/bolsa-feira-400.jpg 400w, ../assets/fotos/bolsa-feira.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa grande de crochê em terracota com listras creme">
+                <img src="assets/fotos/bolsa-feira.jpg" srcset="assets/fotos/bolsa-feira-400.jpg 400w, assets/fotos/bolsa-feira.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa grande de crochê em terracota com listras creme">
               </div>
               <div class="product__body">
                 <h3 class="product__name">Bolsa Feira</h3>
@@ -242,7 +242,7 @@
           <li class="reveal">
             <article class="product">
               <div class="product__media">
-                <img src="../assets/fotos/bolsa-bombom.jpg" srcset="../assets/fotos/bolsa-bombom-400.jpg 400w, ../assets/fotos/bolsa-bombom.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa de mão de crochê rosa com laços de cetim">
+                <img src="assets/fotos/bolsa-bombom.jpg" srcset="assets/fotos/bolsa-bombom-400.jpg 400w, assets/fotos/bolsa-bombom.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa de mão de crochê rosa com laços de cetim">
               </div>
               <div class="product__body">
                 <h3 class="product__name">Bolsa Bombom</h3>
@@ -260,7 +260,7 @@
           <li class="reveal">
             <article class="product">
               <div class="product__media">
-                <img src="../assets/fotos/bolsa-marsala.jpg" srcset="../assets/fotos/bolsa-marsala-400.jpg 400w, ../assets/fotos/bolsa-marsala.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa de crochê em vinho e creme com ponto texturizado">
+                <img src="assets/fotos/bolsa-marsala.jpg" srcset="assets/fotos/bolsa-marsala-400.jpg 400w, assets/fotos/bolsa-marsala.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsa de crochê em vinho e creme com ponto texturizado">
               </div>
               <div class="product__body">
                 <h3 class="product__name">Bolsa Marsala</h3>
@@ -278,7 +278,7 @@
           <li class="reveal">
             <article class="product">
               <div class="product__media">
-                <img src="../assets/fotos/bolsa-jardim.jpg" srcset="../assets/fotos/bolsa-jardim-400.jpg 400w, ../assets/fotos/bolsa-jardim.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsinha de crochê creme com botões de rosa em relevo e botão de madeira">
+                <img src="assets/fotos/bolsa-jardim.jpg" srcset="assets/fotos/bolsa-jardim-400.jpg 400w, assets/fotos/bolsa-jardim.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Bolsinha de crochê creme com botões de rosa em relevo e botão de madeira">
               </div>
               <div class="product__body">
                 <h3 class="product__name">Bolsa Jardim</h3>
@@ -296,7 +296,7 @@
           <li class="reveal">
             <article class="product">
               <div class="product__media">
-                <img src="../assets/fotos/bolsa-noite.jpg" srcset="../assets/fotos/bolsa-noite-400.jpg 400w, ../assets/fotos/bolsa-noite.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Clutch de crochê em ponto pipoca com fecho dourado">
+                <img src="assets/fotos/bolsa-noite.jpg" srcset="assets/fotos/bolsa-noite-400.jpg 400w, assets/fotos/bolsa-noite.jpg 800w" sizes="(min-width: 900px) 372px, (min-width: 600px) 45vw, 90vw" width="800" height="1000" loading="lazy" decoding="async" alt="Clutch de crochê em ponto pipoca com fecho dourado">
               </div>
               <div class="product__body">
                 <h3 class="product__name">Bolsa Noite</h3>
@@ -330,13 +330,13 @@
         <div class="about">
           <div class="mosaic reveal">
             <figure class="mosaic__item mosaic__item--big">
-              <img src="../assets/fotos/processo-maos-tecendo.jpg" width="900" height="1125" loading="lazy" decoding="async" alt="Mãos tecendo crochê com agulha dourada e fio claro">
+              <img src="assets/fotos/processo-maos-tecendo.jpg" width="900" height="1125" loading="lazy" decoding="async" alt="Mãos tecendo crochê com agulha dourada e fio claro">
             </figure>
             <figure class="mosaic__item">
-              <img src="../assets/fotos/fios-novelos.jpg" width="700" height="700" loading="lazy" decoding="async" alt="Novelos de fio vinho em uma cesta de palha">
+              <img src="assets/fotos/fios-novelos.jpg" width="700" height="700" loading="lazy" decoding="async" alt="Novelos de fio vinho em uma cesta de palha">
             </figure>
             <figure class="mosaic__item">
-              <img src="../assets/fotos/detalhe-ponto-croche.jpg" width="700" height="700" loading="lazy" decoding="async" alt="Close da trama de crochê em fio rosé-vinho">
+              <img src="assets/fotos/detalhe-ponto-croche.jpg" width="700" height="700" loading="lazy" decoding="async" alt="Close da trama de crochê em fio rosé-vinho">
             </figure>
           </div>
 
@@ -349,7 +349,7 @@
               <p>“Não existem duas bolsas iguais, e é isso que eu mais amo.”</p>
             </blockquote>
             <figure class="about__portrait">
-              <img src="../assets/fotos/artesa-trabalhando.jpg" width="900" height="1125" loading="lazy" decoding="async" alt="Artesã segurando uma peça de crochê recém-tecida (foto ilustrativa)">
+              <img src="assets/fotos/artesa-trabalhando.jpg" width="900" height="1125" loading="lazy" decoding="async" alt="Artesã segurando uma peça de crochê recém-tecida (foto ilustrativa)">
               <figcaption>No ateliê: a peça recém-saída da agulha. Foto ilustrativa.</figcaption>
             </figure>
           </div>
@@ -438,7 +438,7 @@
       </div>
     </section>
 
-    <div class="divider" aria-hidden="true"><img src="../assets/divisor-ponto.svg" alt="" width="160" height="20" loading="lazy"></div>
+    <div class="divider" aria-hidden="true"><img src="assets/divisor-ponto.svg" alt="" width="160" height="20" loading="lazy"></div>
 
     <!-- ==================== DIFERENCIAIS ==================== -->
     <section class="section section--features" id="diferenciais" aria-labelledby="diferenciais-titulo">
@@ -500,7 +500,7 @@
               <figcaption class="testimonial__author">
                 <span class="avatar" data-initials="MS">
                   <span class="avatar__initials" aria-hidden="true">MS</span>
-                  <img class="avatar__img" src="../assets/depoimentos/depoimento-1.jpg" width="320" height="320" loading="lazy" decoding="async" alt="Foto ilustrativa de cliente">
+                  <img class="avatar__img" src="assets/depoimentos/depoimento-1.jpg" width="320" height="320" loading="lazy" decoding="async" alt="Foto ilustrativa de cliente">
                 </span>
                 <span class="testimonial__who">
                   <span class="testimonial__name">Mariana S.</span>
@@ -519,7 +519,7 @@
               <figcaption class="testimonial__author">
                 <span class="avatar" data-initials="PL">
                   <span class="avatar__initials" aria-hidden="true">PL</span>
-                  <img class="avatar__img" src="../assets/depoimentos/depoimento-2.jpg" width="320" height="320" loading="lazy" decoding="async" alt="Foto ilustrativa de cliente">
+                  <img class="avatar__img" src="assets/depoimentos/depoimento-2.jpg" width="320" height="320" loading="lazy" decoding="async" alt="Foto ilustrativa de cliente">
                 </span>
                 <span class="testimonial__who">
                   <span class="testimonial__name">Patrícia L.</span>
@@ -538,7 +538,7 @@
               <figcaption class="testimonial__author">
                 <span class="avatar" data-initials="JR">
                   <span class="avatar__initials" aria-hidden="true">JR</span>
-                  <img class="avatar__img" src="../assets/depoimentos/depoimento-3.jpg" width="320" height="320" loading="lazy" decoding="async" alt="Foto ilustrativa de cliente">
+                  <img class="avatar__img" src="assets/depoimentos/depoimento-3.jpg" width="320" height="320" loading="lazy" decoding="async" alt="Foto ilustrativa de cliente">
                 </span>
                 <span class="testimonial__who">
                   <span class="testimonial__name">Júlia R.</span>
@@ -622,7 +622,7 @@
     <div class="container">
       <div class="site-footer__grid">
         <div class="site-footer__brand">
-          <img src="../assets/logo-emmeline-claro.svg" alt="Emmeline Crochê" width="152" height="32" loading="lazy">
+          <img src="assets/logo-emmeline-claro.svg" alt="Emmeline Crochê" width="152" height="32" loading="lazy">
           <p>Bolsas de crochê feitas à mão, sob encomenda.</p>
         </div>
 
