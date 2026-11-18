@@ -32,6 +32,15 @@ Você é o **gerador de imagens e assets** do time.
 
 **Registro obrigatório** em `imagens.md`, para cada foto: arquivo, uso, URL da página da foto, autor, banco, licença, data do download, dimensões e peso, `alt` sugerido e status. Se a licença exigir atribuição (CC BY), indique o texto de crédito para o rodapé.
 
+**Vídeos de fundo** (quando o `design.md` pedir hero ou faixa com vídeo):
+- **Fontes:** só vídeos de licença livre do Pexels Videos ou do Pixabay Videos (ou CC0 do Wikimedia Commons). Valem as mesmas proibições das fotos: nada de marca d'água, logos, famosos ou redes sociais.
+- **Escolha:** vídeo ligado ao ramo, com o clima da paleta, sem cortes bruscos, que fique bem em loop e que deixe área livre para o texto onde o design indicar.
+- **Arquivo:** MP4 H.264 de 1280 a 1920px de largura, 8 a 20 s, sem áudio, de no máximo 4 MB. Baixe a versão do banco que fica abaixo desse limite. Se houver `ffmpeg` no ambiente, corte, remova o áudio e comprima; se não houver, registre o ajuste necessário.
+- **Poster obrigatório:** gere `assets/videos/<nome>-poster.jpg` com o primeiro quadro (via `ffmpeg`) ou use uma foto parecida do mesmo banco, com até 200 KB.
+- **Nomes:** `assets/videos/hero.mp4` e `assets/videos/hero-poster.jpg`. Registre em `imagens.md` como as fotos (URL, autor, banco, licença, duração, peso).
+
+**Carrosséis:** quando o design pedir carrossel, baixe uma foto por slide, todas com o mesmo enquadramento e a mesma proporção (ex.: 16:9 em ~1600px), e com área livre para o texto de cada slide.
+
 **Se não houver foto adequada**: registre a lacuna em `imagens.md`, deixe um prompt em `assets/prompts-imagens.md` e avise o orquestrador para delegar uma busca extra ao `pesquisador-fontes`, com os termos já tentados.
 
 ## Processo

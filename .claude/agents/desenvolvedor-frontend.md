@@ -33,6 +33,19 @@ Você é o **desenvolvedor front-end** do time.
   Use `border: 0`, `width: 100%` e `aspect-ratio` (ex.: 16/10 no desktop, 4/3 no celular), com cantos e borda coerentes com o design. Mantenha o endereço em texto e os links "Abrir no Google Maps" e "Como chegar". O iframe substitui a imagem ilustrativa do mapa (que pode ficar como fundo enquanto o iframe carrega).
 - **Fotos reais**: use todas as fotos listadas em `imagens.md` (`assets/fotos/`, `assets/equipe/`, `assets/depoimentos/`) nas seções correspondentes, no lugar de avatares/ilustrações SVG equivalentes. Sempre com `alt` do `imagens.md`, `width`/`height`, `object-fit: cover` e `object-position` ajustado ao rosto/assunto. Use `loading="lazy"` abaixo da dobra; no hero, use `fetchpriority="high"` e sem lazy. Se a foto ficar atrás de texto, garanta contraste AA com sobreposição (overlay) nas cores do design. Equipe: retratos com mesmo enquadramento. Depoimentos: avatar circular e selo "Exemplo" mantido. Se houver crédito exigido pela licença, coloque-o no rodapé.
 
+- **Hero fiel ao design**: implemente o tipo de hero que o `design.md` escolheu (vídeo, carrossel, tela cheia, tipográfico, mosaico etc.). Não troque por "texto à esquerda + imagem à direita" por ser mais simples. Se algo for inviável, registre no CHANGELOG e avise o orquestrador.
+- **Vídeo de fundo**:
+  - **Atributos:** `<video autoplay muted loop playsinline preload="metadata" poster="...">` com `<source>` MP4 (e WebM, se houver). O vídeo é decorativo, com `aria-hidden="true"` e sem `controls`.
+  - **Botão de pausar:** botão visível de pausar/reproduzir com `aria-label` e `aria-pressed` (WCAG 2.2.2).
+  - **Movimento reduzido:** com `prefers-reduced-motion: reduce`, não tocar (pausar via JS e exibir só o poster).
+  - **Contraste e carregamento:** overlay garantindo AA no texto. O poster serve de LCP.
+- **Carrossel**: JS puro, sem biblioteca.
+  - **Slides:** em `<ul>`; o 1º fica visível sem JS.
+  - **Controles:** setas e indicadores como `<button>` (44px), teclado ← →, swipe com pointer events.
+  - **Avanço automático:** só se o design pedir; para no hover e no foco, tem botão de pausar e fica desligado com `prefers-reduced-motion`.
+  - **Leitor de tela:** `aria-roledescription="carrossel"` na região e "slide" em cada item, `aria-label` "N de M", `aria-live="off"` enquanto avança sozinho e `"polite"` quando parado.
+  - **Imagens:** só a 1ª foto sem lazy e com `fetchpriority="high"`; as outras com `loading="lazy"`.
+
 ## Processo
 1. Converta os tokens do `design.md` em variáveis CSS no `:root`, com modo escuro opcional via `prefers-color-scheme`.
 2. Construa a página seção por seção, na ordem definida no design.

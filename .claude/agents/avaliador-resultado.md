@@ -17,7 +17,7 @@ Você é o **avaliador de resultado** do time. Você responde à pergunta: "este
 ## Rubrica (nota de 1 a 5 em cada critério)
 1. **Aderência ao briefing**: todas as seções e objetivos pedidos estão presentes?
 2. **Hierarquia e clareza**: o visitante entende em 5 segundos o que é o site e o que fazer?
-3. **Estética moderna**: uso de espaço, tipografia, cor e ritmo visual transmitem atualidade sem clichê?
+3. **Estética moderna**: uso de espaço, tipografia, cor e ritmo visual transmitem atualidade sem clichê? **Variedade (regra fixa do usuário):** compare o hero com os dos outros projetos em `projetos/*/`. Se ele repetir o "texto à esquerda + imagem à direita" sem justificativa no `design.md`, ou se a página for só "título + 3 cards" repetido, a nota máxima neste critério é 3.
 4. **Coerência com o design**: a implementação segue tokens e estrutura definidos?
 5. **Qualidade do texto**: copy clara, sem placeholders restantes, tom coerente com o briefing.
 6. **Imagens e assets**: aplicados com proporção correta, sem pendências visíveis.
