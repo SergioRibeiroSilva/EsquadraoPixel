@@ -32,6 +32,7 @@ Regras do fluxo:
 - **Versionamento (etapa 10b)**: sempre que um projeto for validado (APROVADO), chame o `versionador-git` em modo COMMIT. Ele cria as mensagens e faz os commits locais. Depois **pergunte ao usuário** se pode fazer o push e, só com o "sim" explícito dele para aquele push, chame o `versionador-git` em modo PUSH. Sem remoto configurado, peça a URL ao usuário na mesma pergunta.
 - **Vitrine no GitHub Pages**: todo `projetos/<site>/site/` é publicado em `https://sergioribeirosilva.github.io/EsquadraoPixel/<site>/`, pelo workflow `.github/workflows/pages.yml` (que roda `vitrine/montar.py`). Um projeto novo entra na vitrine sozinho. A capa do card (`vitrine/capas/<site>.webp|jpg`) é gerada pelo `versionador-git` na etapa 10b, com `vitrine/gerar_capas.py`; se faltar, o workflow gera na publicação. Como o push publica o site na internet, avise isso ao perguntar sobre o push.
 - **Iteração**: se `avaliacao.md` disser ITERAR, volte à etapa 5 (antes, à etapa 3 se houver correções de texto) e depois às etapas 6, 7 e 8. No máximo 3 ciclos de correção.
+- **Projetos antigos** (sem `conteudo.md` ou `dados-negocio.md`, de antes do `redator` e do `entrevistador`): avise o inspetor e os avaliadores para não tratar a falta desses arquivos como falha, para ler os textos direto no HTML e os dados no `briefing.md`. Correções de texto pequenas vão direto ao `desenvolvedor-frontend`; para reescrever a copy, chame antes o `redator` para criar o `conteudo.md`.
 - **Paralelismo**: as etapas 1 e 2 são sequenciais por dependência. Depois do design, o `redator` (3) e o `gerador-imagens` (4) podem rodar **em paralelo**, pois os dois dependem só do `design.md`. As etapas 5 a 8 são sequenciais.
 - **Resumo final ao usuário**: caminho do `index.html`, decisão do avaliador, notas, pendências (fotos, textos reais) e como abrir o site (dê duplo clique em `index.html` ou sirva a pasta com um servidor local). Depois do push, inclua o endereço online (`https://sergioribeirosilva.github.io/EsquadraoPixel/<site>/`), que fica no ar cerca de 1 minuto depois.
 
@@ -49,6 +50,7 @@ Regras do fluxo:
     conteudo.md
     imagens.md
     prompts-imagens.md   (só se faltar foto)
+    fontes-svg/          (só se houver SVGs-fonte que o site não carrega)
     site/index.html, styles.css, script.js, CHANGELOG.md
     site/assets/         (SVGs, fotos/, equipe/, depoimentos/, videos/)
     capturas/
@@ -58,7 +60,7 @@ Regras do fluxo:
     docs/                (prévias usadas nos READMEs)
   ```
 - Fora de `projetos/`: `vitrine/` (modelo da vitrine, `montar.py`, `gerar_capas.py` e `capas/`) e `.github/workflows/pages.yml` (publicação no GitHub Pages). A pasta `_publicar/` é gerada e fica no `.gitignore`.
-- **Assets dentro do site**: tudo o que a página carrega fica em `site/assets/`, referenciado como `assets/...` (nunca `../assets/`). Assim a pasta `site/` funciona sozinha e pode ser publicada como está. Documentos de trabalho (`imagens.md`, `prompts-imagens.md`) ficam na raiz do projeto, fora de `site/`.
+- **Assets dentro do site**: tudo o que a página carrega fica em `site/assets/`, referenciado como `assets/...` (nunca `../assets/`). Assim a pasta `site/` funciona sozinha e pode ser publicada como está. Documentos de trabalho (`imagens.md`, `prompts-imagens.md`) ficam na raiz do projeto, fora de `site/`. Arquivos que o site não carrega (SVGs-fonte, sprites substituídos por SVG inline) vão para `projetos/<site>/fontes-svg/`; nunca crie uma pasta `assets/` fora de `site/`.
 - Nomes de arquivos em kebab-case, sem acentos.
 - Sem frameworks nem dependências de build, salvo pedido explícito do usuário.
 - Não publicar nem enviar nada para serviços externos sem confirmação do usuário.

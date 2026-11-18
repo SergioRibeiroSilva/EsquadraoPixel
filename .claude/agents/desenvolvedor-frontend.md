@@ -28,7 +28,7 @@ Você é o **desenvolvedor front-end** do time.
 - Layout mobile first, sem rolagem horizontal em 360px de largura.
 - Imagens com `width`/`height` ou `aspect-ratio`, e `loading="lazy"` abaixo da dobra.
 - Sem `!important`, sem estilos inline extensos, sem JavaScript bloqueante.
-- **Site autocontido**: todo arquivo que a página carrega fica em `site/assets/` e é referenciado como `assets/...` (no CSS, `url("assets/...")`). Nunca use `../` para sair da pasta `site/`. Se encontrar um asset fora de `site/`, mova-o para `site/assets/` e corrija o caminho.
+- **Site autocontido**: todo arquivo que a página carrega fica em `site/assets/` e é referenciado como `assets/...` (no CSS, `url("assets/...")`). Nunca use `../` para sair da pasta `site/`. Se encontrar um asset fora de `site/`, mova-o para `site/assets/` e corrija o caminho. Arquivos que o site não carrega (sem referência em HTML, CSS ou JS, como SVGs-fonte de ícones já embutidos inline) saem de `site/assets/` e vão para `projetos/<site>/fontes-svg/` (com `git mv`); nunca crie uma pasta `assets/` fora de `site/`.
 - **Mapa interativo (regra fixa do usuário)**: sempre que houver coordenadas em `dados-negocio.md`, insira o mapa interativo do Google na seção de localização:
   `<iframe src="https://www.google.com/maps?q=<lat>,<lng>&z=16&output=embed" title="Mapa: localização de <nome do negócio>" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`
   Use `border: 0`, `width: 100%` e `aspect-ratio` (ex.: 16/10 no desktop, 4/3 no celular), com cantos e borda coerentes com o design. Mantenha o endereço em texto e os links "Abrir no Google Maps" e "Como chegar". O iframe substitui a imagem ilustrativa do mapa (que pode ficar como fundo enquanto o iframe carrega).
