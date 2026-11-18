@@ -6,13 +6,18 @@
 
 *"Feito com carinho, todo dia."*
 
-![Status](https://img.shields.io/badge/status-prot%C3%B3tipo%20de%20teste-8250DF?style=flat-square)
-![Avaliação](https://img.shields.io/badge/avalia%C3%A7%C3%A3o-n%C3%A3o%20realizada-999?style=flat-square)
+![Status](https://img.shields.io/badge/status-aprovado-2EA44F?style=flat-square)
+![Média](https://img.shields.io/badge/avalia%C3%A7%C3%A3o-4%2C57%20%2F%205-B5552B?style=flat-square)
+![Ciclos](https://img.shields.io/badge/ciclos-2%20de%203-6B4226?style=flat-square)
+![Lighthouse A11y](https://img.shields.io/badge/acessibilidade-100-2EA44F?style=flat-square&logo=lighthouse&logoColor=white)
+![Lighthouse SEO](https://img.shields.io/badge/SEO-100-2EA44F?style=flat-square&logo=lighthouse&logoColor=white)
 ![Dados](https://img.shields.io/badge/dados-fict%C3%ADcios-D9A441?style=flat-square)
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+
+**[🌐 Ver online](https://sergioribeirosilva.github.io/EsquadraoPixel/padaria-trigo-doce/)**
 
 </div>
 
@@ -23,7 +28,7 @@
   </tr>
   <tr>
     <td align="center"><sub>Desktop · 1280 px</sub></td>
-    <td align="center"><sub>Celular</sub></td>
+    <td align="center"><sub>Celular · 360 px</sub></td>
   </tr>
 </table>
 
@@ -74,17 +79,39 @@
 
 ## 📊 Avaliação
 
-Este protótipo **não passou pelo ciclo formal** de inspeção visual e avaliações (etapas 6 a 8). Ele serviu para testar as etapas de pesquisa, design, imagens e desenvolvimento.
+O projeto começou como protótipo de teste, antes de existirem o `redator` e o `entrevistador` (por isso não tem `conteudo.md` nem `dados-negocio.md`). Em 18/11/2026 ele passou pelas etapas 6 a 8.
+
+**Decisão final: ✅ APROVADO no ciclo 2 de 3**, com média **4,57** (no ciclo 1 foi 4,0, com ITERAR).
+
+| Critério | Nota |
+|---|:-:|
+| Aderência ao briefing | ⭐⭐⭐⭐⭐ 5 |
+| Hierarquia e clareza | ⭐⭐⭐⭐⭐ 5 |
+| Estética moderna | ⭐⭐⭐⭐ 4 |
+| Coerência com o design | ⭐⭐⭐⭐⭐ 5 |
+| Qualidade do texto | ⭐⭐⭐⭐⭐ 5 |
+| Imagens e assets | ⭐⭐⭐⭐ 4 |
+| Experiência mobile | ⭐⭐⭐⭐ 4 |
+
+**O que mudou no ciclo 2:** o selo do hero dá uma volta só e para (WCAG 2.2.2); o hero mostra o título e o botão na primeira tela no tablet e no celular; a foto do hero ganhou versões WebP de 480 e 640 px e as fontes deixaram de bloquear a renderização; os depoimentos ganharam uma citação em destaque; o selo passou a dizer "Desde 1998".
+
+**Lighthouse (celular, ciclo 2):** desempenho **79–97** · acessibilidade **100** · boas práticas **100** · SEO **100** · LCP mediana 2,4 s
+
+Relatórios completos: [`inspecao-visual.md`](inspecao-visual.md) · [`avaliacao-tecnica.md`](avaliacao-tecnica.md) · [`avaliacao.md`](avaliacao.md) · [`capturas/`](capturas/)
 
 ---
 
 ## 🚀 Como abrir
+
+Online: **https://sergioribeirosilva.github.io/EsquadraoPixel/padaria-trigo-doce/**
 
 ```bash
 cd projetos/padaria-trigo-doce/site
 # duplo clique em index.html, ou:
 python -m http.server 8080   # http://localhost:8080
 ```
+
+A pasta [`site/`](site/) tem todos os assets dentro dela e pode ser publicada sozinha.
 
 ---
 
@@ -97,12 +124,17 @@ python -m http.server 8080   # http://localhost:8080
 | [`design.md`](design.md) | 2 | Design system |
 | [`imagens.md`](imagens.md) | 4 | Créditos e licenças |
 | [`site/`](site/) | 5 | `index.html`, `styles.css`, `script.js`, [`CHANGELOG.md`](site/CHANGELOG.md), `assets/` |
+| [`fontes-svg/`](fontes-svg/) | — | SVGs-fonte que o site não carrega (guardados fora de `site/`) |
+| [`inspecao-visual.md`](inspecao-visual.md) | 6 | Inspeção no navegador, ciclos 1 e 2 |
+| [`avaliacao-tecnica.md`](avaliacao-tecnica.md) | 7 | Avaliação técnica, ciclos 1 e 2 |
+| [`avaliacao.md`](avaliacao.md) | 8 | Decisão: ITERAR no ciclo 1, APROVADO no ciclo 2 |
 
 ---
 
 ## ⚠️ Para virar um site real
 
-- [ ] Rodar as etapas 6 a 8 (inspeção visual e avaliações)
+- [ ] *(desempenho)* Hospedar as fontes localmente (woff2 com `preload`) e usar `content-visibility` nas seções abaixo da dobra, para baixar o TBT de 160–450 ms
+- [ ] *(menores)* Ponta do ramo de trigo atrás do cabeçalho no desktop; link "Sobre" do rodapé com 40 px de largura; `srcset` de 400w nos cards; SVGO nos logos
 - [ ] Trocar os dados fictícios: Rua das Flores, 250; WhatsApp `(00) 90000-0000`; Instagram e horários
 - [ ] Coordenadas reais, para o mapa interativo
 - [ ] Fotos reais dos produtos, da loja e da equipe

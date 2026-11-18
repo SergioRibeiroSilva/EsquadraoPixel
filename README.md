@@ -147,7 +147,7 @@ python vitrine/gerar_capas.py --todas       # refaz todas
       <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/padaria-trigo-doce/"><img src="vitrine/capas/padaria-trigo-doce.jpg" alt="Captura do site Padaria Trigo Doce"></a>
       <h3>🥖 Padaria Trigo Doce</h3>
       Padaria e confeitaria artesanal, com encomendas pelo WhatsApp.<br>
-      <sub><b>Protótipo de teste</b> · sem ciclo formal de avaliação</sub><br>
+      <sub><b>Aprovado</b> · média 4,57 · Lighthouse A11y 100</sub><br>
       <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/padaria-trigo-doce/">Ver online</a> · <a href="projetos/padaria-trigo-doce/">Projeto</a></sub>
     </td>
   </tr>
@@ -160,10 +160,10 @@ python vitrine/gerar_capas.py --todas       # refaz todas
 | [Pr. Sergio Ribeiro](projetos/sergio-ribeiro/) | Site pessoal / ministério | Creme, azul-profundo, amarelo-sol | Fraunces | ✅ Aprovado (ciclo 2) | **4,71** |
 | [Emmeline Crochê](projetos/emmeline-croche/) | Artesanato | Vinho, marsala, creme | Cormorant Garamond + Lato | ✅ Aprovado (ciclo 2) | **4,71** |
 | [Barbearia Navalha](projetos/barbearia-navalha/) | Barbearia | Grafite e latão | Playfair Display + Inter | ✅ Aprovado com ressalvas (ciclo 3) | **4,71** |
+| [Padaria Trigo Doce](projetos/padaria-trigo-doce/) | Padaria | Creme, café, terracota, mel | Fraunces + Nunito Sans | ✅ Aprovado (ciclo 2) | **4,57** |
 | [Rosa Bordô](projetos/rosa-bordo/) | Artesanato (bonecas de pano) | Bordô, creme, rosa | Fraunces + Nunito | ✅ Aprovado (ciclo 2) | **4,43** |
 | [Futebol Kids](projetos/futebol-kids/) | Escolinha de futebol infantil | Verde-gramado, amarelo-sol, azul-céu | Baloo 2 + Nunito | ✅ Aprovado (ciclo 2) | **4,43** |
 | [Arena Fight Sobradinho](projetos/arena-fight-sobradinho/) | Academia de MMA | Preto e vermelho | Barlow Condensed + Inter | ✅ Aprovado | **4,43** |
-| [Padaria Trigo Doce](projetos/padaria-trigo-doce/) | Padaria | Creme, café, terracota, mel | Fraunces + Nunito Sans | 🧪 Protótipo | — |
 
 > Cada pasta de projeto tem o próprio `README.md`, com capturas, design system, seções, avaliação e pendências.
 
