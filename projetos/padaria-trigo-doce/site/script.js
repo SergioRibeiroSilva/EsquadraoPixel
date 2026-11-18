@@ -97,6 +97,7 @@
   var barra = document.getElementById("barra-mobile");
   var hero = document.getElementById("inicio");
   var cta = document.getElementById("encomendar");
+  if (barra && !temIO) barra.classList.add("barra-mobile--pronta");
   if (barra && temIO) {
     var heroVisivel = true;
     var ctaVisivel = false;
@@ -111,6 +112,8 @@
       ctaVisivel = en[0].isIntersecting; atualizarBarra();
     }).observe(cta);
     atualizarBarra();
+    /* Libera a transição só depois do 1º estado, para a barra não deslizar ao carregar */
+    requestAnimationFrame(function () { barra.classList.add("barra-mobile--pronta"); });
   }
 
   /* Navegação: item ativo por seção */

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Padaria Trigo Doce | Pães, bolos e salgados artesanais com encomenda pelo WhatsApp</title>
-  <meta name="description" content="Padaria e confeitaria artesanal no Bairro Jardim. Pães de fermentação natural, bolos caseiros, salgados para festas e cestas de café da manhã. Encomende pelo WhatsApp.">
+  <title>Padaria Trigo Doce: pães e bolos artesanais no Bairro Jardim</title>
+  <meta name="description" content="Padaria artesanal no Bairro Jardim: pães de fermentação natural, bolos caseiros, salgados e cestas de café da manhã. Encomende pelo WhatsApp.">
   <meta name="theme-color" content="#FBF5EC">
   <link rel="icon" type="image/svg+xml" href="assets/svg/favicon.svg">
 
@@ -22,8 +22,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,600..700,100&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap">
-  <link rel="preload" as="image" href="assets/img/hero-paes-800.jpg" imagesrcset="assets/img/hero-paes-800.jpg 800w, assets/img/hero-paes.jpg 1120w" imagesizes="(min-width: 1024px) 50vw, 100vw" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" media="(max-width: 767px)" imagesrcset="assets/img/hero-paes-faixa-480.webp 480w, assets/img/hero-paes-faixa-640.webp 640w, assets/img/hero-paes-faixa-720.webp 720w, assets/img/hero-paes-faixa-960.webp 960w" imagesizes="calc(100vw - 40px)" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" media="(min-width: 768px)" imagesrcset="assets/img/hero-paes-480.webp 480w, assets/img/hero-paes-640.webp 640w, assets/img/hero-paes-800.webp 800w, assets/img/hero-paes.webp 1120w" imagesizes="(min-width: 1024px) 496px, 320px" fetchpriority="high">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,600..700,100&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,600..700,100&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,600..700,100&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap"></noscript>
   <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
@@ -85,11 +88,22 @@
         </ul>
       </div>
       <div class="hero__midia">
-        <img class="hero__foto" src="assets/img/hero-paes-800.jpg"
-             srcset="assets/img/hero-paes-800.jpg 800w, assets/img/hero-paes.jpg 1120w"
-             sizes="(min-width: 1024px) 50vw, 100vw"
-             width="1120" height="1400" fetchpriority="high" decoding="async"
-             alt="Pão artesanal de casca dourada sobre tábua de madeira, com ramos de trigo">
+        <picture>
+          <source media="(max-width: 767px)" type="image/webp" width="960" height="600"
+                  srcset="assets/img/hero-paes-faixa-480.webp 480w, assets/img/hero-paes-faixa-640.webp 640w, assets/img/hero-paes-faixa-720.webp 720w, assets/img/hero-paes-faixa-960.webp 960w"
+                  sizes="calc(100vw - 40px)">
+          <source media="(max-width: 767px)" type="image/jpeg" width="960" height="600"
+                  srcset="assets/img/hero-paes-faixa-480.jpg 480w, assets/img/hero-paes-faixa-640.jpg 640w, assets/img/hero-paes-faixa-720.jpg 720w, assets/img/hero-paes-faixa-960.jpg 960w"
+                  sizes="calc(100vw - 40px)">
+          <source type="image/webp"
+                  srcset="assets/img/hero-paes-480.webp 480w, assets/img/hero-paes-640.webp 640w, assets/img/hero-paes-800.webp 800w, assets/img/hero-paes.webp 1120w"
+                  sizes="(min-width: 1024px) 496px, (min-width: 768px) 320px, calc(100vw - 40px)">
+          <img class="hero__foto" src="assets/img/hero-paes-640.jpg"
+               srcset="assets/img/hero-paes-480.jpg 480w, assets/img/hero-paes-640.jpg 640w, assets/img/hero-paes-800.jpg 800w, assets/img/hero-paes.jpg 1120w"
+               sizes="(min-width: 1024px) 496px, (min-width: 768px) 320px, calc(100vw - 40px)"
+               width="1120" height="1400" fetchpriority="high"
+               alt="Pão artesanal de casca dourada sobre tábua de madeira, com ramos de trigo">
+        </picture>
         <img class="hero__selo" src="assets/svg/selo-fermentacao.svg" alt="" width="120" height="120">
       </div>
     </div>
@@ -367,7 +381,7 @@
       </div>
       <ul class="grade-depoimentos">
         <li class="revelar">
-          <figure class="depoimento">
+          <figure class="depoimento depoimento--destaque">
             <svg class="depoimento__aspas" aria-hidden="true" focusable="false"><use href="#i-aspas"/></svg>
             <span class="tag tag--exemplo">Exemplo</span>
             <p class="estrelas"><span class="sr-only">Avaliação: 5 de 5</span><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-estrela"/></svg><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-estrela"/></svg><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-estrela"/></svg><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-estrela"/></svg><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-estrela"/></svg></p>
