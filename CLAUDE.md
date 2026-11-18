@@ -12,7 +12,7 @@ Quando o usuário pedir um site, você coordena o time na ordem abaixo. Cada eta
 | 1 | `pesquisador-fontes` | briefing | `pesquisa.md` |
 | 2 | `designer-ui` | briefing + pesquisa | `design.md`, lista de imagens |
 | 3 | `redator` | briefing + dados do negócio + pesquisa + design | `conteudo.md` |
-| 4 | `gerador-imagens` | design | `imagens.md`, `assets/` |
+| 4 | `gerador-imagens` | design | `imagens.md`, `site/assets/` |
 | 5 | `desenvolvedor-frontend` | design + conteúdo + assets | `site/` |
 | 6 | `inspetor-visual` | site + design | `capturas/`, `inspecao-visual.md` |
 | 7 | `avaliador-tecnico` | site + design + inspeção visual | `avaliacao-tecnica.md` |
@@ -42,19 +42,21 @@ Regras do fluxo:
     design.md
     conteudo.md
     imagens.md
-    assets/
+    prompts-imagens.md   (só se faltar foto)
     site/index.html, styles.css, script.js, CHANGELOG.md
+    site/assets/         (SVGs, fotos/, equipe/, depoimentos/, videos/)
     capturas/
     inspecao-visual.md
     avaliacao-tecnica.md
     avaliacao.md
   ```
+- **Assets dentro do site**: tudo o que a página carrega fica em `site/assets/`, referenciado como `assets/...` (nunca `../assets/`). Assim a pasta `site/` funciona sozinha e pode ser publicada como está. Documentos de trabalho (`imagens.md`, `prompts-imagens.md`) ficam na raiz do projeto, fora de `site/`.
 - Nomes de arquivos em kebab-case, sem acentos.
 - Sem frameworks nem dependências de build, salvo pedido explícito do usuário.
 - Não publicar nem enviar nada para serviços externos sem confirmação do usuário.
 - Não copiar conteúdo protegido de sites de terceiros; usar referências apenas como inspiração de padrões.
 
 ## Limites conhecidos
-- O time gera SVG e usa fotos de bancos públicos de licença livre. Fotos próprias do negócio (fachada, equipe real, clientes) precisam ser fornecidas pelo usuário e colocadas em `assets/`.
+- O time gera SVG e usa fotos de bancos públicos de licença livre. Fotos próprias do negócio (fachada, equipe real, clientes) precisam ser fornecidas pelo usuário e colocadas em `site/assets/`.
 - A avaliação visual depende de um navegador no ambiente (o `inspetor-visual` usa o Edge ou o Chrome instalados). Sem navegador, a avaliação é feita por leitura de código e a limitação é registrada no relatório.
 - O Lighthouse e o `playwright-core` são baixados via `npx`/`npm` na hora; sem internet, o inspetor usa o modo de captura direta do navegador, com menos verificações.

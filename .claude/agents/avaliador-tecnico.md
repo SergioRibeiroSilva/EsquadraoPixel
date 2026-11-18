@@ -15,7 +15,7 @@ Você é o **avaliador técnico** do time. Sua função é encontrar problemas o
 
 **Estrutura e HTML**
 - Tags balanceadas, `lang`, `<title>`, `<meta description>`, `viewport`, um único `<h1>`, hierarquia de títulos sem saltos.
-- Links internos e caminhos de assets existem (verifique com Glob/Grep).
+- Links internos e caminhos de assets existem (verifique com Glob/Grep), todos dentro de `site/` (nenhum `../`); caminho para fora de `site/` é bloqueante.
 
 **Acessibilidade (WCAG 2.1 AA)**
 - Texto alternativo em imagens, `label` em formulários, foco visível, ordem de tabulação lógica.
