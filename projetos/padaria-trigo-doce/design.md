@@ -206,11 +206,12 @@ Primeiro elemento focável. Fica oculto até receber foco; com foco, aparece no 
   - CTAs: primário "Encomendar pelo WhatsApp" com ícone (`wa-geral`) e secundário "Ver produtos do dia" (âncora `#destaques`).
   - Prova rápida abaixo dos CTAs, em linha de chips com ícone, texto `--fs-small` na cor marrom: "Fermentação natural", "Desde 1998" (fictício) e "Seg a Sáb, 6h às 20h".
   - Foto: `hero-paes.jpg`.
-  - Selo circular SVG "Fermentação natural · Forno a lenha ·" sobreposto no canto inferior esquerdo da foto: 112px de diâmetro (mobile 88px), fundo mel, texto café. É decorativo (`aria-hidden`, informação repetida nos chips). Gira devagar (40s) apenas sem `prefers-reduced-motion`.
-- **Layout mobile:** foto no topo (proporção 4:5, cortada por `object-fit: cover`, raio `--raio-lg`, margem lateral de 20px) e texto abaixo sobre creme. Os CTAs ocupam 100% da largura, empilhados, com gap de 12px.
+  - Selo circular SVG "Fermentação natural · Desde 1998 ·" sobreposto no canto inferior esquerdo da foto: 112px de diâmetro no desktop (96px de 768 a 1023px, 64px abaixo de 768px), fundo mel, texto café. É decorativo (`aria-hidden`, informação repetida nos chips). **Ciclo 2:** dá uma única volta de 4s ao carregar e para (WCAG 2.2.2), apenas sem `prefers-reduced-motion`; o texto "Forno a lenha" saiu porque a página não sustenta essa promessa.
+- **Layout mobile (<768px):** foto no topo (proporção **16:10** desde o ciclo 2, cortada por `object-fit: cover`, raio `--raio-lg`, margem lateral de 20px) e texto abaixo sobre creme, para o H1 e o CTA principal caberem na 1ª tela a 360x800. Os CTAs ocupam 100% da largura, empilhados, com gap de 12px.
+- **Layout 768 a 1023px (ciclo 2):** 2 colunas (texto `1fr`, foto 4:5 com até 320px de largura), alinhadas ao centro, para o H1 e o CTA aparecerem sem rolar a 768x1024.
 - **Layout ≥1024px:** grid de 2 colunas (texto 5fr, foto 6fr) alinhado ao centro, com `min-height: min(88vh, 760px)`. A foto fica em 4:5 com no máximo 620px de altura. CTAs lado a lado.
-- **Decoração:** um ramo de trigo SVG (`trigo-ramo.svg`) atrás do texto, em mel a 25% de opacidade, só no desktop (`aria-hidden`).
-- **Desempenho:** a foto do hero **não** recebe lazy loading. Use `fetchpriority="high"`, `width`/`height` explícitos e `srcset` com 800w e 1400w.
+- **Decoração:** um ramo de trigo SVG (`trigo-ramo.svg`) acima do eyebrow, em mel a 25% de opacidade, só no desktop (`aria-hidden`). Desde o ciclo 2, não cruza o H1 nem o subtítulo.
+- **Desempenho:** a foto do hero **não** recebe lazy loading. Use `fetchpriority="high"`, `width`/`height` explícitos e `<picture>` com WebP e JPEG (ciclo 2): abaixo de 768px, recorte 16:10 (`hero-paes-faixa-*`, 480w a 960w, `sizes="calc(100vw - 40px)"`); a partir de 768px, a foto 4:5 em 480w, 640w, 800w e 1120w com `sizes="(min-width: 1024px) 496px, 320px"`. `preload` com `media` para cada caso.
 
 ### 3.3 Destaques do dia (`#destaques`, fundo mel claro)
 - **Objetivo:** mostrar variedade e preço de referência.
@@ -260,7 +261,7 @@ Primeiro elemento focável. Fica oculto até receber foco; com foco, aparece no 
   - "O pão de fermentação natural é o melhor da região. Compro toda semana." Roberto S., Vila Nova.
   - "Encomendei a cesta pelo WhatsApp em 5 minutos. Chegou linda!" Juliana P., Centro.
 - Selo visível em cada card, no topo à direita: tag "Exemplo" (fundo mel claro, texto café, raio pill, `--fs-small`). Também há uma nota abaixo da seção: "Depoimentos ilustrativos."
-- **Layout:** 1 coluna (mobile) e 3 colunas (≥900px). Sem carrossel.
+- **Layout (ciclo 2):** 1 coluna (mobile). A partir de 900px, grade `1.35fr 1fr`: o 1º depoimento vira destaque (fundo café, citação em Fraunces 600 grande, ocupa 2 linhas) e os outros 2 ficam empilhados à direita, para quebrar a sequência de seções "título + 3 cards". Sem carrossel.
 - **Detalhe:** aspas grandes em SVG, em mel a 40%, no topo esquerdo de cada card (decorativas).
 
 ### 3.8 Horários e localização (`#horarios`, fundo mel claro)
@@ -345,7 +346,8 @@ Base: Nunito 700 a 17px, `min-height: 48px` (44px no compacto do cabeçalho), pa
 
 ### 4.9 Animação
 - Fade-in com subida de 12px (400ms) em cards e títulos, ao entrar na tela via IntersectionObserver, uma única vez. O conteúdo fica visível por padrão sem JS (a classe de "oculto" só é aplicada pelo JS).
-- Com `prefers-reduced-motion: reduce`: sem fade, sem rotação do selo, sem translate no hover e `scroll-behavior: auto`.
+- Selo do hero (ciclo 2): uma única volta de 4s com desaceleração ao carregar; depois fica parado. Nada se move sozinho por mais de 5s (WCAG 2.2.2).
+- Com `prefers-reduced-motion: reduce`: sem fade, sem rotação do selo, sem translate no hover, sem deslize da barra fixa e `scroll-behavior: auto`.
 
 ---
 
@@ -357,8 +359,8 @@ Mobile first, com `min-width`:
 |---|---|---|
 | base | 0 a 559px | 1 coluna; CTAs em largura total; barra fixa de encomenda; menu hambúrguer; hero com foto em cima |
 | sm | ≥560px | Destaques em 2 colunas |
-| md | ≥768px | Passos e equipe em 3 colunas; foto secundária no Sobre; **barra fixa removida**; container com padding de 32px |
-| lg | ≥900px | Encomendas, depoimentos, info e rodapé em 3/4 colunas; Destaques em 3 colunas |
+| md | ≥768px | Hero em 2 colunas (ciclo 2); passos e equipe em 3 colunas; foto secundária no Sobre; **barra fixa removida**; container com padding de 32px |
+| lg | ≥900px | Encomendas, info e rodapé em 3/4 colunas; depoimentos com 1 citação grande em destaque e 2 menores (ciclo 2); Destaques em 3 colunas |
 | xl | ≥1024px | Nav inline; hero e Sobre em 2 colunas; ramo de trigo no hero |
 | 2xl | ≥1200px | Destaques em 4 colunas; container de 1180px com padding de 40px |
 
@@ -408,7 +410,7 @@ Diretrizes: diversidade nos retratos, nada de marcas ou textos legíveis, fotos 
 | S2 | `svg/logo-claro.svg` | Rodapé | Mesmo desenho, com wordmark em creme #FBF5EC e símbolo em mel #D9A441 |
 | S3 | `svg/favicon.svg` | Favicon | Só o símbolo (espiga em círculo terracota), 32x32 legível |
 | S4 | `svg/icones.svg` (sprite com `<symbol>`) ou arquivos separados | Ícones da interface | Traço de 2px, cantos arredondados, 24x24, `currentColor`: `whatsapp`, `relogio`, `alfinete`, `telefone`, `instagram`, `lista`, `balao`, `calendario`, `espiga`, `ingrediente` (saco de farinha), `forno` (feito no dia), `menu`, `fechar`, `seta-direita`, `estrela` (preenchida) e `aspas` |
-| S5 | `svg/selo-fermentacao.svg` | Hero | Círculo mel #D9A441 com texto circular "FERMENTAÇÃO NATURAL · FORNO A LENHA ·" em café (path) e espiga no centro |
+| S5 | `svg/selo-fermentacao.svg` | Hero | Círculo mel #D9A441 com texto circular "FERMENTAÇÃO NATURAL · DESDE 1998 ·" em café (path) e espiga no centro |
 | S6 | `svg/trigo-ramo.svg` | Decoração do hero e do CTA final | Ramo de trigo em linha, monocromático com `currentColor` (aplicado em mel com opacidade via CSS) |
 | S7 | `svg/divisor-onda.svg` | Entre seções | Onda suave, viewBox 1440x40, `preserveAspectRatio="none"`, `fill="currentColor"` |
 | S8 | `svg/espiga-marcador.svg` | Marcador de lista | Espiga de 16x16 em terracota #A0482A |
