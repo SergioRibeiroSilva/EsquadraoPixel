@@ -18,7 +18,8 @@ Quando o usuário pedir um site, você coordena o time na ordem abaixo. Cada eta
 | 7 | `avaliador-tecnico` | site + design + inspeção visual | `avaliacao-tecnica.md` |
 | 8 | `avaliador-resultado` | briefing + conteúdo + site + capturas + avaliação técnica | `avaliacao.md` |
 | 9 | `desenvolvedor-frontend` | avaliacao.md (correções) | `site/` atualizado |
-| 10 | `versionador-git` | projeto com avaliacao.md APROVADO | capa da vitrine, commits locais + pergunta de push |
+| 10a | (você) | projeto com avaliacao.md APROVADO | `README.md` e `docs/` do projeto, `README.md` da raiz atualizado |
+| 10b | `versionador-git` | projeto com avaliacao.md APROVADO | capa da vitrine, commits locais + pergunta de push |
 
 Regras do fluxo:
 - **Etapa 0**: antes de delegar, grave `briefing.md` com: nome do site, objetivo, público, tom de voz, idioma, seções desejadas, referências que o usuário gosta, conteúdo disponível (textos, fotos, logo) e restrições. Se faltar algo essencial, pergunte ao usuário uma única vez, com perguntas objetivas; o restante, assuma padrões sensatos e registre-os no briefing.
@@ -26,19 +27,23 @@ Regras do fluxo:
 - **Textos (etapa 3)**: o `redator` é o dono de toda a copy; o `desenvolvedor-frontend` usa `conteudo.md` sem reescrever. Se o redator devolver perguntas pendentes, repasse-as ao usuário de uma só vez (pode ser junto com outras perguntas), e chame o redator de novo com as respostas para trocar os `[PENDENTE: ...]`. Se o avaliador pedir correções de texto, chame o redator antes do desenvolvedor.
 - **Inspeção visual (etapa 6)**: o `inspetor-visual` abre o site no Edge ou Chrome sem janela, grava as capturas em `capturas/` e o relatório `inspecao-visual.md`. Os dois avaliadores usam essas evidências. Rode-o de novo a cada ciclo de correção.
 - **Coordenadas → mapa interativo**: sempre que o `entrevistador` receber coordenadas, ele termina com "ENCAMINHAR AO DESENVOLVEDOR". Chame o `desenvolvedor-frontend` em seguida para inserir o mapa interativo do Google. O usuário autorizou de forma permanente esse iframe; não pergunte de novo.
-- **Fotos reais**: o `gerador-imagens` busca fotos reais, públicas, de boa definição e ligadas ao ramo do site, para hero, ambiente, equipe e depoimentos de exemplo. Os bancos aceitos são Unsplash, Pexels, Pixabay e Wikimedia Commons (CC0/CC BY). Ele registra autor e licença, e marca equipe e depoimentos como "substituir antes de publicar". Se ele avisar que faltou foto adequada, delegue uma busca extra ao `pesquisador-fontes` e depois volte ao `gerador-imagens` para baixar.
-- **Versionamento (etapa 10)**: sempre que um projeto for validado (APROVADO), chame o `versionador-git` em modo COMMIT. Ele cria as mensagens e faz os commits locais. Depois **pergunte ao usuário** se pode fazer o push e, só com o "sim" explícito dele para aquele push, chame o `versionador-git` em modo PUSH. Sem remoto configurado, peça a URL ao usuário na mesma pergunta.
-- **Vitrine no GitHub Pages**: todo `projetos/<site>/site/` é publicado em `https://sergioribeirosilva.github.io/EsquadraoPixel/<site>/`, pelo workflow `.github/workflows/pages.yml` (que roda `vitrine/montar.py`). Um projeto novo entra na vitrine sozinho. A capa do card (`vitrine/capas/<site>.webp|jpg`) é gerada pelo `versionador-git` na etapa 10, com `vitrine/gerar_capas.py`; se faltar, o workflow gera na publicação. Como o push publica o site na internet, avise isso ao perguntar sobre o push.
+- **Fotos reais**: o `gerador-imagens` busca fotos reais, públicas, de boa definição e ligadas ao ramo do site, para hero, ambiente, equipe e depoimentos de exemplo. Os bancos aceitos são Unsplash, Pexels, Pixabay e Wikimedia Commons (CC0/CC BY). Ele registra autor e licença, e marca equipe e depoimentos como "substituir antes de publicar". Se ele avisar que faltou foto adequada, delegue uma busca extra ao `pesquisador-fontes` e depois volte ao `gerador-imagens` para baixar. Vídeos de fundo vêm só do Pexels Videos, do Pixabay Videos ou do Wikimedia Commons (CC0).
+- **Documentação (etapa 10a)**: com o projeto APROVADO e antes do commit, escreva `projetos/<site>/README.md` no mesmo modelo dos outros projetos (selos de status, nota, ciclos e Lighthouse; link "Ver online"; prévias; sobre; seções; design system com a paleta; avaliação; como abrir; arquivos; pendências; créditos), usando os dados de `briefing.md`, `design.md`, `avaliacao.md`, `inspecao-visual.md`, `imagens.md` e do `CHANGELOG.md`. Copie as prévias de `capturas/` para `docs/preview-desktop.png` (1280x800) e `docs/preview-celular.png`. No `README.md` da raiz, atualize o selo com o número de projetos, o card (com a capa `vitrine/capas/<site>.jpg`) e a linha da tabela de projetos. Faça o mesmo ao reavaliar um projeto que já tem README.
+- **Versionamento (etapa 10b)**: sempre que um projeto for validado (APROVADO), chame o `versionador-git` em modo COMMIT. Ele cria as mensagens e faz os commits locais. Depois **pergunte ao usuário** se pode fazer o push e, só com o "sim" explícito dele para aquele push, chame o `versionador-git` em modo PUSH. Sem remoto configurado, peça a URL ao usuário na mesma pergunta.
+- **Vitrine no GitHub Pages**: todo `projetos/<site>/site/` é publicado em `https://sergioribeirosilva.github.io/EsquadraoPixel/<site>/`, pelo workflow `.github/workflows/pages.yml` (que roda `vitrine/montar.py`). Um projeto novo entra na vitrine sozinho. A capa do card (`vitrine/capas/<site>.webp|jpg`) é gerada pelo `versionador-git` na etapa 10b, com `vitrine/gerar_capas.py`; se faltar, o workflow gera na publicação. Como o push publica o site na internet, avise isso ao perguntar sobre o push.
 - **Iteração**: se `avaliacao.md` disser ITERAR, volte à etapa 5 (antes, à etapa 3 se houver correções de texto) e depois às etapas 6, 7 e 8. No máximo 3 ciclos de correção.
 - **Paralelismo**: as etapas 1 e 2 são sequenciais por dependência. Depois do design, o `redator` (3) e o `gerador-imagens` (4) podem rodar **em paralelo**, pois os dois dependem só do `design.md`. As etapas 5 a 8 são sequenciais.
-- **Resumo final ao usuário**: caminho do `index.html`, decisão do avaliador, notas, pendências (fotos, textos reais) e como abrir o site (dê duplo clique em `index.html` ou sirva a pasta com um servidor local).
+- **Resumo final ao usuário**: caminho do `index.html`, decisão do avaliador, notas, pendências (fotos, textos reais) e como abrir o site (dê duplo clique em `index.html` ou sirva a pasta com um servidor local). Depois do push, inclua o endereço online (`https://sergioribeirosilva.github.io/EsquadraoPixel/<site>/`), que fica no ar cerca de 1 minuto depois.
 
 ## Convenções
 - Idioma padrão do conteúdo do site: português do Brasil, salvo indicação no briefing.
 - Estrutura por projeto:
   ```
   projetos/<site>/
+    README.md            (etapa 10a)
     briefing.md
+    entrevista.md
+    dados-negocio.md
     pesquisa.md
     design.md
     conteudo.md
@@ -50,7 +55,9 @@ Regras do fluxo:
     inspecao-visual.md
     avaliacao-tecnica.md
     avaliacao.md
+    docs/                (prévias usadas nos READMEs)
   ```
+- Fora de `projetos/`: `vitrine/` (modelo da vitrine, `montar.py`, `gerar_capas.py` e `capas/`) e `.github/workflows/pages.yml` (publicação no GitHub Pages). A pasta `_publicar/` é gerada e fica no `.gitignore`.
 - **Assets dentro do site**: tudo o que a página carrega fica em `site/assets/`, referenciado como `assets/...` (nunca `../assets/`). Assim a pasta `site/` funciona sozinha e pode ser publicada como está. Documentos de trabalho (`imagens.md`, `prompts-imagens.md`) ficam na raiz do projeto, fora de `site/`.
 - Nomes de arquivos em kebab-case, sem acentos.
 - Sem frameworks nem dependências de build, salvo pedido explícito do usuário.
@@ -61,3 +68,4 @@ Regras do fluxo:
 - O time gera SVG e usa fotos de bancos públicos de licença livre. Fotos próprias do negócio (fachada, equipe real, clientes) precisam ser fornecidas pelo usuário e colocadas em `site/assets/`.
 - A avaliação visual depende de um navegador no ambiente (o `inspetor-visual` usa o Edge ou o Chrome instalados). Sem navegador, a avaliação é feita por leitura de código e a limitação é registrada no relatório.
 - O Lighthouse e o `playwright-core` são baixados via `npx`/`npm` na hora; sem internet, o inspetor usa o modo de captura direta do navegador, com menos verificações.
+- O `vitrine/gerar_capas.py` precisa do Pillow (`pip install pillow`) e do Chrome ou do Edge. No Edge sem janela, a largura mínima é de cerca de 492 px: capturas "de celular" mais estreitas saem cortadas, sem que a página tenha rolagem horizontal.

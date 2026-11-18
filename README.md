@@ -64,7 +64,7 @@ Cada site fica numa subpasta com o nome do projeto, por exemplo [`/rosa-bordo/`]
 
 | Quando | Quem | O que acontece |
 |---|---|---|
-| O projeto é aprovado (etapa 10) | `versionador-git` | Roda `python vitrine/gerar_capas.py <nome>`, confere a imagem e inclui `vitrine/capas/<nome>.webp` e `.jpg` no commit. A capa fica no repositório e pode ser usada neste README. |
+| O projeto é aprovado (etapa 10b) | `versionador-git` | Roda `python vitrine/gerar_capas.py <nome>`, confere a imagem e inclui `vitrine/capas/<nome>.webp` e `.jpg` no commit. A capa fica no repositório e pode ser usada neste README. |
 | A vitrine é publicada | workflow `pages.yml` | Antes de montar a vitrine, roda `vitrine/gerar_capas.py` e cria **só as capas que faltam** (por exemplo, de um site que não passou pelo Esquadrão). Essas capas existem só na publicação. |
 
 O [`gerar_capas.py`](vitrine/gerar_capas.py) abre o `site/index.html` no Chrome ou no Edge sem janela, captura a primeira dobra em 1280×800 e reduz para 800×500. Para usar no seu computador (precisa do Pillow: `pip install pillow`):
@@ -187,7 +187,8 @@ flowchart TD
     V --> T[7 · avaliador-tecnico<br/>avaliacao-tecnica.md]
     T --> A{8 · avaliador-resultado<br/>avaliacao.md}
     A -- ITERAR<br/>até 3 ciclos --> F
-    A -- APROVADO --> GIT[10 · versionador-git<br/>commits locais]
+    A -- APROVADO --> DOC[10a · orquestrador<br/>READMEs]
+    DOC --> GIT[10b · versionador-git<br/>capa + commits locais]
     GIT --> Q{{Push só com<br/>o 'sim' do usuário}}
 
     classDef user fill:#FFE8D6,stroke:#B8432A,color:#3B2A1E
@@ -220,7 +221,8 @@ flowchart TD
 | 6 | [`inspetor-visual`](.claude/agents/inspetor-visual.md) | Abre o site no Edge ou Chrome sem janela, faz capturas e roda o Lighthouse | `capturas/`, `inspecao-visual.md` |
 | 7 | [`avaliador-tecnico`](.claude/agents/avaliador-tecnico.md) | Audita HTML, WCAG AA, responsividade, desempenho e SEO | `avaliacao-tecnica.md` |
 | 8 | [`avaliador-resultado`](.claude/agents/avaliador-resultado.md) | Compara o site com o briefing e decide entre **APROVADO** e **ITERAR** | `avaliacao.md` |
-| 10 | [`versionador-git`](.claude/agents/versionador-git.md) | Faz os commits do projeto aprovado e prepara o push | histórico Git |
+| 10a | orquestrador | Escreve o README do projeto e atualiza o README da raiz | `README.md`, `docs/` |
+| 10b | [`versionador-git`](.claude/agents/versionador-git.md) | Gera a capa da vitrine, faz os commits do projeto aprovado e prepara o push | capa, histórico Git |
 
 ---
 
