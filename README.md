@@ -218,8 +218,8 @@ flowchart TD
 ### Ver um site pronto
 
 ```bash
-git clone https://github.com/SergioRibeiroSilva/AgentesSiteBasico.git
-cd AgentesSiteBasico/projetos/reef-stack/site
+git clone https://github.com/SergioRibeiroSilva/EsquadraoPixel.git
+cd EsquadraoPixel/projetos/reef-stack/site
 # Opção 1: dê duplo clique em index.html
 # Opção 2: sirva a pasta localmente
 python -m http.server 8080      # e abra http://localhost:8080
