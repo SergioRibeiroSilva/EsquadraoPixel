@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rosa Bordô | Bonecas de pano feitas à mão sob encomenda</title>
+  <!-- FICTÍCIO: cidade na descrição (São Paulo) — substituir antes de publicar -->
+  <meta name="description" content="Bonecas de pano artesanais e personalizadas, costuradas e bordadas à mão em São Paulo. Enviamos para todo o Brasil. Encomende a sua pelo WhatsApp.">
+  <meta name="theme-color" content="#6E1A37">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Rosa Bordô">
+  <meta property="og:title" content="Rosa Bordô | Bonecas de pano feitas à mão">
+  <meta property="og:description" content="Bonecas de pano costuradas e bordadas à mão, do jeitinho de quem vai ganhar. Escolha um modelo ou conte sua ideia e encomende pelo WhatsApp.">
+  <meta property="og:image" content="../assets/fotos/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Bonecas de pano coloridas sobre toalha bordada, com o logo da Rosa Bordô.">
+
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fontes sem bloquear a renderização: carregadas como preload e aplicadas no onload -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,500..600,100;1,9..144,500,100&amp;family=Nunito:wght@400;600;700;800&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,500..600,100;1,9..144,500,100&amp;family=Nunito:wght@400;600;700;800&amp;display=swap"></noscript>
+
+  <!-- Pré-carregamento do LCP (slide 1), com direção de arte -->
+  <link rel="preload" as="image" type="image/webp" media="(max-width: 767px)" fetchpriority="high"
+        imagesrcset="../assets/fotos/hero-1-colecao-m-540.webp 540w, ../assets/fotos/hero-1-colecao-m-720.webp 720w, ../assets/fotos/hero-1-colecao-m-1080.webp 1080w" imagesizes="100vw">
+  <link rel="preload" as="image" type="image/webp" media="(min-width: 768px)" fetchpriority="high"
+        imagesrcset="../assets/fotos/hero-1-colecao-768.webp 768w, ../assets/fotos/hero-1-colecao-1024.webp 1024w, ../assets/fotos/hero-1-colecao-1440.webp 1440w, ../assets/fotos/hero-1-colecao-1920.webp 1920w" imagesizes="100vw">
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+
+  <!-- FICTÍCIO: substituir telefone, e-mail, cidade e horários antes de publicar -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Rosa Bordô",
+    "description": "Bonecas de pano artesanais e personalizadas, feitas à mão.",
+    "telephone": "+55-11-90000-0000",
+    "email": "contato@rosabordo.com.br",
+    "priceRange": "R$ 129–R$ 389",
+    "paymentAccepted": "Pix, Cartão de crédito",
+    "currenciesAccepted": "BRL",
+    "areaServed": { "@type": "Country", "name": "Brasil" },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "São Paulo",
+      "addressRegion": "SP",
+      "addressCountry": "BR"
+    },
+    "sameAs": ["https://www.instagram.com/arosabordo/"],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "13:00"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Sprite de ícones (cópia inline de ../assets/icones.svg, para funcionar também em file://) -->
+  <svg class="sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+<symbol id="i-agulha" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M19 3.5 6.5 16 5 19l3-1.5L20.5 5a1.06 1.06 0 0 0-1.5-1.5Z"/><path d="M17.6 5.9l.5.5"/><path d="M18 6c3 4-1 7.5-4 6.5s-6 2-8 8" stroke-dasharray="2 2.2"/></g></symbol>
+<symbol id="i-olho-bordado" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2.5-4 5.5-6 9-6s6.5 2 9 6c-2.5 4-5.5 6-9 6s-6.5-2-9-6Z" stroke-dasharray="2.4 2"/><circle cx="12" cy="12" r="2.6"/><path d="M8 4.5 9 6.5M12 3.5V6M16 4.5 15 6.5"/></g></symbol>
+<symbol id="i-coracao" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20Z" stroke-dasharray="2.6 2"/></g></symbol>
+<symbol id="i-caixa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5 12 3.5l8.5 4v9L12 20.5l-8.5-4Z"/><path d="M3.5 7.5 12 11.5l8.5-4M12 11.5v9"/><path d="M7.8 5.5l8.4 4"/></g></symbol>
+<symbol id="i-tesoura" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6.5" r="2.8"/><circle cx="6" cy="17.5" r="2.8"/><path d="M8.3 8.2 20 18M8.3 15.8 20 6"/></g></symbol>
+<symbol id="i-carretel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h12M6 20.5h12"/><path d="M7.5 3.5v17M16.5 3.5v17"/><path d="M7.5 7.5l9 2M7.5 11l9 2M7.5 14.5l9 2"/><path d="M16.5 17c2 0 3.5 1 3.5 3" stroke-dasharray="1.6 1.6"/></g></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><path d="M12 7.6v.1"/></g></symbol>
+<symbol id="i-whatsapp" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.2-4.1A8.5 8.5 0 1 1 8.4 19Z"/><path d="M9 8.5c0 3.6 2.9 6.5 6.5 6.5l1-1.6-2-1-1 .9a4.5 4.5 0 0 1-2.8-2.8l.9-1-1-2Z"/></g></symbol>
+<symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="3.8"/><path d="M17.2 6.8v.1"/></g></symbol>
+<symbol id="i-email" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.8 7 12 13l8.2-6"/></g></symbol>
+<symbol id="i-relogio" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g></symbol>
+<symbol id="i-local" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></g></symbol>
+<symbol id="i-seta-esquerda" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6 8.5 12l6 6"/></g></symbol>
+<symbol id="i-seta-direita" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6l6 6-6 6"/></g></symbol>
+<symbol id="i-pausa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6v12M15 6v12"/></g></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.5v13l10.5-6.5Z"/></g></symbol>
+<symbol id="i-mais" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></g></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></g></symbol>
+<symbol id="i-fechar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></g></symbol>
+<symbol id="i-seta-link" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></g></symbol>
+  </svg>
+
+  <a class="skip-link btn btn--primario" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- 1. Faixa do topo -->
+  <div class="faixa-topo">
+    <p class="faixa-topo__longa">Feito à mão <span aria-hidden="true">·</span> Sob encomenda <span aria-hidden="true">·</span> Enviamos para todo o Brasil</p>
+    <p class="faixa-topo__curta">Feito à mão <span aria-hidden="true">·</span> Enviamos para todo o Brasil</p>
+  </div>
+
+  <!-- 2. Cabeçalho -->
+  <header class="cabecalho" id="cabecalho">
+    <div class="container cabecalho__inner">
+      <a class="cabecalho__logo" href="#inicio" aria-label="Rosa Bordô, início">
+        <img src="../assets/logo-rosa-bordo.svg" alt="Rosa Bordô" width="220" height="48">
+      </a>
+
+      <nav class="nav" id="menu" aria-label="Principal">
+        <div class="nav__topo">
+          <img src="../assets/logo-rosa-bordo.svg" alt="" width="165" height="36">
+          <button class="btn-icone btn-icone--escuro nav__fechar" type="button" aria-label="Fechar menu" data-menu-fechar>
+            <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-fechar"/></svg>
+          </button>
+        </div>
+        <ul class="nav__lista">
+          <li><a href="#colecao">Coleção</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#personalize">Personalize</a></li>
+          <li><a href="#como-encomendar">Como encomendar</a></li>
+          <li><a href="#perguntas">Perguntas</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+        <!-- FICTÍCIO: número de WhatsApp — substituir antes de publicar -->
+        <a class="btn btn--primario nav__cta" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20quero%20encomendar%20uma%20boneca." target="_blank" rel="noopener">
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+          Encomendar<span class="sr-only"> (abre o WhatsApp em nova aba)</span>
+        </a>
+      </nav>
+
+      <div class="cabecalho__acoes">
+        <!-- FICTÍCIO: número de WhatsApp — substituir antes de publicar -->
+        <a class="btn btn--primario btn--compacto cabecalho__cta" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20quero%20encomendar%20uma%20boneca." target="_blank" rel="noopener">
+          Encomendar<span class="sr-only"> (abre o WhatsApp em nova aba)</span>
+        </a>
+        <button class="btn-icone btn-icone--escuro menu-botao" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu" data-menu-abrir>
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" tabindex="-1">
+
+    <!-- 3. Hero carrossel (padrão WAI-ARIA Carousel) -->
+    <!-- FOTOS DE BANCO: substituir pelas fotos do @arosabordo -->
+    <section class="hero" id="inicio" aria-roledescription="carrossel" aria-label="Destaques da Rosa Bordô">
+
+      <div class="hero__controles" hidden>
+        <button class="btn-icone hero__pausa" type="button" aria-label="Pausar apresentação" data-hero-pausa>
+          <svg class="icone hero__ico-pausa" aria-hidden="true" focusable="false"><use href="#i-pausa"/></svg>
+          <svg class="icone hero__ico-play" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>
+        </button>
+        <button class="btn-icone" type="button" aria-label="Slide anterior" aria-controls="hero-slides" data-hero-anterior>
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-esquerda"/></svg>
+        </button>
+        <div class="hero__indicadores" role="group" aria-label="Escolher slide">
+          <button class="hero__indicador" type="button" aria-label="Coleção (1 de 4)" aria-controls="hero-slides" data-hero-ir="0"></button>
+          <button class="hero__indicador" type="button" aria-label="Personalizadas (2 de 4)" aria-controls="hero-slides" data-hero-ir="1"></button>
+          <button class="hero__indicador" type="button" aria-label="Feito à mão (3 de 4)" aria-controls="hero-slides" data-hero-ir="2"></button>
+          <button class="hero__indicador" type="button" aria-label="Presente (4 de 4)" aria-controls="hero-slides" data-hero-ir="3"></button>
+          <span class="hero__progresso" aria-hidden="true"></span>
+        </div>
+        <button class="btn-icone" type="button" aria-label="Próximo slide" aria-controls="hero-slides" data-hero-proximo>
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-direita"/></svg>
+        </button>
+      </div>
+
+      <div class="hero__slides" id="hero-slides" aria-atomic="false" aria-live="off">
+
+        <!-- Slide 1: Coleção (h1, LCP) -->
+        <div class="slide is-ativo" role="group" aria-roledescription="slide" aria-label="1 de 4" style="--foco: 50% 50%; --foco-m: 45% 50%; --sobe-m: 10%;">
+          <picture class="slide__foto">
+            <source media="(max-width: 767px)" type="image/webp" sizes="100vw" width="1080" height="1350"
+                    srcset="../assets/fotos/hero-1-colecao-m-540.webp 540w, ../assets/fotos/hero-1-colecao-m-720.webp 720w, ../assets/fotos/hero-1-colecao-m-1080.webp 1080w">
+            <source media="(max-width: 767px)" type="image/jpeg" sizes="100vw" width="1080" height="1350"
+                    srcset="../assets/fotos/hero-1-colecao-m-1080.jpg 1080w">
+            <source media="(min-width: 768px)" type="image/webp" sizes="100vw"
+                    srcset="../assets/fotos/hero-1-colecao-768.webp 768w, ../assets/fotos/hero-1-colecao-1024.webp 1024w, ../assets/fotos/hero-1-colecao-1440.webp 1440w, ../assets/fotos/hero-1-colecao-1920.webp 1920w">
+            <img src="../assets/fotos/hero-1-colecao-1920.jpg"
+                 srcset="../assets/fotos/hero-1-colecao-1024.jpg 1024w, ../assets/fotos/hero-1-colecao-1920.jpg 1920w" sizes="100vw"
+                 width="1920" height="1080" fetchpriority="high"
+                 alt="Bonecas de pano coloridas, feitas à mão, lado a lado sobre uma toalha bordada.">
+          </picture>
+          <div class="container slide__conteudo">
+            <p class="slide__etiqueta">Feitas à mão, sob encomenda</p>
+            <h1 class="slide__titulo">Bonecas de pano feitas <em>ponto a ponto</em></h1>
+            <p class="slide__subtitulo">Modelos para inspirar a sua encomenda, costurados e bordados à mão com carinho em cada detalhe.</p>
+            <div class="slide__botoes">
+              <!-- FICTÍCIO: número de WhatsApp — substituir antes de publicar -->
+              <a class="btn btn--creme" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20quero%20encomendar%20uma%20boneca." target="_blank" rel="noopener">
+                <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+                Encomendar minha boneca<span class="sr-only"> (abre o WhatsApp em nova aba)</span>
+              </a>
+              <a class="btn btn--contorno-claro" href="#colecao">Ver os modelos</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Personalizadas (composição 1920×1080 pronta) -->
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="2 de 4" style="--foco: 50% 50%; --foco-m: 37% 50%; --sobe-m: 34%;">
+          <picture class="slide__foto">
+            <source media="(max-width: 767px)" type="image/webp" sizes="210vw" width="1080" height="1350"
+                    srcset="../assets/fotos/hero-2-personalizada-m-540.webp 540w, ../assets/fotos/hero-2-personalizada-m-720.webp 720w, ../assets/fotos/hero-2-personalizada-m-1080.webp 1080w">
+            <source media="(max-width: 767px)" type="image/jpeg" sizes="100vw" width="1080" height="1350"
+                    srcset="../assets/fotos/hero-2-personalizada-m-1080.jpg 1080w">
+            <source media="(min-width: 768px)" type="image/webp" sizes="100vw"
+                    srcset="../assets/fotos/hero-2-personalizada-768.webp 768w, ../assets/fotos/hero-2-personalizada-1024.webp 1024w, ../assets/fotos/hero-2-personalizada-1440.webp 1440w, ../assets/fotos/hero-2-personalizada-1920.webp 1920w">
+            <img src="../assets/fotos/hero-2-personalizada-1920.jpg"
+                 srcset="../assets/fotos/hero-2-personalizada-1024.jpg 1024w, ../assets/fotos/hero-2-personalizada-1920.jpg 1920w" sizes="100vw"
+                 width="1920" height="1080" loading="lazy" fetchpriority="low" decoding="async"
+                 alt="Boneca de pano de cabelo cacheado de lã, laço vermelho e vestido xadrez vermelho e branco (foto ilustrativa)">
+          </picture>
+          <div class="container slide__conteudo">
+            <p class="slide__etiqueta">Do seu jeitinho</p>
+            <h2 class="slide__titulo">Com o jeitinho e o <em>nome</em> de quem vai ganhar</h2>
+            <p class="slide__subtitulo">Você escolhe a cor da pele, o cabelo e a roupinha. Eu bordo cada detalhe à mão.</p>
+            <div class="slide__botoes">
+              <!-- FICTÍCIO: número de WhatsApp — substituir antes de publicar -->
+              <a class="btn btn--creme" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Quero%20uma%20boneca%20personalizada." target="_blank" rel="noopener">
+                <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+                Quero uma personalizada<span class="sr-only"> (abre o WhatsApp em nova aba)</span>
+              </a>
+              <a class="btn btn--contorno-claro" href="#personalize">Ver como personalizar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Feito à mão -->
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="3 de 4" style="--foco: 50% 50%; --foco-m: 41% 50%; --sobe-m: 50%;">
+          <picture class="slide__foto">
+            <source media="(max-width: 767px)" type="image/webp" sizes="235vw" width="1080" height="1350"
+                    srcset="../assets/fotos/hero-3-feito-a-mao-m-540.webp 540w, ../assets/fotos/hero-3-feito-a-mao-m-720.webp 720w, ../assets/fotos/hero-3-feito-a-mao-m-1080.webp 1080w">
+            <source media="(max-width: 767px)" type="image/jpeg" sizes="100vw" width="1080" height="1350"
+                    srcset="../assets/fotos/hero-3-feito-a-mao-m-1080.jpg 1080w">
+            <source media="(min-width: 768px)" type="image/webp" sizes="100vw"
+                    srcset="../assets/fotos/hero-3-feito-a-mao-768.webp 768w, ../assets/fotos/hero-3-feito-a-mao-1024.webp 1024w, ../assets/fotos/hero-3-feito-a-mao-1440.webp 1440w, ../assets/fotos/hero-3-feito-a-mao-1920.webp 1920w">
+            <img src="../assets/fotos/hero-3-feito-a-mao-1920.jpg"
+                 srcset="../assets/fotos/hero-3-feito-a-mao-1024.jpg 1024w, ../assets/fotos/hero-3-feito-a-mao-1920.jpg 1920w" sizes="100vw"
+                 width="1920" height="1080" loading="lazy" fetchpriority="low" decoding="async"
+                 alt="Mãos costurando um tecido claro com agulha e linha, sob luz natural.">
+          </picture>
+          <div class="container slide__conteudo">
+            <p class="slide__etiqueta">No meu ateliê</p>
+            <h2 class="slide__titulo">Cada ponto é dado <em>à mão</em></h2>
+            <p class="slide__subtitulo">Do molde ao rostinho bordado, cada boneca passa pelas minhas mãos, sem pressa.</p>
+            <div class="slide__botoes">
+              <a class="btn btn--creme" href="#sobre">Conhecer a artesã</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: Presente (composição 1920×1080 pronta) -->
+        <div class="slide" role="group" aria-roledescription="slide" aria-label="4 de 4" style="--foco: 50% 50%; --foco-m: 89% 50%; --sobe-m: 25%;">
+          <picture class="slide__foto">
+            <source media="(max-width: 767px)" type="image/webp" sizes="200vw" width="1080" height="1350"
+                    srcset="../assets/fotos/hero-4-presente-m-540.webp 540w, ../assets/fotos/hero-4-presente-m-720.webp 720w, ../assets/fotos/hero-4-presente-m-1080.webp 1080w">
+            <source media="(max-width: 767px)" type="image/jpeg" sizes="100vw" width="1080" height="1350"
+                    srcset="../assets/fotos/hero-4-presente-m-1080.jpg 1080w">
+            <source media="(min-width: 768px)" type="image/webp" sizes="100vw"
+                    srcset="../assets/fotos/hero-4-presente-768.webp 768w, ../assets/fotos/hero-4-presente-1024.webp 1024w, ../assets/fotos/hero-4-presente-1440.webp 1440w, ../assets/fotos/hero-4-presente-1920.webp 1920w">
+            <img src="../assets/fotos/hero-4-presente-1920.jpg"
+                 srcset="../assets/fotos/hero-4-presente-1024.jpg 1024w, ../assets/fotos/hero-4-presente-1920.jpg 1920w" sizes="100vw"
+                 width="1920" height="1080" loading="lazy" fetchpriority="low" decoding="async"
+                 alt="Boneca de pano de linho cru, com touquinha e olhos bordados, sentada numa cadeirinha de palha (foto ilustrativa)">
+          </picture>
+          <div class="container slide__conteudo">
+            <p class="slide__etiqueta">Presente com memória</p>
+            <h2 class="slide__titulo">Um presente para guardar <em>por muitos anos</em></h2>
+            <p class="slide__subtitulo">Conte para quem é e para quando. A gente combina tudo pelo WhatsApp, sem complicação.</p>
+            <div class="slide__botoes">
+              <a class="btn btn--creme" href="#como-encomendar">Ver como encomendar</a>
+              <a class="btn btn--contorno-claro" href="https://www.instagram.com/arosabordo/" target="_blank" rel="noopener">
+                <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg>
+                Ver no Instagram<span class="sr-only"> (abre em nova aba)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Faixa de diferenciais -->
+    <section class="diferenciais" aria-label="Diferenciais">
+      <ul class="container diferenciais__lista">
+        <li><svg class="icone icone--32" aria-hidden="true" focusable="false"><use href="#i-agulha"/></svg><span>Costurada à mão, ponto a ponto</span></li>
+        <li><svg class="icone icone--32" aria-hidden="true" focusable="false"><use href="#i-olho-bordado"/></svg><span>Rostinho bordado à mão</span></li>
+        <li><svg class="icone icone--32" aria-hidden="true" focusable="false"><use href="#i-coracao"/></svg><span>Personalize do seu jeito</span></li>
+        <!-- FICTÍCIO: abrangência de envio — confirmar antes de publicar -->
+        <li><svg class="icone icone--32" aria-hidden="true" focusable="false"><use href="#i-caixa"/></svg><span>Envio para todo o Brasil</span></li>
+      </ul>
+    </section>
+
+    <!-- 5. Coleção -->
+    <!-- MODELOS DE EXEMPLO: nomes, tamanhos e preços FICTÍCIOS — substituir antes de publicar -->
+    <!-- FOTOS DE BANCO: substituir pelas fotos do @arosabordo -->
+    <section class="secao colecao" id="colecao" aria-labelledby="colecao-titulo">
+      <div class="container">
+        <div class="cab-secao cab-secao--duplo" data-revelar>
+          <div>
+            <p class="eyebrow">Coleção</p>
+            <h2 class="titulo-secao" id="colecao-titulo">Modelos para inspirar a <em>sua</em> boneca</h2>
+          </div>
+          <div class="cab-secao__apoio">
+            <p>Cada boneca é feita sob encomenda, só depois da nossa conversa. Escolha um modelo como ponto de partida e mude o que quiser: tom de pele, cabelo, roupinha ou nome bordado.</p>
+            <a class="link-seta" href="#como-encomendar">Como encomendar <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-link"/></svg></a>
+          </div>
+        </div>
+
+        <ul class="grade-modelos">
+          <li>
+            <article class="card-modelo">
+              <div class="card-modelo__foto">
+                <picture>
+                  <source type="image/webp" srcset="../assets/fotos/modelo-1-480.webp 480w, ../assets/fotos/modelo-1-800.webp 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw">
+                  <img src="../assets/fotos/modelo-1-800.jpg" srcset="../assets/fotos/modelo-1-480.jpg 480w, ../assets/fotos/modelo-1-800.jpg 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw" width="800" height="1000" loading="lazy" decoding="async" alt="Boneca de pano de cabelo ruivo cacheado de lã, laço no alto, vestido estampado em preto e branco e sandalinhas (foto ilustrativa)">
+                </picture>
+                <span class="selo">Sob encomenda</span>
+              </div>
+              <div class="card-modelo__corpo">
+                <h3>Lia</h3>
+                <p class="card-modelo__desc">Cachos ruivos de lã, laço no alto e vestidinho estampado.</p>
+                <ul class="etiquetas"><li>30 cm</li><li>Bordado à mão</li></ul>
+                <div class="card-modelo__rodape">
+                  <p class="preco"><span>a partir de</span> <strong>R$ 129</strong></p>
+                  <!-- FICTÍCIO: preço e número de WhatsApp -->
+                  <a class="link-seta card-modelo__cta" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20gostei%20do%20modelo%20Lia.%20Pode%20me%20contar%20como%20encomendar%3F" target="_blank" rel="noopener">Quero um modelo assim<span class="sr-only">: Lia (abre o WhatsApp em nova aba)</span> <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-link"/></svg></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="card-modelo">
+              <div class="card-modelo__foto">
+                <picture>
+                  <source type="image/webp" srcset="../assets/fotos/modelo-3-480.webp 480w, ../assets/fotos/modelo-3-800.webp 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw">
+                  <img src="../assets/fotos/modelo-3-800.jpg" srcset="../assets/fotos/modelo-3-480.jpg 480w, ../assets/fotos/modelo-3-800.jpg 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw" width="800" height="1000" loading="lazy" decoding="async" alt="Boneca de pano de maria-chiquinha castanha, rostinho bordado e vestido amarelo com barrado de renda, deitada na grama (foto ilustrativa)">
+                </picture>
+                <span class="selo">Sob encomenda</span>
+              </div>
+              <div class="card-modelo__corpo">
+                <h3>Cecília</h3>
+                <p class="card-modelo__desc">Maria-chiquinha, bochechas bordadas e vestido amarelo com rendinha.</p>
+                <ul class="etiquetas"><li>35 cm</li><li>Bordado à mão</li></ul>
+                <div class="card-modelo__rodape">
+                  <p class="preco"><span>a partir de</span> <strong>R$ 159</strong></p>
+                  <!-- FICTÍCIO: preço e número de WhatsApp -->
+                  <a class="link-seta card-modelo__cta" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20gostei%20do%20modelo%20Cec%C3%ADlia.%20Pode%20me%20contar%20como%20encomendar%3F" target="_blank" rel="noopener">Quero um modelo assim<span class="sr-only">: Cecília (abre o WhatsApp em nova aba)</span> <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-link"/></svg></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="card-modelo">
+              <div class="card-modelo__foto">
+                <picture>
+                  <source type="image/webp" srcset="../assets/fotos/modelo-4-480.webp 480w, ../assets/fotos/modelo-4-800.webp 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw">
+                  <img src="../assets/fotos/modelo-4-800.jpg" srcset="../assets/fotos/modelo-4-480.jpg 480w, ../assets/fotos/modelo-4-800.jpg 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw" width="800" height="1000" loading="lazy" decoding="async" alt="Boneca de pano de cabelo vermelho de lã, jardineira pink e meias listradas, sentada numa prateleira (foto ilustrativa)">
+                </picture>
+                <span class="selo">Sob encomenda</span>
+              </div>
+              <div class="card-modelo__corpo">
+                <h3>Matilde</h3>
+                <p class="card-modelo__desc">Jardineira pink, meias listradas e cabelo de lã vermelho.</p>
+                <ul class="etiquetas"><li>35 cm</li></ul>
+                <div class="card-modelo__rodape">
+                  <p class="preco"><span>a partir de</span> <strong>R$ 159</strong></p>
+                  <!-- FICTÍCIO: preço e número de WhatsApp -->
+                  <a class="link-seta card-modelo__cta" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20gostei%20do%20modelo%20Matilde.%20Pode%20me%20contar%20como%20encomendar%3F" target="_blank" rel="noopener">Quero um modelo assim<span class="sr-only">: Matilde (abre o WhatsApp em nova aba)</span> <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-link"/></svg></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="card-modelo">
+              <div class="card-modelo__foto">
+                <picture>
+                  <source type="image/webp" srcset="../assets/fotos/modelo-5-480.webp 480w, ../assets/fotos/modelo-5-800.webp 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw">
+                  <img src="../assets/fotos/modelo-5-800.jpg" srcset="../assets/fotos/modelo-5-480.jpg 480w, ../assets/fotos/modelo-5-800.jpg 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw" width="800" height="1000" loading="lazy" decoding="async" alt="Boneca de pano de cabelo longo, boina e saia jeans, jaqueta escura e sapatinhos vermelhos, segurando uma bonequinha (foto ilustrativa)">
+                </picture>
+                <span class="selo">Sob encomenda</span>
+              </div>
+              <div class="card-modelo__corpo">
+                <h3>Maria Flor</h3>
+                <p class="card-modelo__desc">Boina e saia jeans, sapatinhos vermelhos e uma bonequinha de companhia.</p>
+                <ul class="etiquetas"><li>40 cm</li></ul>
+                <div class="card-modelo__rodape">
+                  <p class="preco"><span>a partir de</span> <strong>R$ 219</strong></p>
+                  <!-- FICTÍCIO: preço e número de WhatsApp -->
+                  <a class="link-seta card-modelo__cta" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20gostei%20do%20modelo%20Maria%20Flor.%20Pode%20me%20contar%20como%20encomendar%3F" target="_blank" rel="noopener">Quero um modelo assim<span class="sr-only">: Maria Flor (abre o WhatsApp em nova aba)</span> <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-link"/></svg></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="card-modelo">
+              <div class="card-modelo__foto">
+                <picture>
+                  <source type="image/webp" srcset="../assets/fotos/modelo-6-480.webp 480w, ../assets/fotos/modelo-6-800.webp 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw">
+                  <img src="../assets/fotos/modelo-6-800.jpg" srcset="../assets/fotos/modelo-6-480.jpg 480w, ../assets/fotos/modelo-6-800.jpg 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw" width="800" height="1000" loading="lazy" decoding="async" alt="Coelhinhas de tecido com jardineiras em tons pastel (foto ilustrativa)">
+                </picture>
+                <span class="selo">Sob encomenda</span>
+              </div>
+              <div class="card-modelo__corpo">
+                <h3>Aurora</h3>
+                <p class="card-modelo__desc">Coelhinha de jardineira pastel e orelhas compridas.</p>
+                <ul class="etiquetas"><li>40 cm</li><li>Bordado à mão</li></ul>
+                <div class="card-modelo__rodape">
+                  <p class="preco"><span>a partir de</span> <strong>R$ 249</strong></p>
+                  <!-- FICTÍCIO: preço e número de WhatsApp -->
+                  <a class="link-seta card-modelo__cta" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20gostei%20do%20modelo%20Aurora.%20Pode%20me%20contar%20como%20encomendar%3F" target="_blank" rel="noopener">Quero um modelo assim<span class="sr-only">: Aurora (abre o WhatsApp em nova aba)</span> <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-link"/></svg></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          <li>
+            <article class="card-modelo">
+              <div class="card-modelo__foto">
+                <picture>
+                  <source type="image/webp" srcset="../assets/fotos/modelo-2-480.webp 480w, ../assets/fotos/modelo-2-800.webp 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw">
+                  <img src="../assets/fotos/modelo-2-800.jpg" srcset="../assets/fotos/modelo-2-480.jpg 480w, ../assets/fotos/modelo-2-800.jpg 800w" sizes="(min-width:1024px) 360px, (min-width:560px) 45vw, 92vw" width="800" height="1000" loading="lazy" decoding="async" alt="Boneca de pano de cabelo azul-turquesa de lã, casaquinho rosa e vestido de bolinhas (foto ilustrativa)">
+                </picture>
+                <span class="selo">Sob encomenda</span>
+              </div>
+              <div class="card-modelo__corpo">
+                <h3>Benedita</h3>
+                <p class="card-modelo__desc">A maior da coleção: cabelo de lã turquesa, casaquinho rosa e vestido de bolinhas.</p>
+                <ul class="etiquetas"><li>45 cm</li><li>Bordado à mão</li></ul>
+                <div class="card-modelo__rodape">
+                  <p class="preco"><span>a partir de</span> <strong>R$ 389</strong></p>
+                  <!-- FICTÍCIO: preço e número de WhatsApp -->
+                  <a class="link-seta card-modelo__cta" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20gostei%20do%20modelo%20Benedita.%20Pode%20me%20contar%20como%20encomendar%3F" target="_blank" rel="noopener">Quero um modelo assim<span class="sr-only">: Benedita (abre o WhatsApp em nova aba)</span> <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-seta-link"/></svg></a>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+
+        <p class="nota">
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-info"/></svg>
+          As fotos são exemplos. Cada boneca é única e feita sob encomenda: cores e detalhes podem variar.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. Sobre a artesã -->
+    <section class="secao sobre" id="sobre" aria-labelledby="sobre-titulo">
+      <div class="container sobre__grade">
+        <div class="sobre__fotos">
+          <!-- FOTOS DE BANCO: substituir pelas fotos do @arosabordo -->
+          <div class="moldura sobre__foto-principal">
+            <picture>
+              <source type="image/webp" srcset="../assets/fotos/sobre-maos-costurando-640.webp 640w, ../assets/fotos/sobre-maos-costurando-960.webp 960w" sizes="(min-width:1024px) 440px, 92vw">
+              <img src="../assets/fotos/sobre-maos-costurando-960.jpg" srcset="../assets/fotos/sobre-maos-costurando-640.jpg 640w, ../assets/fotos/sobre-maos-costurando-960.jpg 960w" sizes="(min-width:1024px) 440px, 92vw" width="960" height="1200" loading="lazy" decoding="async" alt="Mãos amarrando linha numa pequena boneca de tecido, sobre a mesa de trabalho (foto ilustrativa)">
+            </picture>
+          </div>
+          <div class="sobre__foto-detalhe">
+            <picture>
+              <source type="image/webp" srcset="../assets/fotos/sobre-detalhe-bordado-600.webp">
+              <img src="../assets/fotos/sobre-detalhe-bordado-600.jpg" width="600" height="600" loading="lazy" decoding="async" alt="">
+            </picture>
+          </div>
+        </div>
+
+        <div class="sobre__texto" data-revelar>
+          <p class="eyebrow">Sobre a artesã</p>
+          <!-- PENDENTE: nome da artesã (trocar por "Oi, eu sou a [Nome]") -->
+          <h2 class="titulo-secao" id="sobre-titulo">Oi, que bom ter você <em>aqui</em></h2>
+          <p>Eu sou a artesã por trás da Rosa Bordô. Cada boneca nasce na minha mesa de costura: escolho o tecido, risco o molde, recorto, costuro e encho com calma, até ela ganhar forma.</p>
+          <p>O rostinho é a parte de que mais gosto. Olhos, bochechas e sorriso são bordados à mão, ponto por ponto, e é aí que cada boneca ganha a sua personalidade. Por isso, nenhuma sai igual à outra.</p>
+          <p>Quando você me conta para quem é o presente, eu passo a costurar pensando nessa criança. É o meu jeito de colocar um pouco de afeto em cada ponto.</p>
+
+          <figure class="citacao">
+            <span class="citacao__aspas" aria-hidden="true">“</span>
+            <blockquote><p>Uma boneca de pano não é só um brinquedo: é companhia, colo e lembrança de infância.</p></blockquote>
+            <figcaption class="assinatura">
+              <img src="../assets/ornamento-coracao-linha.svg" alt="" width="48" height="48">
+              <!-- PENDENTE: nome da artesã (trocar por "Com carinho, [Nome]") -->
+              Com carinho, a artesã da Rosa Bordô
+            </figcaption>
+          </figure>
+
+          <!-- PENDENTE: confirmar materiais com a artesã -->
+          <h3 class="materiais__titulo">Materiais que eu uso</h3>
+          <ul class="materiais">
+            <li><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-tesoura"/></svg>Tecidos de algodão</li>
+            <li><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-coracao"/></svg>Enchimento macio de fibra</li>
+            <li><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-carretel"/></svg>Bordados feitos à mão</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Personalize -->
+    <section class="secao personalize" id="personalize" aria-labelledby="personalize-titulo">
+      <div class="container">
+        <div class="personalize__cab">
+          <div data-revelar>
+            <p class="eyebrow eyebrow--claro">Do seu jeitinho</p>
+            <h2 class="titulo-secao" id="personalize-titulo">Monte a boneca de <em>quem você ama</em></h2>
+            <p class="lead">Escolha os detalhes que lembram a criança que vai ganhar. A gente conversa sobre cada um deles pelo WhatsApp antes de eu começar a costurar.</p>
+          </div>
+          <!-- FOTOS DE BANCO: substituir pelas fotos do @arosabordo -->
+          <div class="moldura moldura--escura personalize__foto">
+            <picture>
+              <source type="image/webp" srcset="../assets/fotos/personalize-detalhe-800.webp">
+              <img src="../assets/fotos/personalize-detalhe-800.jpg" width="800" height="1000" loading="lazy" decoding="async" alt="Bonecas de pano com tons de pele, cabelos e roupinhas diferentes (foto ilustrativa)">
+            </picture>
+          </div>
+        </div>
+
+        <div class="opcoes">
+          <div class="opcoes__grupo">
+            <h3>Cor da pele</h3>
+            <ul class="amostras">
+              <li><span class="amostra" style="--cor: #F3D6C1" aria-hidden="true"></span>Porcelana</li>
+              <li><span class="amostra" style="--cor: #E8B896" aria-hidden="true"></span>Areia</li>
+              <li><span class="amostra" style="--cor: #C98E63" aria-hidden="true"></span>Mel</li>
+              <li><span class="amostra" style="--cor: #A86B42" aria-hidden="true"></span>Canela</li>
+              <li><span class="amostra" style="--cor: #7A4A2A" aria-hidden="true"></span>Cacau</li>
+              <li><span class="amostra" style="--cor: #4E2E1A" aria-hidden="true"></span>Café</li>
+            </ul>
+          </div>
+          <div class="opcoes__grupo">
+            <h3>Cabelo</h3>
+            <ul class="chips">
+              <li><span class="chip__amostra" style="--cor: #8B4A2B" aria-hidden="true"></span>Cacheado</li>
+              <li><span class="chip__amostra" style="--cor: #E9C77B" aria-hidden="true"></span>Liso</li>
+              <li><span class="chip__amostra" style="--cor: #3B2418" aria-hidden="true"></span>Trancinhas</li>
+              <li><span class="chip__amostra" style="--cor: #C2563B" aria-hidden="true"></span>Coque</li>
+            </ul>
+            <p class="opcoes__nota">Fios de lã em várias cores.</p>
+          </div>
+          <div class="opcoes__grupo">
+            <h3>Roupinha</h3>
+            <ul class="chips">
+              <li><svg class="icone icone--16" aria-hidden="true" focusable="false"><use href="#i-tesoura"/></svg>Vestido</li>
+              <li><svg class="icone icone--16" aria-hidden="true" focusable="false"><use href="#i-tesoura"/></svg>Jardineira</li>
+              <li><svg class="icone icone--16" aria-hidden="true" focusable="false"><use href="#i-tesoura"/></svg>Macacão</li>
+              <li><svg class="icone icone--16" aria-hidden="true" focusable="false"><use href="#i-tesoura"/></svg>Conjunto</li>
+            </ul>
+          </div>
+          <div class="opcoes__grupo">
+            <h3>Nome bordado</h3>
+            <p class="retalho-nome"><span class="sr-only">Exemplo: </span>Helena</p>
+            <!-- PENDENTE: confirmar prática de detalhes bordados para bebês -->
+            <p class="opcoes__nota">Para bebês, faço todos os detalhes bordados, sem botões nem acessórios soltos.</p>
+          </div>
+        </div>
+
+        <div class="personalize__cta">
+          <!-- FICTÍCIO: número de WhatsApp — substituir antes de publicar -->
+          <a class="btn btn--creme" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Quero%20uma%20boneca%20personalizada." target="_blank" rel="noopener">
+            <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+            Quero uma personalizada<span class="sr-only"> (abre o WhatsApp em nova aba)</span>
+          </a>
+          <!-- FICTÍCIO: preço e prazo — substituir antes de publicar -->
+          <p class="personalize__info">A partir de R$ 189 · 15 a 25 dias úteis de produção</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Como encomendar -->
+    <section class="secao passos" id="como-encomendar" aria-labelledby="passos-titulo">
+      <div class="container">
+        <div class="cab-secao cab-secao--centro" data-revelar>
+          <p class="eyebrow">Passo a passo</p>
+          <h2 class="titulo-secao" id="passos-titulo">Como encomendar a <em>sua</em> boneca</h2>
+        </div>
+
+        <!-- FICTÍCIO: sinal de 50% e prazo de produção — substituir antes de publicar -->
+        <ol class="passos__lista">
+          <li class="passo">
+            <span class="passo__num" aria-hidden="true">1</span>
+            <h3>Escolha um modelo ou conte sua ideia</h3>
+            <p>Pode ser um modelo da coleção ou só uma ideia. Me mande uma mensagem pelo WhatsApp.</p>
+          </li>
+          <li class="passo">
+            <span class="passo__num" aria-hidden="true">2</span>
+            <h3>Combinamos os detalhes</h3>
+            <p>Juntas, definimos pele, cabelo, roupinha, nome bordado, valor e a data em que você precisa.</p>
+          </li>
+          <li class="passo">
+            <span class="passo__num" aria-hidden="true">3</span>
+            <h3>Sinal e mãos à obra</h3>
+            <p>Com o sinal de 50%, eu começo a costurar. A produção leva de 15 a 25 dias úteis.</p>
+          </li>
+          <li class="passo">
+            <span class="passo__num" aria-hidden="true">4</span>
+            <h3>Sua boneca a caminho</h3>
+            <p>Você paga o restante, eu embalo com carinho e envio pelos Correios para todo o Brasil.</p>
+          </li>
+        </ol>
+
+        <div class="passos__cta">
+          <!-- FICTÍCIO: número de WhatsApp — substituir antes de publicar -->
+          <a class="btn btn--primario" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20quero%20encomendar%20uma%20boneca." target="_blank" rel="noopener">
+            <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+            Começar minha encomenda<span class="sr-only"> (abre o WhatsApp em nova aba)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Depoimentos -->
+    <!-- DEPOIMENTOS DE EXEMPLO: substituir antes de publicar -->
+    <section class="secao depoimentos" id="depoimentos" aria-labelledby="depo-titulo">
+      <div class="container">
+        <div class="cab-secao" data-revelar>
+          <p class="eyebrow">Carinho de quem recebeu</p>
+          <h2 class="titulo-secao" id="depo-titulo">Bonecas que já ganharam <em>colo</em></h2>
+        </div>
+        <ul class="depoimentos__lista">
+          <li>
+            <figure class="retalho">
+              <span class="selo selo--exemplo">Exemplo</span>
+              <span class="retalho__aspas" aria-hidden="true">“</span>
+              <blockquote><p>Encomendei para o primeiro aniversário da minha neta, com o nome dela bordado. Ela não larga a boneca, e eu me emocionei ao abrir a caixa.</p></blockquote>
+              <figcaption>
+                <span class="avatar" aria-hidden="true">MR</span>
+                <span><strong>Marta R.</strong><br><span class="retalho__meta">Campinas – SP · Boneca personalizada</span></span>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="retalho">
+              <span class="selo selo--exemplo">Exemplo</span>
+              <span class="retalho__aspas" aria-hidden="true">“</span>
+              <blockquote><p>Pedi uma boneca com cabelo cacheado igual ao da minha filha. Ela se reconheceu na hora. Todo o processo pelo WhatsApp foi muito tranquilo.</p></blockquote>
+              <figcaption>
+                <span class="avatar" aria-hidden="true">JS</span>
+                <span><strong>Juliana S.</strong><br><span class="retalho__meta">Belo Horizonte – MG · Modelo Lia</span></span>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="retalho">
+              <span class="selo selo--exemplo">Exemplo</span>
+              <span class="retalho__aspas" aria-hidden="true">“</span>
+              <blockquote><p>Dei de presente para a minha afilhada e a jardineira pink virou a roupa preferida dela. Dá para ver o cuidado em cada ponto.</p></blockquote>
+              <figcaption>
+                <span class="avatar" aria-hidden="true">FL</span>
+                <span><strong>Fernanda L.</strong><br><span class="retalho__meta">Curitiba – PR · Modelo Matilde</span></span>
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 10. Perguntas frequentes -->
+    <section class="secao faq" id="perguntas" aria-labelledby="faq-titulo">
+      <div class="container faq__grade">
+        <div class="faq__lateral">
+          <p class="eyebrow">Dúvidas</p>
+          <h2 class="titulo-secao" id="faq-titulo">Perguntas <em>frequentes</em></h2>
+          <div class="faq__apoio">
+            <h3>Não achou sua dúvida?</h3>
+            <!-- FICTÍCIO: horário de atendimento -->
+            <p>Me chame no WhatsApp. Respondo de segunda a sexta, das 9h às 18h, e aos sábados, das 9h às 13h.</p>
+            <!-- FICTÍCIO: número de WhatsApp -->
+            <a class="btn btn--contorno" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Tenho%20uma%20d%C3%BAvida%20sobre%20as%20bonecas." target="_blank" rel="noopener">
+              <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+              Perguntar no WhatsApp<span class="sr-only"> (abre o WhatsApp em nova aba)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- FICTÍCIO: prazos, envio e pagamento nas respostas -->
+        <div class="acordeao">
+          <details>
+            <summary>Quanto tempo leva para a minha boneca ficar pronta?<svg class="icone" aria-hidden="true" focusable="false"><use href="#i-mais"/></svg></summary>
+            <p>As bonecas personalizadas levam de 15 a 25 dias úteis de produção, mais o prazo dos Correios. Se você tem uma data especial, me conte logo no início da conversa. Às vezes tenho alguma boneca já pronta; nesse caso, eu aviso pelo WhatsApp e o envio fica mais rápido.</p>
+          </details>
+          <details>
+            <summary>A boneca pode ser dada para um bebê?<svg class="icone" aria-hidden="true" focusable="false"><use href="#i-mais"/></svg></summary>
+            <p>Para bebês, faço olhos e boca bordados, sem botões, contas ou peças soltas, com costuras reforçadas e sem fitas compridas. Mesmo assim, brinque junto e confira a boneca de vez em quando. E um cuidado importante: não deixe a boneca no berço enquanto o bebê dorme.</p>
+          </details>
+          <details>
+            <summary>Como lavar a boneca de pano?<svg class="icone" aria-hidden="true" focusable="false"><use href="#i-mais"/></svg></summary>
+            <p>Prefira limpar só a área suja com um pano úmido e sabão neutro, depois passe um pano com água limpa. Deixe secar deitada sobre uma toalha, à sombra. Evite encharcar, máquina de secar, calor e alvejante.</p>
+          </details>
+          <details>
+            <summary>Vocês enviam para a minha cidade?<svg class="icone" aria-hidden="true" focusable="false"><use href="#i-mais"/></svg></summary>
+            <p>Envio para todo o Brasil pelos Correios, por PAC ou SEDEX. O frete é calculado pelo seu CEP e eu te passo o valor junto com o orçamento.</p>
+          </details>
+          <details>
+            <summary>Quais são as formas de pagamento?<svg class="icone" aria-hidden="true" focusable="false"><use href="#i-mais"/></svg></summary>
+            <p>Pix ou cartão de crédito em até 3x sem juros. Nas encomendas personalizadas, você paga 50% de sinal na confirmação e os outros 50% antes do envio.</p>
+          </details>
+          <details>
+            <summary>Posso pedir uma boneca diferente dos modelos do site?<svg class="icone" aria-hidden="true" focusable="false"><use href="#i-mais"/></svg></summary>
+            <p>Pode, sim. Os modelos são só inspiração. Me mande a sua ideia, uma foto de referência ou as cores preferidas da criança, e eu te digo como fica e quanto custa.</p>
+          </details>
+          <details>
+            <summary>Dá para bordar o nome da criança?<svg class="icone" aria-hidden="true" focusable="false"><use href="#i-mais"/></svg></summary>
+            <p>Dá! O nome é bordado à mão na roupinha ou no corpo da boneca, na cor que você escolher. É o detalhe que mais emociona quem recebe.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. CTA final + Instagram -->
+    <section class="secao cta-final" id="encomendar" aria-labelledby="cta-titulo">
+      <div class="container">
+        <div class="cta-final__chamada" data-revelar>
+          <img class="cta-final__ornamento" src="../assets/ornamento-coracao-linha.svg" alt="" width="48" height="48">
+          <h2 class="titulo-secao" id="cta-titulo">Vamos criar a <em>sua</em> boneca?</h2>
+          <p class="lead">Me conte para quem é o presente e eu te ajudo a escolher cada detalhe. No Instagram, você acompanha as bonecas saindo do ateliê.</p>
+          <div class="cta-final__botoes">
+            <!-- FICTÍCIO: número de WhatsApp -->
+            <a class="btn btn--primario" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20quero%20encomendar%20uma%20boneca." target="_blank" rel="noopener">
+              <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+              Encomendar pelo WhatsApp<span class="sr-only"> (abre o WhatsApp em nova aba)</span>
+            </a>
+            <a class="btn btn--contorno" href="https://www.instagram.com/arosabordo/" target="_blank" rel="noopener">
+              <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg>
+              Seguir @arosabordo<span class="sr-only"> (abre em nova aba)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOTOS DE BANCO: substituir pelas fotos do @arosabordo -->
+      <a class="insta-faixa" href="https://www.instagram.com/arosabordo/" target="_blank" rel="noopener" aria-label="Ver mais no Instagram @arosabordo (abre em nova aba)">
+        <span class="insta-faixa__trilho">
+          <picture><source type="image/webp" srcset="../assets/fotos/instagram-1-600.webp"><img src="../assets/fotos/instagram-1-600.jpg" width="600" height="600" loading="lazy" decoding="async" alt=""></picture>
+          <picture><source type="image/webp" srcset="../assets/fotos/instagram-2-600.webp"><img src="../assets/fotos/instagram-2-600.jpg" width="600" height="600" loading="lazy" decoding="async" alt=""></picture>
+          <picture><source type="image/webp" srcset="../assets/fotos/instagram-3-600.webp"><img src="../assets/fotos/instagram-3-600.jpg" width="600" height="600" loading="lazy" decoding="async" alt=""></picture>
+          <picture><source type="image/webp" srcset="../assets/fotos/instagram-4-600.webp"><img src="../assets/fotos/instagram-4-600.jpg" width="600" height="600" loading="lazy" decoding="async" alt=""></picture>
+          <picture><source type="image/webp" srcset="../assets/fotos/instagram-5-600.webp"><img src="../assets/fotos/instagram-5-600.jpg" width="600" height="600" loading="lazy" decoding="async" alt=""></picture>
+          <picture><source type="image/webp" srcset="../assets/fotos/instagram-6-600.webp"><img src="../assets/fotos/instagram-6-600.jpg" width="600" height="600" loading="lazy" decoding="async" alt=""></picture>
+        </span>
+      </a>
+    </section>
+  </main>
+
+  <!-- 12. Rodapé -->
+  <footer class="rodape" id="contato">
+    <div class="container rodape__grade">
+      <div class="rodape__col">
+        <img src="../assets/logo-rosa-bordo-claro.svg" alt="Rosa Bordô" width="220" height="48" loading="lazy">
+        <p>Bonecas de pano costuradas e bordadas à mão, sob encomenda, para virar memória de infância.</p>
+        <a class="rodape__link" href="https://www.instagram.com/arosabordo/" target="_blank" rel="noopener">
+          <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg>@arosabordo<span class="sr-only"> (abre em nova aba)</span>
+        </a>
+      </div>
+      <div class="rodape__col">
+        <h2 class="rodape__titulo">Fale comigo</h2>
+        <ul class="rodape__lista">
+          <!-- FICTÍCIO: substituir antes de publicar -->
+          <li><a class="rodape__link" href="https://wa.me/5511900000000" target="_blank" rel="noopener"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>WhatsApp: (11) 90000-0000<span class="sr-only"> (abre o WhatsApp em nova aba)</span></a></li>
+          <!-- FICTÍCIO: substituir antes de publicar -->
+          <li><a class="rodape__link" href="mailto:contato@rosabordo.com.br"><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-email"/></svg>E-mail: contato@rosabordo.com.br</a></li>
+          <!-- FICTÍCIO: substituir antes de publicar -->
+          <li><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-local"/></svg>Ateliê em São Paulo – SP</li>
+          <!-- FICTÍCIO: substituir antes de publicar -->
+          <li><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-relogio"/></svg>Seg a sex, 9h às 18h · Sáb, 9h às 13h</li>
+        </ul>
+      </div>
+      <div class="rodape__col">
+        <h2 class="rodape__titulo">Encomendas</h2>
+        <!-- FICTÍCIO: envio, prazo e pagamento — substituir antes de publicar -->
+        <ul class="rodape__lista">
+          <li><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-caixa"/></svg>Envio para todo o Brasil pelos Correios (PAC ou SEDEX)</li>
+          <li><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-agulha"/></svg>Personalizadas: 15 a 25 dias úteis de produção</li>
+          <li><svg class="icone" aria-hidden="true" focusable="false"><use href="#i-coracao"/></svg>Pix ou cartão em até 3x sem juros</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container rodape__base">
+      <p>© 2026 Rosa Bordô · Feito à mão com carinho</p>
+      <p>Fotos ilustrativas: Pexels e Pixabay. Créditos em imagens.md.</p>
+    </div>
+  </footer>
+
+  <!-- 13. Botão flutuante do WhatsApp (mobile) -->
+  <!-- FICTÍCIO: número de WhatsApp -->
+  <a class="flutuante" href="https://wa.me/5511900000000?text=Ol%C3%A1%2C%20Rosa%20Bord%C3%B4!%20Vim%20pelo%20site%20e%20quero%20encomendar%20uma%20boneca." target="_blank" rel="noopener" aria-label="Encomendar pelo WhatsApp (abre em nova aba)">
+    <svg class="icone" aria-hidden="true" focusable="false"><use href="#i-whatsapp"/></svg>
+    <span aria-hidden="true">Encomendar</span>
+  </a>
+</body>
+</html>
