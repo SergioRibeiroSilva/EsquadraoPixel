@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Esquadrão Pixel | Vitrine de sites</title>
+  <meta name="description" content="Sites criados pelo Esquadrão Pixel, um time de agentes de IA que transforma um briefing em um site estático moderno.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%230f172a'/%3E%3Crect x='3' y='3' width='4' height='4' fill='%2338bdf8'/%3E%3Crect x='9' y='3' width='4' height='4' fill='%23a78bfa'/%3E%3Crect x='3' y='9' width='4' height='4' fill='%23f472b6'/%3E%3Crect x='9' y='9' width='4' height='4' fill='%23facc15'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #e2e8f0;
+      --accent: #4f46e5;
+      --accent-text: #ffffff;
+      --hero-bg: #0f172a;
+      --hero-text: #f8fafc;
+      --hero-muted: #cbd5e1;
+      --shadow: 0 1px 2px rgb(15 23 42 / .06), 0 8px 24px rgb(15 23 42 / .08);
+      --radius: 16px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0b1120;
+        --surface: #131c31;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --line: #1e293b;
+        --accent: #818cf8;
+        --accent-text: #0b1120;
+        --hero-bg: #020617;
+        --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 8px 24px rgb(0 0 0 / .35);
+      }
+    }
+    :root[data-theme="dark"] {
+      --bg: #0b1120; --surface: #131c31; --text: #e2e8f0; --muted: #94a3b8;
+      --line: #1e293b; --accent: #818cf8; --accent-text: #0b1120; --hero-bg: #020617;
+      --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 8px 24px rgb(0 0 0 / .35);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 400 1rem/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1160px, 100% - 32px); margin-inline: auto; }
+
+    .hero {
+      background: var(--hero-bg);
+      color: var(--hero-text);
+      padding: clamp(56px, 9vw, 104px) 0 clamp(64px, 10vw, 120px);
+      position: relative;
+      overflow: hidden;
+    }
+    .pixels {
+      position: absolute; inset: 0 0 auto auto; width: min(420px, 60vw); height: 100%;
+      display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; padding: 32px;
+      opacity: .55; pointer-events: none;
+      mask-image: linear-gradient(to left, #000 20%, transparent);
+    }
+    .pixels span { aspect-ratio: 1; border-radius: 4px; background: #1e293b; }
+    .pixels span:nth-child(7n+1) { background: #38bdf8; }
+    .pixels span:nth-child(11n+3) { background: #a78bfa; }
+    .pixels span:nth-child(13n+5) { background: #f472b6; }
+    .pixels span:nth-child(17n+2) { background: #facc15; }
+    .eyebrow {
+      font: 600 .8rem/1 Inter, sans-serif; letter-spacing: .14em; text-transform: uppercase;
+      color: #38bdf8; margin: 0 0 16px;
+    }
+    h1 {
+      font: 700 clamp(2.4rem, 6vw, 4.2rem)/1.02 "Space Grotesk", system-ui, sans-serif;
+      letter-spacing: -.02em; margin: 0 0 20px; max-width: 14ch; position: relative;
+    }
+    .lead { color: var(--hero-muted); font-size: clamp(1.05rem, 1.6vw, 1.2rem); max-width: 56ch; margin: 0; position: relative; }
+    .stats { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 28px 0 0; padding: 0; list-style: none; color: var(--hero-muted); font-size: .95rem; position: relative; }
+    .stats strong { color: var(--hero-text); font: 700 1.4rem/1 "Space Grotesk", sans-serif; margin-right: 6px; }
+
+    main { margin-top: clamp(-56px, -6vw, -40px); position: relative; padding-bottom: 72px; }
+    .grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); list-style: none; margin: 0; padding: 0; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover, .card:focus-within { transform: translateY(-4px); box-shadow: 0 2px 4px rgb(15 23 42 / .08), 0 16px 40px rgb(15 23 42 / .16); }
+    .card picture, .card img { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; object-fit: cover; object-position: top; background: var(--line); }
+    .card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+    .card h2 { font: 700 1.3rem/1.2 "Space Grotesk", sans-serif; margin: 0; }
+    .card h2 a { text-decoration: none; }
+    .card h2 a::after { content: ""; position: absolute; inset: 0; }
+    .card { position: relative; }
+    .tagline { color: var(--accent); font-weight: 600; font-size: .9rem; margin: 0; }
+    .desc { color: var(--muted); font-size: .95rem; margin: 0; flex: 1; }
+    .open { margin-top: 8px; font-weight: 600; font-size: .95rem; color: var(--text); display: inline-flex; align-items: center; gap: 6px; }
+    .open svg { transition: transform .2s ease; }
+    .card:hover .open svg { transform: translateX(4px); }
+    .card h2 a:focus-visible { outline: none; }
+    .card:focus-within { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+    .note {
+      margin: 40px 0 0; padding: 16px 20px; border: 1px dashed var(--line); border-radius: 12px;
+      color: var(--muted); font-size: .92rem; background: var(--surface);
+    }
+    footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: .9rem; }
+    footer a { color: var(--accent); }
+    @media (prefers-reduced-motion: reduce) { .card, .open svg { transition: none; } .card:hover { transform: none; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="pixels" aria-hidden="true">{{PIXELS}}</div>
+    <div class="wrap">
+      <p class="eyebrow">Esquadrão Pixel</p>
+      <h1>Vitrine de sites</h1>
+      <p class="lead">Sites estáticos criados por um time de agentes de IA. Cada um parte de um briefing e passa por pesquisa, design, texto, imagens, código e duas avaliações antes de ficar pronto.</p>
+      <ul class="stats">
+        <li><strong>{{TOTAL}}</strong>sites</li>
+        <li><strong>10</strong>agentes</li>
+        <li><strong>0</strong>frameworks</li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <ul class="grid">
+{{CARDS}}
+    </ul>
+    <p class="note">Estes sites são demonstrações. Endereços, telefones, depoimentos e várias fotos são de exemplo e não correspondem a negócios reais, salvo indicação no próprio site.</p>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Feito com HTML, CSS e JavaScript puro · Código no <a href="https://github.com/SergioRibeiroSilva/EsquadraoPixel">GitHub</a> · Atualizado em {{DATA}}
+    </div>
+  </footer>
+</body>
+</html>

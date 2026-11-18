@@ -14,3 +14,6 @@ Desktop.ini
 *.log
 *.tmp
 node_modules/
+
+# Pasta gerada pelo vitrine/montar.py (GitHub Pages)
+_publicar/

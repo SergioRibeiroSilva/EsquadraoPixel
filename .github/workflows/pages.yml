@@ -1,11 +1,12 @@
-name: Publicar Emmeline no GitHub Pages
+name: Publicar vitrine no GitHub Pages
 
 on:
   push:
     branches: [main]
     paths:
-      - "projetos/emmeline-croche/site/**"
-      - ".github/workflows/pages-emmeline.yml"
+      - "projetos/*/site/**"
+      - "vitrine/**"
+      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 permissions:
@@ -30,10 +31,13 @@ jobs:
       - name: Configurar o Pages
         uses: actions/configure-pages@v5
 
-      - name: Empacotar a pasta do site
+      - name: Montar a vitrine e copiar os sites
+        run: python3 vitrine/montar.py
+
+      - name: Empacotar a pasta de publicação
         uses: actions/upload-pages-artifact@v3
         with:
-          path: projetos/emmeline-croche/site
+          path: _publicar
 
       - name: Publicar
         id: deploy
