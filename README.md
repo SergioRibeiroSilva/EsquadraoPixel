@@ -9,7 +9,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=anthropic&logoColor=white)
 
-![Projetos](https://img.shields.io/badge/projetos-9-0A6E78?style=flat-square)
+![Projetos](https://img.shields.io/badge/projetos-10-0A6E78?style=flat-square)
 ![Agentes](https://img.shields.io/badge/agentes-10-7A2338?style=flat-square)
 ![Sem build](https://img.shields.io/badge/build-nenhum-2EA44F?style=flat-square)
 ![WCAG](https://img.shields.io/badge/acessibilidade-WCAG_2.2_AA-1F6F78?style=flat-square)
@@ -151,6 +151,17 @@ python vitrine/gerar_capas.py --todas       # refaz todas
       <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/padaria-trigo-doce/">Ver online</a> · <a href="projetos/padaria-trigo-doce/">Projeto</a></sub>
     </td>
   </tr>
+  <tr>
+    <td width="33%" valign="top">
+      <a href="https://sergioribeirosilva.github.io/EsquadraoPixel/vertice-sneakers/"><img src="vitrine/capas/vertice-sneakers.jpg" alt="Captura do site Vértice Sneakers"></a>
+      <h3>👟 Vértice Sneakers</h3>
+      Boutique de tênis de alto padrão, com carrossel de 4 slides no topo.<br>
+      <sub><b>Aprovado</b> · média 4,57 · Lighthouse A11y 100</sub><br>
+      <sub><a href="https://sergioribeirosilva.github.io/EsquadraoPixel/vertice-sneakers/">Ver online</a> · <a href="projetos/vertice-sneakers/">Projeto</a></sub>
+    </td>
+    <td width="33%" valign="top"></td>
+    <td width="33%" valign="top"></td>
+  </tr>
 </table>
 
 | Projeto | Ramo | Paleta | Tipografia | Status | Média |
@@ -160,6 +171,7 @@ python vitrine/gerar_capas.py --todas       # refaz todas
 | [Pr. Sergio Ribeiro](projetos/sergio-ribeiro/) | Site pessoal / ministério | Creme, azul-profundo, amarelo-sol | Fraunces | ✅ Aprovado (ciclo 2) | **4,71** |
 | [Emmeline Crochê](projetos/emmeline-croche/) | Artesanato | Vinho, marsala, creme | Cormorant Garamond + Lato | ✅ Aprovado (ciclo 2) | **4,71** |
 | [Barbearia Navalha](projetos/barbearia-navalha/) | Barbearia | Grafite e latão | Playfair Display + Inter | ✅ Aprovado com ressalvas (ciclo 3) | **4,71** |
+| [Vértice Sneakers](projetos/vertice-sneakers/) | Boutique de tênis de alto padrão | Grafite, osso, champanhe | Cormorant Garamond + Manrope | ✅ Aprovado (ciclo 2) | **4,57** |
 | [Padaria Trigo Doce](projetos/padaria-trigo-doce/) | Padaria | Creme, café, terracota, mel | Fraunces + Nunito Sans | ✅ Aprovado (ciclo 2) | **4,57** |
 | [Rosa Bordô](projetos/rosa-bordo/) | Artesanato (bonecas de pano) | Bordô, creme, rosa | Fraunces + Nunito | ✅ Aprovado (ciclo 2) | **4,43** |
 | [Futebol Kids](projetos/futebol-kids/) | Escolinha de futebol infantil | Verde-gramado, amarelo-sol, azul-céu | Baloo 2 + Nunito | ✅ Aprovado (ciclo 2) | **4,43** |
