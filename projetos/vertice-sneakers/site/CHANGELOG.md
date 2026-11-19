@@ -76,3 +76,10 @@ Aplicadas as revisões do `conteudo.md` (seção "Revisões"), para o material e
 - Desktop e tablet em paisagem não mudaram (`top: 0`, `object-position: 72% 50%`, conferido em 1280x800, 1024x768 e 900x600). Sem rolagem horizontal.
 - **Revisão dos 4 slides em 360x800, 390x844 e 768x1024:** só o slide 3 tinha produto atrás do logo. Nos slides 1, 2 e 4, o produto fica abaixo do cabeçalho. Eles não foram alterados.
 - Capturas de antes e depois em `capturas/c2-1/`.
+
+## Título do hero sob o cabeçalho em janelas baixas (19/11/2026)
+
+Achado do usuário no navegador: em janelas com pouca altura (ex.: notebook 1366x657 com barra de favoritos), o bloco de texto do slide ficava mais alto que o espaço do hero e, centralizado, subia para baixo do cabeçalho (eyebrow e título sobrepostos ao logo e ao menu).
+- `--fs-display` agora é `clamp(2.75rem, min(1.6rem + 5.2vw, 0.5rem + 9vh), 6rem)`: o título continua crescendo com a largura, mas fica limitado pela altura da janela.
+- No desktop, `.slide` usa `justify-content: safe center`: se ainda faltar altura, o texto não sobe para baixo do cabeçalho.
+- Medido com Playwright (Edge) em 1280x600, 1366x657, 1280x720, 1440x900, 1920x1080, 1024x600, 900x600, 812x375, 768x1024, 360x640 e 390x844, nos 4 slides: nenhum texto sobre o cabeçalho nem sobre o índice. Celular, tablet em retrato e 1920x1080 ficam iguais; em 1440x900 o título fica um pouco menor (de ~96 para ~89 px).
