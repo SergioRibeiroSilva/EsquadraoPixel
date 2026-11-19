@@ -436,6 +436,18 @@ body.menu-aberto .cabecalho { background: var(--cor-superficie-2); }
   .slide--4 img { object-position: 50% 32%; }
   .slide__texto { max-width: 34rem; }
 }
+/* Slide 3 no recorte retrato (celular e tablet em retrato): o cadarço fica no topo da foto,
+   então a foto começa abaixo do cabeçalho, com largura fixa e fundo preto igual ao da foto.
+   Assim nada da foto passa atrás do logo (achado C2-1). */
+@media (max-width: 767px), (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+  .slide--3 .slide__midia { background: #000; }
+  .slide--3 .slide__midia img {
+    top: var(--header-h); right: auto; bottom: auto;
+    left: calc(50% - min(55vw, 300px));
+    width: min(110vw, 600px); height: auto; aspect-ratio: 9 / 16;
+    object-position: 50% 0; background: #000;
+  }
+}
 @media (min-width: 1024px) and (max-width: 1279px) {
   .slide::before { background: linear-gradient(90deg, rgba(14,14,16,.90) 0%, rgba(14,14,16,.84) 55%, rgba(14,14,16,.35) 76%, rgba(14,14,16,0) 100%); }
 }

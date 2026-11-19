@@ -151,7 +151,7 @@ A pasta [`site/`](site/) tem todos os assets dentro dela e pode ser publicada so
 
 ## ⚠️ Para virar um site real
 
-- [ ] *(opcional)* No celular, o cadarço do slide 3 passa atrás do logo; dá para ajustar o `object-position`
+- [x] ~~No celular, o cadarço do slide 3 passa atrás do logo~~ (corrigido em 19/11/2026, ver [`capturas/c2-1/`](capturas/c2-1/))
 - [ ] *(opcional)* O card "Couro artesanal" mostra um sapato social, e as fotos dos produtos 02 e 05 têm fundo diferente das outras
 - [ ] Trocar os dados fictícios: Alameda das Palmeiras, 1200; WhatsApp `(00) 90000-0000`; e-mail, Instagram e horários
 - [ ] Trocar as políticas de demonstração (troca em 30 dias, envio, parcelamento, higienização cortesia)

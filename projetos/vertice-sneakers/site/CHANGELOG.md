@@ -67,3 +67,12 @@ Aplicadas as revisões do `conteudo.md` (seção "Revisões"), para o material e
 ### Pendências
 - Continuam as do ciclo anterior: dados fictícios, fotos de depoimentos de banco e fotos de produtos de banco.
 - A EB Garamond (SIL OFL 1.1) é usada em recortes próprios. A licença permite isso, mas, se o projeto exigir, inclua o texto da OFL junto ao código-fonte.
+
+## Ajuste pós-aprovação: C2-1, slide 3 do hero no recorte retrato (19/11/2026)
+
+### Feito
+- **Causa:** no celular, a foto 9:16 preenche a altura do hero, e o recorte é feito pela largura. Por isso o `object-position` vertical não move a foto, e o cadarço (que fica no topo da foto) sempre caía na faixa do cabeçalho. No tablet em retrato, o cadarço também cruzava o "VÉRTICE" e a linha do cabeçalho.
+- **Correção (só no slide 3, só no recorte retrato, ou seja, `max-width: 767px` e tablet de 768 a 1023 px em retrato):** a foto começa logo abaixo do cabeçalho (`top: var(--header-h)`), com largura `min(110vw, 600px)`, proporção 9:16, centrada, `object-position: 50% 0` e fundo `#000` no `.slide__midia` (igual ao fundo preto da foto, então a emenda não aparece). O tênis fica inteiro acima do texto, e nada da foto passa atrás do logo.
+- Desktop e tablet em paisagem não mudaram (`top: 0`, `object-position: 72% 50%`, conferido em 1280x800, 1024x768 e 900x600). Sem rolagem horizontal.
+- **Revisão dos 4 slides em 360x800, 390x844 e 768x1024:** só o slide 3 tinha produto atrás do logo. Nos slides 1, 2 e 4, o produto fica abaixo do cabeçalho. Eles não foram alterados.
+- Capturas de antes e depois em `capturas/c2-1/`.
